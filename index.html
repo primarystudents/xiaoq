@@ -14,9 +14,16 @@
 <title>小Q · 数据分析作品集</title>
 <style>
   :root{
-    --accent:#2b5aed; --accent-deep:#0b1e4b; --accent-soft:#eaf0ff;
-    --ink:#1c2333; --muted:#5b6478; --line:#e6eaf2; --bg:#f6f8fc;
-    --green:#0a9e6b; --green-soft:#e6f6f0;
+    --accent:#7080d7; --accent-soft:#e4e9ff; --accent-deep:#3d4ba8;
+    --ink:#243044; --paper:#f2f5f9; --muted:#66758a; --surface:#ffffff;
+    --surface-strong:#f7f9ff; --line:rgba(36,48,68,.14);
+    --radius:26px;
+    --display-font:"Songti SC","STSong","Noto Sans SC","PingFang SC",serif;
+    --body-font:"Noto Sans SC","PingFang SC",system-ui,sans-serif;
+    --label-font:"Noto Sans SC","PingFang SC",system-ui,sans-serif;
+    --display-weight:600; --body-weight:400; --label-weight:600;
+    --title-tracking:-.015em;
+    --card-shadow:0 0 0 1px rgba(255,255,255,.78),0 18px 48px rgba(71,85,120,.12),inset 0 1px 0 rgba(255,255,255,.92);
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -164,57 +171,322 @@
     .hero-stat:nth-child(3)::before{display:none;}
     section{padding:48px 0 4px;}
   }
+
+  /* ══════════════════════════════════════════
+     简历 1:1 照搬样式层· 三处改造
+     ══════════════════════════════════════════ */
+  /* —— 全局排版基调 —— */
+  body{
+    font-family:var(--body-font); font-weight:var(--body-weight);
+    background:var(--paper); color:var(--ink);
+  }
+
+  /* ─────── 开篇 HERO（简历 paper-intro） ─────── */
+  .hero{
+    background:var(--paper);
+    padding:74px 0 0;
+    position:relative;
+    border-bottom:1px solid var(--line);
+  }
+  .pe-meta{
+    display:flex;align-items:center;justify-content:space-between;gap:18px;
+    padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:6px;
+  }
+  .pe-eyebrow{
+    display:block;font:600 11px/1.65 var(--label-font);
+    letter-spacing:.13em;color:var(--ink);
+  }
+  .pe-edition{display:inline-flex;align-items:center;gap:9px;}
+  .pe-edition-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);}
+  .pe-label{font:var(--label-weight) 11px/1.65 var(--label-font);color:var(--muted);letter-spacing:.13em;}
+
+  .hero-grid{
+    display:grid;grid-template-columns:1.08fr .92fr;
+    gap:clamp(28px,5cqw,72px);align-items:start;padding:34px 0 8px;
+  }
+  .pe-eyebrow-label{display:block;margin-top:14px;}
+  .pe-name-row{
+    display:flex;align-items:center;gap:16px;
+    margin:14px 0 16px;
+  }
+  .pe-name{
+    font-family:var(--display-font);font-weight:700;font-size:clamp(46px,5.3cqw,76px);
+    line-height:1.15;letter-spacing:-.05em;color:var(--ink);
+  }
+  .pe-star{
+    font:80px/normal Arial;vertical-align:middle;flex-shrink:0;
+    color:var(--accent);animation:peStarTurn 24s linear infinite;
+  }
+  @keyframes peStarTurn{to{transform:rotate(360deg)}}
+  .pe-role{
+    font-size:14px;color:var(--muted);letter-spacing:.04em;
+  }
+  .pe-statement{
+    font-family:var(--display-font);font-weight:700;
+    font-size:clamp(25px,3cqw,36px);line-height:1.55;color:var(--ink);
+    margin:30px 0 22px;white-space:pre-line;width:fit-content;max-width:100%;
+    background:linear-gradient(var(--accent),var(--accent)) left 94% / 86% .22em no-repeat;
+  }
+  .pe-underlined{
+    background:linear-gradient(var(--accent),var(--accent)) left 92% / 88% .18em no-repeat;
+  }
+  .pe-intro{font-size:14px;color:var(--muted);max-width:52ch;line-height:1.75;}
+  .pe-actions{margin-top:26px;}
+  .pe-button{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--ink);color:#fff;text-decoration:none;
+    border-radius:999px;padding:12px 22px;
+    font:var(--label-weight) 12px/1 var(--label-font);letter-spacing:.08em;
+    transition:transform .18s ease,background .18s ease;
+  }
+  .pe-button:hover{transform:translateY(-2px);background:var(--accent-deep);}
+  .pe-button-arrow{font-size:14px;}
+  .pe-hero-meta{margin-top:30px;padding-top:20px;border-top:1px solid var(--line);}
+  .pe-hero-meta .pe-label{display:block;margin-bottom:5px;}
+  .pe-hero-meta p{font-size:13.5px;color:var(--ink);}
+
+  /* HERO 右侧 portrait 卡 */
+  .hero-art{position:relative;}
+  .pe-orbit{
+    position:absolute;inset:-18px -18px 26px -18px;border-radius:34px;
+    border:1px dashed rgba(112,128,215,.34);pointer-events:none;
+  }
+  .pe-portrait{
+    margin:0;background:var(--surface);border-radius:var(--radius);
+    box-shadow:var(--card-shadow);overflow:hidden;
+    padding:20px 22px 0;
+  }
+  .pe-portrait .pe-meta{padding-bottom:12px;margin-bottom:0;}
+  .pe-portrait-body{padding:6px 0 0;}
+  .pe-portrait-body svg{width:100%;height:auto;display:block;}
+  .pe-portrait-foot{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 0 18px;margin-top:8px;border-top:1px solid var(--line);
+  }
+  .pe-portrait-wordmark{font:800 13px/1 var(--label-font);letter-spacing:.18em;color:var(--ink);}
+  .pe-portrait-motto{font:600 11px/1 var(--label-font);letter-spacing:.16em;color:var(--muted);}
+  .pe-note{
+    display:flex;gap:14px;align-items:flex-start;
+    margin-top:22px;padding:18px 20px;
+    background:var(--surface);border-radius:18px;
+    border:1px solid var(--line);
+  }
+  .pe-note .pe-star{font-size:26px;animation:none;}
+  .pe-note .pe-label{display:block;margin-bottom:4px;}
+  .pe-note p{font-size:14px;color:var(--ink);}
+
+  /* HERO 底部指标条 */
+  .pe-hero-bottom{
+    display:flex;align-items:center;gap:clamp(24px,5cqw,55px);flex-wrap:wrap;
+    border-top:1px solid var(--line);margin-top:44px;padding:26px 0 30px;
+  }
+  .pe-bottom-item{display:flex;gap:14px;align-items:center;min-width:0;}
+  .pe-bottom-value{font:700 34px/normal Arial;color:var(--ink);}
+  .pe-value-unit{font-size:16px;font-weight:600;margin-left:2px;}
+  .pe-bottom-label{font:11px/normal var(--body-font);color:var(--muted);}
+  .pe-scroll-cue{
+    margin-left:auto;display:inline-flex;align-items:center;gap:10px;
+    text-decoration:none;color:var(--muted);
+    font:var(--label-weight) 11px/1 var(--label-font);letter-spacing:.14em;
+  }
+
+  /* ─────── 项目经历区（简历 projects 模块） ─────── */
+  section{padding:0;}
+  #works{padding:64px 0 0;}
+  .pe-header{
+    display:flex;align-items:flex-end;justify-content:space-between;
+    gap:26px;flex-wrap:wrap;
+    padding-bottom:22px;border-bottom:1px solid var(--line);margin-bottom:26px;
+  }
+  .pe-header .pe-eyebrow{display:block;margin-bottom:14px;}
+  .pe-heading{
+    color:var(--ink);font-family:var(--display-font);font-weight:700;
+    font-size:clamp(28px,3.3cqw,43px);line-height:1.35;letter-spacing:-.025em;
+    margin:0;
+  }
+  .pe-lead{font-size:13px;color:var(--muted);margin:0;max-width:44ch;}
+
+  .proj-meta{
+    margin:32px 0 16px;padding-bottom:14px;
+    border-bottom:1px solid var(--line);
+  }
+  .proj-meta .pe-label:first-child{color:var(--ink);font-weight:700;letter-spacing:.1em;}
+
+  /* ─────── 结尾 Contact（简历 data-console） ─────── */
+  .module-contact{padding:70px 0 84px;}
+  .console-layout{
+    --console-accent:var(--accent); --console-ink:var(--ink);
+    --console-muted:var(--muted);
+    --console-line:color-mix(in srgb,var(--ink) 14%,transparent);
+    --console-panel:color-mix(in srgb,var(--surface) 94%,transparent);
+    position:relative;isolation:isolate;
+    width:min(1180px,100%);padding:clamp(28px,4.6cqw,56px);
+    color:var(--console-ink);
+    border:1px solid color-mix(in srgb,var(--ink) 15%,transparent);
+    border-radius:clamp(14px,var(--radius),24px);
+    background:var(--console-panel);
+    box-shadow:var(--card-shadow);
+  }
+  .console-reticles{position:absolute;z-index:0;inset:clamp(12px,1.7cqw,20px);pointer-events:none;}
+  .console-reticles>i{
+    position:absolute;width:11px;height:11px;
+    color:color-mix(in srgb,var(--console-muted) 42%,transparent);
+    font:400 15px/9px var(--label-font);font-style:normal;text-align:center;
+  }
+  .console-reticles>.is-top-left{left:0;top:0}
+  .console-reticles>.is-top-right{right:0;top:0}
+  .console-reticles>.is-bottom-left{left:0;bottom:0}
+  .console-reticles>.is-bottom-right{right:0;bottom:0}
+
+  .console-meta{
+    position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;
+    gap:18px;padding-bottom:clamp(14px,1.8cqw,20px);
+    color:var(--console-muted);border-bottom:1px solid var(--console-line);
+    font-family:var(--label-font);font-size:clamp(9px,.82cqw,11px);
+    font-weight:var(--label-weight);letter-spacing:.2em;text-transform:uppercase;
+  }
+  .console-signal{display:inline-flex;align-items:center;gap:9px;}
+  .console-signal>i{
+    width:7px;height:7px;flex:0 0 auto;border-radius:50%;background:var(--console-accent);
+    animation:consolePulse 2.4s ease-out infinite;
+  }
+  @keyframes consolePulse{
+    0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--console-accent) 34%,transparent)}
+    70%{box-shadow:0 0 0 9px transparent}
+    100%{box-shadow:0 0 0 0 transparent}
+  }
+  .console-title{
+    position:relative;z-index:1;
+    padding:clamp(24px,3.3cqw,42px) 0 clamp(25px,3.6cqw,46px);
+  }
+  .console-title .module-title{
+    margin:0;max-width:20ch;color:var(--console-ink);
+    font-family:var(--display-font);font-size:clamp(31px,4cqw,52px);
+    font-weight:var(--display-weight);line-height:1.14;letter-spacing:var(--title-tracking);
+  }
+  .console-rule{
+    display:block;width:100%;height:1px;margin-top:clamp(20px,2.6cqw,30px);
+    background:linear-gradient(90deg,var(--console-accent) 0 clamp(64px,9cqw,112px),var(--console-line) clamp(64px,9cqw,112px) 100%);
+  }
+  .console-main{
+    position:relative;z-index:1;
+    display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(24px,3.6cqw,48px);
+    padding-bottom:clamp(26px,3.6cqw,44px);
+  }
+  .console-statement{display:flex;flex-direction:column;gap:18px;justify-content:space-between;}
+  .console-label{
+    display:block;margin-bottom:9px;color:var(--console-muted);
+    font:var(--label-weight) 11px/1.65 var(--label-font);letter-spacing:.13em;
+  }
+  .console-statement p{font-size:14px;color:var(--console-ink);line-height:1.75;}
+  .console-availability{
+    display:inline-flex;align-items:center;gap:9px;color:var(--console-accent);
+    font:var(--label-weight) 10px/1 var(--label-font);letter-spacing:.15em;
+  }
+  .console-availability>i{width:6px;height:6px;border-radius:50%;background:var(--console-accent);}
+  .console-directory{
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+    align-content:start;gap:0 clamp(18px,2.3cqw,28px);
+  }
+  .console-channel{
+    display:flex;min-width:0;min-height:78px;align-items:flex-start;gap:10px;
+    padding:clamp(12px,1.6cqw,19px) 0;color:var(--console-ink);
+    text-decoration:none;border-bottom:1px solid var(--console-line);
+    transition:color 180ms ease,scale 120ms ease;
+  }
+  a.console-channel:hover{color:var(--console-accent);scale:1.015;}
+  .console-channel-index{
+    flex:0 0 auto;margin-top:2px;color:var(--console-accent);
+    font:700 9px/1.3 var(--label-font);font-variant-numeric:tabular-nums;
+  }
+  .console-channel>span:last-child{display:flex;min-width:0;flex-direction:column;gap:7px;}
+  .console-channel-label{color:var(--console-muted);font:var(--label-weight) 10px/1 var(--label-font);letter-spacing:.14em;}
+  .console-channel strong{font-size:13.5px;font-weight:600;color:var(--console-ink);overflow-wrap:anywhere;}
+  .console-footer{
+    position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;
+    gap:18px;flex-wrap:wrap;
+    padding-top:clamp(18px,2.4cqw,26px);
+    border-top:1px solid var(--console-line);color:var(--console-muted);
+    font:var(--label-weight) 10px/1.6 var(--label-font);letter-spacing:.16em;text-transform:uppercase;
+  }
+
+  /* ─────── 响应式 ─────── */
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-art{order:2;margin-top:8px;}
+    .console-main{grid-template-columns:1fr;}
+    .pe-scroll-cue{margin-left:0;}
+  }
+  @media (max-width:620px){
+    .pe-hero-bottom{gap:16px;}
+    .pe-bottom-item{display:block;flex:1;}
+    .pe-bottom-value{font-size:28px;}
+    .pe-bottom-label{display:block;font-size:9px;margin-top:7px;}
+    .console-directory{grid-template-columns:minmax(0,1fr);}
+    .pe-header{flex-direction:column;align-items:flex-start;}
+  }
 </style>
 </head>
 <body data-page-node-id="vE8ajjrMteTmStH9ssgFFB">
 
 <!-- ═══════ Hero ═══════ -->
 <header class="hero" data-page-node-id="EvqF9UFZYAELY071P0YmK6">
-  <div class="wrap hero-grid" data-page-node-id="mc67PjGPbiOC9JrXnMYDpW">
-    <div class="hero-main" data-page-node-id="59xyM68y8D81yyt9TqZJFa">
-      <div class="hero-badge" data-page-node-id="NePkUIoZ3EBx3AouYd1vOI">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" data-page-node-id="g2OsJVWKq11J5zQlaRBQlc"><path d="M12 2l2.4 7.2H22l-6 4.6 2.3 7.2-6.3-4.5-6.3 4.5L8 13.8 2 9.2h7.6z" fill="#ffd76a" data-page-node-id="UMBsl9wHNFqlVmEjSC7khb"/></svg>
-        PORTFOLIO · 求职意向：商业数据分析师
+  <div class="wrap" data-page-node-id="mc67PjGPbiOC9JrXnMYDpW">
+    <div class="pe-meta" data-page-node-id="NePkUIoZ3EBx3AouYd1vOI">
+      <span class="pe-eyebrow" data-page-node-id="g2OsJVWKq11J5zQlaRBQlc">PORTFOLIO</span>
+      <span class="pe-edition"><span class="pe-edition-dot"></span><span class="pe-label">2026</span></span>
+    </div>
+    <div class="hero-grid">
+      <div class="hero-main">
+        <span class="pe-label pe-eyebrow-label">HELLO, I'M</span>
+        <h1 class="pe-name-row">
+          <span class="pe-name">小Q</span><span class="pe-star" aria-hidden="true">✳</span>
+        </h1>
+        <p class="pe-role">商业数据分析师 / 数据产品</p>
+        <p class="pe-statement">让数据，成为<span class="pe-underlined">下一步的答案。</span></p>
+        <p class="pe-intro">1年达人营销分析经验，4A媒介执行经验，熟悉营销全流程，擅长把多平台业务数据变成可执行的经营决策。</p>
+        <div class="pe-actions">
+          <a class="pe-button" href="#works"><span class="pe-label">探索项目</span><span class="pe-button-arrow">↗</span></a>
+        </div>
+        <div class="pe-hero-meta">
+          <div><span class="pe-label">CAREER</span><p>商业分析，数据分析</p></div>
+        </div>
       </div>
-      <h1 class="hero-title" data-page-node-id="ziH0cv5OI9kZMxDLz9gmPw">
-        <span class="hello" data-page-node-id="x6OsDlipEJ8FeBCDOWONV6">你好，我是小Q</span>
-        <span class="big" data-page-node-id="GlvTvCkJfAfuOU04ddwN3w">让数据<em data-page-node-id="wcZLbBzFAbGaAlOkVJjcKm">讲清</em>业务问题</span>
-      </h1>
-      <p class="tagline" data-page-node-id="kG8BjqDIBmnBFjHNxhvOOG">从<b data-page-node-id="JmOBoGEPo0119QluADj98S">指标拆解</b>到<b data-page-node-id="OO89UtA1c2SO2nIlh1FVO6">归因洞察</b>，再到<b data-page-node-id="nGnRGKqhyjAWL4lB3Nv8Hs">可视化看板</b> —— 擅长把杂乱的多平台业务数据，变成可执行的经营决策。</p>
-      <div class="hero-tags" data-page-node-id="k2FFMoEOdJp22SFIOQ8Yt5">
-        <span data-page-node-id="5pEtCTpanEoJF2oYSBtV0v">电商 / 种草营销分析</span>
-        <span data-page-node-id="XPUnMVCZylfU8mZswUkdsY">机票电商 · 收益管理</span>
-        <span data-page-node-id="kfw5aXO3TGpl2jk3Ow2nc9">指标体系搭建</span>
-        <span data-page-node-id="OLnkp8iDntzpk031pD1wXp">Tableau / PowerBI</span>
-      </div>
-      <div class="hero-stats" data-page-node-id="YAioI9Ka3CTap5dC9BL7KV">
-        <div class="hero-stat" data-page-node-id="i1XALOozYocy26Pq0Th3A5"><b data-page-node-id="hnFzDR4KH3KY00b2ciRCgl">3 个</b><span data-page-node-id="MiR0GSgQgUUnv5BpwDUdC8">完整分析项目</span></div>
-        <div class="hero-stat" data-page-node-id="rcoPsdR8dolK2TMFzXur6H"><b data-page-node-id="gWkGVOI7uDPnVIBF5ozdXy">10万+</b><span data-page-node-id="tw8VvuBK5LJUsR1hYm2Ezp">处理数据量</span></div>
-        <div class="hero-stat" data-page-node-id="gSp1O0fvm965YUXmAW5sWh"><b data-page-node-id="aHG3GHsF3GZjWbwBRP5Dhl">-15.7%</b><span data-page-node-id="w3ldvTf1RpYHP0muHWn5zU">种草投放成本优化</span></div>
-        <div class="hero-stat" data-page-node-id="QdCGSlN0sJTYWaKGlK4VIh"><b data-page-node-id="72bmABRikCmDvlR0AS2lvU">+18.7%</b><span data-page-node-id="rY435g4BHs9yOdfFNq3iKt">单票利润提升</span></div>
-      </div>
-      <div class="hero-contact" data-page-node-id="ADMb29diORe2e0nO4gmZhj">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" data-page-node-id="a0oWz2EGzVs8DFIbtu2XZ1"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8" data-page-node-id="X0WCjQsZe17v4LVVVU0JP2"/><path d="M3.5 7l8.5 6 8.5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="8qyAZMVxt4sYc2BRr56hmp"/></svg>
-        <a href="mailto:qzk200011@163.com" data-page-node-id="j8zZwhX7G9VvsZmiN9bqOJ">qzk200011@163.com</a>
+      <div class="hero-art">
+        <div class="pe-orbit" aria-hidden="true"></div>
+        <figure class="pe-portrait" data-theme-role="surface">
+          <div class="pe-meta"><span class="pe-label">PORTRAIT / 01</span><span class="pe-label">01 /</span></div>
+          <div class="pe-portrait-body">
+            <svg viewBox="0 0 330 214" fill="none" aria-label="GMV 收益趋势示意图" data-page-node-id="bcTF1zlC2OHdJFbTEmiFrI">
+              <line x1="24" y1="170" x2="306" y2="170" stroke="rgba(36,48,68,.16)" stroke-width="1"/>
+              <line x1="24" y1="110" x2="306" y2="110" stroke="rgba(36,48,68,.10)" stroke-width="1"/>
+              <line x1="24" y1="50" x2="306" y2="50" stroke="rgba(36,48,68,.10)" stroke-width="1"/>
+              <rect x="38" y="120" width="26" height="50" rx="3" fill="#aab6ea"/>
+              <rect x="80" y="92" width="26" height="78" rx="3" fill="#94a2e4"/>
+              <rect x="122" y="106" width="26" height="64" rx="3" fill="#aab6ea"/>
+              <rect x="164" y="62" width="26" height="108" rx="3" fill="#7080d7"/>
+              <rect x="206" y="80" width="26" height="90" rx="3" fill="#94a2e4"/>
+              <rect x="248" y="42" width="26" height="128" rx="3" fill="#3d4ba8"/>
+              <polyline points="51,104 93,72 135,90 177,44 219,64 261,28" stroke="#3d4ba8" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="261" cy="28" r="4.5" fill="#3d4ba8"/>
+              <circle cx="177" cy="44" r="3.5" fill="#7080d7"/>
+              <text x="24" y="196" fill="#66758a" font-size="10" font-family="Arial">Q1</text>
+              <text x="124" y="196" fill="#66758a" font-size="10" font-family="Arial">Q3</text>
+              <text x="258" y="196" fill="#66758a" font-size="10" font-family="Arial">Q4</text>
+              <text x="24" y="20" fill="#243044" font-size="11" font-weight="600">GMV 收益趋势 ↑</text>
+            </svg>
+          </div>
+          <figcaption class="pe-portrait-foot"><strong class="pe-portrait-wordmark">PORTFOLIO</strong><span class="pe-portrait-motto">PROFILE 01</span></figcaption>
+        </figure>
+        <div class="pe-note"><span class="pe-star">↗</span><div class="pe-note-copy"><span class="pe-label">FROM DATA TO DECISIONS</span><p>洞察有据，表达有形。</p></div></div>
       </div>
     </div>
-    <div class="hero-art" data-page-node-id="VbLaRytpjapI6G8aolYgot">
-      <svg width="330" height="270" viewBox="0 0 330 270" fill="none" data-page-node-id="bcTF1zlC2OHdJFbTEmiFrI">
-        <rect x="30" y="30" width="270" height="200" rx="16" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.25)" data-page-node-id="a3KQCr9rSeHLGpj4NpS6BQ"/>
-        <line x1="55" y1="195" x2="275" y2="195" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" data-page-node-id="sBEjw0WBPc1AqheVFKdzs8"/>
-        <rect x="70" y="150" width="26" height="45" rx="4" fill="#7ea2ff" data-page-node-id="uBZSimYcs4AhR7oLe8cQ2o"/>
-        <rect x="112" y="120" width="26" height="75" rx="4" fill="#7ea2ff" data-page-node-id="Y7l1mw5kI4y5rKk1Gn0PEh"/>
-        <rect x="154" y="95" width="26" height="100" rx="4" fill="#a9c3ff" data-page-node-id="HKvzsMWMpoQY2mbWE0qzD0"/>
-        <rect x="196" y="60" width="26" height="135" rx="4" fill="#ffd76a" data-page-node-id="yqEbsaQO3soKE3f1dOpdc9"/>
-        <polyline points="83,120 125,95 167,70 209,38 251,28" stroke="#ffd76a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="DcYFGRPFhQoaSWs6sTkTCD"/>
-        <circle cx="251" cy="28" r="5" fill="#ffd76a" data-page-node-id="63OtWwzMvkD5cLWz7hfk5J"/>
-        <circle cx="209" cy="38" r="4" fill="#fff" opacity=".8" data-page-node-id="Mpjq4XI567vxIJYrxBya4Q"/>
-        <circle cx="167" cy="70" r="4" fill="#fff" opacity=".8" data-page-node-id="hsfhzBhZvOVA5rgWHznUJh"/>
-        <text x="70" y="222" fill="rgba(255,255,255,0.65)" font-size="11" data-page-node-id="nIpTkOzRKLN8YAoY0mGI07">Q1</text>
-        <text x="154" y="222" fill="rgba(255,255,255,0.65)" font-size="11" data-page-node-id="a6igemJVbJUbBgmNanbLyd">Q3</text>
-        <text x="238" y="222" fill="rgba(255,255,255,0.65)" font-size="11" data-page-node-id="nSjlbA28JH8iTiMmewaSCW">Q4</text>
-        <text x="55" y="55" fill="rgba(255,255,255,0.75)" font-size="12" font-weight="600" data-page-node-id="P3J3lusoLWaLGJ7UmShL2V">GMV 收益趋势 ↑</text>
-      </svg>
+    <div class="pe-hero-bottom">
+      <div class="pe-bottom-item"><strong class="pe-bottom-value">3<span class="pe-value-unit">个</span></strong><span class="pe-bottom-label">完整分析项目</span></div>
+      <div class="pe-bottom-item"><strong class="pe-bottom-value">10<span class="pe-value-unit">万+</span></strong><span class="pe-bottom-label">处理数据量</span></div>
+      <div class="pe-bottom-item"><strong class="pe-bottom-value">-15.7<span class="pe-value-unit">%</span></strong><span class="pe-bottom-label">种草投放成本优化</span></div>
+      <div class="pe-bottom-item"><strong class="pe-bottom-value">+18.7<span class="pe-value-unit">%</span></strong><span class="pe-bottom-label">单票利润提升</span></div>
+      <a class="pe-scroll-cue" href="#works"><span class="pe-label">SCROLL TO EXPLORE</span><span>↓</span></a>
     </div>
   </div>
 </header>
@@ -281,10 +553,13 @@
 <!-- ═══════ 精选作品 ═══════ -->
 <section id="works" data-page-node-id="GThpUYFzDuKTurHGR82hBj">
   <div class="wrap" data-page-node-id="3JzM3QMhboaszIQ13MxkAM">
-    <div class="sec-head" data-page-node-id="kt5Brusaq2xvsauwtExAmV"><h2 data-page-node-id="7PLHUlnNUouTVYYKlqAy7R">精选作品</h2><span data-page-node-id="PCAtIOFN6HWZMTDwIjtIgQ">两个完整项目 · 真实业务数据驱动 · 点击卡片即可在线查看</span></div>
-    <div class="proj-label" data-page-node-id="FH6rgoj2bzi6NMRHHfpkD2">
-        <b data-page-node-id="SIH8udPWwx5xiLw2evdIcR">项目一 · 达人种草投放分析</b>
-        <span data-page-node-id="IBgb5ODlO1a8GfbPEyDJwG">同一项目的两个板块：BI 看板 × 分析报告</span>
+<header class="pe-header works-header" data-page-node-id="kt5Brusaq2xvsauwtExAmV">
+      <div><span class="pe-eyebrow">05 / SELECTED PROJECTS</span><h1 class="pe-heading" data-page-node-id="7PLHUlnNUouTVYYKlqAy7R">项目经历 / Projects</h1></div>
+      <p class="pe-lead" data-page-node-id="PCAtIOFN6HWZMTDwIjtIgQ">从问题到方法，从行动到成果。两个完整项目 · 真实业务数据驱动 · 点击卡片即可在线查看</p>
+    </header>
+<div class="pe-meta proj-meta" data-page-node-id="FH6rgoj2bzi6NMRHHfpkD2">
+        <span class="pe-label" data-page-node-id="SIH8udPWwx5xiLw2evdIcR">CASE / 01 · 达人种草投放分析</span>
+        <span class="pe-label" data-page-node-id="IBgb5ODlO1a8GfbPEyDJwG">BI 看板 × 分析报告</span>
       </div>
       <div class="works" data-page-node-id="1q4rDVYIYmNIRwXRrQw8kL">
 
@@ -340,9 +615,9 @@
 
       </div>
 
-      <div class="proj-label" data-page-node-id="IeoFQJ6enKcvFl73mQ3KZi">
-        <b data-page-node-id="7fyWjVTggZN5wrEAPEacL3">项目二 · 跨境电商经营与收益分析</b>
-        <span data-page-node-id="77vVNIOqkUjQVCGRenLSt8">同一项目的两个板块：经营分析仪表盘 × 指标拆解</span>
+      <div class="pe-meta proj-meta" data-page-node-id="IeoFQJ6enKcvFl73mQ3KZi">
+        <span class="pe-label" data-page-node-id="7fyWjVTggZN5wrEAPEacL3">CASE / 02 · 跨境电商经营与收益分析</span>
+        <span class="pe-label" data-page-node-id="77vVNIOqkUjQVCGRenLSt8">经营分析仪表盘 × 指标拆解</span>
       </div>
       <div class="works" data-page-node-id="4PNRT9RTu5NF50LunXC749">
 
@@ -400,9 +675,34 @@
   </div>
 </section>
 
-<footer data-page-node-id="h7ThTosetd8kRBPip4dcRL">
-  数据分析作品集<span class="dot" data-page-node-id="OK42PU7DsCSqANfK0gMxgD">·</span>小Q<span class="dot" data-page-node-id="h3GKlk4LilDVVY6re1GRVk">·</span>所有作品均可点击在线查看
-</footer>
+<section class="page module-contact" id="contact" data-module-type="contact">
+  <div class="wrap">
+    <div class="console-layout" data-theme-role="surface">
+      <div class="console-reticles" aria-hidden="true"><i class="is-top-left">+</i><i class="is-top-right">+</i><i class="is-bottom-left">+</i><i class="is-bottom-right">+</i></div>
+      <header class="console-meta" data-theme-role="eyebrow">
+        <span class="console-signal"><i aria-hidden="true"></i><span>CONTACT</span></span>
+        <span>PORTFOLIO /小Q</span>
+      </header>
+      <div class="console-title">
+        <h1 class="module-title">联系我</h1>
+        <i class="console-rule" aria-hidden="true"></i>
+      </div>
+      <div class="console-main">
+        <section class="console-statement">
+          <div><span class="console-label">STATEMENT</span><p>白天全天在线，如有兴趣欢迎联系，期待与你的深入交流</p></div>
+          <span class="console-availability"><i aria-hidden="true"></i><span>AVAILABLE FOR COLLABORATION</span></span>
+        </section>
+        <div class="console-directory" role="list" aria-label="联系方式">
+          <a class="console-channel" role="listitem" href="mailto:qzk200011@163.com"><span class="console-channel-index">01</span><span><span class="console-channel-label">EMAIL</span><strong>qzk200011@163.com</strong></span></a>
+          <a class="console-channel" role="listitem" href="https://primarystudents.github.io/xiaoq/" target="_blank" rel="noopener"><span class="console-channel-index">02</span><span><span class="console-channel-label">PORTFOLIO</span><strong>primarystudents.github.io/xiaoq</strong></span></a>
+          <div class="console-channel" role="listitem"><span class="console-channel-index">03</span><span><span class="console-channel-label">PHONE</span><strong>19511670170</strong></span></div>
+          <div class="console-channel" role="listitem"><span class="console-channel-index">04</span><span><span class="console-channel-label">WECHAT</span><strong>19511670170</strong></span></div>
+        </div>
+      </div>
+      <footer class="console-footer" data-theme-role="eyebrow"><span>数据分析作品集 · 所有作品均可点击在线查看</span><span>FROM DATA TO DECISIONS</span></footer>
+    </div>
+  </div>
+</section>
 
 <div id="toast" data-page-node-id="NkKfEIQh5mPM7JzceZaSxW">链接已复制</div>
 

@@ -67,7 +67,7 @@
   .hero-contact a:hover{color:#fff;}
 
   /* Hero 右侧 SVG 插画 */
-  .hero-art{flex-shrink:0;width:330px;display:flex;justify-content:center;}
+  .hero-art{flex-shrink:0;width:auto;display:block;}
 
   /* ═══════ 通用 section ═══════ */
   section{padding:64px 0 8px;}
@@ -77,8 +77,8 @@
   .sec-head span{font-size:14px;color:var(--muted);}
 
   /* ═══════ 关于我 ═══════ */
-  .about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;}
-  .about-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 28px;
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch;}
+  .about-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px 28px;display:flex;flex-direction:column;box-shadow:var(--card-shadow);
     box-shadow:0 4px 16px rgba(28,35,51,.05);}
   .about-card h3{font-size:17px;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:9px;color:var(--accent-deep);}
   .about-card h3 svg{flex-shrink:0;}
@@ -156,7 +156,7 @@
   /* ═══════ 响应式 ═══════ */
   @media (max-width:900px){
     .hero{padding:54px 0 72px;}
-    .hero-art{display:none;}
+    .hero-art{display:block;}
     .hero-title .big{font-size:30px;letter-spacing:.5px;}
     .hero-title .hello{font-size:16px;letter-spacing:2.5px;}
     .hero-stat b{font-size:21px;}
@@ -253,7 +253,7 @@
   /* HERO 右侧 portrait 卡 */
   .hero-art{position:relative;}
   .pe-orbit{
-    position:absolute;inset:-18px -18px 26px -18px;border-radius:34px;
+    position:absolute;inset:-12px -12px 8px -12px;border-radius:34px;
     border:1px dashed rgba(112,128,215,.34);pointer-events:none;
   }
   .pe-portrait{
@@ -264,9 +264,11 @@
   .pe-portrait .pe-meta{padding-bottom:12px;margin-bottom:0;}
   .pe-portrait-body{padding:6px 0 0;min-width:0;}
   .pe-portrait-body svg{width:100%;height:auto;display:block;max-width:100%;}
+  .pe-portrait{padding-bottom:0;}
+  .pe-portrait{padding-bottom:0;}
   .pe-portrait-media{
-    position:relative;width:100%;aspect-ratio:295/413;
-    margin:0 0 0;overflow:hidden;border-radius:16px;background:var(--surface-strong);
+    position:relative;width:100%;aspect-ratio:4/5;max-height:380px;
+    margin:0;overflow:hidden;border-radius:16px;background:var(--surface-strong);
   }
   .pe-portrait-media img{
     position:absolute;inset:0;width:100%;height:100%;
@@ -432,6 +434,20 @@
     .pe-scroll-cue{margin-left:0;}
   }
   @media (max-width:760px){
+    /* 防横向溢出 */
+    html,body{overflow-x:hidden;max-width:100%;}
+    .pe-hero-bottom{flex-wrap:wrap;gap:14px 20px;row-gap:16px;}
+    .pe-bottom-item{flex:0 0 auto;}
+    .pe-scroll-cue{display:none;}
+    .pe-orbit{display:none;}
+    .pe-orbit{display:none;}
+    .hero-grid{gap:22px;}
+    .pe-portrait-media{aspect-ratio:4/5;max-height:330px;}
+    .pe-name-row{margin:10px 0 12px;}
+    .pe-statement{margin:20px 0 16px;background-size:86% .16em;}
+    .about-card{padding:20px 18px;}
+    .pe-header{gap:14px;}
+    .console-footer{font-size:9px;letter-spacing:.1em;}
     /* 图片兜底：确保窄屏下封面图可见且比例正确 */
     .works{grid-template-columns:1fr;gap:16px;}
     .preview img{width:100%;height:auto;display:block;}
@@ -519,32 +535,30 @@
           教育与经历
         </h3>
                 <div class="tl" data-page-node-id="IzauaR1AEcUTQN1usgoQoB">
-          <div class="tl-item" data-page-node-id="Lv1GFwYfn9hBgArW7LdgRH">
-            <div class="tl-time" data-page-node-id="crRnur5yhaJKLDAZidic2Q">2025.10 – 2026.08</div>
-            <div class="tl-title" data-page-node-id="jALfYkHKlnDz5LBrdcCT1i">宁波星绮科技有限公司 · 电商数据分析师</div>
-            <div class="tl-desc" data-page-node-id="ETPyNSOaUMoZRktoRKGTFI">围绕订单与库存两大维度建立 7 项指标（GMV、转化、ROI 等）并统一数据口径；用 SQL 从 ERP 提取日订单数据，清洗校验后输出经营日报，累计处理 10w+ 数据量、金额校验无差异；用 Tableau 搭建自动刷新的经营驾驶舱；支持 3 次选品，库存损失下降 3%、收益提升 12.5%。</div>
+          <div class="tl-item">
+            <div class="tl-time">2025.10 – 2026.08</div>
+            <div class="tl-title">宁波星绮科技有限公司 · 电商数据分析师</div>
+            <div class="tl-desc">围绕订单与库存两大维度建立 7 项指标（GMV、转化、ROI 等）并统一数据口径；用 SQL 从 ERP 提取日订单数据，清洗校验后输出经营日报，累计处理 10w+ 数据量、金额校验无差异；Tableau 搭建自动刷新的经营驾驶舱；支持 3 次选品，库存损失下降 3%、收益提升 12.5%。</div>
           </div>
-          <div class="tl-item" data-page-node-id="uwhmdRJkd1yAxzC5d5dnHz">
-            <div class="tl-time" data-page-node-id="9Nq5xDWDSbUBYu1eFrF1dY">2023.08 – 2024.08</div>
-            <div class="tl-title" data-page-node-id="Ec2kGELxPWMVAH69Vb814P">上海数糖科技有限公司 · 数据分析师</div>
-            <div class="tl-desc" data-page-node-id="XgOtlrzYRzyNLRd4ABwCtN">以转化、GMV、CPM、单位成本为核心搭建种草营销评估体系并拆解指标树；SQL 采集营销与订单数据，用 Excel 透视表建立种草业务评估宽表；FineBI 可视看板做异常波动下钻归因；漏斗分析定位点击异常，通过竞品比价优化使点击率提升 15%。</div>
-          </div>
-          <div class="tl-item" data-page-node-id="illrogQvQDJsCMBtQK7H5B">
-            <div class="tl-time" data-page-node-id="2v7MvfCRt2mzOIRHDMrDvb">2023.03 – 2023.07</div>
-            <div class="tl-title" data-page-node-id="CgSdK0IOqSJWOrWDmNkyzR">蓝色光标 · 投放数据运营</div>
-            <div class="tl-desc" data-page-node-id="Omx48FztaAyVP0GUzIF9o2">监控 ROAS、转化、订单、CPC 与成本等电商广告投放核心指标并计算 ROI，异常及时上报；采集投放数据输出日报周报；承担多渠道投放数据交叉核验，定位口径不一致问题并跟进修正。</div>
-          </div>
-          <div class="tl-item" data-page-node-id="edu-1">
+          <div class="tl-item">
             <div class="tl-time">2024.09 – 2025.10</div>
             <div class="tl-title">马来亚大学 · 科学传播（理学院）硕士</div>
-            <div class="tl-desc">主修数理统计基础、传播与大数据、Python 数据分析、研究分析方法论。毕业论文用 Python 爬取 YouTube / TikTok / INS 视频数据，按关键词聚类统计播放 分析内容趋势与舆情倾向，发现「3C 数码回收与黄金提炼话题」热度明显且 UGC 占比高，撰写舆情分析报告。</div>
+            <div class="tl-desc">主修数理统计基础、传播与大数据、Python 数据分析、研究分析方法论。毕业论文用 Python 爬取 YouTube / TikTok / INS 视频数据，按关键词聚类统计播放量、分析内容趋势与舆情倾向，发现「3C 数码回收与黄金提炼话题」热度明显且 UGC 占比高，撰写舆情分析报告。</div>
           </div>
-          <div class="tl-item" data-page-node-id="edu-2">
+          <div class="tl-item">
+            <div class="tl-time">2023.08 – 2024.08</div>
+            <div class="tl-title">上海数糖科技有限公司 · 数据分析师</div>
+            <div class="tl-desc">以转化、GMV、CPM、单位成本为核心搭建种草营销评估体系并拆解指标树；SQL 采集营销与订单数据，用 Excel 透视表建立种草业务评估宽表；FineBI 可视看板做异常波动下钻归因；漏斗分析定位点击异常，通过竞品比价优化使点击率提升 15%。</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">2023.03 – 2023.07</div>
+            <div class="tl-title">蓝色光标 · 投放数据运营</div>
+            <div class="tl-desc">监控 ROAS、转化、订单、CPC 与成本等电商广告投放核心指标并计算 ROI，异常及时上报；采集投放数据输出日报周报；承担多渠道投放数据交叉核验，定位口径不一致问题并跟进修正。</div>
+          </div>
+          <div class="tl-item">
             <div class="tl-time">2019.09 – 2023.07</div>
             <div class="tl-title">青岛电影学院 · 戏剧影视文学 本科</div>
             <div class="tl-desc">文字与叙事训练，让分析报告既严谨又讲得清楚。</div>
-          </div>
-
           </div>
         </div>
       </div>

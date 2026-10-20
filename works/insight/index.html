@@ -3,520 +3,804 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="以某户外品牌为例的种草投放分析：曝光、CPM、成本结构与转化对比，定位投放浪费环节。">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232b5aed'/%3E%3Crect x='14' y='34' width='8' height='16' rx='2' fill='%23fff' opacity='.85'/%3E%3Crect x='28' y='24' width='8' height='26' rx='2' fill='%23fff' opacity='.9'/%3E%3Crect x='42' y='14' width='8' height='36' rx='2' fill='%23ffd76a'/%3E%3C/svg%3E">
-<meta property="og:type" content="website">
-<meta property="og:title" content="电商种草分析洞察">
-<meta property="og:description" content="以某户外品牌为例的种草投放分析：曝光、CPM、成本结构与转化对比，定位投放浪费环节。">
-<meta property="og:image" content="https://primarystudents.github.io/xiaoq/assets/preview-report.jpg">
-<meta property="og:url" content="https://primarystudents.github.io/xiaoq/works/insight/index.html">
-
-<title>电商种草分析洞察</title>
+<meta name="description" content="电商种草投放分析报告：以户外品类某头部品牌为样本，从曝光、CPM、成本结构到转化对比逐层下钻，定位投放浪费环节并输出可执行的内容策略。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232f4bd8'/%3E%3Crect x='15' y='34' width='8' height='16' rx='2' fill='%23fff' opacity='.85'/%3E%3Crect x='28' y='24' width='8' height='26' rx='2' fill='%23fff' opacity='.9'/%3E%3Crect x='41' y='14' width='8' height='36' rx='2' fill='%2334d3e0'/%3E%3C/svg%3E">
+<title>电商种草分析洞察 · 投放诊断与内容策略</title>
 <style>
-  :root{
-    --green:#1f3d2b;
-    --green-2:#2f5c40;
-    --orange:#e07a2f;
-    --orange-2:#f5a45f;
-    --sand:#faf7f1;
-    --card:#ffffff;
-    --ink:#2b2b2b;
-    --muted:#6b6b6b;
-    --line:#e7e0d3;
-    --gold:#c99a3f;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-    background:var(--sand);
-    color:var(--ink);
-    line-height:1.75;
-    font-size:15px;
-  }
-  header{
-    background:linear-gradient(135deg,#1f3d2b 0%,#2f5c40 55%,#3d7351 100%);
-    color:#fff;padding:64px 24px 88px;text-align:center;position:relative;overflow:hidden;
-  }
-  header::after{
-    content:"";position:absolute;left:0;right:0;bottom:-1px;height:40px;
-    background:var(--sand);border-radius:100% 100% 0 0 / 100% 100% 0 0;
-  }
-  .eyebrow{
-    display:inline-block;font-size:12px;letter-spacing:4px;color:#ffd9b3;
-    border:1px solid rgba(255,217,179,.45);padding:4px 16px;border-radius:999px;margin-bottom:18px;
-  }
-  header h1{font-size:42px;letter-spacing:2px;font-weight:800;}
-  header p.sub{margin-top:12px;font-size:15px;color:#d9e6dd;letter-spacing:1px;}
-  .meta{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-top:20px;font-size:13.5px;color:#bcd6c6;}
-  nav{
-    position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);
-    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);box-shadow:0 2px 10px rgba(31,61,43,.06);
-  }
-  nav ul{max-width:1180px;margin:0 auto;padding:0 24px;display:flex;gap:6px;flex-wrap:wrap;list-style:none;}
-  nav a{
-    display:inline-block;padding:13px 16px;font-size:14px;color:var(--green);
-    text-decoration:none;font-weight:600;border-bottom:2px solid transparent;transition:.2s;
-  }
-  nav a:hover{border-bottom-color:var(--orange);color:var(--orange);}
-  nav a.active{border-bottom-color:var(--orange);color:var(--orange);}
-  main{max-width:1180px;margin:0 auto;padding:30px 24px 80px;}
-  section{margin-top:56px;}
-  .sec-head{display:flex;align-items:center;gap:14px;margin-bottom:22px;}
-  .sec-num{
-    background:var(--orange);color:#fff;font-size:14px;font-weight:800;
-    width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
-    box-shadow:0 4px 12px rgba(224,122,47,.3);
-  }
-  .sec-head h2{font-size:26px;color:var(--green);font-weight:800;letter-spacing:1px;}
-  .sec-head .bar{flex:1;height:2px;background:linear-gradient(90deg,var(--orange-2),transparent);}
-  .sub-head{margin:26px 0 14px;}
-  .sub-head h3{font-size:20px;color:var(--green-2);font-weight:800;display:flex;align-items:center;gap:10px;}
-  .sub-head h3::before{content:"";width:6px;height:20px;background:var(--orange);border-radius:3px;}
-  .step{margin:34px 0 10px;}
-  .step h4{font-size:16px;color:var(--ink);font-weight:800;display:flex;align-items:center;gap:8px;}
-  .step h4 .tag{background:var(--green);color:#fff;font-size:12px;padding:1px 10px;border-radius:999px;font-weight:600;}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 28px;box-shadow:0 2px 10px rgba(31,61,43,.05);}
-  .lead{
-    background:var(--card);border-left:5px solid var(--orange);border-radius:12px;
-    padding:22px 26px;font-size:16px;box-shadow:0 2px 10px rgba(31,61,43,.05);
-  }
-  .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:26px 0;}
-  .kpi{
-    background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 18px;text-align:center;
-    box-shadow:0 2px 10px rgba(31,61,43,.05);transition:transform .2s;
-  }
-  .kpi:hover{transform:translateY(-3px);}
-  .kpi .num{font-size:28px;font-weight:800;color:var(--orange);letter-spacing:.5px;}
-  .kpi .num small{font-size:15px;font-weight:600;color:var(--green-2);}
-  .kpi .lbl{margin-top:6px;font-size:13.5px;color:var(--muted);}
-  .stat-band{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:22px 0;}
-  .stat{background:linear-gradient(135deg,#fff,#fbf6ee);border:1px solid var(--line);border-radius:12px;padding:16px 18px;}
-  .stat .k{font-size:13.5px;color:var(--muted);}
-  .stat .v{font-size:20px;font-weight:800;color:var(--green);margin-top:2px;}
-  .stat .v em{font-style:normal;color:var(--orange);}
-  ul.clean{list-style:none;margin:8px 0;}
-  ul.clean li{padding:7px 0 7px 26px;position:relative;}
-  ul.clean li::before{content:"";position:absolute;left:6px;top:16px;width:8px;height:8px;border-radius:3px;background:var(--orange);}
-  ul.clean li strong{color:var(--green);}
-  .pills{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0;}
-  .pill{padding:8px 16px;border-radius:999px;font-size:13.5px;font-weight:600;border:1px solid var(--line);background:#fff;}
-  .pill.focus{background:#eaf3ee;color:var(--green);border-color:#cfe0d5;}
-  .pill.watch{background:#fbf4e7;color:#a97817;border-color:#ecd9ae;}
-  .pill.kill{background:#fbeaea;color:#b34040;border-color:#eccfcf;}
-  .pill.sec{background:#f0f2f5;color:#4a5568;border-color:#dde2e8;}
-  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:0 2px 10px rgba(31,61,43,.05);}
-  table{border-collapse:collapse;width:100%;min-width:760px;font-size:14.5px;}
-  thead th{
-    background:var(--green);color:#fff;font-weight:700;text-align:left;
-    padding:13px 14px;white-space:nowrap;font-size:13.5px;letter-spacing:.3px;
-  }
-  tbody td{padding:15px 16px;border-top:1px solid var(--line);vertical-align:top;line-height:1.65;}
-  tbody tr:nth-child(even){background:#fbf9f4;}
-  tbody tr:hover{background:#f6f1e7;}
-  td strong{color:var(--green);}
-  td .cpm{
-    display:inline-block;background:#fdf0e2;color:#c05f13;font-weight:800;
-    padding:2px 10px;border-radius:999px;font-size:13.5px;white-space:nowrap;
-  }
-  .cell-tag{display:block;font-size:12px;color:var(--green-2);font-weight:700;margin-top:8px;}
-  .note{font-size:12.5px;color:var(--muted);margin-top:6px;}
-  .img-cell{display:flex;gap:8px;align-items:center;}
-  .img-cell figure{text-align:center;margin:0;}
-  .img-cell img{
-    width:86px;height:auto;max-height:120px;object-fit:cover;border-radius:8px;border:1px solid var(--line);
-    cursor:zoom-in;transition:transform .2s, box-shadow .2s;background:#f0ede6;
-  }
-  .img-cell img:hover{transform:scale(1.06);box-shadow:0 6px 18px rgba(31,61,43,.25);}
-  .img-cell figcaption{font-size:12px;color:var(--muted);margin-top:4px;}
-  .lightbox{
-    display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.85);
-    align-items:center;justify-content:center;padding:30px;cursor:zoom-out;
-  }
-  .lightbox.open{display:flex;}
-  .lightbox img{max-width:92%;max-height:92%;border-radius:10px;box-shadow:0 10px 40px rgba(0,0,0,.5);}
-  .idea{
-    background:linear-gradient(135deg,#1f3d2b,#2f5c40);color:#fff;border-radius:14px;
-    padding:24px 28px;margin:22px 0;box-shadow:0 6px 18px rgba(31,61,43,.25);
-  }
-  .idea .core{font-size:19px;font-weight:800;color:#ffd9b3;margin-bottom:6px;}
-  .idea p{color:#e6efe9;font-size:14.5px;}
-  .strat-table td:first-child{width:150px;font-weight:700;color:var(--green);background:#f4f8f4;}
-  .strat-table ul{margin:0 0 0 18px;}
-  .strat-table li{padding:2px 0;}
-  .chart-box{
-    background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;
-    box-shadow:0 2px 10px rgba(31,61,43,.05);margin:14px 0;
-  }
-  .chart-box .chart-title{font-size:15px;font-weight:700;color:var(--green);margin-bottom:4px;display:flex;align-items:center;gap:8px;}
-  .chart-box .chart-title::before{content:"📊";font-size:16px;}
-  .chart-box .chart-desc{font-size:13.5px;color:var(--muted);margin-bottom:12px;}
-  .chart-img{width:100%;height:auto;border-radius:8px;border:1px solid var(--line);display:block;}
-  .chart-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-  footer{background:var(--green);color:#cfe0d5;padding:30px 24px;text-align:center;font-size:13.5px;}
-  @media (max-width:860px){.chart-row{grid-template-columns:1fr;}}
-  @media (max-width:640px){
-    header h1{font-size:30px;}header{padding:48px 20px 70px;}
-    .sec-head h2{font-size:21px;}.card{padding:20px;}main{padding:20px 14px 60px;}
-  }
+:root{
+  --bg:#f6f7fa;
+  --card:#ffffff;
+  --ink:#16181d;
+  --ink-2:#3d434f;
+  --muted:#767d8c;
+  --line:#e4e7ee;
+  --line-2:#eef0f5;
+  --primary:#2f4bd8;
+  --primary-2:#1f35a3;
+  --accent:#0f9fb5;
+  --accent-soft:#e4f6f9;
+  --warn:#c0392b;
+  --warn-soft:#fdecea;
+  --good:#1a7f5a;
+  --good-soft:#e6f5ef;
+  --amber:#9a6b12;
+  --amber-soft:#fdf3e0;
+  --radius:14px;
+  --shadow:0 1px 2px rgba(22,24,29,.04),0 6px 20px rgba(22,24,29,.05);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;scroll-padding-top:24px;}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.78;font-size:15px;
+  -webkit-font-smoothing:antialiased;
+}
+.serif{font-family:"Songti SC","Noto Serif SC",Georgia,"Times New Roman",serif;}
+
+/* ---------- layout ---------- */
+.wrap{display:flex;align-items:flex-start;max-width:1440px;margin:0 auto;padding:0 28px;gap:0;}
+aside{
+  width:250px;flex-shrink:0;position:sticky;top:0;height:100vh;
+  padding:30px 18px 24px 0;border-right:1px solid var(--line);overflow-y:auto;
+}
+aside::-webkit-scrollbar{width:0;}
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+.brand .dot{width:26px;height:26px;border-radius:8px;background:linear-gradient(140deg,var(--primary),var(--accent));flex-shrink:0;}
+.brand b{font-size:15px;letter-spacing:.5px;}
+.brand-sub{font-size:11.5px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:22px;}
+nav a{
+  display:flex;gap:10px;align-items:baseline;padding:8px 12px;border-radius:9px;
+  color:var(--ink-2);text-decoration:none;font-size:13.8px;font-weight:600;transition:.16s;line-height:1.5;
+}
+nav a .n{font-size:11.5px;color:var(--muted);font-weight:700;min-width:16px;}
+nav a:hover{background:var(--line-2);color:var(--primary);}
+nav a.active{background:#eaeefc;color:var(--primary-2);}
+nav a.active .n{color:var(--primary);}
+nav a.sub{padding-left:30px;font-size:13px;font-weight:500;color:var(--muted);}
+nav a.sub.active{color:var(--primary-2);font-weight:600;}
+.side-note{margin-top:24px;padding:12px 13px;border:1px dashed var(--line);border-radius:10px;font-size:11.8px;color:var(--muted);line-height:1.65;}
+
+main{flex:1;min-width:0;padding:30px 0 90px 34px;}
+
+/* ---------- hero ---------- */
+.hero{
+  background:linear-gradient(135deg,#1f2a6b 0%,#2f4bd8 52%,#0f9fb5 100%);
+  color:#fff;border-radius:18px;padding:34px 36px 30px;margin-bottom:14px;
+  position:relative;overflow:hidden;
+}
+.hero::before{content:"";position:absolute;right:-60px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.07);}
+.hero .tagline{display:inline-block;font-size:11.5px;letter-spacing:2.5px;color:#cfe0ff;border:1px solid rgba(255,255,255,.3);padding:3px 13px;border-radius:999px;margin-bottom:14px;}
+.hero h1{font-size:34px;letter-spacing:1px;font-weight:800;line-height:1.3;}
+.hero p.lead-sub{margin-top:10px;color:#dfe8ff;font-size:14.5px;max-width:820px;}
+.hero .facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;}
+.hero .facts span{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);padding:5px 13px;border-radius:8px;font-size:12.8px;}
+
+.hero-flow{display:flex;align-items:stretch;gap:8px;flex-wrap:wrap;margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,255,255,.18);}
+.hero-flow .hf-item{background:#fff;border:1px solid #fff;border-radius:11px;padding:11px 15px;min-width:120px;flex:1;height:72px;display:flex;flex-direction:column;justify-content:center;}
+.hero-flow .hf-item b{display:block;font-size:13.8px;font-weight:800;letter-spacing:.5px;line-height:1.4;color:var(--primary-2);}
+.hero-flow .hf-item span{display:block;font-size:11.6px;color:#54608a;line-height:1.6;margin-top:4px;}
+.hero-flow .hf-arrow{align-self:center;color:#ffffff;font-size:17px;font-weight:700;}
+
+
+/* ---------- section ---------- */
+section{margin-bottom:52px;}
+.sec-head{display:flex;align-items:center;gap:13px;margin-bottom:8px;}
+.sec-head .num{
+  font-family:"Songti SC",Georgia,serif;font-size:15px;font-weight:700;color:#fff;background:var(--primary);
+  width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.sec-head h2{font-size:24px;font-weight:800;letter-spacing:.5px;}
+.sec-head .line{flex:1;height:1px;background:var(--line);}
+.sec-desc{font-size:13.5px;color:var(--muted);margin:0 0 20px 43px;}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow);}
+.card + .card{margin-top:14px;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+
+.sub-head{display:flex;align-items:center;gap:11px;margin:34px 0 6px;}
+.sub-head h3{font-size:18.5px;font-weight:800;}
+.sub-head .pill{font-size:11.5px;background:#eaeefc;color:var(--primary-2);padding:2px 10px;border-radius:999px;font-weight:700;}
+.sub-head .bar{flex:1;height:1px;background:var(--line-2);}
+
+h4.step-h{
+  display:flex;align-items:center;gap:10px;font-size:15.5px;font-weight:800;margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--accent);
+}
+
+/* ---------- kpi ---------- */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:16px;}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 14px;box-shadow:var(--shadow);}
+.kpi .n{font-size:25px;font-weight:800;color:var(--primary-2);letter-spacing:-.5px;line-height:1.2;}
+.kpi .n small{font-size:13px;font-weight:600;color:var(--muted);}
+.kpi .t{margin-top:5px;font-size:12.5px;color:var(--muted);}
+
+.statband{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow);}
+.stat .k{font-size:12.5px;color:var(--muted);}
+.stat .v{font-size:17px;font-weight:800;margin-top:3px;color:var(--ink);}
+.stat .v em{font-style:normal;color:var(--primary);}
+
+.callout{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--primary);border-radius:12px;padding:16px 20px;font-size:14.5px;box-shadow:var(--shadow);}
+.callout p + p{margin-top:9px;}
+
+.keyline{background:#eef2ff;border:1px solid #d7dffb;border-radius:12px;padding:16px 20px;font-size:14.5px;color:#1f2a5e;}
+
+/* ---------- list ---------- */
+ul.clean{list-style:none;}
+ul.clean li{padding:5px 0 5px 20px;position:relative;font-size:14px;color:var(--ink-2);}
+ul.clean li::before{content:"";position:absolute;left:2px;top:14px;width:6px;height:6px;border-radius:2px;background:var(--accent);}
+ul.clean li strong{color:var(--ink);font-weight:700;}
+ol.num{padding-left:20px;}
+ol.num li{padding:5px 0;font-size:14px;color:var(--ink-2);}
+ol.num li::marker{color:var(--primary);font-weight:800;}
+ol.num li strong{color:var(--ink);}
+
+/* ---------- table ---------- */
+.tbl{border:1px solid var(--line);border-radius:12px;background:var(--card);box-shadow:var(--shadow);overflow:hidden;}
+.tbl-scroll{overflow-x:auto;}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:13.8px;}
+thead th{background:#f0f2f9;color:var(--primary-2);font-weight:700;text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);font-size:12.8px;white-space:nowrap;letter-spacing:.3px;}
+tbody td{padding:13px 14px;border-bottom:1px solid var(--line-2);vertical-align:top;line-height:1.66;color:var(--ink-2);}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:nth-child(even){background:#fafbfd;}
+td strong{color:var(--ink);font-weight:700;}
+.key{width:150px;}
+.key td{background:#f5f7fb;font-weight:700;color:var(--ink);font-size:13.4px;}
+.num-c{font-variant-numeric:tabular-nums;font-weight:700;color:var(--primary-2);}
+.badge{display:inline-block;background:var(--accent-soft);color:#0b7285;font-weight:800;padding:2px 9px;border-radius:999px;font-size:12.5px;white-space:nowrap;}
+.badge.warn{background:var(--warn-soft);color:var(--warn);}
+.badge.good{background:var(--good-soft);color:var(--good);}
+.badge.mut{background:var(--line-2);color:var(--muted);}
+.ct{display:block;margin-top:7px;font-size:11.8px;font-weight:800;color:var(--accent);letter-spacing:.4px;}
+.note{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.6;}
+.hl{background:linear-gradient(transparent 62%,#ffe9a8 62%);font-weight:700;color:var(--ink);padding:0 1px;}
+
+/* ---------- self-drawn charts ---------- */
+.figure{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow);}
+.figure .f-title{font-size:14.5px;font-weight:800;display:flex;align-items:center;gap:8px;}
+.figure .f-title::before{content:"";width:14px;height:3px;border-radius:2px;background:var(--accent);}
+.figure .f-desc{font-size:12.5px;color:var(--muted);margin:4px 0 16px;}
+.hbar{display:grid;grid-template-columns:96px 1fr 68px;align-items:center;gap:12px;padding:6px 0;}
+.hbar .lb{font-size:12.8px;color:var(--ink-2);text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.hbar .tr{background:var(--line-2);border-radius:5px;height:20px;position:relative;}
+.hbar .fl{height:100%;border-radius:5px;background:linear-gradient(90deg,#4a63e0,#2f4bd8);display:flex;align-items:center;}
+.hbar .fl.alt{background:linear-gradient(90deg,#3fc2d4,#0f9fb5);}
+.hbar .vl{font-size:12.5px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;}
+.chart-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);}
+.chart-legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px;}
+.dial{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;}
+.dial .d{border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center;background:#fbfcfe;}
+.dial .d .pc{font-size:24px;font-weight:800;letter-spacing:-.5px;}
+.dial .d .lb{font-size:12.3px;color:var(--muted);margin-top:2px;}
+.dial .d.good .pc{color:var(--good);}
+.dial .d.bad .pc{color:var(--warn);}
+.dial .d.mid .pc{color:var(--amber);}
+.dial .d .track{height:5px;border-radius:3px;background:var(--line-2);margin-top:9px;overflow:hidden;}
+.dial .d .track span{display:block;height:100%;border-radius:3px;}
+
+/* ---------- strategy ---------- */
+.strategy{border-radius:var(--radius);padding:20px 24px;background:linear-gradient(135deg,#1f2a6b,#2f4bd8 60%,#0f9fb5);color:#fff;box-shadow:0 8px 24px rgba(47,75,216,.22);}
+.strategy .k{font-size:11.5px;letter-spacing:2.5px;color:#bcd3ff;}
+.strategy .t{font-size:18.5px;font-weight:800;margin:5px 0 8px;}
+.strategy p{font-size:14px;color:#e3ecff;}
+.quote{font-size:15px;font-weight:700;color:#fff;background:rgba(255,255,255,.14);border-radius:10px;padding:12px 16px;margin-top:12px;}
+
+.tags{display:flex;flex-wrap:wrap;gap:8px;}
+.tag{border-radius:999px;padding:5px 14px;font-size:13px;font-weight:700;border:1px solid var(--line);background:var(--card);}
+.tag.a{background:#eaf3ef;color:var(--good);border-color:#cfe6dd;}
+.tag.b{background:var(--amber-soft);color:var(--amber);border-color:#f0dfba;}
+.tag.c{background:#eef0f5;color:#5a6273;border-color:#e0e4ec;}
+.tag.d{background:var(--warn-soft);color:var(--warn);border-color:#f2d3cf;}
+.tag.x{background:#eaeefc;color:var(--primary-2);border-color:#d7dffb;}
+.tag-name{font-weight:700;}
+
+footer{border-top:1px solid var(--line);padding:20px 34px 0;color:var(--muted);font-size:12.5px;}
+
+@media (max-width:1080px){
+  .wrap{padding:0 20px;}
+  aside{position:static;width:100%;height:auto;border-right:none;border-bottom:1px solid var(--line);padding:22px 0 16px;}
+  nav{display:flex;flex-wrap:wrap;gap:4px;}
+  nav a.sub{display:none;}
+  .side-note{display:none;}
+  main{padding:22px 0 60px;}
+  .grid2{grid-template-columns:1fr;}
+}
+@media (max-width:640px){
+  .hero{padding:24px 20px;} .hero h1{font-size:25px;}
+  .hbar{grid-template-columns:70px 1fr 56px;}
+  .sec-desc{margin-left:0;}
+}
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<header>
-  <div class="eyebrow">CAMEL · 户外品牌种草复盘</div>
-  <h1>电商种草分析洞察</h1>
-  <p class="sub">骆驼品牌抖音种草效果盘点 · 达人分析 · 内容方向洞察</p>
-  <div class="meta">
-    <span>📅 数据截至 7 月 10 日</span>
-    <span>🎯 对标：安德玛 / 凯乐石 / 伯希和</span>
+<aside>
+  <div class="brand"><span class="dot"></span><b class="serif">种草投放诊断</b></div>
+  <div class="brand-sub">Analysis Report</div>
+  <nav id="nav">
+    <a href="#s1"><span class="n">01</span>种草核心结论</a>
+    <a href="#s2"><span class="n">02</span>种草效果数据盘点</a>
+    <a href="#s3"><span class="n">03</span>达人分析与核心洞察</a>
+    <a href="#s31" class="sub">3.1 高性价比达人</a>
+    <a href="#s32" class="sub">3.2 大规模且跑赢均值</a>
+    <a href="#s4"><span class="n">04</span>内容方向洞察</a>
+    <a href="#s5"><span class="n">05</span>分析逻辑总览</a>
+    <a href="#s6"><span class="n">06</span>分析说明与指标口径</a>
+  </nav>
+  <div class="side-note">
+    户外品类某头部品牌 · 180 条种草视频 · 对标 3 个同品类竞品。重点呈现<b>指标定义 → 筛选逻辑 → 归因 → 策略输出</b>的完整分析链路。
   </div>
-</header>
-
-<nav>
-  <ul>
-    <li><a href="#s1">一、种草核心结论</a></li>
-    <li><a href="#s2">二、种草效果数据盘点</a></li>
-    <li><a href="#s3">三、达人分析与核心洞察</a></li>
-    <li><a href="#s31">3.1 高性价比达人</a></li>
-    <li><a href="#s32">3.2 大规模且跑赢均值</a></li>
-    <li><a href="#s4">四、内容方向洞察</a></li>
-  </ul>
-</nav>
+</aside>
 
 <main>
 
-<section id="s1">
-  <div class="sec-head"><div class="sec-num">一</div><h2>种草核心结论</h2><div class="bar"></div></div>
-  <div class="kpi-grid">
-    <div class="kpi"><div class="num">447.5<small> 万</small></div><div class="lbl">种草消耗</div></div>
-    <div class="kpi"><div class="num">14.5<small> 万人</small></div><div class="lbl">间接转化</div></div>
-    <div class="kpi"><div class="num">1.2<small> 亿</small></div><div class="lbl">声量</div></div>
-    <div class="kpi"><div class="num">0.12<small>%</small></div><div class="lbl">平均转化率</div></div>
-    <div class="kpi"><div class="num">30.93<small> /人</small></div><div class="lbl">平均转化成本</div></div>
+<div class="hero">
+  <span class="tagline">KOL / 种草投放 · 效果诊断</span>
+  <h1 class="serif">电商种草分析洞察</h1>
+  <p class="lead-sub">户外品类某头部品牌抖音种草效果盘点 —— 从曝光、CPM、成本结构到转化对比，逐层定位投放浪费环节，并输出可执行的内容与达人策略。</p>
+  <div class="facts">
+    <span>📅 数据截至 7 月 10 日</span>
+    <span>🎯 样本量：180 条种草视频</span>
+    <span>🏷 对标口径：同品类 3 个竞品</span>
+    <span>🧭 输出：诊断 + 策略 + 可执行动作</span>
   </div>
-  <div class="lead">截至 7 月 10 日，<strong>种草消耗共计 447.5 万</strong>，<strong>间接转化 14.5 万人</strong>和<strong>1.2 亿声量</strong>，其中<strong>平均转化率为 0.12%</strong>，<strong>平均转化成本为 30.93 元/人</strong>。</div>
-  <div class="stat-band">
-    <div class="stat"><div class="k">对标行业均值（安德玛 / 凯乐石 / 伯希和）</div><div class="v">种草转化率 ≈ 行业均值 <em>6 倍</em></div></div>
+</div>
+
+<div class="hero-flow">
+  <div class="hf-item"><b>大盘盘点</b><span>规模 / 转化率 / 单位成本<br>对标 3 个竞品</span></div>
+  <div class="hf-arrow">→</div>
+  <div class="hf-item"><b>达人下钻</b><span>CPM 效率阈值<br>规模 + 质量阈值</span></div>
+  <div class="hf-arrow">→</div>
+  <div class="hf-item"><b>赛道收敛</b><span>达人打标聚合<br>四级赛道优先级</span></div>
+  <div class="hf-arrow">→</div>
+  <div class="hf-item"><b>策略输出</b><span>内容 / 视觉 / 互动<br>差异化锚点</span></div>
+</div>
+
+<!-- ============ 01 ============ -->
+<section id="s1">
+  <div class="sec-head"><div class="num">01</div><h2 class="serif">种草核心结论</h2><div class="line"></div></div>
+  <p class="sec-desc">先给结论：整体投放处于高效区间，但<strong>达人结构与种草效果口径</strong>存在明确的优化空间。</p>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">447.5<small> 万</small></div><div class="t">种草消耗</div></div>
+    <div class="kpi"><div class="n">14.5<small> 万人</small></div><div class="t">间接转化</div></div>
+    <div class="kpi"><div class="n">1.2<small> 亿</small></div><div class="t">声量</div></div>
+    <div class="kpi"><div class="n">0.12<small>%</small></div><div class="t">平均转化率</div></div>
+    <div class="kpi"><div class="n">30.93<small> /人</small></div><div class="t">平均转化成本</div></div>
+  </div>
+
+  <div class="callout">
+    <p>截至 7 月 10 日，<span class="hl">种草消耗共计 447.5 万</span>，带来<span class="hl">间接转化 14.5 万人</span>与<span class="hl">1.2 亿声量</span>，其中平均转化率为 <strong>0.12%</strong>，平均转化成本为 <strong>30.93 元/人</strong>。</p>
+  </div>
+
+  <div class="statband" style="margin-top:14px;">
+    <div class="stat"><div class="k">对标行业均值（竞品 B / C / D）</div><div class="v">种草转化率 ≈ 行业均值 <em>6 倍</em></div></div>
     <div class="stat"><div class="k">单位成本对比</div><div class="v">仅为行业均值的 <em>1/12</em></div></div>
     <div class="stat"><div class="k">无效种草率</div><div class="v"><em>10%</em></div></div>
     <div class="stat"><div class="k">有效种草率</div><div class="v"><em>72%</em></div></div>
     <div class="stat"><div class="k">无法归类的种草效果</div><div class="v"><em>18%</em></div></div>
   </div>
-  <div class="card" style="margin-top:8px;">
-    <p>从结果来看，无效种草率为 <strong>10%</strong>，而有效种草率仅为 <strong>72%</strong>，剩下 <strong>18%</strong> 的种草效果无法归类，需要进一步明确种草效果。</p>
-    <p style="margin-top:10px;">从 <strong>CPM</strong>（每千次曝光所消耗的成本，计算公式：<em>有效观看 / 总成本 × 1000</em>）看，有 <strong>59.06%</strong> 的达人 CPM 高于平均 CPM <strong>37.59</strong>，存在进一步优化空间。</p>
+
+  <div class="card" style="margin-top:14px;">
+    <h4 style="font-size:14.5px;font-weight:800;margin-bottom:8px;">两个可被量化的优化点</h4>
+    <ul class="clean">
+      <li><strong>种草效果口径不完整</strong>：无效种草率 <strong>10%</strong>，有效种草率 <strong>72%</strong>，仍有 <strong>18%</strong> 的种草效果无法归类，需要进一步明确判定标准。</li>
+      <li><strong>达人曝光效率分层明显</strong>：从 CPM 口径看（每千次曝光所消耗成本 = 总成本 ÷ 有效观看 × 1000），有 <strong>59.06%</strong> 的达人 CPM 高于平均 CPM <strong>37.59</strong>，存在明确的优化空间。</li>
+    </ul>
   </div>
-  <div class="sub-head"><h3>策略总结</h3></div>
+
+  <h4 class="step-h">策略总结</h4>
   <div class="card">
-    <ol style="margin-left:20px;">
-      <li style="padding:6px 0;">从种草性价比角度，首选<strong>置换合作</strong>和<strong>低价博主（腰部）</strong>，避免掉入<strong>高价大博主陷阱</strong>，可尝试合作更多素人高颜值博主，<strong>以量换价</strong>。</li>
-      <li style="padding:6px 0;">重点关注：<strong>音乐、旅行、摄影、三农、颜值</strong>赛道，淘汰<strong>二次元、测评</strong>赛道。</li>
-      <li style="padding:6px 0;">在<strong>种草性价比接近</strong>时，可以考虑选择<strong>内容强度大</strong>的博主或赛道。</li>
+    <ol class="num">
+      <li>从<strong>种草性价比</strong>角度，首选<strong>置换合作</strong>与<strong>低价博主（腰部）</strong>，避免掉入<strong>高价大博主陷阱</strong>；可尝试合作更多素人高颜值博主，<strong>以量换价</strong>。</li>
+      <li>赛道层面重点关注：<strong>音乐、旅行、摄影、三农、颜值</strong>；淘汰<strong>二次元、测评</strong>。</li>
+      <li>当<strong>种草性价比接近</strong>时，优先选择<strong>内容强度更大</strong>的博主或赛道，用内容质量换取增量曝光。</li>
     </ol>
   </div>
 </section>
 
+<!-- ============ 02 ============ -->
 <section id="s2">
-  <div class="sec-head"><div class="sec-num">二</div><h2>种草效果数据盘点</h2><div class="bar"></div></div>
-  <div class="lead">对标安德玛、凯乐石、伯希和等户外品牌，骆驼种草水准从<strong>种草规模、转化率、单位成本</strong>均处于户外<strong>类目 Top1</strong>。</div>
-  <div class="tbl-wrap" style="margin-top:20px;">
-    <table>
+  <div class="sec-head"><div class="num">02</div><h2 class="serif">种草效果数据盘点</h2><div class="line"></div></div>
+  <p class="sec-desc">对标同品类竞品 B / C / D，从<strong>规模、转化率、单位成本、无效种草率</strong>四个维度确认竞争位置。</p>
+
+  <div class="keyline">对标 3 个同品类竞品，品牌 A 的种草水准从<strong>种草规模、转化率、单位成本</strong>三个维度均处于<strong>类目 Top 1</strong>。</div>
+
+  <div class="tbl" style="margin-top:14px;">
+    <table style="min-width:640px;">
       <thead><tr><th style="width:120px;">维度</th><th>核心数据与结论</th></tr></thead>
       <tbody>
-        <tr><td><strong>种草效果</strong></td><td>骆驼种草规模（声量）约为 <strong>1.2 亿</strong>，约为同类竞品的 <strong>8 倍</strong>；间接转化人数为 <strong>14.5 万人</strong>，约为同类竞品的 <strong>50 倍</strong>。</td></tr>
-        <tr><td><strong>性价比</strong></td><td>骆驼种草单位成本为 <strong>30.93 元/人</strong>，仅是同类平均种草成本的 <strong>8%</strong>、第二名的 <strong>30%</strong>；种草转化率为 <strong>0.12%</strong>，超出竞品种草综合转化率 <strong>489%</strong>。在种草声量是同类 8 倍、转化数是同类 50 倍的基础上，成本仅为同类的 <strong>4 倍</strong>。</td></tr>
-        <tr><td><strong>无效种草</strong></td><td>骆驼无效种草率仅为 <strong>10%</strong>，处于户外类目 <strong>Top1</strong>。伯希和无效种草率为 <strong>67.6%</strong>，剔除伯希和后，同品类无效种草率为 <strong>13.38%</strong>，比同类低 <strong>3%</strong>。</td></tr>
-        <tr><td><strong>消耗构成</strong></td><td>骆驼达人种草视频数量 <strong>180 个</strong>，种草达人规模处于类目 <strong>Top1</strong>，对种草的<strong>重视程度</strong>处于行业领先。</td></tr>
+        <tr><td><strong>种草效果</strong></td><td>品牌 A 种草规模（声量）约 <span class="num-c">1.2 亿</span>，约为同类竞品的 <strong>8 倍</strong>；间接转化人数 <span class="num-c">14.5 万人</span>，约为同类竞品的 <strong>50 倍</strong>。</td></tr>
+        <tr><td><strong>性价比</strong></td><td>单位成本 <span class="num-c">30.93 元/人</span>，仅为同类平均种草成本的 <strong>8%</strong>、第二名的 <strong>30%</strong>；种草转化率 <span class="num-c">0.12%</span>，超出竞品综合转化率 <strong>489%</strong>。在声量是同类 8 倍、转化数是同类 50 倍的基础上，成本仅为同类的 <strong>4 倍</strong>。</td></tr>
+        <tr><td><strong>无效种草</strong></td><td>品牌 A 无效种草率仅 <span class="num-c">10%</span>，处于类目 <strong>Top 1</strong>。竞品 C 无效种草率为 <strong>67.6%</strong>；剔除该异常值后，同品类平均无效种草率为 <strong>13.38%</strong>，品牌 A 比同类低约 <strong>3 个百分点</strong>。</td></tr>
+        <tr><td><strong>消耗构成</strong></td><td>达人种草视频数量 <span class="num-c">180 个</span>，种草达人规模处于类目 <strong>Top 1</strong>，反映对种草投放的<strong>重视程度</strong>处于行业领先。</td></tr>
       </tbody>
     </table>
   </div>
-  <div class="chart-box" style="margin-top:18px;">
-    <div class="chart-title">品牌种草效果与种草性价比对比</div>
-    <div class="chart-desc">骆驼 vs 安德玛 / 伯希和 / 凯乐石（有效观看、间接转化、单位转化成本、转化率、无效种草率）</div>
-    <div class="tbl-wrap">
-      <table style="min-width:680px;">
-        <thead><tr>
-          <th style="width:110px;">品牌</th><th>有效观看数</th><th>间接转化人数</th><th>单位转化成本(元/人)</th><th>转化率</th><th>无效种草率</th>
-        </tr></thead>
-        <tbody>
-          <tr><td><strong>骆驼</strong></td><td>11903.5万</td><td>14.5万</td><td>30.93</td><td>0.12%</td><td><span class="cpm">10%</span></td></tr>
-          <tr><td><strong>安德玛</strong></td><td>388.0万</td><td>0.3万</td><td>103.55</td><td>0.07%</td><td>≈11%*</td></tr>
-          <tr><td><strong>伯希和</strong></td><td>2746.5万</td><td>0.4万</td><td>573.56</td><td>0.01%</td><td><span class="cpm">67.6%</span></td></tr>
-          <tr><td><strong>凯乐石</strong></td><td>1142.4万</td><td>0.2万</td><td>420.73</td><td>0.02%</td><td>≈14%*</td></tr>
-        </tbody>
-      </table>
+
+  <h4 class="step-h">图表 · 品牌种草效果与性价比对比</h4>
+  <div class="figure">
+    <div class="f-title">单位转化成本（元/人）· 越低越优</div>
+    <div class="f-desc">品牌 A 与竞品 B / C / D 的转化成本对比。品牌 A 仅 30.93 元，为第二名的 30%、竞品 C 的 5.4%。</div>
+    <div class="hbar"><div class="lb">品牌 A</div><div class="tr"><div class="fl" style="width:5.4%;"></div></div><div class="vl">30.93</div></div>
+    <div class="hbar"><div class="lb">竞品 B</div><div class="tr"><div class="fl alt" style="width:18%;"></div></div><div class="vl">103.55</div></div>
+    <div class="hbar"><div class="lb">竞品 D</div><div class="tr"><div class="fl alt" style="width:73.3%;"></div></div><div class="vl">420.73</div></div>
+    <div class="hbar"><div class="lb">竞品 C</div><div class="tr"><div class="fl alt" style="width:100%;"></div></div><div class="vl">573.56</div></div>
+    <div class="chart-legend">
+      <span><i style="background:#2f4bd8;"></i>本品牌</span>
+      <span><i style="background:#0f9fb5;"></i>同品类竞品</span>
+      <span>横条按最大值为 100% 等比缩放</span>
     </div>
-    <div class="chart-desc" style="margin-top:10px;margin-bottom:0;">* 注：原飞书导出图表右侧被裁切，安德玛 / 凯乐石的无效种草率为图表可见值约数（骆驼 10%、伯希和 67.6% 与正文结论一致，为精确值）。</div>
+  </div>
+
+  <div class="tbl" style="margin-top:14px;">
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr>
+        <th style="width:96px;">品牌</th><th>有效观看数</th><th>间接转化人数</th><th>单位转化成本(元/人)</th><th>转化率</th><th>无效种草率</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><strong>品牌 A</strong></td><td>11903.5 万</td><td>14.5 万</td><td><span class="badge good">30.93</span></td><td>0.12%</td><td><span class="badge good">10%</span></td></tr>
+        <tr><td><strong>竞品 B</strong></td><td>388.0 万</td><td>0.3 万</td><td>103.55</td><td>0.07%</td><td>≈11%*</td></tr>
+        <tr><td><strong>竞品 C</strong></td><td>2746.5 万</td><td>0.4 万</td><td>573.56</td><td>0.01%</td><td><span class="badge warn">67.6%</span></td></tr>
+        <tr><td><strong>竞品 D</strong></td><td>1142.4 万</td><td>0.2 万</td><td>420.73</td><td>0.02%</td><td>≈14%*</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div style="padding:12px 16px;border-top:1px solid var(--line-2);"><span class="note">* 注：原始对标图表右侧被裁切，竞品 B / D 的无效种草率为图表可见值约数（品牌 A 的 10%、竞品 C 的 67.6% 与正文结论一致，为精确值）。</span></div>
   </div>
 </section>
 
+<!-- ============ 03 ============ -->
 <section id="s3">
-  <div class="sec-head"><div class="sec-num">三</div><h2>达人分析与核心洞察</h2><div class="bar"></div></div>
+  <div class="sec-head"><div class="num">03</div><h2 class="serif">达人分析与核心洞察</h2><div class="line"></div></div>
+  <p class="sec-desc">把整体投放拆到<strong>单个达人</strong>，用两组互不重叠的筛选逻辑分别回答「谁最便宜」与「谁又能跑量又能跑赢均值」。</p>
 
-  <div class="sub-head" id="s31"><h3>3.1 高性价比达人</h3></div>
-  <div class="step"><h4><span class="tag">1</span> 相关定义及达人筛选</h4></div>
-  <div class="tbl-wrap">
-    <table>
+  <!-- 3.1 -->
+  <div class="sub-head" id="s31"><span class="pill">3.1</span><h3>高性价比达人</h3><div class="bar"></div></div>
+
+  <h4 class="step-h">1 · 定义与筛选逻辑</h4>
+  <div class="tbl">
+    <table style="min-width:620px;">
       <tbody>
-        <tr><td style="width:170px;"><strong>业务定义</strong></td><td>在有效种草条件下，每千次曝光成本越低，达人性价比越高，反之，则越低。</td></tr>
-        <tr><td><strong>指标定义</strong></td><td>每 1000 次播放所消耗的成本 = 有效观看 / 总成本 × 1000</td></tr>
-        <tr><td><strong>选择原因</strong></td><td>在保障转化成本的前提下，可以直接满足投入更少的金钱，获得更高的品牌曝光，提高品牌声量与知名度。</td></tr>
-        <tr><td><strong>选择标准（自定义）</strong></td><td>在只保留有效种草的情况下，筛选 CPM ≤ 37.59 的达人</td></tr>
-        <tr><td><strong>标杆达人（前 3 位）</strong></td><td><strong>黑皮couple、迟晓宇、173与174</strong></td></tr>
+        <tr class="key"><td>业务定义</td><td>在有效种草条件下，<strong>每千次曝光成本（CPM）越低，达人性价比越高</strong>；反之则越低。</td></tr>
+        <tr class="key"><td>指标定义</td><td>每 1000 次播放所消耗的成本 = 总成本 ÷ 有效观看 × 1000</td></tr>
+        <tr class="key"><td>选择原因</td><td>在保障转化成本的前提下，用更少的投入换取更高的品牌曝光，提高品牌声量与知名度。</td></tr>
+        <tr class="key"><td>筛选标准</td><td>仅保留<strong>有效种草</strong>内容，在此前提下筛选 <strong>CPM ≤ 37.59</strong> 的达人（37.59 = 全体达人平均 CPM）。</td></tr>
+        <tr class="key"><td>标杆达人（前 3）</td><td><strong>达人 A-1（情侣 CP 类）、达人 A-2（穿搭类）、达人 A-3（双 CP 舞蹈类）</strong></td></tr>
       </tbody>
     </table>
   </div>
 
-  <div class="step"><h4><span class="tag">2</span> 图表展示</h4></div>
-  <div class="chart-box">
-    <div class="chart-title">每千次曝光成本（CPM）</div>
-    <div class="chart-desc">飞书原文档图表 · 各达人每千次曝光成本横向对比（黑皮couple 2.77 最低，Lalisa 35.45 最高）</div>
-    <img class="chart-img" src="图片和附件/chart_31_cpm.png" alt="每千次曝光成本 CPM 图">
+  <h4 class="step-h">2 · 图表 · 达人 CPM 横向对比</h4>
+  <div class="figure">
+    <div class="f-title">每千次曝光成本（CPM）· 越低越优</div>
+    <div class="f-desc">在只保留有效种草的前提下，达人 A-1 的 CPM 为 <strong>2.77</strong>，为筛选区间内最低；区间上限对照达人 CPM 为 <strong>35.45</strong>，仍低于全体平均 CPM 37.59。</div>
+    <div class="hbar"><div class="lb">达人 A-1</div><div class="tr"><div class="fl" style="width:7.8%;"></div></div><div class="vl">2.77</div></div>
+    <div class="hbar"><div class="lb">达人 A-2</div><div class="tr"><div class="fl" style="width:10.5%;"></div></div><div class="vl">3.71</div></div>
+    <div class="hbar"><div class="lb">达人 A-3</div><div class="tr"><div class="fl" style="width:12.7%;"></div></div><div class="vl">4.52</div></div>
+    <div class="hbar"><div class="lb">区间对照达人</div><div class="tr"><div class="fl alt" style="width:100%;"></div></div><div class="vl">35.45</div></div>
+    <div style="margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);">
+      <div style="font-size:12.8px;color:var(--muted);margin-bottom:8px;">筛选阈值参考线</div>
+      <div class="hbar" style="grid-template-columns:96px 1fr 68px;">
+        <div class="lb" style="color:var(--warn);">平均 CPM</div>
+        <div class="tr"><div class="fl" style="width:100%;background:linear-gradient(90deg,#e8a49b,#c0392b);opacity:.55;"></div></div>
+        <div class="vl" style="color:var(--warn);">37.59</div>
+      </div>
+    </div>
+    <div class="chart-legend">
+      <span><i style="background:#2f4bd8;"></i>入选标杆达人</span>
+      <span><i style="background:#0f9fb5;"></i>区间内对照</span>
+      <span><i style="background:#c0392b;"></i>全体平均 CPM（筛选阈值）</span>
+    </div>
   </div>
 
-  <div class="step"><h4><span class="tag">3</span> TOP 达人内容下钻分析</h4></div>
-  <div class="tbl-wrap">
+  <h4 class="step-h">3 · TOP 达人内容下钻</h4>
+  <div class="tbl">
+    <div class="tbl-scroll">
     <table>
-      <thead><tr><th>达人昵称</th><th>CPM</th><th>视频标题</th><th>视频链接</th><th>引流视频</th><th>主页</th><th>达人风格</th><th>好的原因分析</th><th>怎么做的更好？</th></tr></thead>
+      <thead><tr>
+        <th style="width:92px;">达人</th><th style="width:66px;">CPM</th><th style="width:200px;">内容与话题</th>
+        <th>达人风格 / 粉丝画像推测</th><th>好的原因分析</th><th>怎么做得更好</th>
+      </tr></thead>
       <tbody>
         <tr>
-          <td><strong>黑皮couple</strong><br><span class="note">（1条）</span></td>
-          <td><span class="cpm">2.77</span></td>
-          <td>一瓶水的快乐！还不快去试试🥳<br><span class="note">#高难度动作 #黑皮couple #骆驼冲锋衣 #骆驼雨舞者</span></td>
-          <td><a href="https://www.iesdouyin.com/share/video/7522079386510789948" target="_blank" rel="noopener">查看视频 ↗</a></td>
-          <td><div class="img-cell"><figure><img src="图片和附件/ee1da48eadf39c94073ce59cb58d5a2c.jpg" alt="黑皮couple 引流视频"><figcaption>引流视频</figcaption></figure></div></td>
-          <td><div class="img-cell"><figure><img src="图片和附件/ce0f0c2c12c19b3fe89344879539f0b5.jpg" alt="黑皮couple 主页"><figcaption>主页</figcaption></figure></div></td>
-          <td><span class="cell-tag">核心标签</span>#体育生情侣（活力满满，生活化，笑容洋溢）；CP 形象，营造幸福的一对。<span class="cell-tag">粉丝画像推测</span>年龄 18-30 岁，喜欢看恋爱日常、运动娱乐的年轻群体；兴趣：运动、旅行、搞笑；消费心理更注重日常生活、功能性，看重性价比。</td>
-          <td><span class="cell-tag">成功点</span>情绪价值高，CP 互动，运动感互动感和笑容饱满；高难度动作和炫酷的技巧；无明显广告植入，展现更日常。<span class="cell-tag">转化高的潜在原因</span>博主调性与运动、户外更贴近，粉丝真实度和粘性更高，粉丝群体与骆驼性价比潮流形象贴近；生活化展示，洒水暗示冲锋衣防水特性。</td>
-          <td>内容上：多点互动内容，增添场景化剧情。视觉上可选择旅行、山河湖泊的背景，在晴天的白天拍摄。评论区引导：多些品牌展示，引导骆驼品牌展现，如"穿搭好美，什么品牌的"。</td>
+          <td><strong>达人 A-1</strong><span class="ct">1 条视频</span></td>
+          <td><span class="badge">2.77</span></td>
+          <td>「一瓶水的快乐」类高难度动作内容<span class="ct">话题：#高难度动作 #户外冲锋衣 #雨舞者</span></td>
+          <td><span class="ct">核心标签</span>#体育生情侣（活力满满、生活化、笑容洋溢）；CP 形象，营造幸福感。<span class="ct">粉丝画像推测</span>18-30 岁，偏好恋爱日常与运动娱乐；兴趣为运动、旅行、搞笑；消费心理注重日常功能性与性价比。</td>
+          <td><span class="ct">成功点</span>情绪价值高，CP 互动带来运动感与饱满笑意；含高难度动作与炫技技巧；无明显广告植入，内容更日常。<span class="ct">转化高的潜在原因</span>博主调性与运动、户外更贴近，粉丝真实度与粘性更高，粉丝群体与品牌的性价比潮流形象贴合；生活化展示，通过洒水动作暗示冲锋衣防水特性。</td>
+          <td><strong>内容</strong>：增加互动内容，增添场景化剧情。<br><strong>视觉</strong>：可选择旅行、山河湖泊背景，晴天白天拍摄。<br><strong>评论区</strong>：增加品牌展示引导，如「穿搭好美，什么品牌的」。</td>
         </tr>
         <tr>
-          <td><strong>迟晓宇</strong><br><span class="note">（1条）</span></td>
-          <td><span class="cpm">3.71</span></td>
-          <td>我看看能不能到30达布溜<br><span class="note">#迟晓宇 #盗将行dj #一学就会系列 #骆驼追寻2代 #骆驼慢跑鞋</span></td>
-          <td><a href="https://www.douyin.com/video/7522109699690728764" target="_blank" rel="noopener">查看视频 ↗</a></td>
-          <td><div class="img-cell"><figure><img src="图片和附件/image%204.png" alt="迟晓宇 引流视频"><figcaption>引流视频</figcaption></figure></div></td>
-          <td><div class="img-cell"><figure><img src="图片和附件/image%205.png" alt="迟晓宇 主页"><figcaption>主页</figcaption></figure></div></td>
-          <td><span class="cell-tag">核心标签</span>生活化美女，ootd 日常展示；笑容、娱乐、动感引导。<span class="cell-tag">粉丝画像推测</span>年龄：18-35 岁，偏好高颜值、氛围感内容，男性占比高；兴趣：美女、穿搭；消费心理：更注重情绪价值的满足。</td>
-          <td>生活化展示，在小区中跳舞更贴近日常生活，富有动感的舞步带上洋溢的笑容活力满满；穿搭适配且吸睛，上身浅色短袖配上灰色运动短裙再搭配白色运动鞋，符合当下审美时尚潮流。</td>
-          <td><span class="cell-tag">转化引导优化</span>适当增加品牌露出，如加入鞋子特写展示；评论区引导骆驼品牌关注。</td>
+          <td><strong>达人 A-2</strong><span class="ct">1 条视频</span></td>
+          <td><span class="badge">3.71</span></td>
+          <td>小区跳舞的日常向内容<span class="ct">话题：#一学就会系列 #追寻2代 #慢跑鞋</span></td>
+          <td><span class="ct">核心标签</span>生活化美女，OOTD 日常展示；笑容、娱乐、动感引导。<span class="ct">粉丝画像推测</span>18-35 岁，偏好高颜值、氛围感内容，男性占比较高；兴趣为美女、穿搭；消费心理更注重情绪价值。</td>
+          <td>生活化展示，在小区中跳舞更贴近日常生活；富有动感的舞步配合洋溢的笑容，活力感强；穿搭吸睛，浅色短袖 + 灰色运动短裙 + 白色运动鞋的搭配符合当下审美与时尚潮流。</td>
+          <td><span class="ct">转化引导优化</span>适当增加品牌露出，如加入鞋子特写展示；评论区引导品牌关注。</td>
         </tr>
         <tr>
-          <td><strong>173与174</strong><br><span class="note">（1条）</span></td>
-          <td><span class="cpm">4.52</span></td>
-          <td>有点暧昧了<br><span class="note">#艾玛摇4 #抖音潮流舞蹈大赛 #骆驼登山鞋 #骆驼昆仑山</span></td>
-          <td><a href="https://www.douyin.com/video/7520210062025395515" target="_blank" rel="noopener">查看视频 ↗</a></td>
-          <td><div class="img-cell"><figure><img src="图片和附件/image%208.png" alt="173与174 引流视频"><figcaption>引流视频</figcaption></figure></div></td>
-          <td><div class="img-cell"><figure><img src="图片和附件/image%2010.png" alt="173与174 主页"><figcaption>主页</figcaption></figure></div></td>
-          <td><span class="cell-tag">核心风格标签</span>双美女 CP 与传统 CP 的反差，协调的互动与动感舞蹈；性感穿搭、比心和笑容给人一种易接近的感觉；生活化场景。<span class="cell-tag">粉丝画像推测</span>人群：25-40 岁，爱看美女、娱乐互动的人群；兴趣：美女、颜值。</td>
-          <td>性感美女在线跳舞，CP 价值互动，给人美和潮流的感觉；生活化、日常化，舞蹈房 CP 日常无明显营销植入；依靠大众喜欢娱乐、爱美的天性自然流量高。</td>
-          <td>多点品牌展示，无意间露出品牌 logo，或更注重鞋子展现；带骆驼品牌话题，评论区往鞋子去引导。</td>
+          <td><strong>达人 A-3</strong><span class="ct">1 条视频</span></td>
+          <td><span class="badge">4.52</span></td>
+          <td>潮流舞蹈向双人互动内容<span class="ct">话题：#潮流舞蹈大赛 #登山鞋 #昆仑山</span></td>
+          <td><span class="ct">核心标签</span>双 CP 与传统 CP 的反差，互动协调、动感舞蹈；性感穿搭、比心与笑容带来易接近感；生活化场景。<span class="ct">粉丝画像推测</span>25-40 岁，偏好美女与娱乐互动内容；兴趣为美女、颜值。</td>
+          <td>舞蹈内容具备视觉吸引力，CP 互动提供情绪与娱乐价值；性感穿搭、比心与笑容让内容显得容易接近；生活化、日常化场景增强真实感；舞蹈房日常无明显营销植入；依靠大众爱美、爱娱乐的天性获得自然流量。</td>
+          <td>增加品牌展示，自然露出品牌 logo，更注重鞋款展现；带上品牌话题，在评论区向鞋款做引导。</td>
         </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <h4 class="step-h">4 · 策略总结</h4>
+  <div class="strategy">
+    <div class="k">STRATEGY 3.1</div>
+    <div class="t serif">核心策略：打造「自然共生」品牌叙事</div>
+    <p>核心理念是强调产品与自然环境的和谐共生，弱化商业感、强化情感共鸣，进一步提升内容与品牌调性的契合度。</p>
+    <div class="quote">「品牌A，自然的一部分」—— 把品牌从「装备供应商」重新定义为「自然生活方式的同路人」。</div>
+  </div>
+  <div class="tbl" style="margin-top:14px;">
+    <table style="min-width:620px;">
+      <thead><tr><th style="width:140px;">优化方向</th><th>具体策略</th></tr></thead>
+      <tbody>
+        <tr><td><strong>内容方向</strong></td><td><ul class="clean">
+          <li>更强调<strong>生活化日常展示</strong>，贴近日常生活，表现活力与饱满笑意。</li>
+          <li>在生活化展示与弱品牌植入的基础上，<strong>增加产品曝光时长与视野占比</strong>，突出穿搭中的产品特性，如鞋款独特设计。</li>
+          <li>场景多元化：除小区、街道等日常场景外，增加公园、周边旅行景点等更运动化的场景，突出品牌的实用场景。</li>
+        </ul></td></tr>
+        <tr><td><strong>视觉与情绪</strong></td><td><ul class="clean">
+          <li><strong>色调</strong>：以自然色系为主（大地棕、苔藓绿、天空蓝），避免高饱和广告色。</li>
+          <li><strong>音乐</strong>：轻音乐强化沉浸感，或动感舞蹈配乐。</li>
+          <li><strong>文案风格</strong>：弱化促销话术，改用诗意表达——「这双鞋，陪你走过四季的泥土」「冲锋衣：你的第二层皮肤，风雨中的家」。</li>
+        </ul></td></tr>
+        <tr><td><strong>用户互动</strong></td><td><ul class="clean">
+          <li>UGC 引导：以穿搭搭配为切口，鼓励用户展示 OOTD，用时尚、潮流内容形成品牌印象。</li>
+        </ul></td></tr>
+        <tr><td><strong>差异化锚点</strong></td><td><ul class="clean">
+          <li>反对「<strong>过度装备化</strong>」：强调回归自然本质，不堆砌科技参数，改为展示「一件穿 5 年的冲锋衣」「越穿越合脚的鞋子」。</li>
+          <li><strong>自然保护关联</strong>：每笔订单捐赠 1 元给环保项目，在视频角落标注，不刻意宣传。</li>
+        </ul></td></tr>
       </tbody>
     </table>
   </div>
 
-  <div class="step"><h4><span class="tag">4</span> 策略总结</h4></div>
-  <div class="idea">
-    <div class="core">核心策略：打造「自然共生」品牌叙事</div>
-    <p>核心理念："骆驼，自然的一部分"——强调产品与自然环境的和谐共生，弱化商业感，强化情感共鸣，进一步提升与品牌的契合度。</p>
-  </div>
-  <div class="tbl-wrap strat-table">
-    <table>
-      <thead><tr><th style="width:150px;">优化方向</th><th>具体策略</th></tr></thead>
+  <!-- 3.2 -->
+  <div class="sub-head" id="s32"><span class="pill">3.2</span><h3>大规模且跑赢均值的达人</h3><div class="bar"></div></div>
+
+  <h4 class="step-h">1 · 定义与筛选逻辑</h4>
+  <div class="tbl">
+    <table style="min-width:620px;">
       <tbody>
-        <tr><td>内容方向优化</td><td><ul class="clean"><li>更强调生活化的日常展示，更贴近日常生活，表现活力、笑容饱满。</li><li>良好且符合大众审美的穿搭搭配，<strong>突出产品细节</strong>：在生活化展示和弱品牌植入的基础上，增加对产品的曝光时长和视野，可突出穿搭品牌特性，像鞋子的独特设计等。</li><li>更多元化的场景：除了小区、街道等日常场景外，可以多些公园、附近的旅行景点，更运动化的场景更突出骆驼品牌的实用场景。</li></ul></td></tr>
-        <tr><td>视觉与情绪设计</td><td><ul class="clean"><li>色调：自然色系为主（大地棕、苔藓绿、天空蓝），避免高饱和广告色。</li><li>音乐：轻音乐，强化沉浸感或动感的舞蹈配乐。</li><li>文案风格：弱化促销话术，改用诗意表达——"这双鞋，陪你走过四季的泥土""冲锋衣：你的第二层皮肤，风雨中的家"。</li></ul></td></tr>
-        <tr><td>用户互动策略</td><td><ul class="clean"><li>UGC 内容引导：穿搭搭配引导，更多展示用户的 OOTD；时尚、潮流引导用户对品牌形成印象。</li></ul></td></tr>
-        <tr><td>品牌差异化锚点</td><td><ul class="clean"><li>反对"过度装备化"：强调"回归自然本质"，不堆砌科技参数，而是展示——"一件穿 5 年的冲锋衣""越穿越合脚的鞋子"。</li><li>自然保护关联：每笔订单捐赠 1 元给环保项目（在视频角落标注，不刻意宣传）。</li></ul></td></tr>
+        <tr class="key"><td>定义</td><td><strong>达人单位转化成本 &lt; 30.93 元/人</strong>，且达人的<strong>有效观看与转化率均高于均值</strong>。</td></tr>
+        <tr class="key"><td>衡量标准</td><td>① 达人单位转化成本 = 总成本 ÷ 间接转化人数 &lt; 30.93（品牌平均单位转化成本）<br>② 有效观看 &gt; 均值 且 转化率 &gt; 均值<br><span class="note">* 注：本次计算未剔除报价为 0 的达人，其达人加热成本即计入总成本。</span></td></tr>
+        <tr class="key"><td>选择原因</td><td>① 性价比高：用更低成本转化更多用户<br>② 视频质量好：有效观看与转化均高于均值</td></tr>
+        <tr class="key"><td>筛选标准</td><td>① 达人单位转化成本 &lt; 30.93<br>② 筛出有效观看 &gt; 均值的达人，再筛出转化率 &gt; 均值的达人，最后升序取前 3 名。</td></tr>
+        <tr class="key"><td>标杆达人</td><td><strong>达人 A-1、达人 B-1（情侣 CP 类）、达人 B-2（旅行摄影类）</strong><br><span class="note">（达人 A-1 已在前节展示，本节不再重复下钻）</span></td></tr>
       </tbody>
     </table>
   </div>
 
-  <div class="sub-head" id="s32" style="margin-top:56px;"><h3>3.2 大规模且跑赢均值的达人</h3></div>
-  <div class="step"><h4><span class="tag">1</span> 相关定义及达人筛选</h4></div>
-  <div class="tbl-wrap">
-    <table>
-      <tbody>
-        <tr><td style="width:170px;"><strong>定义</strong></td><td>达人单位转化成本 &lt; 30.93 且 达人有效观看、转化率均高于均值</td></tr>
-        <tr><td><strong>衡量标准</strong></td><td>① 达人单位转化成本 = 总成本 / 间接转化人数 &lt; 30.93（平均单位转化成本）<br>② 有效观看、转化率大于均值<br><span class="note">*注：本次计算并未剔除报价为 0 的达人，报价为零的达人的达人加热成本即为总成本。</span></td></tr>
-        <tr><td><strong>选择原因</strong></td><td>① 性价比高，用更低的成本转化更多的用户<br>② 视频质量好，有效观看、转化均高于均值</td></tr>
-        <tr><td><strong>选择标准（自定义）</strong></td><td>① 达人单位转化成本 = 报价 / 间接转化人数 &lt; 30.93<br>② 筛选有效观看大于均值的达人后再筛选转化率大于均值的达人，最后升序排列，选择前 3 名达人。</td></tr>
-        <tr><td><strong>标杆达人（前 2 位）</strong></td><td>黑皮couple、爱吃香菜菜、soil<br><span class="note">（黑皮couple在之前已有过展示，本次就只展示爱吃香菜菜和soil）</span></td></tr>
-      </tbody>
-    </table>
+  <div class="callout" style="margin-top:14px;background:#f6fbff;border-color:#d8eaf5;">
+    <p style="font-size:13.5px;color:var(--ink-2);"><strong>方法论要点：</strong>3.1 只看<strong>曝光侧效率</strong>（CPM），会偏向小体量、低报价但曝光也低的达人；3.2 叠加<strong>规模与转化质量</strong>双重阈值，回答的是「哪些达人既能跑量、又能跑赢均值」。两组筛选叠加使用，才能区分<strong>便宜但小众</strong>与<strong>便宜且可规模化</strong>的达人。</p>
   </div>
 
-  <div class="step"><h4><span class="tag">2</span> 图表展示</h4></div>
-  <div class="chart-box">
-    <div class="chart-title">平均有效观看数和转化成本组合图</div>
-    <div class="chart-desc">飞书原文档图表 · 蓝线为单位转化成本计算值，浅蓝柱为每条视频平均观看数</div>
-    <img class="chart-img" src="图片和附件/chart_32_cost.png" alt="平均有效观看数和转化成本组合图">
+  <h4 class="step-h">2 · 图表 · 平均有效观看与转化成本</h4>
+  <div class="figure">
+    <div class="f-title">入选达人：平均有效观看（柱）与单位转化成本（值）</div>
+    <div class="f-desc">原分析中以组合图同时呈现「每条视频平均有效观看」与「单位转化成本」。入选达人单位转化成本均显著低于品牌平均 30.93 元/人。</div>
+    <div class="hbar"><div class="lb">达人 B-1</div><div class="tr"><div class="fl" style="width:21.1%;"></div></div><div class="vl">6.36 元/人</div></div>
+    <div class="hbar"><div class="lb">达人 B-2</div><div class="tr"><div class="fl" style="width:25.2%;"></div></div><div class="vl">7.61 元/人</div></div>
+    <div class="hbar"><div class="lb">品牌平均线</div><div class="tr"><div class="fl alt" style="width:100%;background:linear-gradient(90deg,#e8a49b,#c0392b);opacity:.55;"></div></div><div class="vl" style="color:var(--warn);">30.93</div></div>
+    <div class="chart-legend">
+      <span><i style="background:#2f4bd8;"></i>入选达人单位转化成本</span>
+      <span><i style="background:#c0392b;"></i>品牌平均线（筛选阈值）</span>
+      <span>入选达人成本仅为平均线的 21% / 25%</span>
+    </div>
   </div>
 
-  <div class="step"><h4><span class="tag">3</span> TOP 达人内容下钻分析</h4></div>
-  <div class="tbl-wrap">
+  <h4 class="step-h">3 · TOP 达人内容下钻</h4>
+  <div class="tbl">
+    <div class="tbl-scroll">
     <table>
-      <thead><tr><th>达人昵称</th><th>达人单位转化成本（元/人）</th><th>达人粉丝数</th><th>视频标题</th><th>视频链接</th><th>引流视频</th><th>主页</th><th>达人风格</th><th>好的原因分析</th><th>怎么做的更好？</th></tr></thead>
+      <thead><tr>
+        <th style="width:92px;">达人</th><th style="width:70px;">转化成本</th><th style="width:64px;">粉丝数</th><th style="width:170px;">内容与话题</th>
+        <th>达人风格 / 粉丝画像推测</th><th>好的原因分析</th><th>怎么做得更好</th>
+      </tr></thead>
       <tbody>
         <tr>
-          <td><strong>爱吃香菜菜</strong><br><span class="note">（3条，取转化最高的一条分析）</span></td>
-          <td><span class="cpm">6.36</span></td>
-          <td><strong>8.3 万</strong></td>
-          <td>就这个冲锋衣 爽！<br><span class="note">#扫腿舞挑战 @骆驼户外官方旗舰店 #骆驼冲锋衣 #骆驼极境冒险家冲锋衣</span></td>
-          <td><a href="https://www.douyin.com/video/7524647460837412153" target="_blank" rel="noopener">查看视频 ↗</a></td>
-          <td><div class="img-cell"><figure><img src="图片和附件/image%201.png" alt="爱吃香菜菜 引流视频"><figcaption>引流视频</figcaption></figure></div></td>
-          <td><div class="img-cell"><figure><img src="图片和附件/image%207.png" alt="爱吃香菜菜 主页"><figcaption>主页</figcaption></figure></div></td>
-          <td><span class="cell-tag">博主核心标签</span>情侣 CP、恋爱氛围：视频以举高高为主，烘托男友力 Max，搭配甜美的笑容营造一种恋爱的甜蜜感。半素人情侣博主：账号无 MCN 标签，视频无明显商业气息，以隐形品牌植入为主，如添加骆驼品牌话题、穿骆驼品牌衣服。<span class="cell-tag">粉丝画像推测</span>目标受众：18-25 岁年轻群体（学生/初入职场的 Z 世代），偏好浪漫、甜蜜的高质量 CP 互动、恋爱日常。</td>
-          <td>甜蜜感：甜蜜的笑容配合男友的托举营造一种浪漫的氛围；无明显广告植入，仅以穿搭品牌衣服为主，日常氛围无商业气息；粉丝真实且画像与品牌年轻化的形象契合。</td>
-          <td><span class="cell-tag">一、内容升级</span>增加互动，并展现安全感、陪伴感；夜晚进行柔和补光，或在光线较清晰的氛围下拍摄，使人物面部表情、品牌服饰展现更清晰。<span class="cell-tag">二、转化优化</span>增加骆驼品牌曝光，logo 在画面中的占比，让人一眼就能识别出来品牌。</td>
+          <td><strong>达人 B-1</strong><span class="ct">3 条，取转化最高一条</span></td>
+          <td><span class="badge good">6.36</span></td>
+          <td>8.3 万</td>
+          <td>「就这个冲锋衣 爽！」<span class="ct">#扫腿舞挑战 @品牌官方旗舰店 #冲锋衣 #极境系列</span></td>
+          <td><span class="ct">核心标签</span>情侣 CP、恋爱氛围：以举高高为主，烘托男友力 Max，搭配甜美笑容营造恋爱甜蜜感。半素人情侣博主：账号无 MCN 标签，视频无明显商业气息，以隐形品牌植入为主。<span class="ct">粉丝画像推测</span>18-25 岁学生 / 初入职场 Z 世代，偏好浪漫、甜蜜的高质量 CP 互动与恋爱日常。</td>
+          <td>甜蜜的笑容配合男友托举营造浪漫氛围；无明显广告植入，仅以穿搭品牌服饰为主，日常氛围无商业气息；粉丝真实，画像与品牌年轻化形象契合。</td>
+          <td><span class="ct">一、内容升级</span>增加互动并展现安全感与陪伴感；夜间采用柔和补光，或选择光线更清晰的环境，使人物表情与服饰展示更清晰。<br><span class="ct">二、转化优化</span>增加品牌曝光，提高 logo 在画面中的占比，让用户一眼识别品牌。</td>
         </tr>
         <tr>
-          <td><strong>soli</strong><br><span class="note">（二条，取转化最高的一条分析）</span></td>
-          <td><span class="cpm">7.61</span></td>
-          <td><strong>60.5 万</strong></td>
-          <td>多少次跌倒在路上<br><span class="note">#西北 @青海初遇旅行 #骆驼追寻2代 #骆驼慢跑鞋</span></td>
-          <td><a href="https://www.douyin.com/note/7522053439728766266" target="_blank" rel="noopener">查看视频 ↗</a></td>
-          <td><div class="img-cell"><figure><img src="图片和附件/image%206.png" alt="soli 引流视频"><figcaption>引流视频</figcaption></figure></div></td>
-          <td><div class="img-cell"><figure><img src="图片和附件/image%209.png" alt="soli 主页"><figcaption>主页</figcaption></figure></div></td>
-          <td><span class="cell-tag">博主核心标签</span>大自然的旅行者：很自然的展现，游客照的形式突出旅行那轻松、惬意的氛围；山川河流的背景，展现自然之美。氛围感美女、摄影达人（张张出片）。<span class="cell-tag">粉丝画像推测</span>核心人群：20-30 岁热爱自然、旅行、徒步的年轻群体；消费心理：为潮流买单、身份认同感，能出片的衣服就是好衣服。</td>
-          <td>高颜值团队、年轻化群体，给人年轻活力的感觉，一种生活的向往；大自然、随意的游客照形式的展现，广阔的大地与湛蓝的天空，给人一种诗和远方的意境；出片效果 Max，成为朋友圈游客照标配模版，跟风拍摄。</td>
-          <td><span class="cell-tag">核心方向：深化「沙漠诗人」人设，打造情绪种草标杆</span><span class="cell-tag">一、内容升级</span>视频化动态化，可以采用旅行 vlog 的形式记录旅行日常，或摆脱静态摆拍、动态抓拍，给照片一种动感，如跑步的姿态、登山的抓拍；团队中增加一点互动感，给人一种和朋友一起旅行的欢快氛围；更多采用山地、徒步、森林的照片，更贴近骆驼登山徒步的场景应用；其他团队也随机穿搭骆驼品牌服饰，营造一种年轻化户外潮流穿搭的印象。<span class="cell-tag">二、转化优化</span>评论区轻量化引导文案，露出骆驼品牌，塑造潮牌形象。</td>
+          <td><strong>达人 B-2</strong><span class="ct">2 条，取转化最高一条</span></td>
+          <td><span class="badge good">7.61</span></td>
+          <td>60.5 万</td>
+          <td>「多少次跌倒在路上」<span class="ct">#西北 @青海旅行 #追寻2代 #慢跑鞋</span></td>
+          <td><span class="ct">核心标签</span>大自然旅行者：以自然的游客照形式突出旅行中轻松惬意的氛围；山川河流背景展现自然之美；氛围感美女 + 摄影达人，张张出片。<span class="ct">粉丝画像推测</span>20-30 岁热爱自然、旅行、徒步的年轻群体；为潮流与身份认同感买单，能出片的衣服就是好衣服。</td>
+          <td>高颜值团队与年轻化群体带来年轻活力与生活向往；游客照形式展现广阔大地与蓝天，营造「诗和远方」意境；出片效果极佳，成为朋友圈游客照标配模板，带动跟风拍摄。</td>
+          <td><span class="ct">核心方向：深化「沙漠诗人」人设，打造情绪种草标杆</span><br><span class="ct">一、内容升级</span>视频化、动态化：采用旅行 vlog 记录日常，或摆脱静态摆拍，用跑步姿态、登山抓拍等动态抓拍；增加团队互动感，营造与朋友同行的欢快氛围；更多采用山地、徒步、森林场景，贴近登山徒步的产品应用；团队其他成员也随机穿着品牌服饰，营造年轻化户外潮流穿搭印象。<br><span class="ct">二、转化优化</span>评论区轻量化引导文案，露出品牌并塑造潮牌形象。</td>
         </tr>
       </tbody>
     </table>
+    </div>
   </div>
 
-  <div class="step"><h4><span class="tag">4</span> 策略总结</h4></div>
-  <div class="idea">
-    <div class="core">核心策略：塑造户外运动潮牌形象，与 OOTD、旅行出片绑定</div>
-    <p>核心理念："用自然之力，唤醒探索本能"——通过动态视觉与自然场景的结合，让产品成为自由探索的象征，进一步吸引眼球。</p>
+  <h4 class="step-h">4 · 策略总结</h4>
+  <div class="strategy">
+    <div class="k">STRATEGY 3.2</div>
+    <div class="t serif">核心策略：塑造户外运动潮牌形象，与 OOTD、旅行出片绑定</div>
+    <p>通过动态视觉与自然场景结合，让产品成为自由探索的象征，进一步吸引眼球并强化「户外 = 品牌」的联想。</p>
   </div>
-  <div class="tbl-wrap strat-table">
-    <table>
-      <thead><tr><th style="width:150px;">优化方向</th><th>具体策略</th></tr></thead>
+  <div class="tbl" style="margin-top:14px;">
+    <table style="min-width:620px;">
+      <thead><tr><th style="width:140px;">优化方向</th><th>具体策略</th></tr></thead>
       <tbody>
-        <tr><td>内容方向优化</td><td><ul class="clean"><li>CP 形象博主：增加趣味性互动，如眼神对视、自然的向男生靠近，营造信任感和安全感氛围。</li><li>自然旅行类博主：增加户外运动感、动态化展现，如 vlog 记录旅行瞬间，拍照采用登山进行时的动感，取消游客照类的摆拍。</li></ul></td></tr>
-        <tr><td>视觉与情绪设计</td><td><p><strong>恋爱 CP 达人：光线与氛围的「甜蜜分层」</strong>——选取<strong>黄昏场景</strong>，用<strong>暖金色逆光</strong>拍摄托举瞬间，让骆驼情侣装面料在逆光下呈现柔和光泽，人物周围营造 "光晕感"，强化 "浪漫温暖" 的情绪。</p><p style="margin-top:8px;"><strong>旅行达人：动态化呈现，运用镜头语言的「互动引导」</strong>——选取<strong>山地场景</strong>，用 "跟拍 + 呼吸感运镜"（镜头随达人行走轻微晃动），捕捉骆驼冲锋衣被风吹动的动态，搭配 "风声 + 登山杖触地声"，强化 "探索挑战" 的情绪，让观众从视、听觉沉浸自然，感知品牌装备的 "场景适配力"。</p></td></tr>
-        <tr><td>用户互动策略</td><td><p><strong>情侣 CP 类达人</strong></p><ul class="clean"><li><strong>「情侣挑战 + 品牌穿搭」双驱动</strong>：发起话题 <strong>#骆驼情侣托举挑战</strong>，鼓励情侣模仿视频中 "托举互动 + 骆驼情侣装" 的核心动作拍摄视频。设置奖励：每周选 3 个 "创意托举 + 穿搭展示" 优质视频，赠送<strong>骆驼情侣户外套装</strong>；同时在评论区置顶 "晒出你和 TA 的骆驼情侣装合影"。</li></ul><p style="margin-top:8px;"><strong>自然旅行者类达人</strong></p><ul class="clean"><li><strong>「户外装备推荐」</strong>：给大家推荐更加实用、且兼具设计美感的户外穿搭，介绍骆驼服饰功能，突出骆驼户外品牌的实用性特点。</li></ul></td></tr>
-        <tr><td>品牌差异化锚点</td><td><ul class="clean"><li><strong>理念差异化</strong>：潮流形象 + 户外专业双线打造，与其他品牌专业展现的单一化种草形成差异，给用户营造骆驼独特的品牌形象。</li><li><strong>视觉差异化</strong>：自然的户外纪录，用运动的镜头拍摄一段旅途中不同场景的适配，再与伙伴形成服饰搭配，给用户留下"户外 = 骆驼"的品牌形象，提到户外运动时第一个想起骆驼品牌。</li></ul></td></tr>
+        <tr><td><strong>内容方向</strong></td><td><ul class="clean">
+          <li><strong>CP 形象博主</strong>：增加趣味性互动，如眼神对视、自然靠近男生，营造信任感与安全感氛围。</li>
+          <li><strong>自然旅行类博主</strong>：增加户外运动感与动态化展现，如用 vlog 记录旅行瞬间，拍照采用登山进行时的动感镜头，减少游客照式摆拍。</li>
+        </ul></td></tr>
+        <tr><td><strong>视觉与情绪</strong></td><ul class="clean">
+          <li><strong>恋爱 CP 达人</strong>：选取<strong>黄昏场景</strong>，用<strong>暖金色逆光</strong>拍摄托举瞬间，让情侣装面料在逆光下呈现柔和光泽，人物周围营造光晕感，强化浪漫温暖的情绪。</li>
+          <li><strong>旅行达人</strong>：选取<strong>山地场景</strong>，用「跟拍 + 呼吸感运镜」（镜头随达人行走轻微晃动），捕捉冲锋衣被风吹动的动态，搭配风声与登山杖触地声，强化「探索挑战」情绪，让用户从视、听觉沉浸自然，感知产品的场景适配力。</li>
+        </ul></td></tr>
+        <tr><td><strong>用户互动</strong></td><ul class="clean">
+          <li><strong>CP 类达人 · 「互动挑战 + 品牌穿搭」双驱动</strong>：发起话题挑战，鼓励情侣模仿「托举互动 + 情侣装」核心动作拍摄；每周评选 3 个「创意托举 + 穿搭展示」优质视频赠送情侣户外套装；评论区置顶引导「晒出你和 TA 的情侣装合影」。</li>
+          <li><strong>旅行者类达人</strong>：推荐更实用且兼具设计美感的户外穿搭，介绍服饰功能，突出品牌的实用性特点。</li>
+        </ul></td></tr>
+        <tr><td><strong>差异化锚点</strong></td><td><ul class="clean">
+          <li><strong>理念差异化</strong>：潮流形象 + 户外专业双线打造，与其他品牌偏专业展现的单一化种草形成差异。</li>
+          <li><strong>视觉差异化</strong>：用自然户外纪录与运动镜头呈现旅途中不同场景的适配，与伙伴形成服饰搭配，建立「提到户外运动第一个想起本品牌」的联想。</li>
+        </ul></td></tr>
       </tbody>
     </table>
   </div>
 </section>
 
+<!-- ============ 04 ============ -->
 <section id="s4">
-  <div class="sec-head"><div class="sec-num">四</div><h2>内容方向洞察</h2><div class="bar"></div></div>
-  <div class="pills">
-    <span class="pill focus">🔍 重点关注：音乐、旅行、摄影、三农、颜值</span>
-    <span class="pill sec">次要关注：剧情、健身、穿搭、亲子</span>
-    <span class="pill watch">持续观察：生活、舞蹈、美食、随拍</span>
-    <span class="pill kill">淘汰达人：二次元、测评</span>
+  <div class="sec-head"><div class="num">04</div><h2 class="serif">内容方向洞察</h2><div class="line"></div></div>
+  <p class="sec-desc">从达人层再上移一层到<strong>赛道层</strong>，把达人打标后聚合，收敛出可复投的赛道优先级。</p>
+
+  <div class="tags">
+    <span class="tag a"><span class="tag-name">重点关注</span>　音乐 / 旅行 / 摄影 / 三农 / 颜值</span>
+    <span class="tag c"><span class="tag-name">次要关注</span>　剧情 / 健身 / 穿搭 / 亲子</span>
+    <span class="tag b"><span class="tag-name">持续观察</span>　生活 / 舞蹈 / 美食 / 随拍</span>
+    <span class="tag d"><span class="tag-name">淘汰</span>　二次元 / 测评</span>
   </div>
 
-  <div class="step"><h4><span class="tag">1</span> 相关定义及达人筛选</h4></div>
-  <div class="tbl-wrap">
-    <table>
+  <h4 class="step-h">1 · 定义与筛选逻辑</h4>
+  <div class="tbl">
+    <table style="min-width:620px;">
       <tbody>
-        <tr><td style="width:170px;"><strong>高曝光高转化达人类型</strong></td><td></td></tr>
-        <tr><td><strong>定义</strong></td><td>根据达人类型，筛选出转化率高于平均值的，后对有效观看进行降序排列。</td></tr>
-        <tr><td><strong>衡量标准</strong></td><td>对达人类型打标，对达人类型进行聚合后，筛选出高于平均转化率的达人类型后，对有效观看进行排序，筛选出观看前三的达人类型。</td></tr>
-        <tr><td><strong>选择原因</strong></td><td>① 高于平均的转化率确保了视频的种草转化效果<br>② 高有效观看的类型能最大程度的提高品牌曝光量，提升品牌声量与品牌影响力。</td></tr>
-        <tr><td><strong>选择标准（自定义）</strong></td><td>对达人类型打标，对达人类型进行聚合后，转化率 ≥ 0.13%，根据平均有效观看取前二类达人<br><span class="note">*注：为避免投入成本和条数对观看的影响，所以转化率、有效观看均采取均值作比较（当前类型下平均每条视频有效观看），且本次数据已去除无类型达人。</span></td></tr>
-        <tr><td><strong>标杆达人（前 2 类）</strong></td><td><strong>音乐、旅行</strong><br><span class="note">注：三农由于只有一个达人一条视频，且平均曝光与旅行相差不大，但转化率旅行类达人远超三农，故优选旅行类达人。</span></td></tr>
+        <tr class="key"><td>分析对象</td><td><strong>高曝光高转化达人类型</strong></td></tr>
+        <tr class="key"><td>定义</td><td>根据达人类型，筛选出<strong>转化率高于平均值</strong>的类型，再对<strong>有效观看</strong>降序排列。</td></tr>
+        <tr class="key"><td>衡量标准</td><td>对达人类型打标 → 按类型聚合 → 筛出转化率高于均值的类型 → 按有效观看排序 → 取观看量前三的类型。</td></tr>
+        <tr class="key"><td>选择原因</td><td>① 高于平均的转化率，确保内容的种草转化效果<br>② 高有效观看的类型，能最大化提高品牌曝光量，提升品牌声量与影响力。</td></tr>
+        <tr class="key"><td>筛选标准</td><td>对达人类型打标并聚合后，筛出<strong>转化率 ≥ 0.13%</strong> 的类型，再按平均有效观看取前二类。<br><span class="note">* 注：为避免投入成本与发布条数对观看的干扰，转化率与有效观看<strong>均采用均值口径比较</strong>（当前类型下的平均每条视频有效观看）；本次数据已去除无类型达人。</span></td></tr>
+        <tr class="key"><td>标杆赛道（前 2）</td><td><strong>音乐类、旅行类</strong><br><span class="note">注：三农类仅 1 个达人、1 条视频，平均曝光与旅行类相差不大，但旅行类转化率远超三农，故优选旅行类。</span></td></tr>
       </tbody>
     </table>
   </div>
 
-  <div class="step"><h4><span class="tag">2</span> 图表展示</h4></div>
-  <div class="chart-box">
-    <div class="chart-title">曝光与转化组合图</div>
-    <div class="chart-desc">飞书原文档图表 · 蓝柱为各品类有效观看均值，浅蓝折线为转化率（旅行 0.43% 最高）</div>
-    <img class="chart-img" src="图片和附件/chart_4_exposure.png" alt="曝光与转化组合图">
+  <h4 class="step-h">2 · 图表 · 赛道曝光与转化</h4>
+  <div class="figure">
+    <div class="f-title">高转化赛道的平均有效观看与转化率</div>
+    <div class="f-desc">转化率 ≥ 0.13% 的赛道中，音乐类平均有效观看 <strong>248 万</strong>、平均转化率 <strong>0.13%</strong>；旅行类综合转化率 <strong>0.43%</strong>，为全部赛道最高。</div>
+    <div class="hbar"><div class="lb">音乐类 · 观看</div><div class="tr"><div class="fl" style="width:100%;"></div></div><div class="vl">248 万</div></div>
+    <div class="hbar"><div class="lb">旅行类 · 观看</div><div class="tr"><div class="fl" style="width:36%;"></div></div><div class="vl">≈89 万</div></div>
+    <div style="margin-top:18px;padding-top:14px;border-top:1px dashed var(--line);">
+      <div style="font-size:12.8px;color:var(--muted);margin-bottom:8px;">转化率对比（筛选阈值 0.13%）</div>
+      <div class="hbar"><div class="lb" style="color:var(--good);">旅行类</div><div class="tr"><div class="fl" style="width:63%;background:linear-gradient(90deg,#2f9e78,#1a7f5a);"></div></div><div class="vl" style="color:var(--good);">0.43%</div></div>
+      <div class="hbar"><div class="lb" style="color:var(--accent);">音乐类</div><div class="tr"><div class="fl" style="width:19%;"></div></div><div class="vl">0.13%</div></div>
+      <div class="hbar"><div class="lb">品牌平均</div><div class="tr"><div class="fl alt" style="width:18%;background:linear-gradient(90deg,#e8a49b,#c0392b);opacity:.55;"></div></div><div class="vl" style="color:var(--warn);">0.12%</div></div>
+    </div>
+    <div class="chart-legend">
+      <span><i style="background:#2f4bd8;"></i>入选赛道</span>
+      <span><i style="background:#1a7f5a;"></i>最高转化赛道</span>
+      <span><i style="background:#c0392b;"></i>品牌平均 / 筛选阈值</span>
+    </div>
   </div>
 
-  <div class="step"><h4><span class="tag">3</span> TOP 达人内容下钻分析</h4></div>
-  <div class="tbl-wrap">
+  <h4 class="step-h">3 · TOP 赛道内容下钻</h4>
+  <div class="tbl">
+    <div class="tbl-scroll">
     <table>
-      <thead><tr><th>达人类型</th><th>转化率与有效观看</th><th>达人昵称</th><th>视频标题</th><th>视频链接</th><th>引流视频</th><th>主页</th><th>达人风格</th><th>好的原因分析</th><th>怎么做的更好？</th></tr></thead>
+      <thead><tr>
+        <th style="width:76px;">赛道</th><th style="width:110px;">转化与观看</th><th style="width:150px;">内容与话题</th>
+        <th>达人风格 / 粉丝画像推测</th><th>好的原因分析</th><th>怎么做得更好</th>
+      </tr></thead>
       <tbody>
         <tr>
-          <td><strong>音乐</strong><br><span class="note">（1条）</span></td>
-          <td>平均有效观看：<strong>248 万</strong><br>平均转化率：<strong>0.13%</strong></td>
-          <td><strong>彭越月</strong></td>
-          <td>解锁新人物靳保镖<br><span class="note">#梓渝摇来了 #求佛dj #康复运动 #骆驼登山鞋 #骆驼太行3代</span></td>
-          <td><a href="https://www.douyin.com/video/7525404765141863723" target="_blank" rel="noopener">查看视频 ↗</a></td>
-          <td><div class="img-cell"><figure><img src="图片和附件/image.png" alt="彭越月 引流视频"><figcaption>引流视频</figcaption></figure></div></td>
-          <td><div class="img-cell"><figure><img src="图片和附件/image%202.png" alt="彭越月 主页"><figcaption>主页</figcaption></figure></div></td>
-          <td><span class="cell-tag">博主核心标签</span>早婚的美女博主；婚后夫妻日常：家庭日常、亲密互动；向往自由爱好音乐、声优博主。<span class="cell-tag">粉丝画像推测</span>核心人群：20-30 岁女性，喜欢户外、已婚 00 后、喜欢音乐；爱好：流行音乐，为兴趣和情绪买单。</td>
-          <td>流行音乐配动感舞蹈，运动感、潮流感十足；丈夫入镜亲密互动，抱起给人一种力量感和安全感；温馨豪华简约的室内装修，搭配青春少女，营造一种惬意、温馨、富足自在的生活环境。</td>
-          <td><span class="cell-tag">一、内容升级</span>场景拓展，户外 + 音乐 + 舞蹈结合，可选择广阔的公园、广场舞类型，打青年广场舞形成反差；互动升级，如男生并没有把女生抱起，反而加入，进行双人互动热舞。<span class="cell-tag">二、转化引导优化</span>置顶评论："很多问防晒衣的宝，是骆驼XXXX系列，主页'拍照穿搭'合集有同款～"</td>
+          <td><strong>音乐</strong><span class="ct">1 条</span></td>
+          <td>平均有效观看<strong>248 万</strong><br>平均转化率<strong>0.13%</strong></td>
+          <td>「解锁新人物靳保镖」<span class="ct">#求佛dj #康复运动 #登山鞋 #太行3代</span></td>
+          <td><span class="ct">核心标签</span>早婚美女博主；婚后夫妻日常：家庭日常、亲密互动；向往自由、爱好音乐、声优博主。<span class="ct">粉丝画像推测</span>20-30 岁女性，偏好户外与音乐，喜欢流行音乐，为兴趣与情绪买单。</td>
+          <td>流行音乐配动感舞蹈，运动感与潮流感十足；丈夫入镜亲密互动，抱起女生带来力量感与安全感；温馨简约的室内装修搭配青春少女，营造惬意、温馨、富足自在的生活环境。</td>
+          <td><span class="ct">一、内容升级</span>场景拓展，将户外 + 音乐 + 舞蹈结合，可选择广阔的公园、广场舞类场景，与青年广场舞形成反差；互动升级，从单人抱起改为加入双人互动热舞。<br><span class="ct">二、转化引导优化</span>置顶评论：「很多问防晒衣的宝，是品牌A XXXX系列，主页『拍照穿搭』合集有同款～」</td>
         </tr>
         <tr>
-          <td><strong>旅行</strong><br><span class="note">（2条，选择较高转化的进行下钻）</span></td>
-          <td>旅行综合转化率：<strong>0.43%</strong><br>此条转化率：<strong>0.682%</strong></td>
-          <td><strong>kkkkkisum</strong></td>
-          <td>你的脚步流浪在天涯<br><span class="note">#草原 #川西美景 #屌丝</span></td>
-          <td><a href="https://www.iesdouyin.com/share/slides/7525023138469694780" target="_blank" rel="noopener">查看视频 ↗</a></td>
-          <td><div class="img-cell"><figure><img src="图片和附件/image%203.png" alt="kkkkkisum 引流视频"><figcaption>引流视频</figcaption></figure></div></td>
-          <td><div class="img-cell"><figure><img src="图片和附件/70f2b3e93f82d68e9442426a8c784ed6.jpg" alt="kkkkkisum 主页"><figcaption>主页</figcaption></figure></div></td>
-          <td><span class="cell-tag">核心标签</span>#氛围感美女（静图 + BGM，强调视觉美感与情绪共鸣）；#户外治愈风（绿色草原、自然光线，传递自由、生命力）；#轻文艺穿搭（不硬核种草，通过场景和音乐传递产品调性）；#BGM驱动（歌曲《你的脚步流浪在天涯》强化流浪、远方感，契合户外鞋主题）。<span class="cell-tag">粉丝画像推测</span>年龄：18-35 岁，偏好高颜值、氛围感内容，女性占比可能较高；兴趣：旅行摄影、文艺穿搭、轻户外生活方式；消费心理：更注重"产品是否能融入理想生活场景"，而非纯功能导向。</td>
-          <td><span class="cell-tag">成功点</span>强情绪共鸣：BGM + 草原场景唤醒"逃离城市""自由流浪"的向往，间接关联老爹鞋的"户外陪伴"属性；高审美价值：静图构图精致，符合抖音"视觉系种草"趋势，易吸引停留；软性植入：不直接推销，而是让产品成为"理想生活"的一部分，降低广告抵触感。<span class="cell-tag">转化高的潜在原因</span>目标用户（文艺青年、轻户外爱好者）与骆驼老爹鞋的"休闲户外"定位高度契合；静图展示鞋款侧面/背面（如踩在草原上的特写），突出设计感而非功能，更吸引女性用户。</td>
-          <td><span class="cell-tag">一、内容升级</span>强化产品细节：拍雨天和大晴天，骆驼遮风挡雨；在静图中加入 1-2 张功能性展示，如鞋底防滑纹特写（保持美感）。<span class="cell-tag">传播扩散策略</span>BGM 裂变：发起挑战 <strong>#带着骆驼去流浪</strong>，鼓励用户用同款 BGM 拍旅行照 @品牌；头部评论引导："点击下方音乐拍同款，有机会被翻牌哦～"。<span class="cell-tag">二、转化引导优化</span>评论区置顶：结合 BGM 歌词引导——"'流浪天涯'的每一步，都需要一双舒服的老爹鞋👟→ 点我首页有同款" + 购物车链接；发起互动提问："你最想穿这双鞋去哪流浪？抽 1 人送骆驼登山袜"。视频内轻植入：在静图切换间插入 0.5 秒字幕"骆驼老爹鞋｜旅行穿搭神器"（不破坏氛围）；结尾加动态镜头：模特回头微笑 + 鞋子特写，搭配字幕"陪你去远方"。</td>
+          <td><strong>旅行</strong><span class="ct">2 条，取转化较高一条</span></td>
+          <td>综合转化率<strong>0.43%</strong><br>单条转化率<strong>0.682%</strong></td>
+          <td>「你的脚步流浪在天涯」<span class="ct">#草原 #川西美景</span></td>
+          <td><span class="ct">核心标签</span>#氛围感美女（静图 + BGM，强调视觉美感与情绪共鸣）；#户外治愈风（绿色草原、自然光线，传递自由与生命力）；#轻文艺穿搭（不硬核种草，通过场景与音乐传递产品调性）；#BGM 驱动（强化流浪与远方感，契合户外鞋主题）。<span class="ct">粉丝画像推测</span>18-35 岁，偏好高颜值与氛围感内容，女性占比较高；兴趣为旅行摄影、文艺穿搭、轻户外生活方式；更看重产品能否融入理想生活场景，而非纯功能导向。</td>
+          <td><span class="ct">成功点</span>强情绪共鸣：BGM + 草原场景唤醒「逃离城市」「自由流浪」的向往，间接关联鞋款的户外陪伴属性；高审美价值：静图构图精致，符合视觉系种草趋势，易吸引停留；软性植入：不直接推销，而是让产品成为理想生活的一部分，降低广告抵触感。<span class="ct">转化高的潜在原因</span>目标用户（文艺青年、轻户外爱好者）与鞋款的休闲户外定位高度契合；静图展示鞋款侧面 / 背面特写，突出设计感而非功能，更吸引女性用户。</td>
+          <td><span class="ct">一、内容升级</span>强化产品细节：拍摄雨天与大晴天，体现遮风挡雨；静图中加入 1-2 张功能性展示（如鞋底防滑纹特写），同时保持美感。<br><span class="ct">传播扩散</span>BGM 裂变：发起话题挑战，鼓励用户用同款 BGM 拍旅行照并 @品牌；头部评论引导「点击下方音乐拍同款，有机会被翻牌哦～」。<br><span class="ct">二、转化引导</span>评论区置顶结合 BGM 歌词引导——「『流浪天涯』的每一步，都需要一双舒服的鞋👟 → 点我主页有同款」+ 购物车链接；发起互动提问「你最想穿这双鞋去哪流浪？抽 1 人送品牌袜」；视频内轻植入：静图切换间插入 0.5 秒字幕「品牌A老爹鞋｜旅行穿搭神器」，结尾加模特回头微笑 + 鞋子特写，配字幕「陪你去远方」。</td>
         </tr>
       </tbody>
     </table>
+    </div>
   </div>
 
-  <div class="step"><h4><span class="tag">4</span> 策略总结</h4></div>
-  <div class="idea">
-    <div class="core">核心策略：打造动感、欢快的旅行体验</div>
-    <p>核心理念："用自然之力，唤醒探索本能"——通过动态视觉与背景音乐和自然场景的结合，让产品成为自由探索的象征，进一步吸引眼球。</p>
+  <h4 class="step-h">4 · 策略总结</h4>
+  <div class="strategy">
+    <div class="k">STRATEGY 04</div>
+    <div class="t serif">核心策略：打造动感、欢快的旅行体验</div>
+    <p>通过动态视觉、背景音乐与自然场景结合，让产品成为自由探索的象征，在赛道层面形成可复投的内容模板。</p>
   </div>
-  <div class="tbl-wrap strat-table">
-    <table>
-      <thead><tr><th style="width:150px;">优化方向</th><th>具体策略</th></tr></thead>
+  <div class="tbl" style="margin-top:14px;">
+    <table style="min-width:620px;">
+      <thead><tr><th style="width:140px;">优化方向</th><th>具体策略</th></tr></thead>
       <tbody>
-        <tr><td>内容方向优化</td><td><p><strong>1. 聚焦真实户外场景</strong></p><ul class="clean"><li>优先选择沙漠、雨林、雪山等极具视觉冲击力的自然环境。</li><li>突出产品与自然元素的互动：风雨、沙石、光影。</li></ul><p style="margin-top:8px;"><strong>2. 叙事模式创新</strong>：采用「打破-重建」叙事</p><ul class="clean"><li>前 3 秒：传统户外广告片段（参数罗列 + 摆拍，制造反差）。</li><li>转折点："自然，不该被束缚"（撕掉传统装备）。</li><li>主体展示：在极端环境中自由运动的动态画面。</li></ul></td></tr>
-        <tr><td>视觉与情绪设计</td><td><p><strong>视觉升级：打造「动态自然美学」</strong></p><ul class="clean"><li><strong>场景选择</strong>（极限光影）：沙漠正午（强光与阴影对比）、暴雨丛林（雨滴穿透光斑）、悬崖边缘（衣摆被强风吹起）。</li><li><strong>人物状态</strong>：奔跑/跳跃动作抓拍（防晒衣飘动，展示轻盈）；特写：汗珠从防晒衣表面滑落（强调透气）。</li><li><strong>色调处理</strong>：高对比度调色（突出阳光与衣料的反光质感）；慢镜头 + 颗粒感滤镜（强化"野性生命力"）。</li></ul></td></tr>
-        <tr><td>用户互动策略</td><td><p><strong>1. 挑战赛运营</strong></p><ul class="clean"><li><strong>#自然动能挑战</strong>：用户发布动态户外视频；设置三级挑战难度——城市公园、近郊山地、荒野极限；打卡发布可以进行抽奖，赠送礼品。</li></ul><p style="margin-top:8px;"><strong>2. UGC 内容引导</strong></p><ul class="clean"><li>提供拍摄模板：运镜手法、BGM 推荐、剪辑教程。</li></ul></td></tr>
-        <tr><td>品牌差异化锚点</td><td><ul class="clean"><li><strong>理念差异化</strong>：反对过度装备化——强调"一件足够"的设计哲学，展示产品在极端环境下的可靠性："72 小时一件就够了"；自然共生理念——用产品讲述一个自然故事。</li><li><strong>视觉差异化</strong>：动能视觉标识——多视频包含动态捕捉镜头，建立"看到动态户外就想到骆驼"的视觉联想。</li><li><strong>价值主张差异化</strong>：从功能到精神——不仅是防晒衣，更是"自由探索的许可证"；每个产品附带一个真实探险故事。</li></ul></td></tr>
+        <tr><td><strong>内容方向</strong></td><td><ul class="clean">
+          <li><strong>1. 聚焦真实户外场景</strong>：优先选择沙漠、雨林、雪山等极具视觉冲击力的自然环境；突出产品与自然元素的互动——风雨、沙石、光影。</li>
+          <li><strong>2. 叙事模式创新</strong>：采用「打破—重建」叙事。<br>· 前 3 秒：传统户外广告片段（参数罗列 + 摆拍，制造反差）<br>· 转折点：「自然，不该被束缚」（撕掉传统装备）<br>· 主体展示：在极端环境中自由运动的动态画面</li>
+        </ul></td></tr>
+        <tr><td><strong>视觉与情绪</strong></td><td><ul class="clean">
+          <li><strong>场景选择（极限光影）</strong>：沙漠正午（强光与阴影对比）、暴雨丛林（雨滴穿透光斑）、悬崖边缘（衣摆被强风吹起）。</li>
+          <li><strong>人物状态</strong>：奔跑 / 跳跃动作抓拍，展示衣摆飘动的轻盈感；特写汗珠从面料表面滑落，强调透气性。</li>
+          <li><strong>色调处理</strong>：高对比度调色（突出阳光与衣料反光质感）；慢镜头 + 颗粒感滤镜，强化野性生命力。</li>
+        </ul></td></tr>
+        <tr><td><strong>用户互动</strong></td><td><ul class="clean">
+          <li><strong>挑战赛运营</strong>：发起话题挑战，用户发布动态户外视频；设置三级挑战难度——城市公园 / 近郊山地 / 荒野极限；打卡发布可参与抽奖并赠送礼品。</li>
+          <li><strong>UGC 引导</strong>：提供拍摄模板，包含运镜手法、BGM 推荐、剪辑教程。</li>
+        </ul></td></tr>
+        <tr><td><strong>差异化锚点</strong></td><td><ul class="clean">
+          <li><strong>理念差异化</strong>：反对过度装备化，强调「一件足够」的设计哲学，通过极端环境下的可靠性表达（如「72 小时一件就够了」）；以自然共生理念，用产品讲述一个自然故事。</li>
+          <li><strong>视觉差异化</strong>：建立动能视觉标识，多视频包含动态捕捉镜头，建立「看到动态户外就想到本品牌」的视觉联想。</li>
+          <li><strong>价值主张差异化</strong>：从功能层面走向精神层面——产品不仅是功能性装备，更是「自由探索的许可证」；每个产品附带一个真实探险故事。</li>
+        </ul></td></tr>
       </tbody>
     </table>
   </div>
 
-  <div class="step"><h4><span class="tag">5</span> 延伸</h4></div>
+  <h4 class="step-h">5 · 延伸思考</h4>
   <div class="card">
-    <p>转化率并非唯一衡量指标，在关注转化率的同时，同时可以考量<strong>间接转化人数</strong>，在这两个指标的加持下，<strong>生活、颜值博主</strong>也可以被重点关注。所以种草评估的指标与方法都是可以由自己定义口径的！大家发散思维，进行延伸即可～</p>
+    <p style="font-size:14.5px;">转化率并非唯一衡量指标。在关注转化率的同时，可同时考量<strong>间接转化人数</strong>；在这两个指标的共同作用下，<strong>生活类与颜值类博主</strong>也可以成为重点关注对象。因此种草评估的指标与方法都可由分析者自定义口径，实际工作中可发散思维并延伸。</p>
   </div>
 </section>
+
+<!-- ============ 05 ============ -->
+<section id="s5">
+  <div class="sec-head"><div class="num">05</div><h2 class="serif">分析逻辑总览</h2><div class="line"></div></div>
+  <p class="sec-desc">全流程复盘：本次分析是如何从「大盘」一步步走到「可执行动作」的。</p>
+  <div class="tbl">
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr>
+        <th style="width:78px;">层级</th><th style="width:120px;">使用指标</th><th style="width:200px;">筛选 / 拆解逻辑</th><th>回答的业务问题</th><th style="width:180px;">输出</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>大盘盘点</strong></td>
+          <td>消耗、声量、间接转化、转化率、单位转化成本、无效种草率</td>
+          <td>与同品类 3 个竞品横向对比，计算倍数关系</td>
+          <td>整体投得健康吗？优势来自哪里？</td>
+          <td>类目 Top 1 结论 + 两个量化优化点</td>
+        </tr>
+        <tr>
+          <td><strong>达人层 A</strong><br><span class="ct">曝光效率</span></td>
+          <td>CPM = 总成本 ÷ 有效观看 × 1000</td>
+          <td>仅保留有效种草 → 筛 CPM ≤ 37.59（全体均值）→ 取 TOP 3</td>
+          <td>谁最便宜？哪些曝光是浪费的？</td>
+          <td>3 位高性价比标杆达人 + 「自然共生」策略</td>
+        </tr>
+        <tr>
+          <td><strong>达人层 B</strong><br><span class="ct">规模 + 质量</span></td>
+          <td>单位转化成本、有效观看、转化率</td>
+          <td>成本 &lt; 30.93 → 有效观看 &gt; 均值 → 转化率 &gt; 均值 → 取 TOP 3</td>
+          <td>谁既能跑量又能跑赢均值？</td>
+          <td>规模化标杆达人 + 潮牌形象策略</td>
+        </tr>
+        <tr>
+          <td><strong>赛道层</strong></td>
+          <td>分类型平均有效观看、分类型转化率</td>
+          <td>达人打标 → 类型聚合 → 转化率 ≥ 0.13% → 按平均观看降序取前二</td>
+          <td>预算应该压到哪些赛道？</td>
+          <td>四级赛道优先级 + 旅行/音乐内容模板</td>
+        </tr>
+        <tr>
+          <td><strong>策略层</strong></td>
+          <td>内容方向、视觉情绪、用户互动、差异化锚点</td>
+          <td>把诊断结论翻译成可交付给业务方的四类动作</td>
+          <td>下一阶段具体怎么做？</td>
+          <td>三套策略包 + 挑战赛与评论引导话术</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="keyline" style="margin-top:14px;">
+    <strong>本次分析可迁移的方法论：</strong>① 用<strong>双阈值</strong>（效率阈值 + 规模阈值）替代单一排名，避免选出「便宜但小众」的样本；② 在不同分析层级使用<strong>不同口径的均值</strong>作为基准（大盘均值、类型内均值），防止被绝对值误导；③ 每个结论必须能落到<strong>内容方向 / 视觉情绪 / 用户互动 / 差异化锚点</strong>四类可执行动作上，否则不予输出。
+  </div>
+</section>
+
+<!-- ============ 06 ============ -->
+<section id="s6">
+  <div class="sec-head"><div class="num">06</div><h2 class="serif">分析说明与口径</h2><div class="line"></div></div>
+  <p class="sec-desc">放在最后，是因为口径是整份报告的<strong>地基</strong>：前面所有结论都建立在下面这套定义之上。这也是这份报告最可复用的部分——换任何品类、任何平台，指标口径与分析链路都不需要重写。</p>
+  <div class="grid2">
+    <div class="card">
+      <h4 style="font-size:14.5px;font-weight:800;margin-bottom:8px;">分析目标</h4>
+      <ul class="clean">
+        <li>盘点种草投放的整体规模、效率与成本结构，判断投放健康度。</li>
+        <li>在同品类对标下，明确本品牌所处的竞争位置与<strong>效率优势来源</strong>。</li>
+        <li>自上而下拆解到<strong>达人层</strong>与<strong>内容赛道层</strong>，定位可优化的具体投放单元。</li>
+        <li>输出内容方向、达人结构与用户互动三层的可执行策略，而非只给结论。</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 style="font-size:14.5px;font-weight:800;margin-bottom:8px;">核心指标口径</h4>
+      <ul class="clean">
+        <li><strong>有效观看</strong>：内容被完整观看的播放量，替代原始播放量。</li>
+        <li><strong>CPM（每千次曝光成本）</strong> = 总成本 ÷ 有效观看 × 1000，衡量<strong>曝光侧</strong>的投放效率。</li>
+        <li><strong>单位转化成本</strong> = 总成本 ÷ 间接转化人数，衡量<strong>转化侧</strong>的投放效率。</li>
+        <li><strong>转化率</strong> = 间接转化人数 ÷ 有效观看，衡量<strong>内容质量</strong>。</li>
+        <li><strong>无效种草率</strong>：判定为对品牌无正向作用的内容占比，反映投放浪费程度。</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card" style="margin-top:14px;">
+    <h4 style="font-size:14.5px;font-weight:800;margin-bottom:10px;">分析链路与本页导航对照</h4>
+    <div class="dial" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));">
+      <div class="d" style="text-align:left;">
+        <div class="pc" style="font-size:16px;">第一层 · 效果盘点</div>
+        <div class="lb" style="line-height:1.7;">整体规模、转化率、单位成本与竞品横向对比，回答「投得好不好」。</div>
+      </div>
+      <div class="d" style="text-align:left;">
+        <div class="pc" style="font-size:16px;">第二层 · 达人下钻</div>
+        <div class="lb" style="line-height:1.7;">用 CPM 与单位转化成本双阈值筛出标杆达人，回答「投给谁」。</div>
+      </div>
+      <div class="d" style="text-align:left;">
+        <div class="pc" style="font-size:16px;">第三层 · 赛道收敛</div>
+        <div class="lb" style="line-height:1.7;">按达人类型聚合曝光与转化，收敛赛道优先级，回答「投什么内容」。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>电商种草分析洞察 · 户外品类种草投放诊断 · 品牌与达人信息按展示规范做代号化处理 · 数据与结论口径保持一致</footer>
 
 </main>
-
-<footer><p>电商种草分析洞察 · 骆驼品牌抖音种草效果复盘</p></footer>
-
-<div class="lightbox" id="lightbox"><img id="lightboxImg" src="" alt=""></div>
+</div>
 
 <script>
-  var lb = document.getElementById('lightbox');
-  var lbImg = document.getElementById('lightboxImg');
-  document.querySelectorAll('.img-cell img').forEach(function(img){
-    img.addEventListener('click', function(e){
-      e.stopPropagation(); lbImg.src = img.src; lb.classList.add('open');
+(function(){
+  var links = [].slice.call(document.querySelectorAll('#nav a'));
+  var map = {};
+  links.forEach(function(a){
+    var el = document.querySelector(a.getAttribute('href'));
+    if(el) map[a.getAttribute('href').slice(1)] = a;
+  });
+  function upd(){
+    var pos = window.scrollY + 140, cur = null;
+    Object.keys(map).forEach(function(id){
+      var el = document.getElementById(id);
+      if(el && el.offsetTop <= pos) cur = map['#'+id];
     });
-  });
-  lb.addEventListener('click', function(){ lb.classList.remove('open'); });
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') lb.classList.remove('open'); });
-
-  var links = document.querySelectorAll('nav a');
-  var sections = [];
-  links.forEach(function(a){ sections.push(document.getElementById(a.getAttribute('href').slice(1))); });
-  window.addEventListener('scroll', function(){
-    var pos = window.scrollY + 120, current = 0;
-    sections.forEach(function(sec, i){ if(sec && sec.offsetTop <= pos) current = i; });
-    links.forEach(function(a, i){ a.classList.toggle('active', i === current); });
-  });
+    links.forEach(function(a){ a.classList.remove('active'); });
+    if(cur) cur.classList.add('active');
+  }
+  window.addEventListener('scroll', upd, {passive:true});
+  upd();
+})();
 </script>
 </body>
 </html>

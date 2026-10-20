@@ -3,11 +3,11 @@
 <head data-page-node-id="2jdqYOGnyX67phdlLvm7AD">
 <meta charset="UTF-8" data-page-node-id="neoPbSR4ZYb169BCqklIft">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" data-page-node-id="hIr1iNNau2DIYB3BRlPrd4">
-<meta name="description" content="数据分析作品集：达人种草分析看板、电商种草分析洞察、电商经营与库存分析、电商库存与收益分析路径四段完整业务实战。" data-page-node-id="udz4RxzPrBFbfUDXdnnRoI">
+<meta name="description" content="邱曾恺 · 数据分析作品集：电商种草投放分析、跨境电商经营与收益分析两大完整项目，覆盖 BI 看板、分析报告、指标拆解与收益路径。" data-page-node-id="udz4RxzPrBFbfUDXdnnRoI">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232b5aed'/%3E%3Crect x='14' y='34' width='8' height='16' rx='2' fill='%23fff' opacity='.85'/%3E%3Crect x='28' y='24' width='8' height='26' rx='2' fill='%23fff' opacity='.9'/%3E%3Crect x='42' y='14' width='8' height='36' rx='2' fill='%23ffd76a'/%3E%3C/svg%3E" data-page-node-id="P8jprmcMxkIN0o5O9VUdxx">
 <meta property="og:type" content="website" data-page-node-id="BlMYQ2gjzM01bSrR61IaDY">
 <meta property="og:title" content="小Q · 数据分析作品集" data-page-node-id="8UxDobHUtNEpPE9rmLAxcD">
-<meta property="og:description" content="数据分析作品集：达人种草分析看板、电商种草分析洞察、电商经营与库存分析、电商库存与收益分析路径四段完整业务实战。" data-page-node-id="ZBy4ye52sklsVfG0bEyOg2">
+<meta property="og:description" content="邱曾恺 · 数据分析作品集：电商种草投放分析、跨境电商经营与收益分析两大完整项目，覆盖 BI 看板、分析报告、指标拆解与收益路径。" data-page-node-id="ZBy4ye52sklsVfG0bEyOg2">
 <meta property="og:image" content="https://primarystudents.github.io/xiaoq/assets/preview-dashboard.jpg" data-page-node-id="QDavXoQBEb6vFxLKLa3XZC">
 <meta property="og:url" content="https://primarystudents.github.io/xiaoq/" data-page-node-id="oMXLRpXTV4FAePOUqaVRoA">
 
@@ -108,8 +108,8 @@
   .work-card.feature{grid-column:1 / -1;flex-direction:row;}
   .work-card.feature .preview{width:52%;flex-shrink:0;}
   .work-card.feature .work-body{width:48%;padding:30px 32px;}
-  .preview{position:relative;overflow:hidden;background:#eef1f7;width:100%;aspect-ratio:16/10;min-height:150px;}
-  .preview img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;display:block;
+  .preview{position:relative;overflow:hidden;background:#eef1f7;width:100%;line-height:0;}
+  .preview img{width:100%;height:auto;display:block;object-fit:cover;object-position:top;
     transition:transform .4s ease;}
   .work-card:hover .preview img{transform:scale(1.035);}
   .preview .chip{position:absolute;top:14px;left:14px;}
@@ -264,6 +264,14 @@
   .pe-portrait .pe-meta{padding-bottom:12px;margin-bottom:0;}
   .pe-portrait-body{padding:6px 0 0;min-width:0;}
   .pe-portrait-body svg{width:100%;height:auto;display:block;max-width:100%;}
+  .pe-portrait-media{
+    position:relative;width:100%;aspect-ratio:295/413;
+    margin:0 0 0;overflow:hidden;border-radius:16px;background:var(--surface-strong);
+  }
+  .pe-portrait-media img{
+    position:absolute;inset:0;width:100%;height:100%;
+    object-fit:cover;object-position:38% 50%;display:block;
+  }
   .pe-portrait-foot{
     display:flex;align-items:center;justify-content:space-between;
     padding:14px 0 18px;margin-top:8px;border-top:1px solid var(--line);
@@ -426,12 +434,12 @@
   @media (max-width:760px){
     /* 图片兜底：确保窄屏下封面图可见且比例正确 */
     .works{grid-template-columns:1fr;gap:16px;}
-    .preview{aspect-ratio:16/10;min-height:132px;}
-    .preview img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+    .preview img{width:100%;height:auto;display:block;}
     .work-card{border-radius:16px;}
     .work-body{padding:18px 18px 20px;}
     .wrap{padding:0 16px;}
     .hero{padding-top:52px;}
+    .pe-portrait-media{aspect-ratio:295/340;}
     /* cqw 兜底：显式给 px，避免容器查询不支持时字体失控 */
     .pe-name{font-size:44px;}
     .pe-star{font-size:38px;}
@@ -470,7 +478,7 @@
         </h1>
         <p class="pe-role">商业数据分析师 / 数据产品</p>
         <p class="pe-statement">让数据，成为<span class="pe-underlined">下一步的答案。</span></p>
-        <p class="pe-intro">1年达人营销分析经验，4A媒介执行经验，熟悉营销全流程，擅长把多平台业务数据变成可执行的经营决策。</p>
+        <p class="pe-intro">3年电商与营销数据分析经验，熟悉种草投放、跨境电商经营全流程，擅长把多平台业务数据变成可执行的经营决策。</p>
         <div class="pe-actions">
           <a class="pe-button" href="#works"><span class="pe-label">探索项目</span><span class="pe-button-arrow">↗</span></a>
         </div>
@@ -482,25 +490,8 @@
         <div class="pe-orbit" aria-hidden="true"></div>
         <figure class="pe-portrait" data-theme-role="surface">
           <div class="pe-meta"><span class="pe-label">PORTRAIT / 01</span><span class="pe-label">01 /</span></div>
-          <div class="pe-portrait-body">
-            <svg viewBox="0 0 330 214" fill="none" aria-label="GMV 收益趋势示意图" data-page-node-id="bcTF1zlC2OHdJFbTEmiFrI">
-              <line x1="24" y1="170" x2="306" y2="170" stroke="rgba(36,48,68,.16)" stroke-width="1"/>
-              <line x1="24" y1="110" x2="306" y2="110" stroke="rgba(36,48,68,.10)" stroke-width="1"/>
-              <line x1="24" y1="50" x2="306" y2="50" stroke="rgba(36,48,68,.10)" stroke-width="1"/>
-              <rect x="38" y="120" width="26" height="50" rx="3" fill="#aab6ea"/>
-              <rect x="80" y="92" width="26" height="78" rx="3" fill="#94a2e4"/>
-              <rect x="122" y="106" width="26" height="64" rx="3" fill="#aab6ea"/>
-              <rect x="164" y="62" width="26" height="108" rx="3" fill="#7080d7"/>
-              <rect x="206" y="80" width="26" height="90" rx="3" fill="#94a2e4"/>
-              <rect x="248" y="42" width="26" height="128" rx="3" fill="#3d4ba8"/>
-              <polyline points="51,104 93,72 135,90 177,44 219,64 261,28" stroke="#3d4ba8" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="261" cy="28" r="4.5" fill="#3d4ba8"/>
-              <circle cx="177" cy="44" r="3.5" fill="#7080d7"/>
-              <text x="24" y="196" fill="#66758a" font-size="10" font-family="Arial">Q1</text>
-              <text x="124" y="196" fill="#66758a" font-size="10" font-family="Arial">Q3</text>
-              <text x="258" y="196" fill="#66758a" font-size="10" font-family="Arial">Q4</text>
-              <text x="24" y="20" fill="#243044" font-size="11" font-weight="600">GMV 收益趋势 ↑</text>
-            </svg>
+          <div class="pe-media pe-portrait-media">
+            <img src="assets/portrait.jpg" alt="邱曾恺个人形象照" loading="eager" style="object-position:38% 50%">
           </div>
           <figcaption class="pe-portrait-foot"><strong class="pe-portrait-wordmark">PORTFOLIO</strong><span class="pe-portrait-motto">PROFILE 01</span></figcaption>
         </figure>
@@ -508,8 +499,8 @@
       </div>
     </div>
     <div class="pe-hero-bottom">
-      <div class="pe-bottom-item"><strong class="pe-bottom-value">3<span class="pe-value-unit">个</span></strong><span class="pe-bottom-label">完整分析项目</span></div>
-      <div class="pe-bottom-item"><strong class="pe-bottom-value">10<span class="pe-value-unit">万+</span></strong><span class="pe-bottom-label">处理数据量</span></div>
+      <div class="pe-bottom-item"><strong class="pe-bottom-value">2<span class="pe-value-unit">个</span></strong><span class="pe-bottom-label">完整分析项目</span></div>
+      <div class="pe-bottom-item"><strong class="pe-bottom-value">10<span class="pe-value-unit">万+</span></strong><span class="pe-bottom-label">累计处理数据量</span></div>
       <div class="pe-bottom-item"><strong class="pe-bottom-value">-15.7<span class="pe-value-unit">%</span></strong><span class="pe-bottom-label">种草投放成本优化</span></div>
       <div class="pe-bottom-item"><strong class="pe-bottom-value">+18.7<span class="pe-value-unit">%</span></strong><span class="pe-bottom-label">单票利润提升</span></div>
       <a class="pe-scroll-cue" href="#works"><span class="pe-label">SCROLL TO EXPLORE</span><span>↓</span></a>
@@ -527,26 +518,33 @@
           <svg width="19" height="19" viewBox="0 0 24 24" fill="none" data-page-node-id="CwxUh8Pw1USxVUJaPGQogd"><path d="M12 3L2 8l10 5 10-5-10-5z" stroke="#2b5aed" stroke-width="1.8" stroke-linejoin="round" data-page-node-id="6p9JrFesIQBZ6mZeNJFKFB"/><path d="M6 10.5V15c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5" stroke="#2b5aed" stroke-width="1.8" stroke-linecap="round" data-page-node-id="IbJaULCAIqAgrEQDmaDPZn"/></svg>
           教育与经历
         </h3>
-        <div class="tl" data-page-node-id="IzauaR1AEcUTQN1usgoQoB">
+                <div class="tl" data-page-node-id="IzauaR1AEcUTQN1usgoQoB">
           <div class="tl-item" data-page-node-id="Lv1GFwYfn9hBgArW7LdgRH">
-            <div class="tl-time" data-page-node-id="crRnur5yhaJKLDAZidic2Q">2025.10 – 2026.07</div>
-            <div class="tl-title" data-page-node-id="jALfYkHKlnDz5LBrdcCT1i">某机票跨境电商企业 · 数据分析师</div>
-            <div class="tl-desc" data-page-node-id="ETPyNSOaUMoZRktoRKGTFI">统一携程/飞猪/美团/Agoda 多平台数据口径，搭建 GMV、库存损失率、转化率指标框架；Tableau 自动化看板覆盖 3 大维度 6 个核心指标；定价、收益预测等专项分析支持运营决策。</div>
+            <div class="tl-time" data-page-node-id="crRnur5yhaJKLDAZidic2Q">2025.10 – 2026.08</div>
+            <div class="tl-title" data-page-node-id="jALfYkHKlnDz5LBrdcCT1i">宁波星绮科技有限公司 · 电商数据分析师</div>
+            <div class="tl-desc" data-page-node-id="ETPyNSOaUMoZRktoRKGTFI">围绕订单与库存两大维度建立 7 项指标（GMV、转化、ROI 等）并统一数据口径；用 SQL 从 ERP 提取日订单数据，清洗校验后输出经营日报，累计处理 10w+ 数据量、金额校验无差异；用 Tableau 搭建自动刷新的经营驾驶舱；支持 3 次选品，库存损失下降 3%、收益提升 12.5%。</div>
           </div>
           <div class="tl-item" data-page-node-id="uwhmdRJkd1yAxzC5d5dnHz">
-            <div class="tl-time" data-page-node-id="9Nq5xDWDSbUBYu1eFrF1dY">2025</div>
-            <div class="tl-title" data-page-node-id="Ec2kGELxPWMVAH69Vb814P">马来亚大学 · 科学传播 硕士</div>
-            <div class="tl-desc" data-page-node-id="XgOtlrzYRzyNLRd4ABwCtN">主修统计学基础、Python 数据分析、SPSS、分析方法论；毕业论文结合数据分析完成。</div>
+            <div class="tl-time" data-page-node-id="9Nq5xDWDSbUBYu1eFrF1dY">2023.08 – 2024.08</div>
+            <div class="tl-title" data-page-node-id="Ec2kGELxPWMVAH69Vb814P">上海数糖科技有限公司 · 数据分析师</div>
+            <div class="tl-desc" data-page-node-id="XgOtlrzYRzyNLRd4ABwCtN">以转化、GMV、CPM、单位成本为核心搭建种草营销评估体系并拆解指标树；SQL 采集营销与订单数据，用 Excel 透视表建立种草业务评估宽表；FineBI 可视看板做异常波动下钻归因；漏斗分析定位点击异常，通过竞品比价优化使点击率提升 15%。</div>
           </div>
           <div class="tl-item" data-page-node-id="illrogQvQDJsCMBtQK7H5B">
             <div class="tl-time" data-page-node-id="2v7MvfCRt2mzOIRHDMrDvb">2023.03 – 2023.07</div>
-            <div class="tl-title" data-page-node-id="CgSdK0IOqSJWOrWDmNkyzR">蓝色光标（出海投放）· 媒介投放（数据分析方向）</div>
-            <div class="tl-desc" data-page-node-id="Omx48FztaAyVP0GUzIF9o2">搭建曝光-互动-转化-成本达人评估体系并分层；PowerBI 交互式仪表盘筛选优质达人；基于 AARRR 模型定位投放流失环节。</div>
+            <div class="tl-title" data-page-node-id="CgSdK0IOqSJWOrWDmNkyzR">蓝色光标 · 投放数据运营</div>
+            <div class="tl-desc" data-page-node-id="Omx48FztaAyVP0GUzIF9o2">监控 ROAS、转化、订单、CPC 与成本等电商广告投放核心指标并计算 ROI，异常及时上报；采集投放数据输出日报周报；承担多渠道投放数据交叉核验，定位口径不一致问题并跟进修正。</div>
           </div>
-          <div class="tl-item" data-page-node-id="4IoluQvTSpdTvCoFhIfmRc">
-            <div class="tl-time" data-page-node-id="cH40BvEJIdWOlOuORS6co6">2019 – 2023</div>
-            <div class="tl-title" data-page-node-id="wSCzKFtvsRi2mh9ljsMjsj">青岛电影学院 · 戏剧影视文学 本科</div>
-            <div class="tl-desc" data-page-node-id="m0brjOiPKrdJAH01F6oy0q">文字与叙事训练，让分析报告既严谨又讲得清楚。</div>
+          <div class="tl-item" data-page-node-id="edu-1">
+            <div class="tl-time">2024.09 – 2025.10</div>
+            <div class="tl-title">马来亚大学 · 科学传播（理学院）硕士</div>
+            <div class="tl-desc">主修数理统计基础、传播与大数据、Python 数据分析、研究分析方法论。毕业论文用 Python 爬取 YouTube / TikTok / INS 视频数据，按关键词聚类统计播放 分析内容趋势与舆情倾向，发现「3C 数码回收与黄金提炼话题」热度明显且 UGC 占比高，撰写舆情分析报告。</div>
+          </div>
+          <div class="tl-item" data-page-node-id="edu-2">
+            <div class="tl-time">2019.09 – 2023.07</div>
+            <div class="tl-title">青岛电影学院 · 戏剧影视文学 本科</div>
+            <div class="tl-desc">文字与叙事训练，让分析报告既严谨又讲得清楚。</div>
+          </div>
+
           </div>
         </div>
       </div>

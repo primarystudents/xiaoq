@@ -327,6 +327,12 @@
   }
   .proj-meta .pe-label:first-child{color:var(--ink);font-weight:700;letter-spacing:.1em;}
 
+  .skill-list{display:flex;flex-direction:column;gap:14px;}
+  .skill-list .sk{display:flex;flex-direction:column;gap:3px;padding-bottom:13px;border-bottom:1px dashed var(--line);}
+  .skill-list .sk:last-child{border-bottom:none;padding-bottom:0;}
+  .skill-list .sk b{font-size:13.5px;font-weight:700;color:var(--accent-deep);letter-spacing:.02em;}
+  .skill-list .sk span{font-size:12.8px;color:var(--muted);line-height:1.68;}
+
   /* ─────── 结尾 Contact（简历 data-console） ─────── */
   .module-contact{padding:70px 0 84px;}
   .console-layout{
@@ -494,7 +500,7 @@
         </h1>
         <p class="pe-role">商业数据分析师 / 数据产品</p>
         <p class="pe-statement">让数据，成为<span class="pe-underlined">下一步的答案。</span></p>
-        <p class="pe-intro">1 年电商领域数据分析经验，覆盖大盘经营分析、品类与库存分析、达人种草投放分析，擅长把多平台数据变成可执行的经营决策。</p>
+        <p class="pe-intro">1.5 年数据分析经验，熟悉电商与营销领域，具备电商销售经营分析、品类与库存分析经验；熟练运用 Excel、SQL 与 BI 工具，可独立搭建自动化 BI 经营看板。</p>
         <div class="pe-actions">
           <a class="pe-button" href="#works"><span class="pe-label">探索项目</span><span class="pe-button-arrow">↗</span></a>
         </div>
@@ -569,11 +575,15 @@
         </h3>
         <div class="skill-group" data-page-node-id="XETQGEiCFab5jKO4uimsKR">
           <div class="sg-label" data-page-node-id="yNtO4swd6AqSEAtJnknXTU">数据工具</div>
-          <div class="chips" data-page-node-id="uVH7kGxMFHWtg6B2Bss9wN"><span data-page-node-id="iW4YGlrUcG3YkhVpAC1i3y">SQL</span><span data-page-node-id="c4azo8YqPCbjZ4Zm6tETMS">Python</span><span data-page-node-id="leMiH7BQbiCgW7RbLgDGuU">Tableau</span><span data-page-node-id="Uh7mKCCbocCcf7miBUrLJb">PowerBI</span><span data-page-node-id="tzPEwGn23alVq3tfnEuumT">Excel</span></div>
+          <div class="skill-list">
+            <div class="sk"><b>Excel</b><span>数据透视表、VLOOKUP / SUMIFS 等函数、多表关联与条件统计、图表与报表模板；可独立完成经营数据汇总、勾稽校验与可视化输出。</span></div>
+            <div class="sk"><b>SQL</b><span>多表关联、聚合与子查询、窗口函数、去重与数据清洗；可从 ERP / 订单 / 营销库直接取数，统一口径并做金额交叉校验。</span></div>
+            <div class="sk"><b>BI 工具</b><span>Tableau / Power BI / FineBI：搭建可定时刷新的经营驾驶舱，配置多维筛选、下钻归因与异常预警，替代人工日报。</span></div>
+          </div>
         </div>
         <div class="skill-group" data-page-node-id="n5qbEHy22QT3hY80MvelCN">
           <div class="sg-label" data-page-node-id="GMwBzoMA47UGyEudphXAAK">分析方法</div>
-          <div class="chips" data-page-node-id="et0YKiXOPjDwgEQy78P56v"><span data-page-node-id="kITdBnL4mbWt0ESadyr3Zw">指标体系</span><span data-page-node-id="TugwECnpxs69Sp1TDcOzBF">归因分析</span><span data-page-node-id="EAVwRdkRub9TGkYAkGAzIx">异动分析</span><span data-page-node-id="O5mHR1BiHRm4F6AXZzniiA">经营分析</span><span data-page-node-id="FR9UO0GeEUOJvXFwmvQzUC">漏斗 / AARRR</span><span data-page-node-id="KssbX0X3a4eCJygcGE9oj1">A/B 实验</span><span data-page-node-id="MuJNHj0mGpilX1QxDF2FjO">UE 单位经济模型</span></div>
+          <div class="chips" data-page-node-id="et0YKiXOPjDwgEQy78P56v"><span data-page-node-id="kITdBnL4mbWt0ESadyr3Zw">指标体系</span><span data-page-node-id="TugwECnpxs69Sp1TDcOzBF">归因分析</span><span data-page-node-id="EAVwRdkRub9TGkYAkGAzIx">异动分析</span><span data-page-node-id="O5mHR1BiHRm4F6AXZzniiA">经营分析</span><span data-page-node-id="FR9UO0GeEUOJvXFwmvQzUC">漏斗 / AARRR</span></div>
         </div>
         <div class="skill-group" data-page-node-id="BG1pbgDVPrwYkLPQfbk2oA">
           <div class="sg-label" data-page-node-id="xunbqYBvXMAb615B6S4XoE">AI 提效</div>

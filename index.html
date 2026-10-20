@@ -524,6 +524,38 @@
     .work-card h3{font-size:19.5px;}
     .work-card p{font-size:14.5px;}
   }
+
+  /* ══════════════════════════════════════════
+     复刻简历模板的多层渐变光晕背景
+     用固定定位图层实现（iOS 不支持 background-attachment:fixed）
+     ══════════════════════════════════════════ */
+  html{background:#eef2f7;}
+  body{background:transparent;}
+  body::before{
+    content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background-color:#eef2f7;
+    background-image:
+      radial-gradient(78% 40% at -2% 25%,  #bfd0fa 0%, rgba(191,208,250,.55) 30%, rgba(214,226,250,.20) 62%, rgba(238,242,247,0) 88%),
+      radial-gradient(70% 34% at 2% 62%,   #dbe6fc 0%, rgba(219,230,252,.30) 42%, rgba(238,242,247,0) 78%),
+      radial-gradient(52% 30% at 60% 52%,  #f2e9d4 0%, rgba(242,233,212,.42) 40%, rgba(238,242,247,0) 76%),
+      radial-gradient(58% 34% at 99% 94%,  #f9cdf2 0%, rgba(249,205,242,.52) 34%, rgba(238,242,247,0) 76%),
+      radial-gradient(44% 30% at 101% 46%, #efe3f7 0%, rgba(239,227,247,.34) 44%, rgba(238,242,247,0) 78%);
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+  }
+  .hero{background:transparent;border-bottom-color:rgba(36,48,68,.10);}
+  #works{background:transparent;}
+  /* 卡片半透明磨砂，让光晕透出（对齐模板 card-material） */
+  .pe-portrait,
+  .about-card,
+  .work-card,
+  .pe-note,
+  .console-layout{
+    background:rgba(255,255,255,.82);
+    -webkit-backdrop-filter:blur(14px) saturate(1.04);
+    backdrop-filter:blur(14px) saturate(1.04);
+  }
+  .console-layout{background:rgba(255,255,255,.84);}
 </style>
 </head>
 <body data-page-node-id="vE8ajjrMteTmStH9ssgFFB">

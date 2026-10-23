@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="运动户外电商核心指标拆解下钻路径：GMV 拆到 SKU、库存拆到滞销与缺货、利润预测模型与三档情景。">
+<meta name="description" content="运动户外电商指标拆解下钻路径：GMV 拆到 SKU，库存单独拆到品类与 SKU，利润预测模型与三档情景。">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232b5aed'/%3E%3Crect x='14' y='34' width='8' height='16' rx='2' fill='%23fff' opacity='.85'/%3E%3Crect x='28' y='24' width='8' height='26' rx='2' fill='%23fff' opacity='.9'/%3E%3Crect x='42' y='14' width='8' height='36' rx='2' fill='%23ffd76a'/%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:title" content="运动户外电商指标拆解路径">
-<meta property="og:description" content="运动户外电商核心指标拆解下钻路径：GMV 拆到 SKU、库存拆到滞销与缺货、利润预测模型与三档情景。">
+<meta property="og:description" content="运动户外电商指标拆解下钻路径：GMV 拆到 SKU，库存单独拆到品类与 SKU，利润预测模型与三档情景。">
 <meta property="og:image" content="https://primarystudents.github.io/xiaoq/assets/preview-mindmap.jpg">
 <meta property="og:url" content="https://primarystudents.github.io/xiaoq/works/mindmap.html">
 
@@ -140,7 +140,7 @@
   .label-profit { background: linear-gradient(135deg, #059669, #10b981); }
   .label-bridge { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
 
-  /* ===== 树状思维导图与逐层卡片的完整样式 ===== */
+  /* ===== 树状思维导图 / 逐层卡片 / 交汇点 完整样式 ===== */
 
   /* Horizontal Tree Mindmap - 横向树状思维导图 */
   .htree-wrapper {
@@ -628,6 +628,7 @@
     .hnode.root { font-size: 0.82rem; padding: 7px 14px; }
     .layer-grid { grid-template-columns: 1fr; }
   }
+
 </style>
 </head>
 <body>
@@ -636,28 +637,28 @@
 
   <div class="global-header">
     <h1>运动户外电商指标拆解路径</h1>
-    <p>数据指标完整拆解体系 · GMV 与库存（问题线） → 定价与选品 → 利润预测（利润线）</p>
+    <p>两条独立的拆解线 · GMV（收入线：渠道 → 品类 → SKU） ‖ 库存（成本线：品类 → SKU → 滞销与缺货） → 定价与选品 → 利润预测</p>
   </div>
 
   <div class="toc">
     <div class="toc-item loss">
       <div class="toc-num">01</div>
-      <div class="toc-label">GMV 与库存拆解</div>
+      <div class="toc-label">GMV 拆解路径</div>
     </div>
     <div class="toc-item bridge">
-      <div class="toc-num">→</div>
-      <div class="toc-label">两条线交汇点</div>
+      <div class="toc-num">02</div>
+      <div class="toc-label">库存拆解路径</div>
     </div>
     <div class="toc-item profit">
-      <div class="toc-num">02</div>
+      <div class="toc-num">03</div>
       <div class="toc-label">利润预测拆解</div>
     </div>
   </div>
 
-  <!-- ========== PART 01 ========== -->
+  <!-- ==================== PART 01 · GMV 拆解 ==================== -->
   <div>
     <span class="part-label label-loss">PART 01</span>
-    <h2>GMV 与库存拆解 · 项目下钻路径（运动户外电商）</h2>
+    <h2>GMV 拆解路径 · 收入线</h2>
 
     <section>
       <h2>一、树状思维导图</h2>
@@ -665,7 +666,7 @@
         <div class="htree">
 
           <div class="hlevel lvl-root">
-            <div class="hnode root">增长乏力 + 库存压钱</div>
+            <div class="hnode root">GMV 862.4 万</div>
           </div>
 
           <div class="hlevel lvl-1">
@@ -679,42 +680,45 @@
 
           <div class="hlevel lvl-2">
             <div class="htree-connector"></div>
-            <div class="hnode l2">期末库存金额</div>
+            <div class="hnode l2">订单量 × 客单价</div>
             <div class="htree-sub">
               <div class="hsub-line"></div>
-              <div class="hnode-sub muted">期末库存件数</div>
+              <div class="hnode-sub muted">39,702 件</div>
               <div class="hsub-line"></div>
-              <div class="hnode-sub muted">单位成本价</div>
+              <div class="hnode-sub muted">217.2 元</div>
             </div>
           </div>
 
           <div class="hlevel lvl-3">
             <div class="htree-connector"></div>
             <div class="hnode-group">
-              <div class="hnode l3 highlight">爆款（覆盖 &lt; 0.5 月）</div>
-              <div class="hnode l3 highlight">常规（覆盖 1.0–1.3 月）</div>
-              <div class="hnode l3">滞销（覆盖 &gt; 1.3 月）</div>
+              <div class="hnode l3 highlight">抖音 27.8%</div>
+              <div class="hnode l3 highlight">天猫 23.8%</div>
+              <div class="hnode l3">京东 22.6%</div>
+              <div class="hnode l3">拼多多 21.3%</div>
+              <div class="hnode l3 muted">微信小店 4.5%</div>
             </div>
           </div>
 
           <div class="hlevel lvl-4">
             <div class="htree-connector"></div>
             <div class="hnode-group">
-              <div class="hnode l4">抖音</div>
-              <div class="hnode l4">天猫</div>
-              <div class="hnode l4">京东</div>
-              <div class="hnode l4 highlight">拼多多</div>
-              <div class="hnode l4">微信小店</div>
+              <div class="hnode l4">冲锋衣</div>
+              <div class="hnode l4">登山鞋</div>
+              <div class="hnode l4">露营帐篷</div>
+              <div class="hnode l4">登山帽</div>
+              <div class="hnode l4">户外背包</div>
             </div>
           </div>
 
           <div class="hlevel lvl-5">
             <div class="htree-connector"></div>
             <div class="hnode-group">
-              <div class="hnode l5">曝光</div>
-              <div class="hnode l5 danger">点击↓</div>
-              <div class="hnode l5">加购</div>
-              <div class="hnode l5">支付完成</div>
+              <div class="hnode l5">基础冲锋衣 269</div>
+              <div class="hnode l5">高帮登山鞋 249</div>
+              <div class="hnode l5">双人速开帐篷 239</div>
+              <div class="hnode l5">速干鸭舌帽 39</div>
+              <div class="hnode l5">轻量化冲锋包 129</div>
             </div>
           </div>
 
@@ -725,7 +729,6 @@
               <div class="hnode l6">主图与详情 ★★★★</div>
               <div class="hnode l6">评价与内容 ★★★★</div>
               <div class="hnode l6">广告出价 ★★★</div>
-              <div class="hnode l6">库存可售深度 ★★★</div>
               <div class="hnode l6">发货时效 ★★</div>
             </div>
           </div>
@@ -734,7 +737,7 @@
             <div class="htree-connector"></div>
             <div class="hnode-group col">
               <div class="hnode lv">价格带测试 & 优惠力度 A/B 实验</div>
-              <div class="hnode ll">选品组合 + 备货分层 + UE 模型</div>
+              <div class="hnode ll">选品组合 + 定价策略</div>
             </div>
           </div>
 
@@ -756,148 +759,254 @@
 
         <div class="layer-card">
           <span class="layer-badge badge-2">第2层</span>
-          <h4>库存金额拆解</h4>
-          <div class="formula">Σ[(期末库存件数 × 单位成本价)]</div>
-          <div class="action">动作：按 SKU 维度拆解期末库存金额分布</div>
-          <div class="finding">12 月 1,419.3 万，压在 30 个 SKU 上</div>
+          <h4>订单量 与 客单价</h4>
+          <div class="formula">订单量 = 各渠道订单件数之和<br>客单价 = GMV ÷ 订单量</div>
+          <div class="action">动作：拆订单量与客单价各自的贡献，判断增长靠量还是靠价</div>
+          <div class="finding">1 月订单 +12.6%、客单价 -0.5% —— 增长靠量不靠价</div>
         </div>
 
         <div class="layer-card">
           <span class="layer-badge badge-3">第3层</span>
-          <h4>备货角色下钻</h4>
-          <div class="formula">爆款 + 常规 + 滞销（三档水位）</div>
-          <div class="action">动作：按销量与周转天数给每个 SKU 打备货角色标签</div>
-          <div class="finding">12 月 7 个爆款 + 6 个滞销，两头同时出问题</div>
+          <h4>渠道维度拆解</h4>
+          <div class="formula">抖音 + 天猫 + 京东 + 拼多多 + 微信小店</div>
+          <div class="action">动作：按渠道拆 GMV 占比、投放 ROI、客单价、CAC</div>
+          <div class="finding">抖音 GMV 第一但 ROI 最低（9.8 vs 天猫 11.2）</div>
         </div>
 
         <div class="layer-card">
           <span class="layer-badge badge-4">第4层</span>
-          <h4>渠道维度拆解</h4>
-          <div class="formula">抖音 + 天猫 + 京东 + 拼多多 + 微信小店</div>
-          <div class="action">动作：按渠道拆解 GMV、投放 ROI 与转化率构成</div>
-          <div class="finding">抖音 ROI 仅 9.6，预算被摊薄</div>
+          <h4>品类维度拆解</h4>
+          <div class="formula">冲锋衣 + 登山鞋 + 露营帐篷 + 登山帽 + 户外背包</div>
+          <div class="action">动作：按品类拆 GMV、客单价、毛利率、毛利额</div>
+          <div class="finding">冲锋衣毛利占 37.3%，帐篷毛利率最低</div>
         </div>
 
         <div class="layer-card">
           <span class="layer-badge badge-5">第5层</span>
-          <h4>五步转化漏斗</h4>
-          <div class="formula">曝光 → 点击 → 加购 → 下单 → 支付完成</div>
-          <div class="action">动作：搭建全店五环节漏斗，对比逐月变化</div>
-          <div class="finding">全链路 0.798%，量够但分配不均</div>
+          <h4>SKU 维度拆解</h4>
+          <div class="formula">30 个 SKU（5 品类 × 平均 6 个）</div>
+          <div class="action">动作：拆到单品，定位贡献最高与最低的具体商品</div>
+          <div class="finding">Top 10 SKU 占 GMV 54.1%，无单品依赖</div>
         </div>
 
         <div class="layer-card">
           <span class="layer-badge badge-6">第6层</span>
           <h4>转化率影响因素</h4>
-          <div class="formula">价格 + 主图 + 评价 + 出价 + 库存 + 时效</div>
-          <div class="action">动作：多维度逐一排查抖音转化率偏低的原因</div>
-          <div class="finding">价格带与商品详情缺乏竞争力是核心原因</div>
+          <div class="formula">价格带 + 主图 + 评价 + 出价 + 时效</div>
+          <div class="action">动作：多维度逐一排查抖音点击率偏低的原因</div>
+          <div class="finding">曝光最大但点击率最低 —— 价格带与商品详情是核心原因</div>
         </div>
 
         <div class="layer-card">
           <span class="layer-badge badge-verify">验证层</span>
           <h4>价格带测试 & 优惠力度 A/B</h4>
           <div class="formula">三档测试 → 锁定区间 → 对照实验</div>
-          <div class="action">动作：9.9 元引流款 / 129 元主推款 / 399 元利润款三档并行测试 + 21 天 A/B</div>
+          <div class="action">动作：39 元配件引流款 / 269 元冲锋衣主推款 / 429 元高配款三档并行测试 + 21 天 A/B</div>
           <div class="finding">验证"低引流 + 高利润"的组合优于全店同价</div>
         </div>
 
         <div class="layer-card">
           <span class="layer-badge badge-land">落地层</span>
-          <h4>选品组合 + 备货分层</h4>
-          <div class="formula">选品组合 + 备货分层 + UE 模型</div>
-          <div class="action">动作：落地策略，支撑投放与库存决策</div>
-          <div class="finding">爆款补货、滞销清仓，库存资金占用率 -12.8%</div>
+          <h4>选品组合 + 定价策略</h4>
+          <div class="formula">选品组合 + 价格带策略 + UE 模型</div>
+          <div class="action">动作：落地策略，支撑投放与选品决策</div>
+          <div class="finding">抖音 GMV +56.0%，全店 GMV +12.0%</div>
         </div>
 
       </div>
     </section>
+  </div>
+
+  <!-- ==================== PART 02 · 库存拆解 ==================== -->
+  <div>
+    <span class="part-label label-bridge">PART 02</span>
+    <h2>库存拆解路径 · 成本线（与 GMV 分开的一条线）</h2>
 
     <section>
-      <h2>三、电商转化率影响因素</h2>
-      <div class="factor-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>因素</th>
-              <th>说明</th>
-              <th>影响程度</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>价格带竞争力</strong></td>
-              <td>与同品类竞品的价格带与优惠力度对比</td>
-              <td><span class="stars">★★★★★</span> 最核心</td>
-            </tr>
-            <tr>
-              <td>主图与详情</td>
-              <td>首图点击力、详情页信息完整度与场景感</td>
-              <td><span class="stars">★★★★</span> 较重要</td>
-            </tr>
-            <tr>
-              <td>评价与内容</td>
-              <td>评价数量、买家秀与达人内容背书</td>
-              <td><span class="stars">★★★★</span> 较重要</td>
-            </tr>
-            <tr>
-              <td>广告出价</td>
-              <td>竞价关键词出价与人群包精准度</td>
-              <td><span class="stars">★★★</span> 中等</td>
-            </tr>
-            <tr>
-              <td>库存可售深度</td>
-              <td>备货覆盖不足会直接断货，损失自然流量</td>
-              <td><span class="stars">★★★</span> 中等</td>
-            </tr>
-            <tr>
-              <td>发货时效</td>
-              <td>现货速发 vs 预售，影响下单决策</td>
-              <td><span class="stars">★★</span> 次要</td>
-            </tr>
-          </tbody>
-        </table>
+      <h2>一、树状思维导图</h2>
+      <div class="htree-wrapper">
+        <div class="htree">
+
+          <div class="hlevel lvl-root">
+            <div class="hnode root">库存资金占用率高</div>
+          </div>
+
+          <div class="hlevel lvl-1">
+            <div class="htree-connector"></div>
+            <div class="hnode l1">期末库存金额</div>
+            <div class="htree-sub">
+              <div class="hsub-line"></div>
+              <div class="hnode-sub muted">期末库存件数</div>
+              <div class="hsub-line"></div>
+              <div class="hnode-sub muted">单位成本价</div>
+            </div>
+          </div>
+
+          <div class="hlevel lvl-2">
+            <div class="htree-connector"></div>
+            <div class="hnode l2">备货覆盖月数</div>
+            <div class="htree-sub">
+              <div class="hsub-line"></div>
+              <div class="hnode-sub muted">期末库存 ÷ 月销量</div>
+            </div>
+          </div>
+
+          <div class="hlevel lvl-3">
+            <div class="htree-connector"></div>
+            <div class="hnode-group">
+              <div class="hnode l3 highlight">爆款（覆盖 &lt; 0.6 月）</div>
+              <div class="hnode l3">常规（覆盖 ~1.0 月）</div>
+              <div class="hnode l3 danger">滞销（覆盖 &gt; 1.05 月）</div>
+            </div>
+          </div>
+
+          <div class="hlevel lvl-4">
+            <div class="htree-connector"></div>
+            <div class="hnode-group">
+              <div class="hnode l4 highlight">冲锋衣</div>
+              <div class="hnode l4">登山鞋</div>
+              <div class="hnode l4">露营帐篷</div>
+              <div class="hnode l4 muted">其余 2 个品类</div>
+            </div>
+          </div>
+
+          <div class="hlevel lvl-5">
+            <div class="htree-connector"></div>
+            <div class="hnode-group">
+              <div class="hnode l5 highlight">冲锋衣棉服</div>
+              <div class="hnode l5 highlight">连体冲锋衣</div>
+              <div class="hnode l5 highlight">冲锋衣加长款</div>
+              <div class="hnode l5 danger">三合一冲锋衣</div>
+              <div class="hnode l5 danger">徒步鞋低帮</div>
+            </div>
+          </div>
+
+          <div class="hlevel lvl-6">
+            <div class="htree-connector"></div>
+            <div class="hnode-group col">
+              <div class="hnode l6 danger">库龄超 100 天 ★★★★★</div>
+              <div class="hnode l6">备货覆盖过长 ★★★★</div>
+              <div class="hnode l6">季节性已过 ★★★</div>
+              <div class="hnode l6">同款新品替代 ★★</div>
+            </div>
+          </div>
+
+          <div class="hlevel lvl-end">
+            <div class="htree-connector"></div>
+            <div class="hnode-group col">
+              <div class="hnode lv">备货水位调整 A/B + 清仓价测试</div>
+              <div class="hnode ll">三档备货策略 + 补货建议模型</div>
+            </div>
+          </div>
+
+        </div>
       </div>
-      <p style="margin-top: 0.75rem; font-size: 0.85rem; color: var(--muted);">
-        注：运动户外是<b>高决策成本品类</b> —— 用户比的是「这套装备值不值这个价」，
-        所以价格带不是唯一变量，但它是<b>流量进来后能不能接住的第一道闸</b>。
-        主图与详情、评价内容紧随其后，这三项共同决定了点击→加购这一环的转化效率。
-      </p>
+    </section>
+
+    <section>
+      <h2>二、逐层详细拆解</h2>
+      <div class="layer-grid">
+
+        <div class="layer-card">
+          <span class="layer-badge badge-1">第1层</span>
+          <h4>库存金额拆解</h4>
+          <div class="formula">Σ[(期末库存件数 × 单位成本价)]</div>
+          <div class="action">动作：按 SKU 维度汇总期末库存金额，算出总占用</div>
+          <div class="finding">12 月 830.3 万，周转 46.5 天</div>
+        </div>
+
+        <div class="layer-card">
+          <span class="layer-badge badge-2">第2层</span>
+          <h4>备货覆盖月数</h4>
+          <div class="formula">期末库存件数 ÷ 本月销量件数</div>
+          <div class="action">动作：给每个 SKU 算备货覆盖，判断压货还是缺货</div>
+          <div class="finding">覆盖 &gt; 1.05 月即压货，&lt; 0.6 月即缺货风险</div>
+        </div>
+
+        <div class="layer-card">
+          <span class="layer-badge badge-3">第3层</span>
+          <h4>三档备货角色</h4>
+          <div class="formula">爆款 + 常规 + 滞销</div>
+          <div class="action">动作：按销量与库龄给 SKU 打备货角色标签</div>
+          <div class="finding">12 月 6 个滞销、7 个缺货风险，两头同时出问题</div>
+        </div>
+
+        <div class="layer-card">
+          <span class="layer-badge badge-4">第4层</span>
+          <h4>品类维度：压在哪 5 个品类</h4>
+          <div class="formula">冲锋衣 + 登山鞋 + 露营帐篷 + 其余 2 个品类</div>
+          <div class="action">动作：按品类汇总库存金额、动销率、周转天数</div>
+          <div class="finding">冲锋衣压 290.1 万（占 34.9%），同时滞销 3 个</div>
+        </div>
+
+        <div class="layer-card">
+          <span class="layer-badge badge-5">第5层</span>
+          <h4>SKU 维度：品类里具体哪个商品</h4>
+          <div class="formula">30 个 SKU 逐个拆</div>
+          <div class="action">动作：在品类内按 SKU 定位滞销与缺货的具体商品</div>
+          <div class="finding">6 个滞销压 386.9 万，占全店库存 46.6%</div>
+        </div>
+
+        <div class="layer-card">
+          <span class="layer-badge badge-6">第6层</span>
+          <h4>滞销成因</h4>
+          <div class="formula">库龄 + 覆盖 + 季节性 + 新品替代</div>
+          <div class="action">动作：逐个核查滞销 SKU 的滞销原因</div>
+          <div class="finding">冲锋衣棉服 库龄 142 天、覆盖 2.26 月 —— 货买多了，不是卖不动</div>
+        </div>
+
+        <div class="layer-card">
+          <span class="layer-badge badge-verify">验证层</span>
+          <h4>备货水位调整 & 清仓价测试</h4>
+          <div class="formula">滞销档 → 常规档 / 常规档 → 爆款档</div>
+          <div class="action">动作：滞销 SKU 降水位 + 爆款 SKU 提水位，两端同时调 + 清仓价验证</div>
+          <div class="finding">验证"压缩补货 + 提备货"能同时降占用与防断货</div>
+        </div>
+
+        <div class="layer-card">
+          <span class="layer-badge badge-land">落地层</span>
+          <h4>三档备货策略 + 补货建议</h4>
+          <div class="formula">三档备货策略 + 补货建议模型</div>
+          <div class="action">动作：落地策略，支撑备货与清仓决策</div>
+          <div class="finding">2 月占用率 43.5%，较 12 月 -12.8%；滞销 6 → 1 个</div>
+        </div>
+
+      </div>
     </section>
   </div>
 
-  <!-- ========== CONNECTION ========== -->
+  <!-- ==================== CONNECTION ==================== -->
   <div class="bridge-section">
     <span class="part-label label-bridge">CONNECTION</span>
     <h2>两条线的交汇点 · 定价与选品</h2>
 
     <div class="bridge-diagram">
-      GMV 与库存 <span class="arrow">→</span> 下钻找原因 <span class="arrow">→</span> <span class="key">价格带与选品</span> <span class="arrow">←</span> 往上拆 <span class="arrow">←</span> 利润预测
+      GMV 拆解 <span class="arrow">→</span> 找到卖得动的品 <span class="arrow">→</span> <span class="key">定价与选品</span> <span class="arrow">←</span> 定备货水位 <span class="arrow">←</span> 库存拆解
       <br>
       <span style="font-size:0.85rem; color:#6366f1;">
-        调整「价格带与选品结构」一箭双雕：既拉高转化与动销（减少压货），又提升毛利与利润（增加收益）
+        用「GMV 线」决定卖什么、用多少钱推，用「库存线」决定每个品备多少货 —— 两条线在「定价与选品」这一处合并
       </span>
     </div>
 
     <div class="bridge-points">
       <div class="bridge-point">
         <h4>共享指标</h4>
-        <p>客单价、订单量、毛利额、期末库存金额、单位成本价——两条线共用的底层数据</p>
+        <p>客单价、订单量、毛利额、期末库存金额、备货覆盖月数、单位成本价 —— 两条线共用的底层数据</p>
       </div>
       <div class="bridge-point">
         <h4>固定变量</h4>
-        <p>商品成本率、平台佣金率、履约与仓储费率——资源端常量，不随运营策略变化</p>
+        <p>商品成本率、平台佣金率、履约与仓储费率 —— 资源端常量，不随运营策略变化</p>
       </div>
       <div class="bridge-point">
         <h4>核心可控变量</h4>
-        <p>价格带与选品结构——唯一同时影响转化动销和毛利率的变量，是优化的核心抓手</p>
+        <p>定价与选品结构 —— 唯一同时影响 GMV 转化与库存占用的变量，是优化的核心抓手</p>
       </div>
     </div>
   </div>
 
-  <!-- ========== PART 02 ========== -->
+  <!-- ==================== PART 03 · 利润预测 ==================== -->
   <div class="profit-section">
-    <span class="part-label label-profit">PART 02</span>
+    <span class="part-label label-profit">PART 03</span>
     <h2>利润预测拆解 · 从利润往下算到底</h2>
 
     <section>

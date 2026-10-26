@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CASE 02 · 运动户外电商经营与库存分析 | 小Q 数据分析作品集</title>
+<meta name="description" content="运动户外平价品牌 11→12 月经营分析：5 平台 30 SKU 的 GMV、漏斗、库存与人群画像四层拆解，输出人群包与备货动作。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234b46c9'/%3E%3Crect x='14' y='34' width='8' height='16' rx='2' fill='%23fff' opacity='.85'/%3E%3Crect x='28' y='24' width='8' height='26' rx='2' fill='%23fff' opacity='.9'/%3E%3Crect x='42' y='14' width='8' height='36' rx='2' fill='%23ffd76a'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#f5f6fb; --panel:#fff;
+  --ink:#141926; --ink2:#3a4252; --muted:#78818f; --faint:#a3abb9;
+  --line:#e5e8f1; --line2:#eef0f7;
+  --acc:#4b46c9; --acc-d:#332fa0; --acc-soft:#edecff;
+  --teal:#0d9b93; --teal-soft:#e6f7f5;
+  --warm:#b8721c; --warm-soft:#fdf3e3;
+  --bad:#bf3b2c; --bad-soft:#fdece9;
+  --good:#0f7d5d; --good-soft:#e7f5ef;
+  --up:#c2382b; --up-soft:#fdece9;   /* 环比上升 */
+  --dn:#0b7a52; --dn-soft:#e7f5ef;   /* 环比下降 */
+  --serif:"Songti SC","STSong","Noto Serif SC",Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC","Hiragino Sans GB",sans-serif;
+  --bar:58px;
+  --r:14px;
+  --sh:0 1px 2px rgba(20,25,38,.04),0 6px 20px rgba(20,25,38,.05);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.62;
+  -webkit-font-smoothing:antialiased;overflow:hidden}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+
+/* 顶栏 */
+.topbar{position:fixed;inset:0 0 auto 0;height:var(--bar);z-index:60;display:flex;align-items:center;gap:16px;
+  padding:0 20px;background:rgba(255,255,255,.88);backdrop-filter:blur(16px) saturate(1.3);
+  -webkit-backdrop-filter:blur(16px) saturate(1.3);border-bottom:1px solid var(--line)}
+.tb-back{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--muted);
+  padding:7px 11px;border-radius:8px;transition:.16s}
+.tb-back:hover{background:#f1f4fa;color:var(--ink)}
+.tb-sep{width:1px;height:16px;background:var(--line)}
+.tb-case{display:flex;align-items:center;gap:9px;min-width:0}
+.tb-tag{font-size:9.5px;font-weight:800;letter-spacing:.12em;color:var(--acc);background:var(--acc-soft);
+  padding:3px 7px;border-radius:5px;white-space:nowrap}
+.tb-title{font-size:13.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.seg{margin-left:auto;display:flex;gap:2px;background:#edf0f7;border-radius:999px;padding:3px;flex-shrink:0}
+.seg button{border:0;background:none;cursor:pointer;display:inline-flex;align-items:center;gap:7px;
+  font-size:12.5px;font-weight:700;color:var(--muted);padding:7px 15px;border-radius:999px;transition:.16s;white-space:nowrap}
+.seg button:hover{color:var(--ink2)}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(20,25,38,.14)}
+.seg em{font-style:normal;font-size:9px;font-weight:800;letter-spacing:.08em;color:var(--acc);
+  background:var(--acc-soft);padding:2px 5px;border-radius:4px}
+
+/* 侧栏 */
+.side{position:fixed;top:var(--bar);left:0;bottom:0;width:232px;z-index:40;display:flex;flex-direction:column;
+  padding:24px 14px 16px;border-right:1px solid var(--line);
+  background:linear-gradient(180deg,#fbfbfe 0%,#f6f6fd 100%)}
+.sbrand{padding:0 10px 18px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.sb-kick{display:block;font-size:9.5px;font-weight:800;letter-spacing:.18em;color:var(--acc);margin-bottom:7px}
+.sb-title{display:block;font-family:var(--serif);font-size:19px;font-weight:700;line-height:1.35;letter-spacing:-.01em}
+.sb-meta{display:block;margin-top:7px;font-size:11.5px;color:var(--faint)}
+.snav{display:flex;flex-direction:column;gap:2px;flex:1;overflow-y:auto;padding-bottom:10px}
+.snav::-webkit-scrollbar{width:0}
+.snav a{display:flex;align-items:center;gap:10px;padding:8px 11px;border-radius:9px;
+  font-size:13.2px;font-weight:600;color:var(--ink2);transition:.15s;position:relative}
+.snav a .i{font-size:10px;font-weight:800;color:var(--faint);font-variant-numeric:tabular-nums;letter-spacing:.04em}
+.snav a:hover{background:#fff;color:var(--ink)}
+.snav a.on{background:#fff;color:var(--acc-d);box-shadow:var(--sh),inset 0 0 0 1px var(--line)}
+.snav a.on .i{color:var(--acc)}
+.snav a.on::before{content:'';position:absolute;left:-14px;top:50%;transform:translateY(-50%);
+  width:3px;height:16px;border-radius:0 3px 3px 0;background:var(--acc)}
+.sfoot{padding-top:14px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:9px}
+.slink{display:flex;align-items:center;gap:7px;font-size:11.8px;font-weight:600;color:var(--muted);
+  padding:6px 8px;border-radius:7px;transition:.15s}
+.slink:hover{background:#fff;color:var(--acc)}
+.slink.on{background:#fff;color:var(--acc-d);box-shadow:inset 0 0 0 1px var(--line)}
+/* 子作品目录条目 */
+.snav a.sub{margin-top:11px;padding-top:13px;border-radius:0 0 9px 9px}
+.snav a.sub::after{content:'';position:absolute;left:11px;right:11px;top:3px;height:1px;background:var(--line)}
+.snav a.sub em{font-style:normal;font-size:8.6px;font-weight:800;letter-spacing:.09em;color:var(--acc);
+  background:var(--acc-soft);border-radius:4px;padding:2px 5px;margin-left:auto;line-height:1.1}
+.snav a.sub.on em{background:var(--acc);color:#fff}
+.sleg{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:1px 8px 9px;font-size:10.2px;color:var(--faint);letter-spacing:.02em}
+.sleg b{font-weight:800}
+.sleg b.u{color:var(--up)} .sleg b.d{color:var(--dn)}
+.s-page{display:flex;align-items:baseline;gap:4px;padding:0 8px;font-size:10.5px;color:var(--faint);
+  letter-spacing:.06em;font-variant-numeric:tabular-nums}
+.s-page b{font-size:14px;font-weight:800;color:var(--ink2)}
+
+/* 主区 */
+main{margin-left:232px;padding-top:var(--bar);height:100vh;overflow-y:auto;overflow-x:hidden;scroll-behavior:smooth}
+main::-webkit-scrollbar{width:9px}
+main::-webkit-scrollbar-thumb{background:#d8dee9;border-radius:9px;border:3px solid var(--bg)}
+.page{display:none}
+.page.on{display:block;animation:pin .34s cubic-bezier(.22,.7,.3,1) both}
+@keyframes pin{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.pi{max-width:1040px;margin:0 auto;padding:38px 46px 78px;min-height:calc(100vh - var(--bar));
+  display:flex;flex-direction:column;justify-content:center}
+
+.prow{display:flex;align-items:center;gap:11px;margin-bottom:16px}
+.pnum{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:20px;padding:0 6px;
+  background:var(--acc);color:#fff;border-radius:6px;font-size:10.5px;font-weight:800;letter-spacing:.04em}
+.pkick{font-size:10.5px;font-weight:800;letter-spacing:.16em;color:var(--muted);text-transform:uppercase}
+.prule{flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.phead h1{font-family:var(--serif);font-size:30px;font-weight:700;line-height:1.34;letter-spacing:-.02em;margin:0 0 12px;max-width:none;text-wrap:balance}
+.plead{font-size:14px;color:var(--muted);line-height:1.78;max-width:74ch;margin:0 0 22px}
+.plead b{color:var(--ink2);font-weight:700}
+
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:18px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 12px;box-shadow:var(--sh)}
+.kpi .kv{font-size:19px;font-weight:800;letter-spacing:-.02em;line-height:1.25;font-variant-numeric:tabular-nums}
+.kpi .kv span{font-size:11px;font-weight:700;color:var(--muted);margin-left:2px}
+.kpi .kl{margin-top:5px;font-size:11px;color:var(--muted)}
+.kpi .kd{margin-top:2px;font-size:10.5px;font-weight:800;color:var(--up)}
+.kpi .kd.dn{color:var(--dn)}
+
+.c3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.cc{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:15px 16px;box-shadow:var(--sh);
+  border-top:2px solid var(--acc)}
+.cc:nth-child(2){border-top-color:var(--warm)}
+.cc:nth-child(3){border-top-color:var(--teal)}
+.cc .cn{font-size:9.5px;font-weight:800;letter-spacing:.14em;color:var(--faint)}
+.cc h4{margin:5px 0 6px;font-size:14px;font-weight:800;line-height:1.45}
+.cc p{margin:0;font-size:12.3px;color:var(--ink2);line-height:1.68}
+.cc p b{color:var(--ink)}
+.cc p b.up{color:var(--up)}
+.cc p b.down{color:var(--dn)}
+
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:15px 18px;box-shadow:var(--sh)}
+.ch{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+.ch h3{margin:0;font-size:13.5px;font-weight:800}
+.ch .cbar{width:3px;height:13px;border-radius:2px;background:var(--acc)}
+.ch .cnote{margin-left:auto;font-size:11px;color:var(--faint)}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:12.8px}
+th{text-align:left;font-size:10.3px;font-weight:800;letter-spacing:.06em;color:var(--muted);
+  padding:0 9px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:7px 9px;border-bottom:1px solid var(--line2);color:var(--ink2)}
+tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:#fafafe}
+td.n{font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink);white-space:nowrap}
+td.nm{font-weight:700;color:var(--ink);white-space:nowrap}
+th.r,td.r{text-align:right}
+.hl{background:linear-gradient(transparent 62%,#ffe9a8 62%);font-weight:700;color:var(--ink)}
+.up{color:var(--up);font-weight:800}
+.down{color:var(--dn);font-weight:800}
+.alrt{color:var(--warm);font-weight:800}
+.bdg{display:inline-block;font-size:10.3px;font-weight:800;padding:2px 7px;border-radius:999px;white-space:nowrap}
+.bdg.a{background:var(--acc-soft);color:var(--acc-d)}
+.bdg.g{background:var(--good-soft);color:var(--good)}
+.bdg.w{background:var(--warm-soft);color:var(--warm)}
+.bdg.b{background:var(--bad-soft);color:var(--bad)}
+.bdg.m{background:#f0f2f7;color:var(--muted)}
+.note{font-size:11px;color:var(--faint);line-height:1.62;margin-top:9px}
+.note b{color:var(--ink2)}
+
+.bars{display:flex;flex-direction:column;gap:7px}
+.brow{display:grid;grid-template-columns:84px 1fr 74px;align-items:center;gap:10px}
+.brow .bl{font-size:11.8px;color:var(--ink2);text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brow .bt{height:17px;border-radius:4px;background:var(--line2);overflow:hidden}
+.brow .bt i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,#7d76e8,#4b46c9)}
+.brow .bt i.alt{background:linear-gradient(90deg,#7ba1ea,#3f6fd0)}
+.brow .bt i.warn{background:linear-gradient(90deg,#e0a95c,#b8721c)}
+.bt i.pos{background:linear-gradient(90deg,#e8a79e,#c2382b)}
+.bt i.neg{background:linear-gradient(90deg,#a9d8c6,#0b7a52)}
+.brow .bv{font-size:11.6px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums;text-align:right}
+.brow.me .bl{color:var(--acc-d);font-weight:800}
+.brow.me .bv{color:var(--acc-d)}
+
+/* 漏斗 */
+.fun{display:flex;flex-direction:column}
+.fstep{display:grid;grid-template-columns:50px 1fr 132px;align-items:center;gap:12px}
+.fstep .fl{font-size:11.5px;font-weight:700;color:var(--ink2);text-align:right}
+.fstep .fb{height:28px;border-radius:5px;display:flex;align-items:center;padding:0 11px;color:#fff;
+  font-size:11.5px;font-weight:800;font-variant-numeric:tabular-nums;min-width:92px}
+.fstep .fb.t1{background:linear-gradient(90deg,#4b46c9,#8a85ee)}
+.fstep .fb.t2{background:linear-gradient(90deg,#3f6fd0,#7ba1ea)}
+.fstep .fb.t3{background:linear-gradient(90deg,#2f8fb8,#5fb4d4)}
+.fstep .fb.t4{background:linear-gradient(90deg,#4a5578,#7b86a8)}
+.fstep .fb.t5{background:linear-gradient(90deg,#b8721c,#e0a95c)}
+.fstep .fv{font-size:11.4px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums}
+.fstep .fv em{display:block;font-style:normal;font-size:10px;font-weight:600;color:var(--faint);margin-top:1px}
+.farr{display:grid;grid-template-columns:50px 1fr 132px;gap:12px;height:20px;align-items:center}
+.farr span{grid-column:2;font-size:10px;font-weight:700;color:var(--faint)}
+.farr span b{color:var(--teal);font-weight:800}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid2.w64{grid-template-columns:1.25fr 1fr}
+.sub{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.sub h4{margin:0;font-size:12.8px;font-weight:800}
+.sub .snote{font-size:10.5px;color:var(--faint);margin-left:auto}
+
+/* 客群结论 */
+.persona{background:linear-gradient(150deg,#26215e,#4b46c9 58%,#0d9b93);color:#fff;border-radius:var(--r);
+  padding:14px 20px;display:flex;gap:20px;align-items:center;margin-bottom:12px}
+.persona .pk{font-size:9.5px;font-weight:800;letter-spacing:.16em;color:#c3c0ff;flex-shrink:0}
+.persona p{margin:0;font-size:13.2px;line-height:1.7;color:#ecebff}
+.persona p b{color:#ffd76a;font-weight:800}
+
+/* 首页封面语气（第 1 页放大字号，和内容页区分开） */
+#p-1 .phead h1{font-size:40px;line-height:1.26;letter-spacing:-.03em}
+#p-1 .plead{font-size:14.5px;max-width:70ch}
+#p-1 .kpi{padding:16px 14px}
+#p-1 .kpi .kv{font-size:26px}
+#p-1 .cc{padding:18px 19px}
+#p-1 .cc h4{font-size:15px}
+#p-1 .cc p{font-size:12.8px}
+@media (max-width:960px){#p-1 .phead h1{font-size:27px}#p-1 .kpi .kv{font-size:20px}}
+
+/* 频次 × 价格带 矩阵 */
+.mx{display:flex;flex-direction:column;gap:6px}
+.mxl{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:9px}
+.mxl span{font-size:10.2px;font-weight:700;color:var(--muted);display:inline-flex;align-items:center;gap:5px}
+.mxl i{width:9px;height:9px;border-radius:2px;display:inline-block}
+.mxr{display:grid;grid-template-columns:62px 1fr 118px;gap:11px;align-items:center}
+.mxr .mk{font-size:11.5px;font-weight:700;color:var(--ink2);text-align:right;white-space:nowrap}
+.mxr .mb{display:flex;height:18px;border-radius:4px;overflow:hidden}
+.mxr .mb i{display:block;height:100%}
+.mxr .mv{font-size:10.8px;color:var(--muted)}
+.mxr .mv b{color:var(--acc-d);font-weight:800}
+
+/* 行动清单 */
+.act{display:grid;grid-template-columns:1fr;gap:0}
+.arow{display:grid;grid-template-columns:96px 1fr 108px;gap:12px;padding:10px 0;border-bottom:1px solid var(--line2);align-items:start}
+.arow:last-child{border-bottom:0}
+.arow .ab{font-size:11.5px;font-weight:800}
+.arow .ac{font-size:12px;color:var(--ink2);line-height:1.65}
+.arow .ac b{color:var(--ink)}
+.arow .av{font-size:12.5px;font-weight:800;text-align:right;font-variant-numeric:tabular-nums}
+.arow .av em{display:block;font-style:normal;font-size:10px;font-weight:600;color:var(--faint);margin-top:1px}
+
+.todo{display:flex;gap:9px;padding:9px 0;border-bottom:1px dashed var(--line)}
+.todo:last-child{border-bottom:0}
+.todo .tn{width:17px;height:17px;border-radius:5px;background:var(--acc-soft);color:var(--acc-d);
+  font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.todo p{margin:0;font-size:12px;color:var(--ink2);line-height:1.65}
+.todo p b{color:var(--ink)}
+
+/* 口径 */
+.kv2{display:grid;grid-template-columns:150px 1fr 128px;gap:0 14px}
+.kv2 .k{font-size:12.3px;font-weight:800;color:var(--ink);padding:9px 0;border-bottom:1px solid var(--line2)}
+.kv2 .d{font-size:12px;color:var(--ink2);padding:9px 0;border-bottom:1px solid var(--line2)}
+.kv2 .u{font-size:11.2px;color:var(--muted);padding:9px 0;border-bottom:1px solid var(--line2);text-align:right}
+.steps{display:flex;gap:8px;margin-bottom:12px}
+.stp{flex:1;background:#fff;border:1px solid var(--line);border-radius:11px;padding:12px 13px;box-shadow:var(--sh)}
+.stp .sn2{font-size:9.5px;font-weight:800;letter-spacing:.1em;color:var(--acc)}
+.stp b{display:block;font-size:12.8px;font-weight:800;margin-top:5px}
+.stp em{display:block;font-style:normal;font-size:11px;color:var(--muted);margin-top:4px;line-height:1.55}
+.bound{display:flex;flex-wrap:wrap;gap:7px}
+.pill{font-size:11.2px;font-weight:700;color:var(--ink2);background:#fff;border:1px solid var(--line);
+  border-radius:999px;padding:4px 11px}
+
+/* 翻页 */
+.pager{position:fixed;right:22px;bottom:18px;z-index:55;display:flex;align-items:center;gap:2px;
+  background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border:1px solid var(--line);
+  border-radius:999px;padding:4px;box-shadow:0 6px 22px rgba(20,25,38,.10)}
+.pager button{border:0;background:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;
+  padding:7px 12px;border-radius:999px;font-size:12px;font-weight:700;color:var(--ink2);transition:.15s}
+.pager button:hover:not(:disabled){background:#f1f4fa;color:var(--acc-d)}
+.pager button:disabled{opacity:.32;cursor:default}
+.pager .pgc{font-size:10.5px;font-weight:800;color:var(--faint);padding:0 8px;letter-spacing:.05em;
+  font-variant-numeric:tabular-nums;border-left:1px solid var(--line);border-right:1px solid var(--line)}
+.pager.off{display:none}
+/* 侧栏翻页 */
+.spg{display:flex;align-items:center;justify-content:space-between;gap:4px;padding:2px 2px 0}
+.spg button{width:26px;height:26px;border-radius:8px;border:1px solid var(--line);background:#fff;
+  color:var(--ink2);font-size:14px;font-weight:800;line-height:1;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:.15s;flex-shrink:0;padding:0}
+.spg button:hover:not(:disabled){background:var(--acc-soft);color:var(--acc-d);border-color:#d6dffb}
+.spg button:disabled{opacity:.3;cursor:default}
+@media (min-width:961px){.pager{display:none!important}}
+
+
+/* 嵌入 */
+.page.embed .emb{height:calc(100vh - var(--bar));display:flex;flex-direction:column;background:#fff}
+.emb-bar{display:flex;align-items:center;gap:10px;padding:0 18px;height:42px;flex-shrink:0;
+  border-bottom:1px solid var(--line);background:#fbfbfe;font-size:11.8px;color:var(--muted)}
+.emb-bar b{font-size:12.5px;font-weight:800;color:var(--ink)}
+.emb-bar .ebar{width:1px;height:13px;background:var(--line)}
+.emb-bar .ebdg{font-size:9.5px;font-weight:800;letter-spacing:.1em;color:var(--acc);background:var(--acc-soft);padding:2px 6px;border-radius:4px}
+.emb-bar a{margin-left:auto;font-size:11.8px;font-weight:700;color:var(--acc);
+  display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:7px;transition:.15s}
+.emb-bar a:hover{background:var(--acc-soft)}
+.emb iframe{flex:1;width:100%;border:0;display:block}
+
+
+/* 防横向溢出：网格/弹性子项允许收缩，宽表在卡片内滚动 */
+.card,.cc,.kpi,.dcard,.sc,.tkc,.fs,.stp,.persona,.rd,.cc h4,
+.grid2>*,.c3>*,.kpis>*,.dgrid>*,.sgrid>*,.trk>*,.flow>*{min-width:0}
+.tscroll{max-width:100%}
+html,body{max-width:100%}
+@media (max-width:960px){html,body{overflow-x:hidden}}
+
+@media (prefers-reduced-motion: reduce){.page.on{animation:none}}
+@media (max-width:1200px){.kpis{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:960px){
+  body{overflow:auto}
+  .topbar{padding:0 14px;gap:10px}
+  .tb-sep,.tb-case{display:none}
+  .side{position:sticky;top:var(--bar);width:auto;height:auto;bottom:auto;z-index:45;margin-top:0;
+    padding:10px 12px;border-right:0;border-bottom:1px solid var(--line);
+    background:rgba(250,251,254,.96);backdrop-filter:blur(10px)}
+  .sbrand,.sfoot{display:none}
+  .snav{flex-direction:row;gap:6px;overflow-x:auto;overflow-y:hidden;padding-bottom:2px}
+  .snav a{white-space:nowrap;padding:7px 12px;font-size:12.5px;background:#fff;border:1px solid var(--line)}
+  .snav a.on::before{display:none}
+  main{margin-left:0;padding-top:var(--bar);height:auto;overflow:visible}
+  .pi{padding:26px 18px 96px;min-height:0;display:block}
+  .phead h1{font-size:24px}
+  .c3,.grid2,.grid2.w64{grid-template-columns:1fr}
+  .steps{flex-direction:column}
+  .persona{flex-direction:column;align-items:flex-start;gap:8px}
+  .kv2{grid-template-columns:1fr 1fr}
+  .kv2 .u{display:none}
+  .page.embed .emb{height:calc(100vh - var(--bar) - 52px)}
+  .pager{right:12px;bottom:12px}
+}
+@media (max-width:600px){
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .brow{grid-template-columns:68px 1fr 62px}
+  .fstep,.farr{grid-template-columns:38px 1fr 100px}
+  .arow{grid-template-columns:1fr;gap:4px}
+  .arow .av{text-align:left}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="tb-back" href="index.html">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    作品集
+  </a>
+  <span class="tb-sep"></span>
+  <div class="tb-case"><span class="tb-tag">CASE 02</span><span class="tb-title">运动户外电商经营与库存分析</span></div>
+  <div class="seg" id="seg">
+    <button data-view="report" class="on">经营分析</button>
+    <button data-view="embed">指标拆解<em>子作品</em></button>
+  </div>
+</header>
+
+<aside class="side">
+  <div class="sbrand">
+    <span class="sb-kick">CASE 02 / 2025.11–12</span>
+    <span class="sb-title">运动户外电商<br>经营与库存</span>
+    <span class="sb-meta">5 平台 · 5 品类 · 30 SKU</span>
+  </div>
+  <nav class="snav" id="snav"></nav>
+  <div class="sfoot">
+    <div class="sleg"><b class="u">▲ 红＝上升</b><b class="d">▼ 绿＝下降</b></div>
+    <div class="spg">
+      <button data-pg="prev" title="上一页" aria-label="上一页">‹</button>
+      <span class="s-page"><b id="pnow">01</b> / 08</span>
+      <button data-pg="next" title="下一页" aria-label="下一页">›</button>
+    </div>
+  </div>
+</aside>
+
+<main id="stage">
+
+<!-- 01 概览 -->
+<section class="page on" data-p="1" id="p-1">
+  <div class="pi">
+    <div class="phead">
+      <div class="prow"><span class="pnum">01</span><span class="pkick">Overview · 概览</span><span class="prule"></span></div>
+      <h1>GMV 涨了 11.8%，利润反而少了 5.5 万</h1>
+      <p class="plead">运动户外平价品牌，5 个平台、30 个 SKU 的 11 → 12 月环比。收入、库存、人群三条线同时看，才看得清同一件事：<b>不是卖得少，是每一单剩下的钱更少</b> —— 86% 的增量集中在抖音一条腿，买来的流量把客单价和退货率一起拖坏了。</p>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><div class="kv">860.9<span>万</span></div><div class="kl">12 月 GMV</div><div class="kd">▲ +11.8%</div></div>
+      <div class="kpi"><div class="kv">46,788<span>件</span></div><div class="kl">订单量</div><div class="kd">▲ +13.4%</div></div>
+      <div class="kpi"><div class="kv">184.0<span>元</span></div><div class="kl">客单价</div><div class="kd dn">▼ -1.4%</div></div>
+      <div class="kpi"><div class="kv">121.6<span>万</span></div><div class="kl">经营净利润</div><div class="kd dn">▼ -4.3%</div></div>
+      <div class="kpi"><div class="kv">15.8<span>%</span></div><div class="kl">退货率</div><div class="kd">▲ +3.7pp</div></div>
+      <div class="kpi"><div class="kv">49.8<span>%</span></div><div class="kl">库存资金占用率</div><div class="kd dn">▼ -7.30pp</div></div>
+    </div>
+
+    <div class="c3">
+      <div class="cc">
+        <span class="cn">GMV 侧</span>
+        <h4>增量 86% 靠抖音，越投越薄</h4>
+        <p>抖音 GMV <b class="up">+56.0%</b>，天猫仅 <span class="up">+1.4%</span>、京东 <span class="up">+1.5%</span>，拼多多 <b class="down">-3.6%</b>；抖音投放占比 28.9%、<b>ROI 只有 8.8</b>（天猫 11.2），净利率 10.6% 全店最低 —— 全店净利因此 <b class="down">-4.3%</b>。</p>
+      </div>
+      <div class="cc">
+        <span class="cn">库存侧</span>
+        <h4>钱压得少了，压的位置没变</h4>
+        <p>资金占用率降到 49.8%，但 <b>3 个滞销 SKU 压住 50.7 万</b>、<b>4 个爆款可售不足 20 天</b> —— 备货水位分配错，两头同时出问题。</p>
+      </div>
+      <div class="cc">
+        <span class="cn">用户侧</span>
+        <h4>买来的流量，把客单和退货一起拖坏</h4>
+        <p>主力是 <b>25–38 岁 / 200–400 元 / 一年 3–5 次</b>；抖音买到的却是 18–24 岁、100 元以下、首单占 28.4% 的流量 —— 客单价 <b class="down">-1.4%</b>、退货率 <b class="up">12.1% → 15.8%</b>，与主力客群不重合。</p>
+      </div>
+    </div>
+
+    <div class="note" style="margin-top:14px">数据说明：原业务原始数据未随离职保留，本作品使用<b>同等表结构、同等字段含义、同等量级</b>的脱敏仿真数据集，全部指标由脚本自上而下真实计算，无硬写数值。</div>
+  </div>
+</section>
+
+<!-- 02 经营结果 -->
+<section class="page" data-p="2" id="p-2">
+  <div class="pi">
+    <div class="phead">
+      <div class="prow"><span class="pnum">02</span><span class="pkick">Result · 经营结果</span><span class="prule"></span></div>
+      <h1>收入涨了，利润没跟上</h1>
+      <p class="plead">先把「增长质量」和「增长来源」分开看：规模是涨的（GMV +11.8%、订单 +13.4%），质量是掉的（客单价 -1.4%、退货率 +3.7pp、净利 -4.3%），来源也是脆的（86% 的增量集中在一条腿）。</p>
+    </div>
+
+    <div class="grid2 w64" style="margin-bottom:12px">
+      <div class="card">
+        <div class="ch"><span class="cbar"></span><h3>12 月 vs 11 月 · 全渠道合计</h3></div>
+        <div class="tscroll">
+          <table style="min-width:400px">
+            <thead><tr><th>指标</th><th class="r">11 月</th><th class="r">12 月</th><th class="r">变化</th></tr></thead>
+            <tbody>
+              <tr><td>订单量（件）</td><td class="n r">41,243</td><td class="n r">46,788</td><td class="r up">▲ +13.4%</td></tr>
+              <tr><td>GMV（万）</td><td class="n r">770.0</td><td class="n r">860.9</td><td class="r up">▲ +11.8%</td></tr>
+              <tr><td>客单价（元）</td><td class="n r">186.7</td><td class="n r">184.0</td><td class="r down">▼ -1.4%</td></tr>
+              <tr><td>毛利率</td><td class="n r">37.19%</td><td class="n r">37.85%</td><td class="r up">▲ +0.65pp</td></tr>
+              <tr><td>毛利额（万）</td><td class="n r">286.4</td><td class="n r">325.8</td><td class="r up">▲ +13.8%</td></tr>
+              <tr><td>广告花费（万）</td><td class="n r">74.5</td><td class="n r">86.0</td><td class="r up">▲ +15.4%</td></tr>
+              <tr><td>履约与售后（万）</td><td class="n r">84.8</td><td class="n r">118.2</td><td class="r up">▲ +39.4%</td></tr>
+              <tr><td>退货率（GMV 口径）</td><td class="n r">12.1%</td><td class="n r">15.8%</td><td class="r up">▲ +3.7pp</td></tr>
+              <tr><td>经营净利润（万）</td><td class="n r">127.1</td><td class="n r">121.6</td><td class="r down">▼ -4.3%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ch"><span class="cbar"></span><h3>利润为什么少了 5.5 万</h3><span class="cnote">红＝加 / 绿＝减</span></div>
+        <div class="bars" style="margin-top:4px">
+          <div class="brow"><span class="bl">毛利额</span><span class="bt"><i class="pos" style="width:100%"></i></span><span class="bv">▲ +39.4 万</span></div>
+          <div class="brow"><span class="bl">广告花费</span><span class="bt"><i class="neg" style="width:29%"></i></span><span class="bv">▼ -11.5 万</span></div>
+          <div class="brow"><span class="bl">履约与售后</span><span class="bt"><i class="neg" style="width:85%"></i></span><span class="bv">▼ -33.4 万</span></div>
+          <div class="brow me"><span class="bl">净利变动</span><span class="bt"><i class="neg" style="width:14%"></i></span><span class="bv">▼ -5.5 万</span></div>
+        </div>
+        <div class="note">毛利额多赚 39.4 万，被广告（-11.5 万）和履约售后（-33.4 万）两头吃掉，净利净减 5.5 万。净利率 16.51% → 14.13%：<b>增长是用投放和退货换来的</b>，不是单品更赚钱。</div>
+        <div style="margin-top:auto;padding-top:10px;border-top:1px dashed var(--line);font-size:10.9px;line-height:1.9;font-variant-numeric:tabular-nums">
+          <div style="color:var(--faint);font-size:10.2px;letter-spacing:.04em;margin-bottom:2px">净利率反算 · 12 月</div>
+          <div style="display:flex;justify-content:space-between;color:var(--ink2)"><span>毛利率</span><b>37.85%</b></div>
+          <div style="display:flex;justify-content:space-between;color:var(--muted)"><span>减：广告花费 / GMV</span><b style="color:var(--dn)">▼ −9.99pp</b></div>
+          <div style="display:flex;justify-content:space-between;color:var(--muted)"><span>减：履约售后 / GMV</span><b style="color:var(--dn)">▼ −13.73pp</b></div>
+          <div style="display:flex;justify-content:space-between;color:var(--ink);border-top:1px solid var(--line2);margin-top:2px;padding-top:3px"><span><b>净利率</b></span><b>14.13%</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="ch"><span class="cbar"></span><h3>五个平台：GMV 第一的抖音，投放 ROI 最低</h3><span class="cnote">12 月</span></div>
+      <div class="tscroll">
+        <table style="min-width:680px">
+          <thead><tr><th>平台</th><th class="r">GMV</th><th class="r">占比</th><th class="r">环比</th><th class="r">投放 ROI</th><th class="r">广告占比</th><th class="r">CAC</th><th class="r">净利率</th></tr></thead>
+          <tbody>
+            <tr><td class="nm">抖音</td><td class="n r">218.4 万</td><td class="n r">25.4%</td><td class="r up">▲ +56.0%</td><td class="n r"><span class="bdg w">8.8</span></td><td class="n r">28.9%</td><td class="n r">21.5</td><td class="n r">10.6%</td></tr>
+            <tr><td class="nm">天猫</td><td class="n r">218.0 万</td><td class="n r">25.3%</td><td class="r up">▲ +1.4%</td><td class="n r">11.2</td><td class="n r">22.6%</td><td class="n r">17.4</td><td class="n r">15.7%</td></tr>
+            <tr><td class="nm">京东</td><td class="n r">205.0 万</td><td class="n r">23.8%</td><td class="r up">▲ +1.5%</td><td class="n r">10.6</td><td class="n r">22.5%</td><td class="n r">19.3</td><td class="n r">16.1%</td></tr>
+            <tr><td class="nm">拼多多</td><td class="n r">176.5 万</td><td class="n r">20.5%</td><td class="r down">▼ -3.6%</td><td class="n r">9.3</td><td class="n r">22.0%</td><td class="n r">16.2</td><td class="n r">12.5%</td></tr>
+            <tr><td class="nm">微信小店</td><td class="n r">43.0 万</td><td class="n r">5.0%</td><td class="r up">▲ +43.3%</td><td class="n r"><span class="bdg a">12.5</span></td><td class="n r">4.0%</td><td class="n r">15.3</td><td class="n r"><span class="bdg a">21.4%</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note">① 抖音贡献 86% 的绝对增量，但 ROI 8.8 最低、CAC 21.5 最高、净利率 10.6% 也最低 —— 量大，但每一单都不赚钱；② <b>拼多多是唯一负增长（-3.6%）</b>，投放没跟着砍、客单下滑，净利率只剩 12.5%；③ 微信小店只占 5.0%，ROI 12.5 与净利率 21.4% 全店最高，是最被忽略的私域；④ 京东客单价 204.9 元最高，高价装备更吃得开。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 漏斗与渠道 -->
+<section class="page" data-p="3" id="p-3">
+  <div class="pi">
+    <div class="phead">
+      <div class="prow"><span class="pnum">03</span><span class="pkick">Funnel · 漏斗与渠道</span><span class="prule"></span></div>
+      <h1>流量还在涨，成交质量在掉</h1>
+      <p class="plead">12 月曝光 +17.5%、支付完成 +13.4%，但全链路转化率从 0.946% 掉到 0.914%，客单价 -1.4%、退货额 +45.9%。<b>多买来的曝光，跟原来的买家不是同一批人</b>。</p>
+    </div>
+
+    <div class="grid2" style="margin-bottom:12px">
+      <div class="card">
+        <div class="ch"><span class="cbar"></span><h3>全店五环节漏斗</h3><span class="cnote">12 月 · 条形宽度为 4 次方根压缩</span></div>
+        <div class="fun">
+          <div class="fstep"><span class="fl">曝光</span><span class="fb t1" style="width:100%">5,119,782</span><span class="fv">100.00%<em>—</em></span></div>
+          <div class="farr"><span>曝光 → 点击 <b>4.86%</b></span></div>
+          <div class="fstep"><span class="fl">点击</span><span class="fb t2" style="width:47%">248,821</span><span class="fv">4.86%<em>环节 4.86%</em></span></div>
+          <div class="farr"><span>点击 → 加购 <b>31.24%</b></span></div>
+          <div class="fstep"><span class="fl">加购</span><span class="fb t3" style="width:35%">77,732</span><span class="fv">1.52%<em>环节 31.24%</em></span></div>
+          <div class="farr"><span>加购 → 下单 <b>68.47%</b></span></div>
+          <div class="fstep"><span class="fl">下单</span><span class="fb t4" style="width:32%">53,223</span><span class="fv">1.04%<em>环节 68.47%</em></span></div>
+          <div class="farr"><span>下单 → 支付 <b>87.91%</b>（差额为取消与退款）</span></div>
+          <div class="fstep"><span class="fl">支付</span><span class="fb t5" style="width:31%">46,788</span><span class="fv">0.91%<em>环节 87.91%</em></span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ch"><span class="cbar"></span><h3>各平台曝光 → 点击转化率</h3><span class="cnote">12 月</span></div>
+        <div class="bars" style="gap:11px">
+          <div class="brow"><span class="bl">微信小店</span><span class="bt"><i class="alt" style="width:100%"></i></span><span class="bv">5.59%</span></div>
+          <div class="brow"><span class="bl">京东</span><span class="bt"><i class="alt" style="width:95%"></i></span><span class="bv">5.31%</span></div>
+          <div class="brow"><span class="bl">天猫</span><span class="bt"><i class="alt" style="width:90.9%"></i></span><span class="bv">5.08%</span></div>
+          <div class="brow"><span class="bl">拼多多</span><span class="bt"><i class="alt" style="width:82.8%"></i></span><span class="bv">4.63%</span></div>
+          <div class="brow me"><span class="bl">抖音</span><span class="bt"><i class="warn" style="width:80.9%"></i></span><span class="bv">4.52%</span></div>
+        </div>
+        <div class="note">抖音曝光量最大（103,039，是其他平台的 1.5–2 倍），点击率却最低。<b>曝光最大 + 转化最弱 = ROI 最低的直接原因</b>，而不是出价技巧或素材问题。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="ch"><span class="cbar"></span><h3>漏斗环比：哪一环掉得最多</h3><span class="cnote">11 月 → 12 月</span></div>
+      <div class="tscroll">
+        <table style="min-width:640px">
+          <thead><tr><th>环节</th><th class="r">11 月</th><th class="r">12 月</th><th class="r">量级变化</th><th class="r">环节转化率变化</th></tr></thead>
+          <tbody>
+            <tr><td>曝光</td><td class="n r">4,359,116</td><td class="n r">5,119,782</td><td class="r up">▲ +17.5%</td><td class="n r">—</td></tr>
+            <tr><td>点击</td><td class="n r">218,828</td><td class="n r">248,821</td><td class="r up">▲ +13.7%</td><td class="r down">▼ -0.16pp</td></tr>
+            <tr><td>支付完成</td><td class="n r">41,243</td><td class="n r">46,788</td><td class="r up">▲ +13.4%</td><td class="r down">▼ -0.44pp</td></tr>
+            <tr><td>退货（支付后）</td><td class="n r">93.2 万</td><td class="n r">136.0 万</td><td class="r up">▲ +45.9%</td><td class="r up">▲ +3.7pp</td></tr>
+            <tr><td class="nm">全链路转化率</td><td class="n r">0.946%</td><td class="n r hl">0.914%</td><td class="r down">▼ -3.4%</td><td class="r down">▼ -0.03pp</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note">每一层的「量」都在涨、每一层的「率」都在掉（加购 -0.56pp、下单 -0.54pp、退货率 +3.7pp）—— 典型的<b>规模换效率</b>。下一步不是继续加预算，而是先把点击率补回 11 月水平（5.02%）。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 库存诊断 -->
+<section class="page" data-p="4" id="p-4">
+  <div class="pi">
+    <div class="phead">
+      <div class="prow"><span class="pnum">04</span><span class="pkick">Inventory · 库存诊断</span><span class="prule"></span></div>
+      <h1>钱压得少了，但压错了地方</h1>
+      <p class="plead">库存是独立于 GMV 的另一条线：先算清压了多少钱，再拆到品类、拆到具体 SKU。结论是<b>同一批钱压在了走不动的款上，走得动的款却备货不足</b>。</p>
+    </div>
+
+    <div class="grid2" style="margin-bottom:12px">
+      <div class="card">
+        <div class="ch"><span class="cbar"></span><h3>库存健康度环比</h3></div>
+        <div class="tscroll">
+          <table style="min-width:360px">
+            <thead><tr><th>指标</th><th class="r">11 月</th><th class="r">12 月</th><th class="r">变化</th></tr></thead>
+            <tbody>
+              <tr><td>期末库存金额（万）</td><td class="n r">581.3</td><td class="n r">506.9</td><td class="r down">▼ -12.8%</td></tr>
+              <tr><td>库存周转天数</td><td class="n r">36.1</td><td class="n r">28.4</td><td class="r down">▼ -7.6 天</td></tr>
+              <tr><td>资金占用率</td><td class="n r">57.1%</td><td class="n r">49.8%</td><td class="r down">▼ -7.30pp</td></tr>
+              <tr><td>滞销 SKU 数</td><td class="n r">6</td><td class="n r">3</td><td class="r down">▼ -3</td></tr>
+              <tr><td>缺货风险 SKU 数</td><td class="n r">7</td><td class="n r">4</td><td class="r down">▼ -3</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note">压钱效率改善了（占用率 -7.30pp），但滞销与缺货是<b>同时存在</b>的 —— 说明问题不是「囤太多」，而是<b>水位分配错</b>。</div>
+      </div>
+      <div class="card">
+        <div class="ch"><span class="cbar"></span><h3>压在哪 5 个品类</h3><span class="cnote">按库存金额</span></div>
+        <div class="bars">
+          <div class="brow"><span class="bl">冲锋衣</span><span class="bt"><i style="width:100%"></i></span><span class="bv">153.2 万</span></div>
+          <div class="brow"><span class="bl">登山鞋</span><span class="bt"><i style="width:92.5%"></i></span><span class="bv">141.8 万</span></div>
+          <div class="brow"><span class="bl">露营帐篷</span><span class="bt"><i class="warn" style="width:68.3%"></i></span><span class="bv">104.7 万</span></div>
+          <div class="brow"><span class="bl">户外背包</span><span class="bt"><i style="width:47.9%"></i></span><span class="bv">73.4 万</span></div>
+          <div class="brow"><span class="bl">登山帽</span><span class="bt"><i style="width:22.1%"></i></span><span class="bv">33.8 万</span></div>
+        </div>
+        <div class="note">卖得最好的冲锋衣，同时也是压货最多的品类（30.2%）—— 问题不在品类选择，在<b>备货水位没跟着动销及时调</b>。帐篷动销率最低（47.7%）、周转最慢（32.9 天），是「高客单、薄利润、慢周转」。</div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card" style="border-left:2px solid var(--warm)">
+        <div class="ch"><span class="cbar" style="background:var(--warm)"></span><h3>3 个滞销 SKU 压住 50.7 万</h3><span class="cnote">10.0% 库存</span></div>
+        <div class="tscroll">
+          <table style="min-width:340px">
+            <thead><tr><th>SKU</th><th class="r">售价</th><th class="r">库存金额</th><th class="r">库龄</th></tr></thead>
+            <tbody>
+              <tr><td class="nm">连体冲锋衣</td><td class="n r">529</td><td class="n r">15.9 万</td><td class="n r alrt">168 天</td></tr>
+              <tr><td class="nm">三防徒步鞋</td><td class="n r">299</td><td class="n r">19.5 万</td><td class="n r alrt">121 天</td></tr>
+              <tr><td class="nm">防风隧道帐</td><td class="n r">549</td><td class="n r">15.3 万</td><td class="n r alrt">176 天</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note">共同特征：库龄 121–176 天、备货覆盖 1.7 个月以上 → <b>是货买多了，不是卖不动</b>：压缩补货 + 清仓去化。</div>
+      </div>
+      <div class="card" style="border-left:2px solid var(--warm)">
+        <div class="ch"><span class="cbar" style="background:var(--warm)"></span><h3>4 个爆款，可售不足 20 天</h3><span class="cnote">备货覆盖 0.59–0.62 月</span></div>
+        <div class="tscroll">
+          <table style="min-width:340px">
+            <thead><tr><th>SKU</th><th class="r">月销量</th><th class="r">备货覆盖</th><th class="r">可售天数</th></tr></thead>
+            <tbody>
+              <tr><td class="nm">三合一冲锋衣</td><td class="n r">2,077</td><td class="n r">0.60 月</td><td class="n r alrt">18 天</td></tr>
+              <tr><td class="nm">渔夫帽</td><td class="n r">3,804</td><td class="n r">0.61 月</td><td class="n r alrt">18 天</td></tr>
+              <tr><td class="nm">遮阳空顶帽</td><td class="n r">3,999</td><td class="n r">0.62 月</td><td class="n r alrt">19 天</td></tr>
+              <tr><td class="nm">轻量化冲锋包</td><td class="n r">2,280</td><td class="n r">0.59 月</td><td class="n r alrt">18 天</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note">断货损失的是已验证的自然流量与搜索排名，远大于滞销残值 —— <b>缺货比滞销更贵</b>。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 用户画像 -->
+<section class="page" data-p="5" id="p-5">
+  <div class="pi">
+    <div class="phead">
+      <div class="prow"><span class="pnum">05</span><span class="pkick">Audience · 用户画像</span><span class="prule"></span></div>
+      <h1>圈人的主轴是购买频率，不是年龄</h1>
+      <p class="plead">不用 RFM 合成标签，只用订单后台直接能采到的原始字段。最关键的一组交叉是<b>频次 × 价格带</b>：买得越多，客单越高 —— 所以「圈高价人群」的正确做法是圈频次。</p>
+    </div>
+
+    <div class="persona">
+      <span class="pk">核心客群</span>
+      <p><b>25–38 岁</b>（占 55%）、女性略多但更值钱、住在<b>二线及以下城市</b>（73%）、习惯<b>晚间 18–24 点</b>下单（45%）、客单价 <b>200–400 元</b>、一年买 <b>3–5 次</b>的户外装备爱好者。</p>
+    </div>
+
+    <div class="grid2 w64" style="margin-bottom:12px">
+      <div class="card">
+        <div class="ch"><span class="cbar"></span><h3>购买频率：谁是老客、谁是首单</h3><span class="cnote">12 月 · 24,930 名成交用户</span></div>
+        <div class="tscroll">
+          <table style="min-width:420px">
+            <thead><tr><th>频次</th><th class="r">人数占比</th><th class="r">GMV 占比</th><th class="r">人均消费</th></tr></thead>
+            <tbody>
+              <tr><td class="nm">1 次（首单）</td><td class="n r">41.1%</td><td class="n r">22.7%</td><td class="n r">190.8</td></tr>
+              <tr><td class="nm">2 次</td><td class="n r">25.6%</td><td class="n r">21.9%</td><td class="n r">295.5</td></tr>
+              <tr><td class="nm">3–5 次</td><td class="n r">21.7%</td><td class="n r hl">33.1%</td><td class="n r">526.7</td></tr>
+              <tr><td class="nm">6–10 次</td><td class="n r">9.0%</td><td class="n r">15.9%</td><td class="n r">611.1</td></tr>
+              <tr><td class="nm">11 次以上</td><td class="n r">2.6%</td><td class="n r">6.4%</td><td class="n r hl">834.8</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note"><b>3 次以上老客 33% 的人贡献 55% 的 GMV</b>；首单 41% 的人只贡献 23%。此维度零缺失，最可靠。</div>
+      </div>
+      <div class="card">
+        <div class="ch"><span class="cbar"></span><h3>端口的端到端转化</h3><span class="cnote">曝光 → 支付完成</span></div>
+        <div class="bars">
+          <div class="brow"><span class="bl">搜索/猜你喜欢</span><span class="bt"><i class="alt" style="width:100%"></i></span><span class="bv">5.36%</span></div>
+          <div class="brow"><span class="bl">小程序</span><span class="bt"><i class="alt" style="width:94.2%"></i></span><span class="bv">5.05%</span></div>
+          <div class="brow"><span class="bl">商城 App</span><span class="bt"><i style="width:84.7%"></i></span><span class="bv">4.54%</span></div>
+          <div class="brow"><span class="bl">直播间</span><span class="bt"><i style="width:72.8%"></i></span><span class="bv">3.90%</span></div>
+          <div class="brow me"><span class="bl">短视频挂车</span><span class="bt"><i class="warn" style="width:64.2%"></i></span><span class="bv">3.44%</span></div>
+        </div>
+        <div class="note">短视频挂车端到端只有搜索端的 <b>64%</b>，点击率也只有 3.96% —— 问题不在「人不想买」，而在<b>点进来没看懂</b>。所以动作是补主图、尺码表、评价，不是加投放。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="ch"><span class="cbar"></span><h3>频次 × 价格带：买得越多，客单越高</h3><span class="cnote">每条为 100%｜价格带跟着购买频率走，不跟年龄走</span></div>
+      <div class="mxl">
+        <span><i style="background:#e3e7f5"></i>100 元以下</span>
+        <span><i style="background:#b9c3ea"></i>100–200</span>
+        <span><i style="background:#8b93dd"></i>200–400</span>
+        <span><i style="background:#5a55c9"></i>400–600</span>
+        <span><i style="background:#2f2a85"></i>600 以上</span>
+      </div>
+      <div class="mx">
+        <div class="mxr"><span class="mk">1 次</span><div class="mb"><i style="width:28%;background:#e3e7f5"></i><i style="width:32%;background:#b9c3ea"></i><i style="width:28%;background:#8b93dd"></i><i style="width:10%;background:#5a55c9"></i><i style="width:2%;background:#2f2a85"></i></div><span class="mv"><b>28%</b> 买 100 元以下</span></div>
+        <div class="mxr"><span class="mk">2 次</span><div class="mb"><i style="width:22%;background:#e3e7f5"></i><i style="width:29%;background:#b9c3ea"></i><i style="width:33%;background:#8b93dd"></i><i style="width:13%;background:#5a55c9"></i><i style="width:3%;background:#2f2a85"></i></div><span class="mv">中价为主，开始上探</span></div>
+        <div class="mxr"><span class="mk">3–5 次</span><div class="mb"><i style="width:14%;background:#e3e7f5"></i><i style="width:22%;background:#b9c3ea"></i><i style="width:36%;background:#8b93dd"></i><i style="width:21%;background:#5a55c9"></i><i style="width:7%;background:#2f2a85"></i></div><span class="mv"><b>36%</b> 落在 200–400</span></div>
+        <div class="mxr"><span class="mk">6–10 次</span><div class="mb"><i style="width:8%;background:#e3e7f5"></i><i style="width:15%;background:#b9c3ea"></i><i style="width:38%;background:#8b93dd"></i><i style="width:29%;background:#5a55c9"></i><i style="width:10%;background:#2f2a85"></i></div><span class="mv">400 元以上占 39%</span></div>
+        <div class="mxr"><span class="mk">11 次以上</span><div class="mb"><i style="width:5%;background:#e3e7f5"></i><i style="width:11%;background:#b9c3ea"></i><i style="width:35%;background:#8b93dd"></i><i style="width:33%;background:#5a55c9"></i><i style="width:16%;background:#2f2a85"></i></div><span class="mv"><b>49%</b> 买 400 元以上</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 行动清单 -->
+<section class="page" data-p="6" id="p-6">
+  <div class="pi">
+    <div class="phead">
+      <div class="prow"><span class="pnum">06</span><span class="pkick">Action · 行动清单</span><span class="prule"></span></div>
+      <h1>从结论到动作：4 条人群包 + 4 条库存动作</h1>
+      <p class="plead">分析的价值在于能被执行。人群包只能在后台直接建、库存动作只能落到 SKU，才算真的交付。</p>
+    </div>
+
+    <div class="card" style="margin-bottom:12px">
+      <div class="ch"><span class="cbar"></span><h3>抖音人群包：主轴换成购买频率</h3><span class="cnote">条件均为后台可直接圈选</span></div>
+      <div class="act">
+        <div class="arow">
+          <span class="ab" style="color:var(--acc-d)">优先加投</span>
+          <span class="ac">购买频率 <b>≥ 3 次</b> ＋ 价格带 <b>≥ 200 元</b> ＋ 支付时间 18–24 点 ＋ 年龄 25–38 岁<em style="display:block;font-style:normal;color:var(--faint);font-size:10.5px;margin-top:3px">这是主力客群本身（55.5% 的人贡献 65% GMV），但在抖音买到的流量里只占约 12%</em></span>
+          <span class="av up">▲ +18%<em>出价</em></span>
+        </div>
+        <div class="arow">
+          <span class="ab" style="color:var(--teal)">定向提价</span>
+          <span class="ac">购买频率 <b>≥ 6 次</b> ＋ 价格带 <b>≥ 400 元</b> ＋ 商城 App / 小程序端口<em style="display:block;font-style:normal;color:var(--faint);font-size:10.5px;margin-top:3px">这批人 49% 买 400 元以上、最不怕价格；抖音占比低于京东 12 个百分点</em></span>
+          <span class="av up">▲ +25%<em>出价</em></span>
+        </div>
+        <div class="arow">
+          <span class="ab" style="color:var(--warm)">降权</span>
+          <span class="ac">购买频率 <b>1 次</b> ＋ 价格带 <b>100 元以下</b> ＋ 短视频挂车端口<em style="display:block;font-style:normal;color:var(--faint);font-size:10.5px;margin-top:3px">端到端转化只有搜索端的 65%，退款率最高，却占用大部分预算</em></span>
+          <span class="av down">▼ -30%<em>出价</em></span>
+        </div>
+        <div class="arow">
+          <span class="ab" style="color:var(--muted)">排除</span>
+          <span class="ac">购买频率 <b>1 次</b> ＋ 支付时间 <b>深夜 00–06 点</b> ＋ 四线及以下城市<em style="display:block;font-style:normal;color:var(--faint);font-size:10.5px;margin-top:3px">凌晨产生、金额低、集中在抖音短视频端，属纯低效展示</em></span>
+          <span class="av" style="color:var(--muted)">排除</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <div class="ch"><span class="cbar"></span><h3>库存与商品：四条分开做</h3></div>
+        <div class="todo"><span class="tn">1</span><p><b>滞销 3 个 SKU 一次性清仓</b>去化，回笼约 50.7 万资金，压到抖音高动销品。</p></div>
+        <div class="todo"><span class="tn">2</span><p><b>4 个爆款备货水位提到 0.9 个月</b>，可售天数从 18 天补到 27 天，优先三合一冲锋衣。</p></div>
+        <div class="todo"><span class="tn">3</span><p><b>帐篷单独提价 5%–8%</b>补毛利（当前毛利率 30.2% 全店最低），不做新一轮投放。</p></div>
+        <div class="todo"><span class="tn">4</span><p><b>按端口维度回看转化率</b>，而不是只看渠道整体 ROI —— 才能判断问题在定向还是在素材。</p></div>
+      </div>
+      <div class="card">
+        <div class="ch"><span class="cbar"></span><h3>已经发生的效果</h3></div>
+        <div class="bars" style="margin-top:2px">
+          <div class="brow" style="grid-template-columns:96px 1fr 66px"><span class="bl">抖音 GMV</span><span class="bt"><i class="pos" style="width:100%"></i></span><span class="bv">▲ +56.0%</span></div>
+          <div class="brow" style="grid-template-columns:96px 1fr 66px"><span class="bl">全店 GMV</span><span class="bt"><i class="pos" style="width:21%"></i></span><span class="bv">▲ +11.8%</span></div>
+          <div class="brow" style="grid-template-columns:96px 1fr 66px"><span class="bl">经营净利润</span><span class="bt"><i class="neg" style="width:8%"></i></span><span class="bv">▼ -4.3%</span></div>
+          <div class="brow" style="grid-template-columns:96px 1fr 66px"><span class="bl">资金占用率</span><span class="bt"><i class="neg" style="width:13%"></i></span><span class="bv">▼ -7.3pp</span></div>
+        </div>
+        <div class="note">滞销 SKU <b>6 → 3</b>、缺货 <b>7 → 4</b>、库存金额 <b>-12.8%</b>、周转天数 <b>-7.6 天</b>：压货的钱确实省下来了，但又被投放（+15.4%）和退货（+3.7pp）花回去了，净利 <b>-4.3%</b>。剩下的是结构问题 —— 把预算从「低价首单」挪到「高频高客单」。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 方法与口径 -->
+<section class="page" data-p="7" id="p-7">
+  <div class="pi">
+    <div class="phead">
+      <div class="prow"><span class="pnum">07</span><span class="pkick">Method · 方法与口径</span><span class="prule"></span></div>
+      <h1>一条能复现的链路，四个不能省的口径</h1>
+      <p class="plead">所有数字都可从 CSV 逐层反算出来 —— <b>12 个数据集、89,216 条订单明细、13 项自洽核验全部通过</b>。</p>
+    </div>
+
+    <div class="steps">
+      <div class="stp"><span class="sn2">STEP 01</span><b>统一口径</b><em>GMV 只计支付完成<br>库存按成本价单列</em></div>
+      <div class="stp"><span class="sn2">STEP 02</span><b>三层拆解</b><em>渠道 → 品类 → SKU<br>收入与库存两条线</em></div>
+      <div class="stp"><span class="sn2">STEP 03</span><b>交叉验证</b><em>画像 × 端口 × 频次<br>锁定结构性问题</em></div>
+      <div class="stp"><span class="sn2">STEP 04</span><b>动作翻译</b><em>每条结论落成<br>后台可建的条件</em></div>
+    </div>
+
+    <div class="card">
+      <div class="ch"><span class="cbar"></span><h3>四个口径约定（决定了结论是否可信）</h3></div>
+      <div class="kv2">
+        <div class="k">GMV</div><div class="d">只计支付完成订单，取消与退款不冲减 GMV</div><div class="u">收入侧</div>
+        <div class="k">库存</div><div class="d">按成本价计价，不进利润表，只作资金占用指标单列</div><div class="u">成本侧</div>
+        <div class="k">缺失值</div><div class="d">一律留空，不做均值 / 众数填充；跨平台对比按各平台有效样本重新归一</div><div class="u">画像侧</div>
+        <div class="k">人群分层</div><div class="d">只用订单后台原生字段（频次 / 价格带 / 年龄 / 性别 / 城市 / 时段 / 端口），不合成 RFM 标签</div><div class="u">投放侧</div>
+      </div>
+      <div class="note"><b>为什么要坚持这四条：</b>填充出来的画像会让圈人包把预算投给「不存在的人」；把库存算进利润表会掩盖资金占用；不冲减 GMV 才能看清真实成交。口径一旦松动，后面的每一层拆解都会偏。</div>
+    </div>
+
+    <div class="card" style="margin-top:12px">
+      <div class="ch"><span class="cbar"></span><h3>数据基础</h3></div>
+      <div class="bound">
+        <span class="pill">12 个数据集</span>
+        <span class="pill">89,216 条订单明细</span>
+        <span class="pill">5 平台 × 5 品类 × 30 SKU</span>
+        <span class="pill">6 段核心 SQL</span>
+        <span class="pill">13 项自洽核验通过</span>
+      </div>
+      <div class="note">原始业务数据未随离职保留，本作品使用同等表结构、同等字段含义、同等量级的脱敏仿真数据集；全部指标由脚本从 CSV 反算注入页面，页面本身不含手写数值。学历维度因三平台不提供、另两平台缺失率超 40%，仅用于抖音 / 天猫内部参考，<b>不进入任何横向结论</b>。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 子作品（嵌入） -->
+<section class="page embed" data-p="embed" id="p-embed">
+  <div class="emb">
+    <div class="emb-bar">
+      <span class="ebdg">子作品</span>
+      <b>运动户外电商 · 指标拆解路径</b>
+      <span class="ebar"></span>
+      <span>GMV / 库存 / 利润三条线逐层拆到 SKU</span>
+      <a href="#" id="embopen" rel="noopener">在新窗口打开
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7v8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+    <iframe id="embframe" src="about:blank" title="指标拆解路径" loading="lazy"></iframe>
+  </div>
+</section>
+
+</main>
+
+<div class="pager" id="pager">
+  <button id="prev"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="prevT">上一页</span></button>
+  <span class="pgc" id="pgc">01 / 07</span>
+  <button id="next"><span id="nextT">下一页</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</div>
+
+<script>
+(function(){
+  var PAGES=[
+    {k:'1',t:'概览'},
+    {k:'2',t:'经营结果'},
+    {k:'3',t:'漏斗与渠道'},
+    {k:'4',t:'库存诊断'},
+    {k:'5',t:'用户画像'},
+    {k:'6',t:'行动清单'},
+    {k:'7',t:'方法与口径'}
+  ];
+  var snav=document.getElementById('snav');
+  PAGES.forEach(function(p){
+    var a=document.createElement('a');
+    a.href='#/'+p.k; a.dataset.k=p.k;
+    a.innerHTML='<span class="i">'+('0'+p.k).slice(-2)+'</span>'+p.t;
+    snav.appendChild(a);
+  });
+
+  // 子作品：作为目录的一项（不是藏在侧栏底部）
+  var subA=document.createElement('a');
+  subA.href='#/embed'; subA.dataset.k='embed'; subA.className='sub';
+  subA.innerHTML='<span class="i">08</span>指标拆解路径<em>子作品</em>';
+  snav.appendChild(subA);
+  subA.addEventListener('click',function(ev){
+    ev.preventDefault();
+    if(typeof setH==='function'){ setH('#/embed'); } else { location.hash='#/embed'; }
+  });
+
+  var stage=document.getElementById('stage');
+  var pager=document.getElementById('pager');
+  var segBtns=document.querySelectorAll('#seg button');
+  var pnow=document.getElementById('pnow');
+  var pgc=document.getElementById('pgc');
+  var prevB=document.getElementById('prev'), nextB=document.getElementById('next');
+  var prevT=document.getElementById('prevT'), nextT=document.getElementById('nextT');
+
+  function current(){
+    var h=(location.hash||'').replace(/^#\/?/,'');
+    for(var i=0;i<PAGES.length;i++) if(PAGES[i].k===h) return h;
+    return h==='embed' ? 'embed' : PAGES[0].k;
+  }
+
+  function render(){
+    var k=current(), isEmbed=(k==='embed');
+    Array.prototype.forEach.call(document.querySelectorAll('.page'),function(p){
+      p.classList.toggle('on', p.dataset.p===k);
+    });
+    stage.scrollTop=0;
+    window.scrollTo(0,0);
+
+    Array.prototype.forEach.call(snav.children,function(a){
+      a.classList.toggle('on', a.dataset.k===k);
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.snav a.sub'),function(x){
+      x.classList.toggle('on',isEmbed);
+    });
+    Array.prototype.forEach.call(segBtns,function(b){
+      b.classList.toggle('on', (b.dataset.view==='embed')===isEmbed);
+    });
+    pager.classList.toggle('off', isEmbed);
+    document.querySelector('.s-page').style.visibility = isEmbed ? 'hidden' : 'visible';
+
+    var idx=-1;
+    for(var i=0;i<PAGES.length;i++) if(PAGES[i].k===k) idx=i;
+    if(idx>=0){
+      pnow.textContent=('0'+(idx+1)).slice(-2);
+      pgc.textContent=('0'+(idx+1)).slice(-2)+' / '+('0'+PAGES.length).slice(-2);
+      prevB.disabled=idx===0; nextB.disabled=idx===PAGES.length-1;
+      var sp=document.querySelector('[data-pg="prev"]'), sn=document.querySelector('[data-pg="next"]');
+      if(sp){sp.disabled=idx===0;} if(sn){sn.disabled=idx===PAGES.length-1;}
+      prevT.textContent = idx>0 ? PAGES[idx-1].t : '上一页';
+      nextT.textContent = idx<PAGES.length-1 ? PAGES[idx+1].t : '下一页';
+    }
+  }
+
+  function go(i){ if(i<0||i>=PAGES.length) return; location.hash='#/'+PAGES[i].k; }
+  function idxNow(){
+    var k=current();
+    for(var i=0;i<PAGES.length;i++) if(PAGES[i].k===k) return i;
+    return -1;
+  }
+
+  prevB.addEventListener('click',function(){ go(idxNow()-1); });
+  nextB.addEventListener('click',function(){ go(idxNow()+1); });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-pg]'),function(b){
+    b.addEventListener('click',function(){ go(idxNow()+(b.dataset.pg==='next'?1:-1)); });
+  });
+
+  Array.prototype.forEach.call(segBtns,function(b){
+    b.addEventListener('click',function(){
+      if(b.dataset.view==='embed'){ location.hash='#/embed'; }
+      else if(current()==='embed'){ location.hash='#/'+PAGES[0].k; }
+    });
+  });
+
+  document.addEventListener('keydown',function(e){
+    if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA') return;
+    if(e.key==='ArrowRight'){ var i=idxNow(); if(i>=0) go(i+1); }
+    if(e.key==='ArrowLeft'){ var i2=idxNow(); if(i2>=0) go(i2-1); }
+  });
+
+  window.addEventListener('hashchange',render);
+  if(!location.hash) location.replace('#/1');
+  render();
+})();
+</script>
+<!-- 自包含：子作品直接写进 iframe，不再依赖外部文件 -->
+<script>
+(function(){
+  var H="<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<meta name=\"description\" content=\"运动户外电商指标拆解下钻路径：GMV 拆到 SKU，库存单独拆到品类与 SKU，利润预测模型与三档情景。\">\n<link rel=\"icon\" href=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232b5aed'/%3E%3Crect x='14' y='34' width='8' height='16' rx='2' fill='%23fff' opacity='.85'/%3E%3Crect x='28' y='24' width='8' height='26' rx='2' fill='%23fff' opacity='.9'/%3E%3Crect x='42' y='14' width='8' height='36' rx='2' fill='%23ffd76a'/%3E%3C/svg%3E\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:title\" content=\"运动户外电商指标拆解路径\">\n<meta property=\"og:description\" content=\"运动户外电商指标拆解下钻路径：GMV 拆到 SKU，库存单独拆到品类与 SKU，利润预测模型与三档情景。\">\n<meta property=\"og:image\" content=\"https://primarystudents.github.io/xiaoq/assets/preview-mindmap.jpg\">\n<meta property=\"og:url\" content=\"https://primarystudents.github.io/xiaoq/works/mindmap.html\">\n\n<title>运动户外电商指标拆解路径<\/title>\n<style>\n  :root {\n    --bg: #f8fafc;\n    --bg2: rgba(255,255,255,0.85);\n    --ink: #1e293b;\n    --muted: #64748b;\n    --rule: rgba(100,116,139,0.15);\n    --accent: #3b82f6;\n    --accent2: #8b5cf6;\n    --accent3: #10b981;\n    --warn: #f59e0b;\n    --danger: #ef4444;\n  }\n\n  * { box-sizing: border-box; margin: 0; padding: 0; }\n\n  body {\n    font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"PingFang SC\", \"Hiragino Sans GB\", \"Microsoft YaHei\", sans-serif;\n    background: var(--bg);\n    color: var(--ink);\n    line-height: 1.7;\n    font-size: 15px;\n    position: relative;\n    min-height: 100vh;\n  }\n\n  body::before {\n    content: '';\n    position: fixed;\n    top: -20%;\n    right: -10%;\n    width: 600px;\n    height: 600px;\n    background: radial-gradient(circle, rgba(239,68,68,0.06) 0%, transparent 70%);\n    pointer-events: none;\n    z-index: 0;\n  }\n\n  body::after {\n    content: '';\n    position: fixed;\n    bottom: -20%;\n    left: -10%;\n    width: 500px;\n    height: 500px;\n    background: radial-gradient(circle, rgba(16,185,129,0.06) 0%, transparent 70%);\n    pointer-events: none;\n    z-index: 0;\n  }\n\n  .container {\n    max-width: 1100px;\n    margin: 0 auto;\n    padding: 3rem 1.5rem;\n    position: relative;\n    z-index: 1;\n  }\n\n  /* 全局 Header */\n  .global-header {\n    text-align: center;\n    margin-bottom: 2rem;\n  }\n\n  .global-header h1 {\n    font-size: 1.8rem;\n    font-weight: 700;\n    background: linear-gradient(135deg, #ef4444, #10b981);\n    -webkit-background-clip: text;\n    -webkit-text-fill-color: transparent;\n    background-clip: text;\n    margin-bottom: 0.5rem;\n  }\n\n  .global-header p {\n    color: var(--muted);\n    font-size: 0.95rem;\n  }\n\n  /* 目录导航 */\n  .toc {\n    background: var(--bg2);\n    backdrop-filter: blur(10px);\n    border: 1px solid var(--rule);\n    border-radius: 12px;\n    padding: 1.5rem 2rem;\n    margin-bottom: 2.5rem;\n    display: flex;\n    justify-content: center;\n    gap: 3rem;\n    flex-wrap: wrap;\n  }\n\n  .toc-item {\n    text-align: center;\n  }\n\n  .toc-item .toc-num {\n    font-size: 2rem;\n    font-weight: 700;\n    line-height: 1;\n    margin-bottom: 0.3rem;\n  }\n\n  .toc-item.loss .toc-num { color: #ef4444; }\n  .toc-item.bridge .toc-num { color: #8b5cf6; }\n  .toc-item.profit .toc-num { color: #10b981; }\n\n  .toc-item .toc-label {\n    font-size: 0.9rem;\n    color: var(--muted);\n  }\n\n  /* 分区标签 */\n  .part-label {\n    display: inline-block;\n    padding: 0.4rem 1rem;\n    border-radius: 6px;\n    font-size: 0.8rem;\n    font-weight: 700;\n    color: white;\n    margin-bottom: 0.8rem;\n    letter-spacing: 0.5px;\n  }\n  .label-loss { background: linear-gradient(135deg, #dc2626, #f97316); }\n  .label-profit { background: linear-gradient(135deg, #059669, #10b981); }\n  .label-bridge { background: linear-gradient(135deg, #6366f1, #8b5cf6); }\n\n  /* ===== 树状思维导图 / 逐层卡片 / 交汇点 完整样式 ===== */\n\n  /* Horizontal Tree Mindmap - 横向树状思维导图 */\n  .htree-wrapper {\n    overflow-x: auto;\n    padding: 1.5rem 1rem;\n    background: var(--bg2);\n    backdrop-filter: blur(10px);\n    -webkit-backdrop-filter: blur(10px);\n    border: 1px solid var(--rule);\n    border-radius: 12px;\n    box-shadow: 0 4px 20px rgba(59,130,246,0.06);\n  }\n\n  .htree {\n    display: flex;\n    align-items: stretch;\n    gap: 0;\n    min-width: 860px;\n  }\n\n  .hlevel {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    position: relative;\n    padding: 0 6px;\n    flex-shrink: 0;\n  }\n\n  .lvl-root { padding-right: 8px; }\n  .lvl-end { padding-left: 8px; }\n\n  /* 连接线：每一层左边一条竖线 + 横线连到每个节点 */\n  .htree-connector {\n    position: absolute;\n    left: 0;\n    top: 15%;\n    bottom: 15%;\n    width: 1px;\n    background: #cbd5e1;\n  }\n\n  .hnode {\n    position: relative;\n    padding: 6px 14px;\n    margin: 5px 0;\n    border-radius: 4px;\n    font-size: 0.85rem;\n    font-weight: 500;\n    background: white;\n    border: 1px solid;\n    white-space: nowrap;\n  }\n\n  /* 每个节点左边的横线 */\n  .hnode::before {\n    content: '';\n    position: absolute;\n    left: -6px;\n    top: 50%;\n    width: 6px;\n    height: 1px;\n    background: #cbd5e1;\n  }\n\n  .hnode.root {\n    background: #1e293b;\n    color: white;\n    border-color: #1e293b;\n    font-weight: 600;\n    padding: 8px 18px;\n    font-size: 0.9rem;\n  }\n\n  .hnode.root::before { display: none; }\n\n  .hnode.l1 { border-color: #ef4444; color: #b91c1c; }\n  .hnode.l2 { border-color: #f59e0b; color: #b45309; }\n  .hnode.l3 { border-color: #3b82f6; color: #1d4ed8; }\n  .hnode.l4 { border-color: #8b5cf6; color: #6d28d9; }\n  .hnode.l5 { border-color: #10b981; color: #047857; }\n  .hnode.l6 { border-color: #14b8a6; color: #0f766e; }\n  .hnode.lv { border-color: #ec4899; color: #be185d; }\n  .hnode.ll { border-color: #6366f1; color: #4338ca; }\n\n  .hnode.highlight {\n    font-weight: 600;\n    background: #fffbeb;\n    border-color: #f59e0b;\n    color: #92400e;\n  }\n\n  .hnode.danger {\n    font-weight: 700;\n    background: #fef2f2;\n    border-color: #ef4444;\n    color: #b91c1c;\n  }\n\n  .hnode.muted {\n    background: #f8fafc;\n    border-color: #e2e8f0;\n    color: #94a3b8;\n    font-weight: 400;\n  }\n\n  /* 次级节点（灰色次要项） */\n  .htree-sub {\n    display: flex;\n    flex-direction: column;\n    gap: 4px;\n    margin-top: 8px;\n    padding-left: 12px;\n    position: relative;\n  }\n\n  .hsub-line {\n    position: absolute;\n    left: 0;\n    top: 0;\n    bottom: 0;\n    width: 1px;\n    background: #e2e8f0;\n  }\n\n  .hnode-sub {\n    position: relative;\n    padding: 4px 10px;\n    border-radius: 3px;\n    font-size: 0.78rem;\n    background: #f8fafc;\n    border: 1px solid #e2e8f0;\n    color: #94a3b8;\n    white-space: nowrap;\n  }\n\n  .hnode-sub::before {\n    content: '';\n    position: absolute;\n    left: -12px;\n    top: 50%;\n    width: 12px;\n    height: 1px;\n    background: #e2e8f0;\n  }\n\n  .hnode-group {\n    display: flex;\n    flex-direction: column;\n    gap: 4px;\n  }\n\n  .hnode-group.col .hnode { margin: 2px 0; }\n\n  /* Layer Cards Grid */\n  .layer-grid {\n    display: grid;\n    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));\n    gap: 1rem;\n    margin-top: 1rem;\n  }\n\n  .layer-card {\n    background: var(--bg2);\n    backdrop-filter: blur(10px);\n    -webkit-backdrop-filter: blur(10px);\n    border: 1px solid var(--rule);\n    border-radius: 10px;\n    padding: 1.25rem;\n    box-shadow: 0 2px 12px rgba(59,130,246,0.04);\n    transition: transform 0.2s, box-shadow 0.2s;\n  }\n\n  .layer-card:hover {\n    transform: translateY(-2px);\n    box-shadow: 0 6px 20px rgba(59,130,246,0.1);\n  }\n\n  .layer-badge {\n    display: inline-block;\n    padding: 3px 10px;\n    border-radius: 20px;\n    font-size: 0.75rem;\n    font-weight: 700;\n    margin-bottom: 0.6rem;\n  }\n\n  .badge-1 { background: rgba(239,68,68,0.1); color: #dc2626; }\n  .badge-2 { background: rgba(245,158,11,0.1); color: #d97706; }\n  .badge-3 { background: rgba(59,130,246,0.1); color: #2563eb; }\n  .badge-4 { background: rgba(139,92,246,0.1); color: #7c3aed; }\n  .badge-5 { background: rgba(16,185,129,0.1); color: #059669; }\n  .badge-6 { background: rgba(20,184,166,0.1); color: #0d9488; }\n  .badge-verify { background: rgba(236,72,153,0.1); color: #db2777; }\n  .badge-land { background: rgba(99,102,241,0.1); color: #4f46e5; }\n\n  .layer-card h4 {\n    font-size: 1rem;\n    font-weight: 600;\n    margin-bottom: 0.5rem;\n  }\n\n  .layer-card .formula {\n    font-family: \"SF Mono\", \"Fira Code\", Consolas, monospace;\n    font-size: 0.82rem;\n    color: var(--accent2);\n    font-weight: 500;\n    background: rgba(139,92,246,0.06);\n    padding: 0.4rem 0.6rem;\n    border-radius: 6px;\n    margin-bottom: 0.6rem;\n    line-height: 1.5;\n  }\n\n  .layer-card .action {\n    font-size: 0.85rem;\n    color: var(--muted);\n    margin-bottom: 0.4rem;\n  }\n\n  .layer-card .finding {\n    font-size: 0.85rem;\n    color: var(--ink);\n    font-weight: 500;\n  }\n\n  .layer-card .finding::before {\n    content: \"★ \";\n    color: var(--warn);\n  }\n\n  /* Factor Table */\n  .factor-wrap {\n    overflow-x: auto;\n    background: var(--bg2);\n    backdrop-filter: blur(10px);\n    -webkit-backdrop-filter: blur(10px);\n    border: 1px solid var(--rule);\n    border-radius: 12px;\n    box-shadow: 0 4px 20px rgba(59,130,246,0.06);\n  }\n\n  table {\n    width: 100%;\n    border-collapse: collapse;\n    font-size: 0.9rem;\n  }\n\n  thead th {\n    background: linear-gradient(135deg, var(--accent), var(--accent2));\n    color: white;\n    font-weight: 600;\n    padding: 0.75rem 1rem;\n    text-align: left;\n  }\n\n  tbody td {\n    padding: 0.7rem 1rem;\n    border-bottom: 1px solid var(--rule);\n  }\n\n  tbody tr:last-child td { border-bottom: none; }\n  tbody tr:hover { background: rgba(59,130,246,0.03); }\n\n  .stars { color: var(--warn); letter-spacing: 2px; }\n\n  /* 标题样式 */\n  section { margin-bottom: 2.5rem; }\n  h2 {\n    font-size: 1.3rem;\n    font-weight: 700;\n    margin-bottom: 1rem;\n    padding-bottom: 0.4rem;\n    border-bottom: 2px solid;\n    border-image: linear-gradient(90deg, var(--accent), var(--accent2)) 1;\n    display: inline-block;\n  }\n\n  .profit-section h2 {\n    border-image: linear-gradient(90deg, #10b981, #14b8a6) 1;\n  }\n\n  /* ===== 收益预测部分的树样式（XMind风格，沿用损失率的配色但换色系） ===== */\n\n  .profit-tree .hnode.l1 { border-color: #10b981; color: #047857; }\n  .profit-tree .hnode.l2 { border-color: #14b8a6; color: #0f766e; }\n  .profit-tree .hnode.l3 { border-color: #0ea5e9; color: #0369a1; }\n  .profit-tree .hnode.l4 { border-color: #6366f1; color: #4338ca; }\n  .profit-tree .hnode.l5 { border-color: #8b5cf6; color: #6d28d9; }\n  .profit-tree .hnode.l6 { border-color: #ec4899; color: #be185d; }\n  .profit-tree .hnode.root { background: linear-gradient(135deg, #059669, #10b981); border: none; }\n  .profit-tree .hnode.muted {\n    background: #f8fafc;\n    border-color: #e2e8f0;\n    color: #94a3b8;\n    font-weight: 400;\n  }\n\n  .x-op {\n    font-size: 0.78rem;\n    font-weight: 700;\n    color: #94a3b8;\n    padding: 2px 0;\n    text-align: center;\n    position: relative;\n  }\n\n  .x-op::before {\n    content: '';\n    position: absolute;\n    left: -6px;\n    top: 50%;\n    width: 6px;\n    height: 1px;\n    background: #cbd5e1;\n  }\n\n  .col-title {\n    font-size: 0.72rem;\n    color: #64748b;\n    font-weight: 600;\n    text-align: center;\n    margin-bottom: 2px;\n  }\n\n  .shared-tag {\n    display: inline-block;\n    background: #eef2ff;\n    color: #4338ca;\n    font-size: 0.62rem;\n    padding: 1px 4px;\n    border-radius: 3px;\n    margin-left: 3px;\n    font-weight: 600;\n    vertical-align: middle;\n  }\n\n  .fixed-tag {\n    display: inline-block;\n    background: #fef3c7;\n    color: #92400e;\n    font-size: 0.62rem;\n    padding: 1px 4px;\n    border-radius: 3px;\n    margin-left: 3px;\n    font-weight: 600;\n    vertical-align: middle;\n  }\n\n  /* 桥梁部分 */\n  .bridge-section {\n    background: linear-gradient(135deg, rgba(99,102,241,0.05), rgba(139,92,246,0.05));\n    border: 1px solid rgba(99,102,241,0.2);\n    border-radius: 12px;\n    padding: 1.5rem 2rem;\n    margin: 2rem 0 3rem;\n  }\n\n  .bridge-section h2 {\n    border-image: linear-gradient(90deg, #6366f1, #8b5cf6) 1;\n  }\n\n  .bridge-diagram {\n    background: white;\n    border-radius: 8px;\n    padding: 1.5rem;\n    text-align: center;\n    font-size: 0.95rem;\n    line-height: 2;\n    border: 1px dashed #a5b4fc;\n  }\n\n  .bridge-diagram .arrow {\n    color: #6366f1;\n    font-weight: 700;\n    margin: 0 0.5rem;\n  }\n\n  .bridge-diagram .key {\n    background: #fef3c7;\n    color: #92400e;\n    padding: 2px 8px;\n    border-radius: 4px;\n    font-weight: 600;\n  }\n\n  .bridge-points {\n    display: grid;\n    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));\n    gap: 1rem;\n    margin-top: 1.2rem;\n  }\n\n  .bridge-point {\n    background: white;\n    padding: 1rem;\n    border-radius: 8px;\n    border-left: 3px solid #6366f1;\n  }\n\n  .bridge-point h4 {\n    font-size: 0.9rem;\n    color: #4338ca;\n    margin-bottom: 0.3rem;\n  }\n\n  .bridge-point p {\n    font-size: 0.82rem;\n    color: var(--muted);\n  }\n\n  /* 收益预测的卡片沿用 layer-card 样式，换配色 */\n  .profit-layer-card {\n    background: var(--bg2);\n    backdrop-filter: blur(10px);\n    border: 1px solid var(--rule);\n    border-radius: 10px;\n    padding: 1.25rem;\n    box-shadow: 0 2px 12px rgba(16,185,129,0.04);\n    transition: transform 0.2s, box-shadow 0.2s;\n  }\n\n  .profit-layer-card:hover {\n    transform: translateY(-2px);\n    box-shadow: 0 6px 20px rgba(16,185,129,0.1);\n  }\n\n  .profit-badge {\n    display: inline-block;\n    padding: 3px 10px;\n    border-radius: 20px;\n    font-size: 0.75rem;\n    font-weight: 700;\n    margin-bottom: 0.6rem;\n  }\n\n  .pb-1 { background: rgba(16,185,129,0.1); color: #059669; }\n  .pb-2 { background: rgba(20,184,166,0.1); color: #0d9488; }\n  .pb-3 { background: rgba(14,165,233,0.1); color: #0284c7; }\n  .pb-4 { background: rgba(99,102,241,0.1); color: #4f46e5; }\n  .pb-5 { background: rgba(139,92,246,0.1); color: #7c3aed; }\n  .pb-6 { background: rgba(236,72,153,0.1); color: #db2777; }\n\n  .profit-layer-card h4 {\n    font-size: 1rem;\n    font-weight: 600;\n    margin-bottom: 0.5rem;\n  }\n\n  .profit-layer-card .formula {\n    font-family: \"SF Mono\", \"Fira Code\", Consolas, monospace;\n    font-size: 0.82rem;\n    color: #059669;\n    font-weight: 500;\n    background: rgba(16,185,129,0.06);\n    padding: 0.4rem 0.6rem;\n    border-radius: 6px;\n    margin-bottom: 0.6rem;\n    line-height: 1.5;\n  }\n\n  .profit-layer-card .action {\n    font-size: 0.85rem;\n    color: var(--muted);\n    margin-bottom: 0.4rem;\n  }\n\n  .profit-layer-card .finding {\n    font-size: 0.85rem;\n    color: var(--ink);\n    font-weight: 500;\n  }\n\n  .profit-layer-card .finding::before {\n    content: \"★ \";\n    color: #10b981;\n  }\n\n  @media (max-width: 768px) {\n    .container { padding: 2rem 1rem; }\n    .global-header h1 { font-size: 1.4rem; }\n    .toc { gap: 1.5rem; padding: 1.2rem; }\n    .htree { min-width: 780px; }\n    .hnode { font-size: 0.78rem; padding: 5px 10px; }\n    .hnode.root { font-size: 0.82rem; padding: 7px 14px; }\n    .layer-grid { grid-template-columns: 1fr; }\n  }\n\n<\/style>\n<\/head>\n<body>\n\n<div class=\"container\">\n\n  <div class=\"global-header\">\n    <h1>运动户外电商指标拆解路径<\/h1>\n    <p>两条独立的拆解线 · GMV（收入线：渠道 → 品类 → SKU） ‖ 库存（成本线：品类 → SKU → 滞销与缺货） → 定价与选品 → 利润预测<\/p>\n  <\/div>\n\n  <div class=\"toc\">\n    <div class=\"toc-item loss\">\n      <div class=\"toc-num\">01<\/div>\n      <div class=\"toc-label\">GMV 拆解路径<\/div>\n    <\/div>\n    <div class=\"toc-item bridge\">\n      <div class=\"toc-num\">02<\/div>\n      <div class=\"toc-label\">库存拆解路径<\/div>\n    <\/div>\n    <div class=\"toc-item profit\">\n      <div class=\"toc-num\">03<\/div>\n      <div class=\"toc-label\">利润预测拆解<\/div>\n    <\/div>\n  <\/div>\n\n  <!-- ==================== PART 01 · GMV 拆解 ==================== -->\n  <div>\n    <span class=\"part-label label-loss\">PART 01<\/span>\n    <h2>GMV 拆解路径 · 收入线<\/h2>\n\n    <section>\n      <h2>一、树状思维导图<\/h2>\n      <div class=\"htree-wrapper\">\n        <div class=\"htree\">\n\n          <div class=\"hlevel lvl-root\">\n            <div class=\"hnode root\">GMV 860.9 万<\/div>\n          <\/div>\n\n          <div class=\"hlevel lvl-1\">\n            <div class=\"htree-connector\"><\/div>\n            <div class=\"hnode l1\">GMV<\/div>\n            <div class=\"htree-sub\">\n              <div class=\"hsub-line\"><\/div>\n              <div class=\"hnode-sub muted\">渠道 × 品类 × SKU<\/div>\n            <\/div>\n          <\/div>\n\n          <div class=\"hlevel lvl-2\">\n            <div class=\"htree-connector\"><\/div>\n            <div class=\"hnode l2\">订单量 × 客单价<\/div>\n            <div class=\"htree-sub\">\n              <div class=\"hsub-line\"><\/div>\n              <div class=\"hnode-sub muted\">46,788 件<\/div>\n              <div class=\"hsub-line\"><\/div>\n              <div class=\"hnode-sub muted\">184.0 元<\/div>\n            <\/div>\n          <\/div>\n\n          <div class=\"hlevel lvl-3\">\n            <div class=\"htree-connector\"><\/div>\n            <div class=\"hnode-group\">\n              <div class=\"hnode l3 highlight\">抖音 25.4%<\/div>\n              <div class=\"hnode l3 highlight\">天猫 25.3%<\/div>\n              <div class=\"hnode l3\">京东 23.8%<\/div>\n              <div class=\"hnode l3\">拼多多 21.1%<\/div>\n              <div class=\"hnode l3 muted\">微信小店 4.4%<\/div>\n            <\/div>\n          <\/div>\n\n          <div class=\"hlevel lvl-4\">\n            <div class=\"htree-connector\"><\/div>\n            <div class=\"hnode-group\">\n              <div class=\"hnode l4\">冲锋衣<\/div>\n              <div class=\"hnode l4\">登山鞋<\/div>\n              <div class=\"hnode l4\">露营帐篷<\/div>\n              <div class=\"hnode l4\">登山帽<\/div>\n              <div class=\"hnode l4\">户外背包<\/div>\n            <\/div>\n          <\/div>\n\n          <div class=\"hlevel lvl-5\">\n            <div class=\"htree-connector\"><\/div>\n            <div class=\"hnode-group\">\n              <div class=\"hnode l5\">基础冲锋衣 269<\/div>\n              <div class=\"hnode l5\">高帮登山鞋 249<\/div>\n              <div class=\"hnode l5\">双人速开帐篷 239<\/div>\n              <div class=\"hnode l5\">速干鸭舌帽 39<\/div>\n              <div class=\"hnode l5\">轻量化冲锋包 129<\/div>\n            <\/div>\n          <\/div>\n\n          <div class=\"hlevel lvl-6\">\n            <div class=\"htree-connector\"><\/div>\n            <div class=\"hnode-group col\">\n              <div class=\"hnode l6 danger\">价格带竞争力 ★★★★★<\/div>\n              <div class=\"hnode l6\">主图与详情 ★★★★<\/div>\n              <div class=\"hnode l6\">评价与内容 ★★★★<\/div>\n              <div class=\"hnode l6\">广告出价 ★★★<\/div>\n              <div class=\"hnode l6\">发货时效 ★★<\/div>\n            <\/div>\n          <\/div>\n\n          <div class=\"hlevel lvl-end\">\n            <div class=\"htree-connector\"><\/div>\n            <div class=\"hnode-group col\">\n              <div class=\"hnode lv\">价格带测试 & 优惠力度 A/B 实验<\/div>\n              <div class=\"hnode ll\">选品组合 + 定价策略<\/div>\n            <\/div>\n          <\/div>\n\n        <\/div>\n      <\/div>\n    <\/section>\n\n    <section>\n      <h2>二、逐层详细拆解<\/h2>\n      <div class=\"layer-grid\">\n\n        <div class=\"layer-card\">\n          <span class=\"layer-badge badge-1\">第1层<\/span>\n          <h4>GMV 拆解<\/h4>\n          <div class=\"formula\">GMV = 订单量 × 客单价<\/div>\n          <div class=\"action\">动作：拉取周期内各平台订单明细，计算整体 GMV 与增速<\/div>\n          <div class=\"finding\">11 月 770.0 万 → 12 月 860.9 万（+11.8%）<\/div>\n        <\/div>\n\n        <div class=\"layer-card\">\n          <span class=\"layer-badge badge-2\">第2层<\/span>\n          <h4>订单量 与 客单价<\/h4>\n          <div class=\"formula\">订单量 = 各渠道订单件数之和<br>客单价 = GMV ÷ 订单量<\/div>\n          <div class=\"action\">动作：拆订单量与客单价各自的贡献，判断增长靠量还是靠价<\/div>\n          <div class=\"finding\">12 月订单 +10.3%、客单价 +1.4% —— 增长靠量不靠价<\/div>\n        <\/div>\n\n        <div class=\"layer-card\">\n          <span class=\"layer-badge badge-3\">第3层<\/span>\n          <h4>渠道维度拆解<\/h4>\n          <div class=\"formula\">抖音 + 天猫 + 京东 + 拼多多 + 微信小店<\/div>\n          <div class=\"action\">动作：按渠道拆 GMV 占比、投放 ROI、客单价、CAC<\/div>\n          <div class=\"finding\">抖音 GMV 第一但 ROI 最低（8.8 vs 天猫 11.2）<\/div>\n        <\/div>\n\n        <div class=\"layer-card\">\n          <span class=\"layer-badge badge-4\">第4层<\/span>\n          <h4>品类维度拆解<\/h4>\n          <div class=\"formula\">冲锋衣 + 登山鞋 + 露营帐篷 + 登山帽 + 户外背包<\/div>\n          <div class=\"action\">动作：按品类拆 GMV、客单价、毛利率、毛利额<\/div>\n          <div class=\"finding\">冲锋衣毛利占 36.6%，帐篷毛利率最低<\/div>\n        <\/div>\n\n        <div class=\"layer-card\">\n          <span class=\"layer-badge badge-5\">第5层<\/span>\n          <h4>SKU 维度拆解<\/h4>\n          <div class=\"formula\">30 个 SKU（5 品类 × 平均 6 个）<\/div>\n          <div class=\"action\">动作：拆到单品，定位贡献最高与最低的具体商品<\/div>\n          <div class=\"finding\">Top 10 SKU 占 GMV 53.4%，无单品依赖<\/div>\n        <\/div>\n\n        <div class=\"layer-card\">\n          <span class=\"layer-badge badge-6\">第6层<\/span>\n          <h4>转化率影响因素<\/h4>\n          <div class=\"formula\">价格带 + 主图 + 评价 + 出价 + 时效<\/div>\n          <div class=\"action\">动作：多维度逐一排查抖音点击率偏低的原因<\/div>\n          <div class=\"finding\">曝光最大但点击率最低 —— 价格带与商品详情是核心原因<\/div>\n        <\/div>\n\n        <div class=\"layer-card\">\n          <span class=\"layer-badge badge-verify\">验证层<\/span>\n          <h4>价格带测试 & 优惠力度 A/B<\/h4>\n          <div class=\"formula\">三档测试 → 锁定区间 → 对照实验<\/div>\n          <div class=\"action\">动作：39 元配件引流款 / 269 元冲锋衣主推款 / 429 元高配款三档并行测试 + 21 天 A/B<\/div>\n          <div class=\"finding\">验证\"低引流 + 高利润\"的组合优于全店同价<\/div>\n        <\/div>\n\n        <div class=\"layer-card\">\n          <span class=\"layer-badge badge-land\">落地层<\/span>\n          <h4>选品组合 + 定价策略<\/h4>\n          <div class=\"formula\">选品组合 + 价格带策略 + UE 模型<\/div>\n          <div class=\"action\">动作：落地策略，支撑投放与选品决策<\/div>\n          <div class=\"finding\">抖音 GMV +56.0%，全店 GMV +11.8%<\/div>\n        <\/div>\n\n      <\/div>\n    <\/section>\n  <\/div>\n\n  <!-- ==================== PART 02 · 库存拆解 ==================== -->\n  <div>\n    <span class=\"part-label label-bridge\">PART 02<\/span>\n    <h2>库存拆解路径 · 成本线（与 GMV 分开的一条线）<\/h2>\n\n    <section>\n      <h2>一、树状思维导图<\/h2>\n      <div class=\"htree-wrapper\">\n        <div class=\"htree\">\n\n          <div class=\"hlevel lvl-root\">\n            <div class=\"hnode root\">库存资金占用率高<\/div>\n          <\/div>\n\n          <div class=\"hlevel lvl-1\">\n            <div class=\"htree-connector\"><\/div>\n            <div class=\"hnode l1\">期末库存金额<\/div>\n            <div class=\"htree-sub\">\n              <div class=\"hsub-line\"><\/div>\n              <div class=\"hnode-sub muted\">期末库存件数<\/div>\n              <div class=\"hsub-line\"><\/div>\n              <div class=\"hnode-sub muted\">单位成本价<\/div>\n            <\/div>\n          <\/div>\n\n          <div class=\"hlevel lvl-2\">\n            <div class=\"htree-connector\"><\/div>\n            <div class=\"hnode l2\">备货覆盖月数<\/div>\n            <div class=\"htree-sub\">\n              <div class=\"hsub-line\"><\/div>\n              <div class=\"hnode-sub muted\">期末库存 ÷ 月销量<\/div>\n            <\/div>\n          <\/div>\n\n          <div class=\"hlevel lvl-3\">\n            <div class=\"htree-connector\"><\/div>\n            <div class=\"hnode-group\">\n              <div class=\"hnode l3 highlight\">爆款（覆盖 &lt; 0.6 月）<\/div>\n              <div class=\"hnode l3\">常规（覆盖 ~1.0 月）<\/div>\n              <div class=\"hnode l3 danger\">滞销（覆盖 &gt; 1.05 月）<\/div>\n            <\/div>\n          <\/div>\n\n          <div class=\"hlevel lvl-4\">\n            <div class=\"htree-connector\"><\/div>\n            <div class=\"hnode-group\">\n              <div class=\"hnode l4 highlight\">冲锋衣<\/div>\n              <div class=\"hnode l4\">登山鞋<\/div>\n              <div class=\"hnode l4\">露营帐篷<\/div>\n              <div class=\"hnode l4 muted\">其余 2 个品类<\/div>\n            <\/div>\n          <\/div>\n\n          <div class=\"hlevel lvl-5\">\n            <div class=\"htree-connector\"><\/div>\n            <div class=\"hnode-group\">\n              <div class=\"hnode l5 highlight\">连体冲锋衣<\/div>\n              <div class=\"hnode l5 highlight\">三防徒步鞋<\/div>\n              <div class=\"hnode l5 highlight\">防风隧道帐<\/div>\n              <div class=\"hnode l5 danger\">三合一冲锋衣<\/div>\n              <div class=\"hnode l5 danger\">渔夫帽<\/div>\n            <\/div>\n          <\/div>\n\n          <div class=\"hlevel lvl-6\">\n            <div class=\"htree-connector\"><\/div>\n            <div class=\"hnode-group col\">\n              <div class=\"hnode l6 danger\">库龄超 100 天 ★★★★★<\/div>\n              <div class=\"hnode l6\">备货覆盖过长 ★★★★<\/div>\n              <div class=\"hnode l6\">季节性已过 ★★★<\/div>\n              <div class=\"hnode l6\">同款新品替代 ★★<\/div>\n            <\/div>\n          <\/div>\n\n          <div class=\"hlevel lvl-end\">\n            <div class=\"htree-connector\"><\/div>\n            <div class=\"hnode-group col\">\n              <div class=\"hnode lv\">备货水位调整 A/B + 清仓价测试<\/div>\n              <div class=\"hnode ll\">三档备货策略 + 补货建议模型<\/div>\n            <\/div>\n          <\/div>\n\n        <\/div>\n      <\/div>\n    <\/section>\n\n    <section>\n      <h2>二、逐层详细拆解<\/h2>\n      <div class=\"layer-grid\">\n\n        <div class=\"layer-card\">\n          <span class=\"layer-badge badge-1\">第1层<\/span>\n          <h4>库存金额拆解<\/h4>\n          <div class=\"formula\">Σ[(期末库存件数 × 单位成本价)]<\/div>\n          <div class=\"action\">动作：按 SKU 维度汇总期末库存金额，算出总占用<\/div>\n          <div class=\"finding\">12 月 506.9 万，周转 28.4 天<\/div>\n        <\/div>\n\n        <div class=\"layer-card\">\n          <span class=\"layer-badge badge-2\">第2层<\/span>\n          <h4>备货覆盖月数<\/h4>\n          <div class=\"formula\">期末库存件数 ÷ 本月销量件数<\/div>\n          <div class=\"action\">动作：给每个 SKU 算备货覆盖，判断压货还是缺货<\/div>\n          <div class=\"finding\">覆盖 &gt; 1.05 月即压货，&lt; 0.6 月即缺货风险<\/div>\n        <\/div>\n\n        <div class=\"layer-card\">\n          <span class=\"layer-badge badge-3\">第3层<\/span>\n          <h4>三档备货角色<\/h4>\n          <div class=\"formula\">爆款 + 常规 + 滞销<\/div>\n          <div class=\"action\">动作：按销量与库龄给 SKU 打备货角色标签<\/div>\n          <div class=\"finding\">12 月 3 个滞销、4 个缺货风险，两头同时出问题<\/div>\n        <\/div>\n\n        <div class=\"layer-card\">\n          <span class=\"layer-badge badge-4\">第4层<\/span>\n          <h4>品类维度：压在哪 5 个品类<\/h4>\n          <div class=\"formula\">冲锋衣 + 登山鞋 + 露营帐篷 + 其余 2 个品类<\/div>\n          <div class=\"action\">动作：按品类汇总库存金额、动销率、周转天数<\/div>\n          <div class=\"finding\">冲锋衣压 153.2 万（占 30.2%），同时滞销 1 个<\/div>\n        <\/div>\n\n        <div class=\"layer-card\">\n          <span class=\"layer-badge badge-5\">第5层<\/span>\n          <h4>SKU 维度：品类里具体哪个商品<\/h4>\n          <div class=\"formula\">30 个 SKU 逐个拆<\/div>\n          <div class=\"action\">动作：在品类内按 SKU 定位滞销与缺货的具体商品<\/div>\n          <div class=\"finding\">3 个滞销压 50.7 万，占全店库存 10.0%<\/div>\n        <\/div>\n\n        <div class=\"layer-card\">\n          <span class=\"layer-badge badge-6\">第6层<\/span>\n          <h4>滞销成因<\/h4>\n          <div class=\"formula\">库龄 + 覆盖 + 季节性 + 新品替代<\/div>\n          <div class=\"action\">动作：逐个核查滞销 SKU 的滞销原因<\/div>\n          <div class=\"finding\">连体冲锋衣 库龄 168 天、覆盖 1.75 月 —— 货买多了，不是卖不动<\/div>\n        <\/div>\n\n        <div class=\"layer-card\">\n          <span class=\"layer-badge badge-verify\">验证层<\/span>\n          <h4>备货水位调整 & 清仓价测试<\/h4>\n          <div class=\"formula\">滞销档 → 常规档 / 常规档 → 爆款档<\/div>\n          <div class=\"action\">动作：滞销 SKU 降水位 + 爆款 SKU 提水位，两端同时调 + 清仓价验证<\/div>\n          <div class=\"finding\">验证\"压缩补货 + 提备货\"能同时降占用与防断货<\/div>\n        <\/div>\n\n        <div class=\"layer-card\">\n          <span class=\"layer-badge badge-land\">落地层<\/span>\n          <h4>三档备货策略 + 补货建议<\/h4>\n          <div class=\"formula\">三档备货策略 + 补货建议模型<\/div>\n          <div class=\"action\">动作：落地策略，支撑备货与清仓决策<\/div>\n          <div class=\"finding\">12 月占用率 49.8%，较 11 月 -12.8%；滞销 6 → 3 个<\/div>\n        <\/div>\n\n      <\/div>\n    <\/section>\n  <\/div>\n\n  <!-- ==================== CONNECTION ==================== -->\n  <div class=\"bridge-section\">\n    <span class=\"part-label label-bridge\">CONNECTION<\/span>\n    <h2>两条线的交汇点 · 定价与选品<\/h2>\n\n    <div class=\"bridge-diagram\">\n      GMV 拆解 <span class=\"arrow\">→<\/span> 找到卖得动的品 <span class=\"arrow\">→<\/span> <span class=\"key\">定价与选品<\/span> <span class=\"arrow\">←<\/span> 定备货水位 <span class=\"arrow\">←<\/span> 库存拆解\n      <br>\n      <span style=\"font-size:0.85rem; color:#6366f1;\">\n        用「GMV 线」决定卖什么、用多少钱推，用「库存线」决定每个品备多少货 —— 两条线在「定价与选品」这一处合并\n      <\/span>\n    <\/div>\n\n    <div class=\"bridge-points\">\n      <div class=\"bridge-point\">\n        <h4>共享指标<\/h4>\n        <p>客单价、订单量、毛利额、期末库存金额、备货覆盖月数、单位成本价 —— 两条线共用的底层数据<\/p>\n      <\/div>\n      <div class=\"bridge-point\">\n        <h4>固定变量<\/h4>\n        <p>商品成本率、平台佣金率、履约与仓储费率 —— 资源端常量，不随运营策略变化<\/p>\n      <\/div>\n      <div class=\"bridge-point\">\n        <h4>核心可控变量<\/h4>\n        <p>定价与选品结构 —— 唯一同时影响 GMV 转化与库存占用的变量，是优化的核心抓手<\/p>\n      <\/div>\n    <\/div>\n  <\/div>\n\n  <!-- ==================== PART 03 · 利润预测 ==================== -->\n  <div class=\"profit-section\">\n    <span class=\"part-label label-profit\">PART 03<\/span>\n    <h2>利润预测拆解 · 从利润往下算到底<\/h2>\n\n    <section>\n      <h2>一、树状思维导图<\/h2>\n      <div class=\"htree-wrapper\">\n        <div class=\"htree profit-tree\">\n\n          <div class=\"hlevel lvl-root\">\n            <div class=\"hnode root\">经营净利润<\/div>\n          <\/div>\n\n          <div class=\"hlevel\">\n            <div class=\"htree-connector\"><\/div>\n            <div class=\"hnode-group\">\n              <div class=\"col-title\">方式一<\/div>\n              <div class=\"hnode l1\">GMV − 总成本<\/div>\n              <div class=\"col-title\" style=\"margin-top:8px;\">方式二<\/div>\n              <div class=\"hnode l1\">单均毛利 × 订单量 − 费用总额<\/div>\n            <\/div>\n          <\/div>\n\n          <div class=\"hlevel\">\n            <div class=\"htree-connector\"><\/div>\n            <div class=\"hnode-group\">\n              <div class=\"col-title\">GMV<\/div>\n              <div class=\"hnode l2\">客单价 <span class=\"shared-tag\">共享<\/span> × 订单量 <span class=\"shared-tag\">共享<\/span><\/div>\n              <div class=\"col-title\" style=\"margin-top:8px;\">单均毛利<\/div>\n              <div class=\"hnode l2\">客单价 <span class=\"shared-tag\">共享<\/span> − 单位成本 <span class=\"fixed-tag\">固定<\/span><\/div>\n              <div class=\"col-title\" style=\"margin-top:8px;\">总成本 / 费用<\/div>\n              <div class=\"hnode l2 muted\">总成本 = 单位成本 <span class=\"fixed-tag\">固定<\/span> × 订单量 <span class=\"shared-tag\">共享<\/span> + 费用总额 <span class=\"shared-tag\">共享<\/span><\/div>\n            <\/div>\n          <\/div>\n\n          <div class=\"hlevel\">\n            <div class=\"htree-connector\"><\/div>\n            <div class=\"hnode-group\">\n              <div class=\"col-title\">客单价<\/div>\n              <div class=\"hnode l3\">各品类成交价加权平均<\/div>\n              <div class=\"col-title\" style=\"margin-top:8px;\">订单量<\/div>\n              <div class=\"hnode l3\">Σ 各品类订单量<\/div>\n            <\/div>\n          <\/div>\n\n          <div class=\"hlevel\">\n            <div class=\"htree-connector\"><\/div>\n            <div class=\"hnode-group\">\n              <div class=\"col-title\">各 SKU 单均毛利（UE 最小盈利单元）<\/div>\n              <div class=\"hnode l4 highlight\">单均毛利 = 成交价 − 单位成本 <span class=\"fixed-tag\">固定<\/span><\/div>\n              <div class=\"col-title\" style=\"margin-top:8px;\">各 SKU 订单量 / 期末库存<\/div>\n              <div class=\"hnode l4\">订单量 + 期末库存 = 可售库存 <span class=\"fixed-tag\">固定<\/span><\/div>\n              <div class=\"hnode l4 muted\">知其一即知另一<\/div>\n            <\/div>\n          <\/div>\n\n          <div class=\"hlevel\">\n            <div class=\"htree-connector\"><\/div>\n            <div class=\"hnode-group\">\n              <div class=\"col-title\">SKU 成交价测算因素<\/div>\n              <div class=\"hnode l5\">吊牌价（基准锚点）<\/div>\n              <div class=\"hnode l5\">竞品价格带（竞争参考）<\/div>\n              <div class=\"hnode l5 highlight\">历史成交价（成交参考）<\/div>\n              <div class=\"hnode l5 highlight\">价格带与优惠力度（可控变量）<\/div>\n              <div class=\"col-title\" style=\"margin-top:8px;\">SKU 订单量来源<\/div>\n              <div class=\"hnode l5\">可售库存 × 动销率<\/div>\n            <\/div>\n          <\/div>\n\n          <div class=\"hlevel lvl-end\">\n            <div class=\"htree-connector\"><\/div>\n            <div class=\"hnode-group col\">\n              <div class=\"col-title\">三档情景预测（悲观 / 中性 / 乐观）<\/div>\n              <div class=\"hnode l6\">各 SKU 成交价预测<\/div>\n              <div class=\"hnode l6\">各 SKU 订单量 / 期末库存预测<\/div>\n              <div class=\"hnode l6 highlight\">总经营净利润预测<\/div>\n            <\/div>\n          <\/div>\n\n        <\/div>\n      <\/div>\n    <\/section>\n\n    <section>\n      <h2>二、逐层详细拆解<\/h2>\n      <div class=\"layer-grid\">\n\n        <div class=\"profit-layer-card\">\n          <span class=\"profit-badge pb-1\">第1层<\/span>\n          <h4>经营净利润 · 两种等价计算方式<\/h4>\n          <div class=\"formula\">方式一：GMV − 总成本 &nbsp;&nbsp;||&nbsp;&nbsp; 方式二：单均毛利 × 订单量 − 费用总额<\/div>\n          <div class=\"action\">两种算法结果完全一致，方式一侧重收入端视角，方式二侧重单件盈利视角<\/div>\n          <div class=\"finding\">两种方式可互相校验，确保测算正确<\/div>\n        <\/div>\n\n        <div class=\"profit-layer-card\">\n          <span class=\"profit-badge pb-2\">第2层<\/span>\n          <h4>GMV / 单均毛利 / 总成本<\/h4>\n          <div class=\"formula\">\n            GMV = 客单价 × 订单量<br>\n            单均毛利 = 客单价 − 单位成本<br>\n            总成本 = 单位成本 × 订单量 + 费用总额\n          <\/div>\n          <div class=\"action\">共享变量：客单价、订单量、费用总额；固定变量：单位成本<\/div>\n          <div class=\"finding\">客单价和订单量是两条路径的共同核心变量<\/div>\n        <\/div>\n\n        <div class=\"profit-layer-card\">\n          <span class=\"profit-badge pb-3\">第3层<\/span>\n          <h4>客单价 & 订单量<\/h4>\n          <div class=\"formula\">客单价 = 各品类成交价加权平均 &nbsp;&nbsp; 订单量 = Σ 各品类订单量<\/div>\n          <div class=\"action\">整体指标是各品类的加总或加权平均，预测需要从 SKU 层面入手<\/div>\n          <div class=\"finding\">逐 SKU 测算后再汇总，才能保证精度<\/div>\n        <\/div>\n\n        <div class=\"profit-layer-card\">\n          <span class=\"profit-badge pb-4\">第4层<\/span>\n          <h4>各 SKU · UE 最小单元 & 量的平衡<\/h4>\n          <div class=\"formula\">单均毛利 = 成交价 − 单位成本（固定） &nbsp;&nbsp; 订单量 + 期末库存 = 可售库存（固定）<\/div>\n          <div class=\"action\">SKU 是 UE 分析的最小单元，量的两端此消彼长，知其一即知另一<\/div>\n          <div class=\"finding\">成本固定，优化空间在定价；可售库存固定，销量和压货是零和博弈<\/div>\n        <\/div>\n\n        <div class=\"profit-layer-card\">\n          <span class=\"profit-badge pb-5\">第5层<\/span>\n          <h4>成交价测算因素 & 订单量来源<\/h4>\n          <div class=\"formula\">成交价 = f(吊牌价, 竞品价格带, 历史成交价, 价格带与优惠力度)<\/div>\n          <div class=\"action\">左支解决\"卖多少钱\"，右支解决\"能卖多少\"，价格带是核心可控变量<\/div>\n          <div class=\"finding\">吊牌价锚定、竞品对标、历史验证、价格带调整<\/div>\n        <\/div>\n\n        <div class=\"profit-layer-card\">\n          <span class=\"profit-badge pb-6\">第6层<\/span>\n          <h4>三档情景预测<\/h4>\n          <div class=\"formula\">悲观 / 中性 / 乐观 → 各 SKU 成交价 + 订单量/期末库存 → 总经营净利润<\/div>\n          <div class=\"action\">逐 SKU 预测后汇总，UE 模型计算总净利润，为决策提供量化依据<\/div>\n          <div class=\"finding\">支撑绩效目标制定、备货与投放决策、价格带调整<\/div>\n        <\/div>\n\n      <\/div>\n    <\/section>\n  <\/div>\n\n<\/div>\n<\/body>\n<\/html>";
+  var f=document.getElementById('embframe');
+  if(f){ try{ f.srcdoc=H; }catch(e){} }
+  var o=document.getElementById('embopen');
+  if(o){ o.addEventListener('click',function(e){
+    e.preventDefault();
+    var b=new Blob([H],{type:'text/html;charset=utf-8'});
+    window.open(URL.createObjectURL(b),'_blank');
+  }); }
+})();
+</script>
+</body>
+</html>

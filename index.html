@@ -184,7 +184,8 @@
   /* ─────── 开篇 HERO（简历 paper-intro） ─────── */
   .hero{
     background:var(--paper);
-    padding:74px 0 0;
+    padding:clamp(16px,2.6vh,30px) 0 0;
+    min-height:50vh;
     position:relative;
     border-bottom:1px solid var(--line);
     container-type:inline-size;
@@ -203,7 +204,7 @@
 
   .hero-grid{
     display:grid;grid-template-columns:1.08fr .92fr;
-    gap:clamp(28px,5cqw,72px);align-items:start;padding:34px 0 8px;
+    gap:clamp(28px,5cqw,72px);align-items:center;padding:14px 0 0;
   }
   .pe-eyebrow-label{display:block;margin-top:14px;}
   .pe-name-row{
@@ -267,7 +268,7 @@
   .pe-portrait{padding-bottom:0;}
   .pe-portrait{padding-bottom:0;}
   .pe-portrait-media{
-    position:relative;width:100%;aspect-ratio:4/5;max-height:380px;
+    position:relative;width:100%;aspect-ratio:4/5;max-height:min(196px,25vh);
     margin:0;overflow:hidden;border-radius:16px;background:var(--surface-strong);
   }
   .pe-portrait-media img{
@@ -293,7 +294,7 @@
   /* HERO 底部指标条 */
   .pe-hero-bottom{
     display:flex;align-items:center;gap:clamp(24px,5cqw,55px);flex-wrap:wrap;
-    border-top:1px solid var(--line);margin-top:44px;padding:26px 0 30px;
+    border-top:1px solid var(--line);margin-top:clamp(12px,2.4vh,26px);padding:12px 0 12px;
   }
   .pe-bottom-item{display:flex;gap:14px;align-items:center;min-width:0;}
   .pe-bottom-value{font:700 34px/normal Arial;color:var(--ink);}
@@ -301,13 +302,15 @@
   .pe-bottom-value.dn{color:var(--dn);}
   .pe-value-unit{font-size:16px;font-weight:600;margin-left:2px;}
   .pe-bottom-label{font:11px/normal var(--body-font);color:var(--muted);}
+  .pe-intro,.pe-hero-meta,.pe-note{display:none;}
+  .pe-actions{display:none;}
   .pe-scroll-cue{
     margin-left:auto;display:inline-flex;align-items:center;gap:10px;
     text-decoration:none;color:var(--muted);
     font:var(--label-weight) 11px/1 var(--label-font);letter-spacing:.14em;
   }
   /* HERO 底部：电商平台 / 广告链路 */
-  .hero-chain{padding:0 0 34px;display:grid;gap:9px;}
+  .hero-chain{padding:0 0 clamp(10px,1.6vh,18px);display:grid;gap:5px;}
   .hc-row{display:flex;gap:12px;align-items:flex-start;}
   .hc-key{
     flex:none;min-width:62px;color:var(--muted);
@@ -320,6 +323,26 @@
     font-style:normal;display:inline-block;min-width:28px;margin-right:3px;
     font-size:12px;color:var(--muted);
   }
+
+  /* HERO 压到 50vh 的紧凑刻度（全部用 vh 联动，任何窗口都≈半屏） */
+  .hero{padding:clamp(10px,2vh,24px) 0 0;display:flex;flex-direction:column;}
+  .hero>.wrap{flex:1;display:flex;flex-direction:column;justify-content:space-between;}
+  .pe-name{font-size:clamp(34px,6.4vh,72px);}
+  .pe-name-row{margin:clamp(4px,1vh,12px) 0 clamp(4px,1vh,12px);}
+  .pe-statement{font-size:clamp(15px,2.3vh,28px);line-height:1.42;
+    margin:clamp(6px,1.3vh,16px) 0 clamp(4px,1vh,10px);}
+  .pe-actions{margin-top:clamp(6px,1.4vh,16px);}
+  .pe-button{padding:9px 17px;}
+  .pe-portrait{padding:13px 15px 0;}
+  .hero-art{justify-self:end;align-self:center;}
+  .pe-portrait{padding:0;border:0;background:none;box-shadow:none;border-radius:0;}
+  .pe-portrait .pe-meta,.pe-portrait-foot{display:none;}
+  .pe-portrait-media{width:clamp(92px,15vh,124px);height:clamp(92px,15vh,124px);
+    aspect-ratio:auto;max-height:none;border-radius:20px;}
+  .pe-portrait-foot{padding:7px 0 9px;margin-top:3px;}
+  .pe-hero-bottom{margin-top:clamp(8px,1.6vh,20px);padding:8px 0 9px;}
+  .pe-bottom-value{font-size:clamp(19px,3.2vh,30px);}
+  .hero-chain{gap:2px;padding-bottom:clamp(6px,1.2vh,12px);}
 
   /* ─────── 项目作品集区（简历 projects 模块） ─────── */
   #works{padding:30px 0 0;container-type:inline-size;}
@@ -631,6 +654,7 @@
   .case-go{margin-top:11px;display:inline-flex;align-items:center;gap:5px;font-size:12.2px;font-weight:800;
     color:var(--accent-deep);letter-spacing:.01em}
   @media (max-width:900px){.cases{grid-template-columns:1fr}.case-cover{aspect-ratio:16/5.2}}
+  @media (max-width:760px){.hero>.wrap{justify-content:flex-start;}.hero{min-height:0;}}
 </style>
 </head>
 <body data-page-node-id="vE8ajjrMteTmStH9ssgFFB">
@@ -756,15 +780,7 @@
   <div class="wrap">
     <header class="pe-header works-header">
       <div><span class="pe-eyebrow">05 / SELECTED PROJECTS</span><h1 class="pe-heading">项目作品集 / Projects</h1></div>
-      <p class="pe-lead">两个 CASE，四件作品。每个 CASE 收成一个入口：主作品在前，子作品收进顶部标签栏。</p>
     </header>
-
-    <div class="merge-hint">
-      <b>结构</b>
-      <span>每个 CASE 以「分析报告 / 经营分析」为主作品；原来的 BI 看板与指标拆解路径收进作品页顶部标签栏，作为一个可直接交互的内嵌子作品。页内按小节分页，点左侧目录切换，不再靠长下拉浏览。</span>
-    </div>
-
-    <p class="leg-note"><b class="u">▲ 红＝上升</b><span>/</span><b class="d">▼ 绿＝下降</b><span>环比、百分点、渠道与品类口径全站同一套</span></p>
 
     <div class="cases">
 

@@ -314,7 +314,11 @@
     font:var(--label-weight) 10.5px/1.6 var(--label-font);letter-spacing:.12em;
   }
   .hc-row p{flex:1;min-width:0;font:13px/1.65 var(--body-font);color:var(--ink);}
-  .hc-row p em{font-style:normal;color:var(--muted);}
+  .hc-vals{flex:1;min-width:0;display:grid;gap:1px;}
+  .hc-row p em{
+    font-style:normal;display:inline-block;min-width:30px;margin-right:2px;
+    font-size:12px;color:var(--muted);
+  }
 
   /* ─────── 项目经历区（简历 projects 模块） ─────── */
   #works{padding:64px 0 0;container-type:inline-size;}
@@ -668,12 +672,19 @@
     </div>
     <div class="hero-chain">
       <div class="hc-row">
-        <span class="hc-key">熟悉平台</span>
-        <p>抖音（抖店）· 天猫 · 京东 · 拼多多 · 微信小店</p>
+        <span class="hc-key">电商平台</span>
+        <div class="hc-vals">
+          <p><em>国内</em>天猫 · 京东 · 抖音</p>
+          <p><em>跨境</em>亚马逊 · Lazada · Shopee · TikTok Shop</p>
+        </div>
       </div>
       <div class="hc-row">
-        <span class="hc-key">广告链路</span>
-        <p>巨量引擎（含千川）、腾讯广告、阿里妈妈 —— 曝光 → 点击 → 进店 → 加购 → 成交 → 退货，按 CPM / CPC / CTR / CVR / ROI 做全链路归因</p>
+        <span class="hc-key">广告投放</span>
+        <p>巨量引擎 · 腾讯广告 · Google Ads · Meta Ads</p>
+      </div>
+      <div class="hc-row">
+        <span class="hc-key">评估指标</span>
+        <p>CPA · CPC · LTV · CTR · ROAS 等</p>
       </div>
     </div>
   </div>

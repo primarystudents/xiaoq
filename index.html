@@ -306,6 +306,15 @@
     text-decoration:none;color:var(--muted);
     font:var(--label-weight) 11px/1 var(--label-font);letter-spacing:.14em;
   }
+  /* HERO 底部：电商平台 / 广告链路 */
+  .hero-chain{padding:0 0 34px;display:grid;gap:9px;}
+  .hc-row{display:flex;gap:12px;align-items:flex-start;}
+  .hc-key{
+    flex:none;min-width:62px;color:var(--muted);
+    font:var(--label-weight) 10.5px/1.6 var(--label-font);letter-spacing:.12em;
+  }
+  .hc-row p{flex:1;min-width:0;font:13px/1.65 var(--body-font);color:var(--ink);}
+  .hc-row p em{font-style:normal;color:var(--muted);}
 
   /* ─────── 项目经历区（简历 projects 模块） ─────── */
   #works{padding:64px 0 0;container-type:inline-size;}
@@ -655,9 +664,17 @@
     <div class="pe-hero-bottom">
       <div class="pe-bottom-item"><strong class="pe-bottom-value">2<span class="pe-value-unit">个</span></strong><span class="pe-bottom-label">CASE · 4 件作品</span></div>
       <div class="pe-bottom-item"><strong class="pe-bottom-value">10<span class="pe-value-unit">万+</span></strong><span class="pe-bottom-label">累计处理数据量</span></div>
-      <div class="pe-bottom-item"><strong class="pe-bottom-value up">▲+56.0<span class="pe-value-unit">%</span></strong><span class="pe-bottom-label">抖音 GMV 增长（12 月 vs 11 月）</span></div>
-      <div class="pe-bottom-item"><strong class="pe-bottom-value dn">▼-7.3<span class="pe-value-unit">pp</span></strong><span class="pe-bottom-label">库存资金占用率（12 月 vs 11 月）</span></div>
       <a class="pe-scroll-cue" href="#works"><span class="pe-label">SCROLL TO EXPLORE</span><span>↓</span></a>
+    </div>
+    <div class="hero-chain">
+      <div class="hc-row">
+        <span class="hc-key">熟悉平台</span>
+        <p>抖音（抖店）· 天猫 · 京东 · 拼多多 · 微信小店</p>
+      </div>
+      <div class="hc-row">
+        <span class="hc-key">广告链路</span>
+        <p>巨量引擎（含千川）、腾讯广告、阿里妈妈 —— 曝光 → 点击 → 进店 → 加购 → 成交 → 退货，按 CPM / CPC / CTR / CVR / ROI 做全链路归因</p>
+      </div>
     </div>
   </div>
 </header>

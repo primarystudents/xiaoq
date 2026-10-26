@@ -314,9 +314,10 @@
     font:var(--label-weight) 10.5px/1.6 var(--label-font);letter-spacing:.12em;
   }
   .hc-row p{flex:1;min-width:0;font:13px/1.65 var(--body-font);color:var(--ink);}
-  .hc-vals{flex:1;min-width:0;display:grid;gap:1px;}
+  .hc-row p{line-height:1.75;word-break:keep-all;}
+  .hc-bar{color:var(--muted);opacity:.4;margin:0 13px 0 9px;}
   .hc-row p em{
-    font-style:normal;display:inline-block;min-width:30px;margin-right:2px;
+    font-style:normal;display:inline-block;min-width:28px;margin-right:3px;
     font-size:12px;color:var(--muted);
   }
 
@@ -673,18 +674,11 @@
     <div class="hero-chain">
       <div class="hc-row">
         <span class="hc-key">电商平台</span>
-        <div class="hc-vals">
-          <p><em>国内</em>天猫 · 京东 · 抖音</p>
-          <p><em>跨境</em>亚马逊 · Lazada · Shopee · TikTok Shop</p>
-        </div>
+        <p><em>国内</em>天猫 · 京东 · 抖音<span class="hc-bar">/</span><em>跨境</em>亚马逊 · Lazada · Shopee · TikTok Shop</p>
       </div>
       <div class="hc-row">
         <span class="hc-key">广告投放</span>
-        <p>巨量引擎 · 腾讯广告 · Google Ads · Meta Ads</p>
-      </div>
-      <div class="hc-row">
-        <span class="hc-key">评估指标</span>
-        <p>CPA · CPC · LTV · CTR · ROAS 等</p>
+        <p>巨量引擎 · 腾讯广告 · Google Ads · Meta Ads<span class="hc-bar">/</span><em>指标</em>花费 · 曝光 · 点击 · CTR · CPC · CPM · CVR · CPA · ROAS · GMV · LTV</p>
       </div>
     </div>
   </div>

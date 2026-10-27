@@ -244,16 +244,19 @@
   }
   .pe-intro b{font-weight:700;color:var(--accent-deep);}
   .pe-intro .nb{white-space:nowrap;}
-  .pe-actions{margin-top:26px;}
-  .pe-button{
-    display:inline-flex;align-items:center;gap:10px;
-    background:var(--ink);color:#fff;text-decoration:none;
-    border-radius:999px;padding:12px 22px;
-    font:var(--label-weight) 12px/1 var(--label-font);letter-spacing:.08em;
-    transition:transform .18s ease,background .18s ease;
+  .pe-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:24px 0 0;}
+  .pe-btn{
+    display:inline-flex;align-items:center;gap:9px;text-decoration:none;line-height:1;
+    border-radius:999px;padding:12px 21px;white-space:nowrap;
+    font-family:var(--label-font);font-size:13px;font-weight:700;letter-spacing:.05em;
+    transition:transform .18s ease,background .18s ease,border-color .18s ease,color .18s ease;
   }
-  .pe-button:hover{transform:translateY(-2px);background:var(--accent-deep);}
-  .pe-button-arrow{font-size:14px;}
+  .pe-btn .ar{font-size:13px;line-height:1;}
+  .pe-btn .fmt{font-size:9px;font-weight:700;letter-spacing:.14em;opacity:.62;margin-left:1px;}
+  .pe-btn.primary{background:var(--ink);color:#fff;box-shadow:0 6px 18px rgba(28,35,51,.16);}
+  .pe-btn.primary:hover{background:var(--accent-deep);transform:translateY(-2px);box-shadow:0 10px 24px rgba(112,128,215,.30);}
+  .pe-btn.ghost{color:var(--ink);background:rgba(255,255,255,.72);border:1px solid rgba(36,48,68,.16);}
+  .pe-btn.ghost:hover{border-color:var(--accent);color:var(--accent-deep);background:#fff;transform:translateY(-2px);}
   .pe-hero-meta{margin-top:30px;padding-top:20px;border-top:1px solid var(--line);}
   .pe-hero-meta .pe-label{display:block;margin-bottom:5px;}
   .pe-hero-meta p{font-size:13.5px;color:var(--ink);}
@@ -664,16 +667,31 @@
     white-space:nowrap;transition:color .2s,background .2s;}
   .topnav-links a:hover{color:var(--ink);background:rgba(112,128,215,.10);}
   .topnav-links a.active{color:var(--accent-deep);background:rgba(112,128,215,.15);}
+  .topnav-cv{
+    display:inline-flex;align-items:center;gap:6px;flex-shrink:0;margin-left:6px;
+    padding:7px 14px;border-radius:999px;text-decoration:none;line-height:1;
+    background:var(--ink);color:#fff;white-space:nowrap;
+    font-family:var(--label-font);font-size:12px;font-weight:700;letter-spacing:.04em;
+    transition:background .2s ease,transform .2s ease;
+  }
+  .topnav-cv:hover{background:var(--accent-deep);transform:translateY(-1px);}
+  .topnav-cv .cv-mini{display:none;}
   #about,#works,#contact{scroll-margin-top:72px;}
   @media (max-width:760px){
     body{padding-top:52px;}
     .topnav-in{height:52px;padding:0 16px;}
     .topnav-links a{font-size:11.4px;padding:5px 8px;}
     .topnav-logo em{display:none;}
+    .topnav-cv{padding:6px 11px;font-size:11px;margin-left:2px;}
+  }
+  @media (max-width:560px){
+    .topnav-links a{font-size:10.8px;padding:5px 6px;}
+    .topnav-cv{padding:6px 10px;gap:4px;}
+    .topnav-cv .cv-full{display:none;}
+    .topnav-cv .cv-mini{display:inline;}
   }
   @media (max-width:430px){
     .topnav-logo{font-size:15px;}
-    .topnav-links a{font-size:10.8px;padding:5px 6px;}
   }
   @media (max-width:760px){.hero>.wrap{justify-content:flex-start;}.hero{min-height:0;}}
 
@@ -727,6 +745,9 @@
       <a href="#works">作品集</a>
       <a href="#contact">联系我</a>
     </div>
+    <a class="topnav-cv" href="assets/resume.pdf" download="邱曾恺-电商数据分析-简历.pdf" aria-label="下载简历 PDF">
+      <span class="cv-full">下载简历</span><span class="cv-mini">简历</span><span aria-hidden="true">↓</span>
+    </a>
   </div>
 </nav>
 
@@ -745,6 +766,10 @@
         </h1>
         <p class="pe-role"><span>意向岗位</span><b>电商数据分析<i>/</i>电商运营<i>/</i>广告投放</b></p>
         <p class="pe-intro"><b>1 年+ 电商数据分析经验</b>，熟悉广告投放、营销活动分析，另有销售经营与品类分析经验；熟练使用 <span class="nb">Excel、SQL、BI 工具</span>，英语读写良好，可作为工作语言。</p>
+        <div class="pe-actions">
+          <a class="pe-btn primary" href="#works">探索项目<span class="ar" aria-hidden="true">↓</span></a>
+          <a class="pe-btn ghost" href="assets/resume.pdf" download="邱曾恺-电商数据分析-简历.pdf">下载简历<span class="fmt">PDF</span></a>
+        </div>
       </div>
       <div class="hero-art">
         <div class="pe-orbit" aria-hidden="true"></div>

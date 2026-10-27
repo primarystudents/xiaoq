@@ -676,6 +676,43 @@
     .topnav-links a{font-size:10.8px;padding:5px 6px;}
   }
   @media (max-width:760px){.hero>.wrap{justify-content:flex-start;}.hero{min-height:0;}}
+
+  /* ══════════ 个人简介：补足一屏 ══════════ */
+  .hero{min-height:calc(100vh - 56px);}
+  .pe-meta{padding-bottom:20px;}
+  .pe-name{font-size:clamp(42px,6.4cqw,92px);}
+  .pe-star{font-size:clamp(38px,6.6cqw,96px);}
+  .pe-role b{font-size:17px;}
+  .pe-intro{font-size:16px;}
+  .pe-portrait-media{max-height:min(300px,34vh);}
+  .pe-bottom-value{font-size:38px;}
+
+  /* ══════════ 经历与技能栈：压到一屏内 ══════════ */
+  #about{padding:38px 0 0;}
+  #about .sec-head{margin-bottom:18px;}
+  #about .sec-head h2{font-size:26px;}
+  .about-grid{gap:18px;}
+  .about-card{padding:20px 22px;}
+  .about-card h3{font-size:16px;margin-bottom:11px;}
+  .tl{padding-left:18px;}
+  .tl-item{padding-bottom:11px;}
+  .tl-item .tl-time{font-size:12px;}
+  .tl-item .tl-title{font-size:15px;}
+  .tl-item .tl-desc{font-size:13.2px;line-height:1.62;}
+  .skill-list{gap:9px;}
+  .skill-list .sk{padding-bottom:9px;}
+  .skill-list .sk b{font-size:13.2px;}
+  .skill-list .sk span{font-size:12.4px;line-height:1.54;}
+  .skill-group{margin-bottom:11px;}
+  .chips span{font-size:12.5px;padding:4px 11px;}
+
+  @media (max-width:760px){
+    .hero{min-height:0;}
+    .pe-name{font-size:44px;}
+    .pe-star{font-size:38px;}
+    .pe-portrait-media{max-height:330px;}
+    #about{padding:36px 0 0;}
+  }
 </style>
 </head>
 <body id="top" data-page-node-id="vE8ajjrMteTmStH9ssgFFB">

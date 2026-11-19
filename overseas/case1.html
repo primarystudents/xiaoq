@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CASE 01 · 东南亚独立站投放复盘 | 邱曾恺 海外投放作品集</title>
-<meta name="description" content="东南亚运动户外 Shopify 独立站 3 个月投放复盘：账户结构、36 条素材测试、Pixel 与 Shopify 归因差异、四国预算重分配、联盟与达人营销。">
+<title>CASE 01 · 达人种草投放复盘 | 邱曾恺 投放作品集</title>
+<meta name="description" content="户外品类头部品牌抖音种草投放复盘：443.2 万现金、500.8 万成交、ROI 1.13，按投放链路拆解 Brief、结构、内容、执行、回看与优化动作。">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b45d7'/%3E%3Cpath d='M18 44V20h8l6 12 6-12h8v24h-7V32l-5 10h-4l-5-10v12z' fill='%23fff'/%3E%3C/svg%3E">
 <style>
 :root{
@@ -14,761 +14,759 @@
   --acc:#1b45d7; --acc-d:#12309c; --acc-soft:#eef2ff;
   --teal:#0d8a7e; --teal-soft:#e7f6f3;
   --amber:#a8730f; --amber-soft:#fdf5e6;
-  --up:#c4372c; --down:#0d7a5c; --up-soft:#fbecea; --down-soft:#e9f5f1;
+  --rose:#b0353f; --rose-soft:#fbeef0;
+  --up:#c4372c; --down:#0d7a5c;
   --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
   --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
 }
 *{box-sizing:border-box;-webkit-font-smoothing:antialiased}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.78}
-h1,h2,h3,h4,p,ul,ol,table{margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.75}
+h1,h2,h3,h4,p,ul,ol{margin:0}
 a{color:inherit}
 ::selection{background:#d9e2ff}
-.wrap{max-width:1100px;margin:0 auto;padding:0 26px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 26px}
 .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
 
-/* topbar */
-.casebar{position:sticky;top:0;z-index:60;background:rgba(246,247,249,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.casebar-in{max-width:1100px;margin:0 auto;padding:0 26px;height:58px;display:flex;align-items:center;gap:14px}
-.back{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-size:13px;color:var(--muted);padding:5px 10px;border-radius:7px;transition:.18s;white-space:nowrap}
-.back:hover{background:#eceff5;color:var(--ink)}
-.casebar .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--acc);background:var(--acc-soft);padding:4px 8px;border-radius:5px;white-space:nowrap}
-.casebar .ttl{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.casebar .spacer{flex:1}
-.cnav{display:flex;gap:1px;overflow-x:auto;scrollbar-width:none}
-.cnav::-webkit-scrollbar{display:none}
-.cnav a{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-decoration:none;color:var(--muted);padding:6px 9px;border-radius:6px;white-space:nowrap}
-.cnav a:hover{color:var(--ink);background:#eceff5}
-.cnav a.on{color:#fff;background:var(--ink)}
-.prog{position:fixed;top:58px;left:0;height:2px;background:var(--acc);z-index:61;width:0}
+/* topnav */
+.topnav{position:sticky;top:0;z-index:60;background:rgba(246,247,249,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.topnav-in{max-width:1080px;margin:0 auto;padding:0 26px;height:60px;display:flex;align-items:center;gap:18px}
+.logo{display:flex;align-items:baseline;gap:8px;text-decoration:none;font-weight:800;letter-spacing:-.02em;font-size:15.5px}
+.logo em{font-style:normal;font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;color:var(--faint);font-weight:500}
+.navlinks{display:flex;gap:2px;margin-left:auto}
+.navlinks a{padding:6px 11px;border-radius:999px;text-decoration:none;font-size:13px;color:var(--muted);transition:.18s;white-space:nowrap}
+.navlinks a:hover{color:var(--ink);background:#eceff5}
+.navlinks a.on{color:var(--acc-d);background:var(--acc-soft);font-weight:600}
+.cv{margin-left:6px;display:inline-flex;align-items:center;padding:7px 13px;border-radius:999px;background:var(--ink);color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;white-space:nowrap}
 
-/* hero */
-.chero{padding:56px 0 8px}
-.chero .kh{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--muted)}
-.chero .kh i{width:24px;height:1px;background:var(--acc)}
-h1{font-size:clamp(30px,4.2vw,46px);line-height:1.18;letter-spacing:-.04em;font-weight:800;margin-top:20px}
-h1 em{font-style:normal;color:var(--acc)}
-.lede{max-width:760px;font-size:16px;color:var(--ink2);margin-top:18px;line-height:1.85}
-.lede b{color:var(--ink)}
-.meta{display:flex;flex-wrap:wrap;gap:7px;margin-top:22px}
-.meta span{font-family:var(--mono);font-size:10.5px;color:var(--ink2);border:1px solid var(--line);background:#fff;padding:4px 9px;border-radius:6px;letter-spacing:.02em}
+/* chapter bar */
+.cbar{position:sticky;top:60px;z-index:55;background:#fff;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+.cbar::-webkit-scrollbar{display:none}
+.cbar-in{max-width:1080px;margin:0 auto;padding:0 26px;display:flex;gap:0;align-items:center;height:44px}
+.cbar a{display:inline-flex;align-items:center;gap:6px;padding:0 13px;height:44px;text-decoration:none;font-size:12.2px;color:var(--muted);border-bottom:2px solid transparent;white-space:nowrap;transition:.16s}
+.cbar a b{font-family:var(--mono);font-size:9.5px;color:var(--faint);font-weight:500}
+.cbar a:hover{color:var(--ink);background:#fafbfd}
+.cbar a.on{color:var(--acc-d);border-bottom-color:var(--acc);font-weight:600}
+.cbar a.on b{color:var(--acc)}
 
-/* KPI */
-.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:32px}
-.kpi{background:#fff;padding:16px 15px}
-.kpi .l{font-size:11px;color:var(--muted);letter-spacing:.02em}
-.kpi .v{font-family:var(--mono);font-size:23px;font-weight:600;letter-spacing:-.03em;margin-top:6px;line-height:1.1}
-.kpi .v em{font-style:normal;font-size:11px;color:var(--muted);margin-left:3px;letter-spacing:0;vertical-align:2px}
-.kpi .d{font-size:10.5px;margin-top:5px;font-family:var(--mono)}
-.kpi .d.up{color:var(--up)} .kpi .d.down{color:var(--down)} .kpi .d.flat{color:var(--faint)}
-.legend{display:flex;gap:14px;font-size:10.5px;color:var(--faint);font-family:var(--mono);margin-top:10px;justify-content:flex-end}
-.legend b{font-weight:500}
-.legend .u{color:var(--up)} .legend .d{color:var(--down)}
+/* head */
+.chead{padding:44px 0 30px;border-bottom:1px solid var(--line);background:linear-gradient(#fff,var(--paper))}
+.chead .tagline{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--faint);text-transform:uppercase;flex-wrap:wrap}
+.chead .tagline .pill{background:var(--acc-soft);color:var(--acc-d);padding:2px 8px;border-radius:5px;letter-spacing:.1em}
+.chead h1{font-size:clamp(27px,3.6vw,40px);line-height:1.18;letter-spacing:-.035em;font-weight:800;margin-top:16px}
+.chead h1 small{display:block;font-size:13.5px;font-weight:400;color:var(--muted);letter-spacing:.01em;margin-top:12px;line-height:1.85}
+.chead .ctx{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+.chead .ctx span{font-family:var(--mono);font-size:10.5px;color:var(--ink2);border:1px solid var(--line);background:#fff;border-radius:5px;padding:3px 8px}
 
-/* sections */
-section.s{padding:56px 0 0;scroll-margin-top:70px}
-.shead{display:flex;align-items:baseline;gap:14px;padding-bottom:12px;border-bottom:1px solid var(--ink);margin-bottom:26px}
-.shead .no{font-family:var(--mono);font-size:11px;color:var(--acc);letter-spacing:.08em}
-.shead h2{font-size:clamp(20px,2.3vw,25px);letter-spacing:-.03em;font-weight:750;line-height:1.35}
-.shead .en{margin-left:auto;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;text-align:right}
-h3.sub{font-size:15.5px;letter-spacing:-.01em;margin:30px 0 12px;display:flex;align-items:center;gap:9px}
-h3.sub:before{content:"";width:3px;height:14px;background:var(--acc);border-radius:2px}
-p.tx{font-size:14px;color:var(--ink2);line-height:1.85;max-width:820px}
-p.tx b{color:var(--ink);font-weight:650}
-.note{font-size:11.5px;color:var(--faint);line-height:1.7;margin-top:10px}
+/* kpi */
+.kpi-band{background:#fff;border-bottom:1px solid var(--line)}
+.kpis{max-width:1080px;margin:0 auto;padding:0 26px;display:grid;grid-template-columns:repeat(6,1fr)}
+.kpi{padding:18px 16px 17px;border-left:1px solid var(--line2)}
+.kpi:first-child{border-left:0;padding-left:0}
+.kpi .l{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:var(--faint);white-space:nowrap}
+.kpi .v{font-family:var(--mono);font-size:22px;font-weight:600;letter-spacing:-.035em;margin-top:5px;line-height:1.1;white-space:nowrap}
+.kpi .v em{font-style:normal;font-size:10.5px;color:var(--muted);margin-left:2px;font-weight:400;letter-spacing:0;vertical-align:2px}
+.kpi .d{font-size:11px;color:var(--muted);margin-top:4px;white-space:nowrap}
+.kpi .d.warn{color:var(--rose)}
 
-/* finding cards */
-.findings{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
-.fd{background:#fff;border:1px solid var(--line);border-left:2px solid var(--acc);border-radius:10px;padding:18px 18px 16px}
-.fd:nth-child(2){border-left-color:var(--amber)}
-.fd:nth-child(3){border-left-color:var(--teal)}
-.fd .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--faint)}
-.fd h4{font-size:14.5px;margin-top:7px;line-height:1.5;letter-spacing:-.01em}
-.fd p{font-size:12.5px;color:var(--ink2);margin-top:8px;line-height:1.75}
-.fd p b{color:var(--ink)}
+/* section */
+.sec{padding:56px 0 8px}
+.sec-h{display:flex;align-items:flex-start;gap:16px;margin-bottom:24px}
+.sec-h .idx{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--acc);padding-top:9px;white-space:nowrap}
+.sec-h .t h2{font-size:clamp(20px,2.4vw,25px);letter-spacing:-.03em;font-weight:800;line-height:1.3}
+.sec-h .t p{font-size:13.4px;color:var(--muted);margin-top:7px;max-width:740px}
+.sec-h .t p b{color:var(--ink2);font-weight:600}
 
 /* generic card */
-.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 22px 20px}
+.card h3{font-size:14.5px;font-weight:730;letter-spacing:-.01em}
+.card h3 span{font-family:var(--mono);font-size:9.5px;color:var(--faint);letter-spacing:.1em;margin-left:7px;font-weight:400}
+.card p{font-size:12.8px;color:var(--muted);margin-top:8px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.mt14{margin-top:14px}
+.mt20{margin-top:20px}
+
+/* callout */
+.call{border-left:3px solid var(--acc);background:#fbfcff;border-radius:0 10px 10px 0;padding:15px 18px;font-size:13px;color:var(--ink2)}
+.call b{color:var(--ink)}
+.call.warn{border-left-color:var(--amber);background:#fffdf7}
+.call.rose{border-left-color:var(--rose);background:#fffafb}
+.call .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--faint);display:block;margin-bottom:4px}
 
 /* table */
-table{width:100%;border-collapse:collapse;font-size:12.6px;background:#fff}
-.tbl{border:1px solid var(--line);border-radius:10px;overflow-x:auto;margin-top:14px;background:#fff}
-th,td{text-align:left;padding:10px 11px;border-bottom:1px solid var(--line2);vertical-align:top}
-th{background:#fafbfd;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.03em;white-space:nowrap}
-tbody tr:last-child td{border-bottom:0}
-td.n,th.n{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
-td small{color:var(--muted);font-size:11px}
-tr.sum td{background:#fbfcfe;font-weight:650}
-.pill{display:inline-block;font-family:var(--mono);font-size:9.5px;padding:2px 6px;border-radius:4px;background:var(--acc-soft);color:var(--acc-d)}
-.pill.g{background:var(--down-soft);color:var(--down)}
-.pill.r{background:var(--up-soft);color:var(--up)}
-.pill.a{background:var(--amber-soft);color:var(--amber)}
+.tbl{border:1px solid var(--line);border-radius:10px;overflow-x:auto;background:#fff;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:12.5px;background:#fff;min-width:560px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line2);vertical-align:top}
+th{background:#fafbfd;font-size:10.5px;font-family:var(--mono);letter-spacing:.08em;color:var(--muted);font-weight:500;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.num{font-family:var(--mono);text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+td b{font-weight:650}
+.tbl .self{background:#f8faff}
+.tbl .self td{color:var(--ink)}
+.tagx{display:inline-block;font-family:var(--mono);font-size:9.5px;padding:1px 5px;border-radius:3px;background:#f1f3f8;color:var(--muted);white-space:nowrap}
+.tagx.ok{background:var(--teal-soft);color:var(--teal)}
+.tagx.bad{background:var(--rose-soft);color:var(--rose)}
+.tagx.mid{background:var(--amber-soft);color:var(--amber)}
 
-/* account tree */
-.tree{background:#0e131b;border-radius:12px;padding:24px 22px;color:#dbe3f0;margin-top:14px;overflow-x:auto}
-.tree-row{display:flex;align-items:center;gap:10px;flex-wrap:nowrap;min-width:660px}
-.tnode{flex:1;border:1px solid #26303f;border-radius:8px;padding:9px 11px;font-size:11.5px;background:#141b25}
-.tnode b{display:block;font-size:11.5px;color:#eef2f9;font-weight:600}
-.tnode em{font-style:normal;font-family:var(--mono);font-size:9.5px;color:#7d8aa4;letter-spacing:.04em}
-.tnode.hi{border-color:#3a63ef;background:#16203a}
-.tconn{width:14px;height:1px;background:#2c3748;flex:0 0 14px}
-.tnote{font-family:var(--mono);font-size:9.5px;color:#6f7d96;margin-top:16px;letter-spacing:.03em}
+/* bars */
+.bars{margin-top:16px}
+.brow{display:grid;grid-template-columns:118px 1fr 96px;gap:12px;align-items:center;padding:7px 0}
+.brow .lab{font-size:12.2px;color:var(--ink2)}
+.brow .lab b{display:block;color:var(--ink);font-size:12.4px;font-weight:600}
+.brow .lab em{font-style:normal;font-family:var(--mono);font-size:9.5px;color:var(--faint)}
+.brow .track{height:12px;background:#f4f6fa;border-radius:3px;overflow:hidden;position:relative}
+.brow .track i{display:block;height:100%;border-radius:3px;background:var(--acc)}
+.brow .track i.grey{background:#c9d2e2}
+.brow .track i.amber{background:#d8a33c}
+.brow .num{font-family:var(--mono);font-size:12px;text-align:right;white-space:nowrap;color:var(--ink);font-weight:600}
+.brow .num small{display:block;color:var(--faint);font-weight:400;font-size:9.5px}
+.blegend{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px;padding-top:11px;border-top:1px dashed var(--line2);font-size:11px;color:var(--muted);font-family:var(--mono)}
+.blegend i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:5px;vertical-align:0}
 
-/* bar chart (CSS) */
-.bars{display:grid;gap:11px;margin-top:8px}
-.brow{display:grid;grid-template-columns:96px 1fr 62px;align-items:center;gap:11px;font-size:12.3px}
-.brow .nm{color:var(--ink2);white-space:nowrap}
-.brow .tr{height:8px;border-radius:4px;background:#f0f2f7;overflow:hidden;position:relative}
-.brow .tr i{display:block;height:100%;border-radius:4px;background:var(--acc)}
-.brow .tr i.teal{background:var(--teal)}
-.brow .tr i.amber{background:#d5a33a}
-.brow .tr i.gray{background:#b9c2d2}
-.brow .v{font-family:var(--mono);font-size:11.8px;text-align:right;color:var(--ink)}
-.brow .v small{color:var(--faint);font-size:9.5px}
+/* distribution */
+.dist{margin-top:14px}
+.dist .rail{height:34px;border-radius:6px;display:flex;overflow:hidden;border:1px solid var(--line);position:relative}
+.dist .rail .a{background:linear-gradient(90deg,#dfe7fb,#c7d6f8);color:#4a5b86;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:10.5px}
+.dist .rail .b{background:linear-gradient(90deg,#5b78ea,#2b4fd0);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:10.5px}
+.dist .axis{display:flex;justify-content:space-between;font-family:var(--mono);font-size:9.5px;color:var(--faint);margin-top:6px}
 
-/* funnel compare */
-.fcmp{display:grid;gap:14px;margin-top:6px}
-.fcmp .row{display:grid;grid-template-columns:126px 1fr 108px;gap:14px;align-items:center}
-.fcmp .lab{font-size:12.3px;color:var(--ink2)}
-.fcmp .lab b{display:block;color:var(--ink);font-size:12.5px}
-.fcmp .lab em{font-style:normal;font-size:10.5px;color:var(--faint);font-family:var(--mono)}
-.fcmp .track{position:relative;height:26px;background:#f7f8fb;border-radius:5px;border:1px solid #eef1f6}
-.fcmp .track i{position:absolute;left:0;border-radius:3px;display:block}
-.fcmp .track i.me{top:4px;height:8px;background:var(--acc)}
-.fcmp .track i.base{top:16px;height:6px;background:#d3d9e5}
-.fcmp .vv{font-family:var(--mono);font-size:11.5px;text-align:right;line-height:1.5}
-.fcmp .vv b{display:block;color:var(--ink);font-weight:600;font-size:12.5px;white-space:nowrap}
-.fcmp .vv small{display:block;color:var(--faint);font-size:9.5px;white-space:nowrap}
-.fcmp .vv .badge{display:inline-block;margin-top:2px}
-.badge{display:inline-block;font-family:var(--mono);font-size:9px;padding:1px 5px;border-radius:3px;margin-left:4px;vertical-align:1px}
-.badge.ok{background:var(--down-soft);color:var(--down)}
-.badge.no{background:var(--up-soft);color:var(--up)}
+/* qualified */
+.qline{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;margin-top:14px}
+.qi{padding:16px 16px 14px;border-left:1px solid var(--line2)}
+.qi:first-child{border-left:0}
+.qi .n{font-family:var(--mono);font-size:19px;font-weight:600;letter-spacing:-.03em;white-space:nowrap}
+.qi .n em{font-style:normal;font-size:11px;color:var(--muted);margin-left:2px;font-weight:400}
+.qi .l{font-size:11.5px;color:var(--muted);margin-top:3px}
+.qi .bar{height:5px;border-radius:3px;background:#f1f3f8;margin-top:9px;overflow:hidden}
+.qi .bar i{display:block;height:100%;border-radius:3px}
 
-/* chart card */
-.chart{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 20px 14px;margin-top:14px}
-.chart .ch{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
-.chart .ch h4{font-size:13px;font-weight:650}
-.chart .ch .u{font-family:var(--mono);font-size:9.5px;color:var(--faint);letter-spacing:.08em}
-svg{display:block;width:100%;height:auto}
-.tick{font-family:var(--mono);font-size:9px;fill:#9aa2af}
-.axis{stroke:#e5e8ee;stroke-width:1}
-.lab-s{font-size:9.5px;fill:#727a88;font-family:var(--mono)}
+/* kol cards */
+.kol{background:#fff;border:1px solid var(--line);border-radius:11px;padding:16px 16px 14px;position:relative}
+.kol .top{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.kol .nm{font-size:13.4px;font-weight:680;letter-spacing:-.01em}
+.kol .grp{font-family:var(--mono);font-size:9px;letter-spacing:.08em;padding:1px 5px;border-radius:3px;background:var(--acc-soft);color:var(--acc-d)}
+.kol .grp.b{background:var(--teal-soft);color:var(--teal)}
+.kol .sub{font-size:11.5px;color:var(--muted);margin-top:2px}
+.kol .v{font-family:var(--mono);font-size:20px;font-weight:600;letter-spacing:-.03em;margin-top:9px;white-space:nowrap}
+.kol .v em{font-style:normal;font-size:10.5px;color:var(--muted);margin-left:2px;font-weight:400}
+.kol .why{font-size:11.8px;color:var(--ink2);margin-top:9px;line-height:1.7;padding-top:9px;border-top:1px dashed var(--line2)}
+.kol .why b{color:var(--ink);font-weight:650}
+.kol.star{border-color:#cfd9f2;box-shadow:0 0 0 3px rgba(27,69,215,.06)}
+.kol .star-tag{position:absolute;top:-9px;right:12px;font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;background:var(--acc);color:#fff;padding:2px 7px;border-radius:4px}
 
-/* decision tabs */
-.tabs{display:flex;gap:6px;margin:16px 0 0;flex-wrap:wrap}
-.tabs button{font-family:var(--sans);font-size:12.5px;padding:8px 14px;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--ink2);cursor:pointer;transition:.18s}
-.tabs button:hover{border-color:#c8d2e6}
-.tabs button.on{background:var(--ink);border-color:var(--ink);color:#fff}
-.tabp{display:none;margin-top:14px}
-.tabp.on{display:block}
-.dec{display:grid;gap:8px}
-.dec .it{display:grid;grid-template-columns:minmax(0,1fr) 124px 320px;gap:14px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:9px;padding:13px 16px;font-size:12.8px}
-.dec .it b{font-weight:600}
-.dec .it span{font-family:var(--mono);font-size:11.5px;color:var(--muted);text-align:right;white-space:nowrap}
-.dec .it .why{color:var(--muted);font-family:var(--sans);font-size:11.5px;line-height:1.65;text-align:left;white-space:normal}
+/* strategy */
+.stra{background:#fff;border:1px solid var(--line);border-radius:11px;padding:18px}
+.stra .n{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--acc)}
+.stra h4{font-size:14px;font-weight:720;margin-top:7px;letter-spacing:-.01em}
+.stra .goal{font-size:11.8px;color:var(--muted);margin-top:5px}
+.stra ul{list-style:none;padding:0;margin:10px 0 0}
+.stra li{font-size:11.8px;color:var(--ink2);padding:5px 0 5px 13px;position:relative;line-height:1.65}
+.stra li:before{content:"";position:absolute;left:0;top:12px;width:4px;height:1px;background:var(--acc)}
 
-/* split two-col with numbers */
-.two{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:14px}
-.mini{background:#fff;border:1px solid var(--line);border-radius:11px;padding:18px}
-.mini h4{font-size:13.5px;display:flex;align-items:center;justify-content:space-between;gap:8px}
-.mini h4 span{font-family:var(--mono);font-size:9.5px;color:var(--faint);letter-spacing:.1em;font-weight:400}
-.mini ul{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:7px}
-.mini li{font-size:12.5px;color:var(--ink2);padding-left:13px;position:relative;line-height:1.7}
-.mini li:before{content:"";position:absolute;left:0;top:8px;width:4px;height:4px;border-radius:50%;background:#c3ccdd}
-.mini li b{color:var(--ink)}
+/* steps / rules list */
+.rlist{counter-reset:r;margin-top:14px}
+.rit{display:grid;grid-template-columns:34px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid var(--line2)}
+.rit:last-child{border-bottom:0}
+.rit .n{font-family:var(--mono);font-size:10px;color:var(--faint);letter-spacing:.08em;padding-top:2px}
+.rit h4{font-size:13.8px;font-weight:700}
+.rit p{font-size:12.4px;color:var(--muted);margin-top:5px}
+.rit .out{display:inline-block;margin-top:8px;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;background:#f4f6fa;color:var(--ink2);padding:2px 7px;border-radius:4px}
 
-/* accordion */
-.acc{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;margin-top:12px}
-.acc details{border-bottom:1px solid var(--line2)}
-.acc details:last-child{border-bottom:0}
-.acc summary{cursor:pointer;padding:14px 16px;font-size:13px;font-weight:600;list-style:none;display:flex;justify-content:space-between;align-items:center}
-.acc summary::-webkit-details-marker{display:none}
-.acc summary:after{content:"+";font-family:var(--mono);color:var(--faint);font-size:15px}
-.acc details[open] summary:after{content:"−"}
-.acc .bd{padding:0 16px 16px;font-size:12.5px;color:var(--ink2);line-height:1.85}
-.acc .bd b{color:var(--ink)}
+/* quad */
+.quad{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.qc{border-radius:10px;padding:16px 16px 14px;border:1px solid var(--line);background:#fff}
+.qc .h{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.qc .h b{font-size:13.2px;font-weight:700}
+.qc .h .a{font-family:var(--mono);font-size:9px;letter-spacing:.08em;padding:2px 6px;border-radius:3px;background:#f1f3f8;color:var(--muted);white-space:nowrap}
+.qc p{font-size:11.9px;color:var(--muted);margin-top:7px;line-height:1.7}
+.qc p b{color:var(--ink2)}
+.qc.go{background:linear-gradient(#f7fbf9,#fff);border-color:#cfe8e0}
+.qc.go .h .a{background:var(--teal-soft);color:var(--teal)}
+.qc.stop{background:linear-gradient(#fdf8f8,#fff);border-color:#f0d5d8}
+.qc.stop .h .a{background:var(--rose-soft);color:var(--rose)}
+.qc.fix{background:linear-gradient(#fffdf7,#fff);border-color:#f0e2c4}
+.qc.fix .h .a{background:var(--amber-soft);color:var(--amber)}
 
-.pager{display:flex;justify-content:space-between;gap:14px;border-top:1px solid var(--line);margin-top:50px;padding:22px 0 8px;font-size:13px}
-.pager a{text-decoration:none;color:var(--ink2);display:flex;align-items:center;gap:8px}
-.pager a:hover{color:var(--acc)}
-.pager .r{text-align:right}
-.pager small{display:block;font-family:var(--mono);font-size:9.5px;color:var(--faint);letter-spacing:.1em}
-footer{padding:28px 0 46px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;font-size:11px;color:var(--faint);font-family:var(--mono)}
+/* note */
+.note{font-size:11.6px;color:var(--faint);line-height:1.75;margin-top:10px}
+.note b{color:var(--muted);font-weight:600}
 
-@media (max-width:900px){
+/* boundary */
+.bdbox{background:#fff;border:1px solid var(--line);border-radius:12px;padding:4px 20px;margin-top:14px}
+.bditem{display:grid;grid-template-columns:20px 1fr;gap:10px;padding:14px 0;border-bottom:1px solid var(--line2);font-size:12.6px;color:var(--ink2)}
+.bditem:last-child{border-bottom:0}
+.bditem .i{font-family:var(--mono);font-size:10px;color:var(--acc);padding-top:3px}
+.bditem b{color:var(--ink)}
+
+/* sop link */
+.sopmap{background:#101725;border-radius:13px;padding:24px;color:#dbe3f0;margin-top:18px}
+.sopmap h3{font-size:16px;font-weight:720;color:#fff;letter-spacing:-.01em}
+.sopmap p{font-size:12.6px;color:#9dabc2;margin-top:7px}
+.sopmap .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
+.sopmap .chips a{text-decoration:none;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;padding:5px 10px;border-radius:5px;background:#18202e;color:#b9c8e2;border:1px solid #243043;transition:.18s;white-space:nowrap}
+.sopmap .chips a:hover{background:#1f2c44;color:#fff;border-color:#33436a}
+.sopmap .foot{margin-top:15px;padding-top:13px;border-top:1px solid #1e2734;font-family:var(--mono);font-size:9.5px;color:#7b89a2;letter-spacing:.06em}
+
+/* pager */
+.pager{display:flex;justify-content:space-between;gap:12px;margin:48px 0 0;padding-top:22px;border-top:1px solid var(--line);flex-wrap:wrap}
+.pager a{text-decoration:none;font-size:13px;color:var(--ink2);display:flex;flex-direction:column;gap:3px}
+.pager a:hover{color:var(--acc-d)}
+.pager a small{font-family:var(--mono);font-size:9.5px;color:var(--faint);letter-spacing:.1em}
+footer{padding:30px 0 44px}
+.f-in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:11.5px;color:var(--faint);font-family:var(--mono);letter-spacing:.04em}
+
+.rv{opacity:0;transform:translateY(12px);transition:opacity .55s ease,transform .55s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  .rv{opacity:1!important;transform:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+@media print{.rv{opacity:1!important;transform:none!important}}
+
+@media (max-width:1000px){
   .kpis{grid-template-columns:repeat(3,1fr)}
-  .findings,.grid3{grid-template-columns:1fr}
-  .grid2,.two{grid-template-columns:1fr}
-  .cnav{display:none}
-  .dec .it{grid-template-columns:minmax(0,1fr) 110px}
-  .dec .it .why{display:none}
+  .kpi{padding:14px 14px 13px}
+  .kpi:nth-child(3n+1){border-left:0;padding-left:0}
+  .kpi:nth-child(n+4){border-top:1px solid var(--line2)}
+  .grid4{grid-template-columns:1fr 1fr}
+}
+@media (max-width:820px){
+  .grid2,.grid3{grid-template-columns:1fr}
+  .quad{grid-template-columns:1fr}
+  .qline{grid-template-columns:1fr}
+  .qi{border-left:0;border-top:1px solid var(--line2)}
+  .qi:first-child{border-top:0}
 }
 @media (max-width:600px){
-  .shead .en{display:none}
-  .wrap,.casebar-in{padding:0 18px}
-  .kpis{grid-template-columns:1fr 1fr}
-  .fcmp .row{grid-template-columns:88px 1fr 78px}
-  .brow{grid-template-columns:78px 1fr 56px}
-  .dec .it{grid-template-columns:1fr;gap:4px}
-  .dec .it span{text-align:left}
-  .casebar .ttl{display:none}
+  .navlinks{display:none}
+  .wrap,.topnav-in,.cbar-in{padding:0 18px}
+  .chead{padding:30px 0 22px}
+  .kpis{grid-template-columns:1fr 1fr;padding:0 18px}
+  .kpi .v{font-size:19px}
+  .kpi{padding:12px 12px 11px}
+  .kpi:nth-child(2n+1){border-left:0;padding-left:0}
+  .kpi:nth-child(n+3){border-top:1px solid var(--line2)}
+  .brow{grid-template-columns:96px 1fr 78px;gap:9px}
+  .brow .lab b{font-size:11.6px}
+  .grid4{grid-template-columns:1fr}
+  .sec{padding:42px 0 6px}
+  .sec-h{gap:10px}
+  .sec-h .idx{padding-top:5px;font-size:10px}
+  .card{padding:18px 16px}
+  .sopmap{padding:18px}
+  .dist .rail .a,.dist .rail .b{font-size:9px}
 }
 </style>
 </head>
 <body>
-<div class="prog" id="prog"></div>
 
-<nav class="casebar">
-  <div class="casebar-in">
-    <a class="back" href="index.html">← 作品集</a>
-    <span class="tag">CASE 01</span>
-    <span class="ttl">东南亚独立站投放复盘</span>
-    <span class="spacer"></span>
-    <div class="cnav">
-      <a href="#s1" class="on">概览</a>
-      <a href="#s2">结构</a>
-      <a href="#s3">素材</a>
-      <a href="#s4">漏斗归因</a>
-      <a href="#s5">市场</a>
-      <a href="#s6">联盟达人</a>
-      <a href="#s7">决策</a>
-      <a href="#s8">口径</a>
+<nav class="topnav">
+  <div class="topnav-in">
+    <a class="logo" href="index.html">邱曾恺<em>PAID MEDIA</em></a>
+    <div class="navlinks">
+      <a href="index.html">首页</a>
+      <a href="case1.html" class="on">作品 CASE 01</a>
+      <a href="sop.html">投放 SOP</a>
     </div>
+    <a class="cv" href="assets/resume.pdf" target="_blank" rel="noopener">简历 PDF</a>
   </div>
 </nav>
 
-<header class="chero">
-  <div class="wrap">
-    <div class="kh"><i></i>SHOPIFY DTC · META &amp; GOOGLE ADS · SEA · 2026 Q3</div>
-    <h1>4.52 万 USD 花出去，<br><em>钱漏在了哪一层</em></h1>
-    <p class="lede">
-      东南亚运动户外品牌的 Shopify 独立站，三个月、四个国家、五个 Campaign。表面看 ROAS 2.4 刚好过线，
-      拆开之后是三种不同的问题：<b>拉新计划在亏毛利、素材在第 11 天开始失效、后台 ROAS 比实收高 11.8%</b>。
-      这份复盘要回答的不是「投得好不好」，而是「下个月的钱该怎么挪」。
-    </p>
-    <div class="meta">
-      <span>客单 10–15 USD</span><span>月均消耗 1.5 万 USD</span><span>Meta 68% / Google 32%</span>
-      <span>MY · TH · PH · SG</span><span>数据已脱敏等比缩放</span>
-    </div>
+<div class="cbar">
+  <div class="cbar-in">
+    <a href="#s0" class="on"><b>00</b> 结论</a>
+    <a href="#s1"><b>01</b> Brief 与红线</a>
+    <a href="#s2"><b>02</b> 预算结构</a>
+    <a href="#s3"><b>03</b> 投给谁 / 说什么</a>
+    <a href="#s4"><b>04</b> 执行规则</a>
+    <a href="#s5"><b>05</b> 数据回看</a>
+    <a href="#s6"><b>06</b> 优化动作</a>
+    <a href="#s7"><b>07</b> 口径与边界</a>
+  </div>
+</div>
 
-    <div class="kpis">
-      <div class="kpi"><div class="l">现金花费</div><div class="v">45.2<em>K USD</em></div><div class="d flat">3 个月合计</div></div>
-      <div class="kpi"><div class="l">实收 GMV</div><div class="v">108.5<em>K</em></div><div class="d flat">订单口径 · USD</div></div>
-      <div class="kpi"><div class="l">ROAS</div><div class="v">2.40</div><div class="d flat">后台显示 2.69</div></div>
-      <div class="kpi"><div class="l">混合 CPA</div><div class="v">5.67</div><div class="d flat">毛利 7.07 / 单</div></div>
-      <div class="kpi"><div class="l">订单数</div><div class="v">7,976</div><div class="d flat">AOV 13.6 USD</div></div>
-      <div class="kpi"><div class="l">素材胜出率</div><div class="v">19.4<em>%</em></div><div class="d flat">7 / 36 条</div></div>
+<header class="chead">
+  <div class="wrap">
+    <div class="tagline"><span class="pill">CASE 01</span> INFLUENCER SEEDING · DOUYIN · 2025</div>
+    <h1>达人种草投放复盘：<br>ROI 过了线，但钱花在了最贵的那批人身上</h1>
+    <small>户外品类某头部品牌，180 位达人 / 180 条内容。这一版不按「分析报告」写，按投放的实际顺序写：先交代 Brief 和红线，再看预算怎么分、投给谁、内容说什么，最后才轮到数据判定该放量谁、关停谁。</small>
+    <div class="ctx">
+      <span>现金 443.2 万</span><span>成交 500.8 万</span><span>ROI 1.13</span><span>CPM 37.2 元</span><span>数据截至 7 月 10 日</span><span>品牌 / 竞品 / 达人代号化</span>
     </div>
-    <div class="legend"><span><b class="u">▲ 红＝上升</b></span><span><b class="d">▼ 绿＝下降</b></span><span>成本类指标下降为优</span></div>
   </div>
 </header>
 
-<!-- 01 概览 -->
-<section class="s" id="s1">
-  <div class="wrap">
-    <div class="shead"><span class="no">01</span><h2>概览：三个结论，都不在「ROAS 够不够」这一层</h2><span class="en">Overview</span></div>
+<div class="kpi-band">
+<div class="kpis">
+  <div class="kpi"><div class="l">CASH SPEND</div><div class="v">443.2<em>万</em></div><div class="d">180 条内容</div></div>
+  <div class="kpi"><div class="l">GMV · 21D</div><div class="v">500.8<em>万</em></div><div class="d">归因成交</div></div>
+  <div class="kpi"><div class="l">ROI</div><div class="v">1.13</div><div class="d warn">安全垫仅 13%</div></div>
+  <div class="kpi"><div class="l">CPM</div><div class="v">37.2<em>元</em></div><div class="d">竞品均值 366</div></div>
+  <div class="kpi"><div class="l">CONTENT VOLUME</div><div class="v">1.2<em>亿</em></div><div class="d">声量 · 类目第一</div></div>
+  <div class="kpi"><div class="l">ABOVE AVG CPM</div><div class="v">59.06<em>%</em></div><div class="d">达人高于均值</div></div>
+</div>
+</div>
 
-    <p class="tx">
-      先给结论：这个账户<b>能跑，但结构不健康</b>。拉新计划（Prospecting）消耗占 55%，ROAS 只有 1.7；
-      真正赚钱的是再营销和品牌词，可它们的天花板很低，加预算也放不出量。
-      如果只看大盘 ROAS 2.4 就继续加钱，等于把更多预算推进毛利为负的池子。
-    </p>
+<main class="wrap">
 
-    <div class="findings">
-      <div class="fd">
-        <div class="k">FINDING 01</div>
-        <h4>拉新在亏毛利，靠再营销补回来</h4>
-        <p>ABO 拉新 CPA <b>8.77 USD</b>，而单均毛利只有 <b>7.07</b>；再营销 CPA 3.13、品牌词 1.84。<br>大盘能过线，是后两者在填坑 —— 这也解释了为什么「加预算」总是加不出利润。</p>
+<!-- 00 -->
+<section class="sec" id="s0">
+  <div class="sec-h">
+    <div class="idx">00 / VERDICT</div>
+    <div class="t">
+      <h2>结论先说：不是投得贵，是投给了谁</h2>
+      <p>规模、CPM、曝光效率三项都是类目第一，说明<b>买量的能力没问题</b>。问题出在预算的分布上——一半以上的钱买在了更贵的曝光上，而真正能加预算的达人只有 1 个。</p>
+    </div>
+  </div>
+
+  <div class="grid3">
+    <div class="card rv">
+      <h3>规模：赢得干净<span>FINDING 01</span></h3>
+      <p>声量约为竞品均值的 8 倍，消耗只多 4 倍；CPM 37.2 元约为竞品均值（366 元）的 1/10。规模这一项没有悬念。</p>
+      <div class="call mt14" style="padding:11px 13px;font-size:12.2px"><b>但规模不等于回报。</b>483 万预算跑出 500 万成交，规模优势没有转成利润厚度。</div>
+    </div>
+    <div class="card rv">
+      <h3>结构：一多半钱买贵了<span>FINDING 02</span></h3>
+      <p>按 CPM 口径，59.06% 的达人高于全体均值 37.59 元；钱集中在曝光贵的达人身上，而这批人恰好不是转化最好的那批。</p>
+      <div class="call warn mt14" style="padding:11px 13px;font-size:12.2px"><b>贵不等于亏</b>，但「贵 + 低转化」同时出现时，就是结构问题，不是单价问题。</div>
+    </div>
+    <div class="card rv">
+      <h3>判定：有 18% 看不清<span>FINDING 03</span></h3>
+      <p>有效种草率 72%、无效 10%，另有 18% 无法归类。判定标准本身缺一档，这是这次没能收敛干净的部分，不硬凑结论。</p>
+      <div class="call rose mt14" style="padding:11px 13px;font-size:12.2px"><b>18% 的盲区</b>意味着任何「整体效率」的判断都只能算方向，不能算精确值。</div>
+    </div>
+  </div>
+
+  <div class="call mt20 rv"><span class="k">SO WHAT</span>如果只能做一件事：<b>把预算从「高于均值 CPM 且转化低于均值」的达人身上，迁到 A-1 这类双榜达人及其同类型人群</b>。不需要加钱，也不需要换平台。</div>
+</section>
+
+<!-- 01 -->
+<section class="sec" id="s1">
+  <div class="sec-h">
+    <div class="idx">01 / BRIEF</div>
+    <div class="t">
+      <h2>这活儿的约束条件，先算清再开投</h2>
+      <p>投放的第一步不是选达人，是把目标翻译成约束：有多少钱、红线在哪、单条能亏多少、多久能判定。<b>这一步现在多数团队直接跳过。</b></p>
+    </div>
+  </div>
+
+  <div class="tbl rv">
+    <table>
+      <thead><tr><th>Brief 项</th><th style="text-align:right">数值</th><th>对投放意味着什么</th></tr></thead>
+      <tbody>
+        <tr><td><b>现金预算</b></td><td class="num">443.2 万</td><td>没有增量预算，只能靠结构替换提效，不能靠加钱试错</td></tr>
+        <tr><td><b>GMV 目标线</b></td><td class="num">500.0 万</td><td>对应 ROI 需 ≥ 1.13，实际 500.8 万刚好压线达成</td></tr>
+        <tr><td><b>ROI 红线</b></td><td class="num">1.0</td><td>业务给定的盈亏线；1.13 的安全垫只有 13%，经不起一次判断失误</td></tr>
+        <tr><td><b>内容产能</b></td><td class="num">180 条 / 180 位</td><td>单条均价约 2.46 万（443.2 ÷ 180），一条内容亏 2 万就会吃掉整体 0.4 个点 ROI</td></tr>
+        <tr><td><b>归因窗口</b></td><td class="num">21 天</td><td>跨月结算，第 3 天、第 7 天的数不能用来判死</td></tr>
+        <tr><td><b>品类特征</b></td><td class="num">户外 · 低客单</td><td>决策轻、比价快，CPA 空间窄，对内容信任度依赖高</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">注：单条均价为派生值；ROI 红线为业务口径，非本项目测算所得。这两项必须在 Brief 阶段写死，否则后面所有「好不好」都没有参照。</p>
+</section>
+
+<!-- 02 -->
+<section class="sec" id="s2">
+  <div class="sec-h">
+    <div class="idx">02 / STRUCTURE</div>
+    <div class="t">
+      <h2>钱是怎么分的：一半以上买了更贵的曝光</h2>
+      <p>结构问题看分布，不看平均数。平均 CPM 37.59 看起来便宜，<b>但 59.06% 的达人在这个均值之上</b>——均值被少数极低价达人拉低了。</p>
+    </div>
+  </div>
+
+  <div class="card rv">
+    <h3>达人 CPM 分布<span>图按 59.06% 实际比例绘制</span></h3>
+    <div class="dist">
+      <div class="rail">
+        <div class="a" style="width:40.94%">低于均值 40.94%</div>
+        <div class="b" style="width:59.06%">高于均值 59.06%</div>
       </div>
-      <div class="fd">
-        <div class="k">FINDING 02</div>
-        <h4>素材半衰期 11 天，补新节奏慢了 3 天</h4>
-        <p>36 条素材里 7 条胜出，但胜出素材的 CTR 在第 11 天跌破 1.4% 阈值，第 21 天只剩起始值的 <b>48%</b>。<br>原排期是两周一批，等于每批都有 3 天在用「已经在死」的素材。</p>
+      <div class="axis"><span>CPM 低 ←</span><span>全体均值 37.59 元</span><span>→ CPM 高</span></div>
+    </div>
+    <p class="mt14">均值被左侧少数「极便宜」的达人拉低，实际多数达人比均值贵。这就是为什么「平均 CPM 好看」不能证明结构健康——<b>要看分布，不能只看平均</b>。</p>
+  </div>
+
+  <div class="grid2 mt14">
+    <div class="card rv">
+      <h3>内容产出结构<span>质量分布</span></h3>
+      <div class="qline">
+        <div class="qi"><div class="n">72<em>%</em></div><div class="l">有效种草</div><div class="bar"><i style="width:72%;background:var(--teal)"></i></div></div>
+        <div class="qi"><div class="n">10<em>%</em></div><div class="l">无效种草</div><div class="bar"><i style="width:10%;background:var(--rose)"></i></div></div>
+        <div class="qi"><div class="n">18<em>%</em></div><div class="l">无法归类</div><div class="bar"><i style="width:18%;background:#d0d6e2"></i></div></div>
       </div>
-      <div class="fd">
-        <div class="k">FINDING 03</div>
-        <h4>后台 ROAS 2.69，实收只有 2.40</h4>
-        <p>Meta 报 8,930 单，Shopify 只有 7,976 单，差 <b>11.8%</b>：归因窗口、ATT 未回传、退款未扣、跨渠道重复计数。<br>日常看板一直在高估效果，按它加预算就会加错。</p>
-      </div>
+      <p class="mt14">10% 是可直接砍掉的纯浪费；18% 是判定标准的缺口——<b>流程问题，不是投放问题</b>。先把判定标准补齐，再谈优化。</p>
     </div>
 
-    <h3 class="sub">单位经济：先算清单均能剩多少</h3>
-    <div class="tbl">
+    <div class="card rv">
+      <h3>赛道优先级<span>180 条内容打标聚合</span></h3>
+      <div style="margin-top:10px">
+        <div style="display:flex;gap:8px;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--line2)">
+          <span class="tagx ok" style="flex:0 0 auto">重点</span>
+          <span style="font-size:12.4px;color:var(--ink2)">音乐 · 旅行 · 摄影 · 三农 · 颜值</span>
+        </div>
+        <div style="display:flex;gap:8px;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--line2)">
+          <span class="tagx mid" style="flex:0 0 auto">次要</span>
+          <span style="font-size:12.4px;color:var(--ink2)">剧情 · 健身 · 穿搭 · 亲子</span>
+        </div>
+        <div style="display:flex;gap:8px;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--line2)">
+          <span class="tagx" style="flex:0 0 auto">观察</span>
+          <span style="font-size:12.4px;color:var(--ink2)">生活 · 舞蹈 · 美食 · 随拍</span>
+        </div>
+        <div style="display:flex;gap:8px;align-items:baseline;padding:7px 0">
+          <span class="tagx bad" style="flex:0 0 auto">淘汰</span>
+          <span style="font-size:12.4px;color:var(--ink2)">二次元 · 测评</span>
+        </div>
+      </div>
+      <p class="mt14">筛选逻辑：先筛 <b>转化率 ≥ 0.13%</b> 的类型，再按平均有效观看排序。曝光强但转化弱的类型，不进重点。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 -->
+<section class="sec" id="s3">
+  <div class="sec-h">
+    <div class="idx">03 / TARGETING &amp; CREATIVE</div>
+    <div class="t">
+      <h2>投给谁、让达人说什么话</h2>
+      <p>这一环由两个决定组成：<b>用什么阈值筛人</b>、<b>让入选的人说什么</b>。前者决定预算去向，后者决定承接效率。</p>
+    </div>
+  </div>
+
+  <div class="card rv">
+    <h3>双阈值筛人：一个排名会选错人<span>替代单一 CPM 排序</span></h3>
+    <div class="tbl" style="margin-top:12px">
       <table>
-        <thead><tr><th>项目</th><th class="n">数值</th><th>说明</th></tr></thead>
+        <thead><tr><th>组别</th><th>回答的问题</th><th>阈值组合</th><th style="text-align:right">入选</th></tr></thead>
         <tbody>
-          <tr><td>客单价 AOV</td><td class="n">13.60 USD</td><td>Shopify 实收 GMV ÷ 有效订单</td></tr>
-          <tr><td>毛利率</td><td class="n">52%</td><td>扣除商品成本与头程，不含平台与投放</td></tr>
-          <tr><td>单均毛利</td><td class="n">7.07 USD</td><td>= AOV × 52%</td></tr>
-          <tr><td>混合 CPA</td><td class="n">5.67 USD</td><td>= 总花费 ÷ 订单数</td></tr>
-          <tr class="sum"><td>首单贡献</td><td class="n">1.40 USD</td><td>毛利 − CPA；未计尾程与退货</td></tr>
-          <tr><td>复购贡献（18% 复购率）</td><td class="n">+2.6 USD</td><td>LTV / CPA ≈ 1.6，勉强健康</td></tr>
+          <tr><td><b>A 组 · 曝光效率</b></td><td>谁最便宜？</td><td>仅保留有效种草内容 → CPM ≤ 37.59（全体均值）→ 升序取前 3</td><td class="num">3 位</td></tr>
+          <tr><td><b>B 组 · 规模 × 质量</b></td><td>谁能跑量又跑赢均值？</td><td>单位转化成本 &lt; 30.93 → 有效观看 &gt; 均值 → 转化率 &gt; 均值 → 升序取前 3</td><td class="num">2 位</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="note">这张表是后面所有判断的基准：任何「加预算」的动作，都要先回答它能不能把 CPA 压在 7 USD 以内。</p>
+    <p class="mt14">为什么必须两组：A 组只看曝光侧，会偏向<b>「报价低、体量也小」</b>的达人，选出来便宜但没有量；B 组叠加规模与转化质量，才能把「便宜但小众」和「便宜且可规模化」分开。两组叠加后，达人 A-1 同时出现在两个榜单里——<b>这才是唯一可以立刻加预算的那一个</b>。</p>
+  </div>
+
+  <div class="grid2 mt14" style="grid-template-columns:1fr 1fr 1fr">
+    <div class="kol star rv">
+      <div class="star-tag">双榜 · 可加预算</div>
+      <div class="top"><div class="nm">达人 A-1</div><div class="grp">A + B</div></div>
+      <div class="sub">体育生情侣 CP</div>
+      <div class="v">2.77<em>元 CPM</em></div>
+      <div class="why"><b>为什么便宜：</b>情绪价值高，CP 互动 + 高难度动作，无广告植入感，粉丝调性与「平价户外」高度贴合。</div>
+    </div>
+    <div class="kol rv">
+      <div class="top"><div class="nm">达人 A-2</div><div class="grp">A</div></div>
+      <div class="sub">生活化穿搭</div>
+      <div class="v">3.71<em>元 CPM</em></div>
+      <div class="why"><b>为什么便宜：</b>小区跳舞的日常感 + 动感笑容，浅色穿搭符合当下审美，自然流量占比高。</div>
+    </div>
+    <div class="kol rv">
+      <div class="top"><div class="nm">达人 A-3</div><div class="grp">A</div></div>
+      <div class="sub">双 CP 舞蹈</div>
+      <div class="v">4.52<em>元 CPM</em></div>
+      <div class="why"><b>为什么便宜：</b>舞蹈的视觉吸引力 + CP 互动娱乐价值，生活化场景增强真实感，靠「爱美爱娱乐」拿自然流量。</div>
+    </div>
+    <div class="kol rv">
+      <div class="top"><div class="nm">达人 B-1</div><div class="grp b">B</div></div>
+      <div class="sub">半素人情侣 · 8.3 万粉</div>
+      <div class="v">6.36<em>元/人</em></div>
+      <div class="why"><b>为什么能跑量：</b>账号无 MCN 标签、几乎无商业气息，甜蜜互动带来高完播，粉丝真实且与年轻化形象契合。</div>
+    </div>
+    <div class="kol rv">
+      <div class="top"><div class="nm">达人 B-2</div><div class="grp b">B</div></div>
+      <div class="sub">旅行摄影 · 60.5 万粉</div>
+      <div class="v">7.61<em>元/人</em></div>
+      <div class="why"><b>为什么能跑量：</b>游客照 + 自然景观出片，「诗和远方」的情绪驱动，成为朋友圈模板、带动 UGC 跟拍。</div>
+    </div>
+    <div class="card rv" style="display:flex;flex-direction:column;justify-content:center;background:#fbfcff">
+      <div style="font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--faint)">WHAT THIS TELLS US</div>
+      <p style="font-size:12.6px;color:var(--ink2);margin-top:7px">跑得好的内容有共同点：<b style="color:var(--ink)">情绪价值 &gt; 参数说明，生活化 &gt; 广告感。</b>所以下一步不是「换更便宜的达人」，而是把同一套内容语法复制到更多达人。</p>
+    </div>
+  </div>
+
+  <div class="grid3 mt14">
+    <div class="stra rv">
+      <div class="n">STRATEGY 3.1</div>
+      <h4>自然共生：把品牌变成「同路人」</h4>
+      <div class="goal">弱化商业感，从「装备供应商」变成「自然生活方式的一部分」。</div>
+      <ul><li>生活化日常展示，增加产品曝光时长与画面占比</li><li>自然色系（大地棕 / 苔藓绿 / 天空蓝），诗意文案替代促销话术</li><li>UGC 以 OOTD 穿搭为切口，反对「过度装备化」</li></ul>
+    </div>
+    <div class="stra rv">
+      <div class="n">STRATEGY 3.2</div>
+      <h4>户外潮牌：与出片场景绑定</h4>
+      <div class="goal">动态视觉 + 自然场景，强化户外 = 品牌的联想。</div>
+      <ul><li>CP 达人选黄昏暖金色逆光；旅行达人选山地跟拍运镜</li><li>托举互动话题挑战赛，每周评 3 条优质内容送套装</li><li>潮流形象 + 户外专业双线，与只做专业感的竞品错位</li></ul>
+    </div>
+    <div class="stra rv">
+      <div class="n">STRATEGY 3.3</div>
+      <h4>动感旅行：可复投的内容模板</h4>
+      <div class="goal">产品不只是功能性装备，而是「自由探索的许可证」。</div>
+      <ul><li>沙漠 / 雨林 / 雪山等极限光影场景实拍</li><li>前 3 秒「参数罗列」反差叙事 → 撕掉传统装备</li><li>三级难度（公园 / 近郊 / 荒野）打卡挑战扩散</li></ul>
+    </div>
   </div>
 </section>
 
-<!-- 02 结构 -->
-<section class="s" id="s2">
-  <div class="wrap">
-    <div class="shead"><span class="no">02</span><h2>账户结构：测试和放量必须是两个池子</h2><span class="en">Account Structure</span></div>
-
-    <p class="tx">
-      接手时账户是「一个 CBO 跑所有」，素材和受众混在一起，跑赢不知道赢在哪，跑输也找不到原因。
-      改成三层：<b>ABO 负责测（变量隔离、预算固定）、CBO 负责放（承接已验证的组合）、独立再营销与品牌词走小预算高 ROAS</b>。
-    </p>
-
-    <div class="tree">
-      <div class="tree-row">
-        <div class="tnode hi"><b>Prospecting · ABO</b><em>13,600 USD · 12 AD SETS</em></div>
-        <span class="tconn"></span>
-        <div class="tnode"><b>1 国 × 1 受众 × 1 素材组</b><em>每组预算 300–500 USD</em></div>
-        <span class="tconn"></span>
-        <div class="tnode"><b>Ad</b><em>3–4 条 / 组 · 单变量</em></div>
-      </div>
-      <div class="tree-row" style="margin-top:10px">
-        <div class="tnode hi"><b>Prospecting · CBO</b><em>11,400 USD · 3 AD SETS</em></div>
-        <span class="tconn"></span>
-        <div class="tnode"><b>已验证受众组合</b><em>宽泛 + 兴趣叠加</em></div>
-        <span class="tconn"></span>
-        <div class="tnode"><b>Ad</b><em>胜出素材 5–8 条</em></div>
-      </div>
-      <div class="tree-row" style="margin-top:10px">
-        <div class="tnode hi"><b>Retargeting · DPA</b><em>5,800 USD · 2 AD SETS</em></div>
-        <span class="tconn"></span>
-        <div class="tnode"><b>加购 / 浏览未买 / 180D 客</b><em>排除 30D 已购</em></div>
-        <span class="tconn"></span>
-        <div class="tnode"><b>DPA + 优惠钩子</b><em>动态商品目录</em></div>
-      </div>
-      <div class="tree-row" style="margin-top:10px">
-        <div class="tnode hi"><b>Google · PMax / Search</b><em>14,400 USD</em></div>
-        <span class="tconn"></span>
-        <div class="tnode"><b>PMax 购物 + 品牌词</b><em>排除品牌词互抢</em></div>
-        <span class="tconn"></span>
-        <div class="tnode"><b>Feed + RSA</b><em>本地语言标题</em></div>
-      </div>
-      <div class="tnote">STRUCTURE NOTE · 国家维度放在 Campaign 层而非 Ad Set 层，才能按市场单独控预算与看 ROAS</div>
+<!-- 04 -->
+<section class="sec" id="s4">
+  <div class="sec-h">
+    <div class="idx">04 / DELIVERY</div>
+    <div class="t">
+      <h2>同样的预算，怎么排顺序</h2>
+      <p>以下三条不是事后总结的漂亮话，是这次复盘里<b>能直接搬到下一轮的执行规则</b>：先测语法、再按赛道排预算、最后才放量。</p>
     </div>
+  </div>
 
-    <h3 class="sub">五个 Campaign 的实际表现</h3>
-    <div class="tbl">
+  <div class="card rv">
+    <div class="rlist">
+      <div class="rit">
+        <div class="n">R1</div>
+        <div>
+          <h4>先用小样本验证「内容语法」，再复制到更多达人</h4>
+          <p>不是先找更便宜的人，而是先把 A-1 / B-1 这类跑赢的内容结构拆出来——情绪先行、场景真实、产品自然露出。验证成立后，用同一语法去谈同层级达人，而不是从零试错。</p>
+          <div class="out">产出：内容语法卡 × 3 套</div>
+        </div>
+      </div>
+      <div class="rit">
+        <div class="n">R2</div>
+        <div>
+          <h4>预算按赛道优先级排，不做平均分配</h4>
+          <p>音乐类曝光最强（248 万平均有效观看/条），旅行类转化最高（综合 0.43%）。所以音乐保留曝光位、旅行加转化预算，而不是每个赛道都给一份等额预算。</p>
+          <div class="out">产出：赛道预算顺序表</div>
+        </div>
+      </div>
+      <div class="rit">
+        <div class="n">R3</div>
+        <div>
+          <h4>双榜达人加预算，单榜达人只做复制测试</h4>
+          <p>A-1 同时拿下 CPM 最低与转化成本低于均值，可以直接加；A-2 / A-3 只在曝光侧胜出，先用同语法小预算测试承接，不直接放量。B-1 / B-2 走规模化复制路径。</p>
+          <div class="out">产出：分级放量名单</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="call mt20 rv"><span class="k">EXECUTION NOTE</span>这三条规则的共同点是：<b>先约束「谁来说」和「说什么」，再决定「给多少钱」</b>。反过来做（先定预算再找人），就会重复这次的问题——大预算落到贵的达人身上，只能靠 ROI 平均值掩盖。</div>
+</section>
+
+<!-- 05 -->
+<section class="sec" id="s5">
+  <div class="sec-h">
+    <div class="idx">05 / REVIEW</div>
+    <div class="t">
+      <h2>数据回看：这一环只负责判生死</h2>
+      <p>到这一步才开始看数。它回答三个问题：<b>整体过没过线、钱花在谁身上、下一轮砍谁加谁</b>。不负责解释「为什么」，那是前面四环的事。</p>
+    </div>
+  </div>
+
+  <div class="card rv">
+    <h3>四个品牌同表对标<span>数据截至 7 月 10 日</span></h3>
+    <div class="tbl" style="margin-top:12px">
       <table>
-        <thead><tr><th>Campaign</th><th class="n">花费 USD</th><th class="n">实收 GMV</th><th class="n">ROAS</th><th class="n">CPA</th><th>判断</th></tr></thead>
+        <thead><tr><th>品牌</th><th style="text-align:right">有效观看</th><th style="text-align:right">间接转化</th><th style="text-align:right">单位成本</th><th style="text-align:right">转化率</th><th style="text-align:right">无效种草率</th></tr></thead>
         <tbody>
-          <tr><td>Prospecting · ABO<br><small>12 组测试，36 条素材</small></td><td class="n">13,600</td><td class="n">21,080</td><td class="n">1.55</td><td class="n">8.77</td><td><span class="pill r">亏毛利</span></td></tr>
-          <tr><td>Prospecting · CBO<br><small>承接胜出组合</small></td><td class="n">11,400</td><td class="n">22,230</td><td class="n">1.95</td><td class="n">6.97</td><td><span class="pill a">接近盈亏线</span></td></tr>
-          <tr><td>Retargeting · DPA</td><td class="n">5,800</td><td class="n">25,230</td><td class="n">4.35</td><td class="n">3.13</td><td><span class="pill g">健康</span></td></tr>
-          <tr><td>Google · Brand Search</td><td class="n">2,600</td><td class="n">19,240</td><td class="n">7.40</td><td class="n">1.84</td><td><span class="pill g">健康但天花板低</span></td></tr>
-          <tr><td>Google · PMax / Shopping</td><td class="n">11,800</td><td class="n">20,650</td><td class="n">1.75</td><td class="n">7.77</td><td><span class="pill a">待验证</span></td></tr>
-          <tr class="sum"><td>合计</td><td class="n">45,200</td><td class="n">108,480</td><td class="n">2.40</td><td class="n">5.67</td><td>—</td></tr>
+          <tr class="self"><td><b>品牌 A（本品牌）</b></td><td class="num">11,903.5 万</td><td class="num">14.5 万</td><td class="num"><b>30.93</b></td><td class="num"><b>0.12%</b></td><td class="num">10%</td></tr>
+          <tr><td>竞品 B</td><td class="num">388.0 万</td><td class="num">0.3 万</td><td class="num">103.55</td><td class="num">0.07%</td><td class="num">≈11%</td></tr>
+          <tr><td>竞品 C</td><td class="num">2,746.5 万</td><td class="num">0.4 万</td><td class="num">573.56</td><td class="num">0.01%</td><td class="num">67.6%</td></tr>
+          <tr><td>竞品 D</td><td class="num">1,142.4 万</td><td class="num">0.2 万</td><td class="num">420.73</td><td class="num">0.02%</td><td class="num">≈14%</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="note">ROAS 一律用 Shopify 实收 GMV 计算，不用平台后台数字 —— 这是本案例的第一条口径纪律。</p>
+    <p class="note"><b>口径与缺口：</b>竞品 B / D 的无效种草率为原始对标图表可见值约数；三家竞品的间接转化为图表读出约数。剔除竞品 C 的异常值后，同品类平均无效种草率 13.38%。</p>
   </div>
-</section>
 
-<!-- 03 素材 -->
-<section class="s" id="s3">
-  <div class="wrap">
-    <div class="shead"><span class="no">03</span><h2>素材测试：36 条里只有 7 条值得加钱</h2><span class="en">Creative Testing</span></div>
-
-    <p class="tx">
-      测试的目标不是「找出最好的一条」，而是<b>找出可以批量复制的语法</b>。
-      所以每一组只改一个变量：钩子、场景、形式、价格锚点四类，各跑一组，用同一套判定规则决定去留。
-    </p>
-
-    <div class="grid2" style="margin-top:18px">
-      <div class="card">
-        <h4 style="font-size:13.5px">测试矩阵（36 条 / 12 组）</h4>
-        <div class="tbl" style="margin-top:10px">
-          <table>
-            <thead><tr><th>创意形式</th><th class="n">条数</th><th class="n">胜出</th><th class="n">胜出率</th></tr></thead>
-            <tbody>
-              <tr><td>UGC 口播（真人测评）</td><td class="n">12</td><td class="n">4</td><td class="n">33%</td></tr>
-              <tr><td>场景实拍（徒步 / 通勤）</td><td class="n">9</td><td class="n">2</td><td class="n">22%</td></tr>
-              <tr><td>对比测评（vs 竞品）</td><td class="n">6</td><td class="n">1</td><td class="n">17%</td></tr>
-              <tr><td>开箱 / 细节</td><td class="n">5</td><td class="n">0</td><td class="n">0%</td></tr>
-              <tr><td>图文轮播（价格锚点）</td><td class="n">4</td><td class="n">0</td><td class="n">0%</td></tr>
-              <tr class="sum"><td>合计</td><td class="n">36</td><td class="n">7</td><td class="n">19.4%</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="note">开箱与轮播全败：客单 13.6 USD 的品类，用户不关心包装，只关心「这个价能不能用」。</p>
+  <div class="grid2 mt14">
+    <div class="card rv">
+      <h3>单位转化成本<span>元/人 · 按最大值 573.56 等比</span></h3>
+      <div class="bars">
+        <div class="brow"><div class="lab"><b>品牌 A</b><em>本品牌</em></div><div class="track"><i style="width:5.4%"></i></div><div class="num">30.93</div></div>
+        <div class="brow"><div class="lab"><b>竞品 B</b></div><div class="track"><i class="grey" style="width:18.1%"></i></div><div class="num">103.55</div></div>
+        <div class="brow"><div class="lab"><b>竞品 D</b></div><div class="track"><i class="grey" style="width:73.4%"></i></div><div class="num">420.73</div></div>
+        <div class="brow"><div class="lab"><b>竞品 C</b><em>异常值</em></div><div class="track"><i class="grey" style="width:100%"></i></div><div class="num">573.56</div></div>
       </div>
-
-      <div class="card">
-        <h4 style="font-size:13.5px">判定规则（写在测试前，不事后改）</h4>
-        <div class="tbl" style="margin-top:10px">
-          <table>
-            <thead><tr><th>动作</th><th>条件（3 天窗口）</th></tr></thead>
-            <tbody>
-              <tr><td><b>立即关停</b></td><td>花费 ≥ 1.5×CPA 且 CTR &lt; 1.0%</td></tr>
-              <tr><td><b>继续观察</b></td><td>CTR ≥ 1.5% 但 CPA 在 6–9 之间</td></tr>
-              <tr><td><b>进 CBO 放量</b></td><td>CPA ≤ 5 且连续 2 天 ROAS ≥ 2.8</td></tr>
-              <tr><td><b>加预算</b></td><td>放量后 CPA 涨幅 &lt; 15%，每次 +20%</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="note">规则的价值在于「不用每天重新讨论」：12 组测试里，有 5 组在第 3 天就被规则自动判死，省下约 2,100 USD 的无效消耗。</p>
-      </div>
+      <p class="mt14">本品牌的单位成本约为竞品 C 的 <b>1/18</b>、竞品 B 的 <b>1/3.3</b>。这一项确实是碾压级的，但注意——它建立在「有效观看」口径上，<b>不能与全量投放成本直接比较</b>。</p>
     </div>
 
-    <div class="chart">
-      <div class="ch">
-        <h4>胜出素材的 CTR 衰减：第 11 天跌破补新阈值</h4>
-        <div class="u">7 条胜出素材加权平均 · 上线后 1–21 天</div>
+    <div class="card rv">
+      <h3>入选达人 vs 品牌平均线<span>线为阈值 30.93 元/人</span></h3>
+      <div class="bars">
+        <div class="brow"><div class="lab"><b>达人 A-1</b><em>双榜</em></div><div class="track"><i style="width:9%"></i></div><div class="num">2.77<small>9% of 均值</small></div></div>
+        <div class="brow"><div class="lab"><b>达人 B-1</b></div><div class="track"><i style="width:20.6%"></i></div><div class="num">6.36<small>21%</small></div></div>
+        <div class="brow"><div class="lab"><b>达人 B-2</b></div><div class="track"><i style="width:24.6%"></i></div><div class="num">7.61<small>25%</small></div></div>
+        <div class="brow"><div class="lab"><b>品牌平均</b><em>阈值线</em></div><div class="track"><i class="amber" style="width:100%"></i></div><div class="num">30.93<small>基准</small></div></div>
       </div>
-      <svg viewBox="0 0 640 232" role="img" aria-label="素材CTR随上线天数衰减的折线图">
-        <line class="axis" x1="40" y1="30" x2="600" y2="30"/>
-        <line class="axis" x1="40" y1="70" x2="600" y2="70"/>
-        <line class="axis" x1="40" y1="110" x2="600" y2="110" stroke-dasharray="4 4" stroke="#d9a3a0"/>
-        <line class="axis" x1="40" y1="150" x2="600" y2="150"/>
-        <line class="axis" x1="40" y1="170" x2="600" y2="170" stroke="#c9d0de"/>
-        <text class="tick" x="8" y="34">2.2%</text>
-        <text class="tick" x="8" y="74">1.8%</text>
-        <text class="tick" x="8" y="114">1.4%</text>
-        <text class="tick" x="8" y="154">1.0%</text>
-        <text class="tick" x="28" y="174">0.8%</text>
-        <line x1="310" y1="30" x2="310" y2="170" stroke="#1b45d7" stroke-width="1" stroke-dasharray="3 4" opacity=".5"/>
-        <text class="lab-s" x="316" y="44" fill="#12309c">DAY 11 · 触发补新</text>
-        <text class="lab-s" x="486" y="112" fill="#c4372c">阈值 1.4%</text>
-        <path d="M40,170 L40,52 L67,38 L94,45 L121,56 L148,62 L175,71 L202,79 L229,88 L256,95 L283,103 L310,108 L337,114 L364,121 L391,128 L418,133 L445,138 L472,141 L499,145 L526,148 L553,152 L580,154 L580,170 Z" fill="#1b45d7" opacity=".07"/>
-        <polyline points="40,52 67,38 94,45 121,56 148,62 175,71 202,79 229,88 256,95 283,103 310,108 337,114 364,121 391,128 418,133 445,138 472,141 499,145 526,148 553,152 580,154" fill="none" stroke="#1b45d7" stroke-width="2.2" stroke-linejoin="round"/>
-        <circle cx="67" cy="38" r="3.5" fill="#fff" stroke="#1b45d7" stroke-width="2"/>
-        <circle cx="310" cy="108" r="3.5" fill="#fff" stroke="#1b45d7" stroke-width="2"/>
-        <circle cx="580" cy="154" r="3.5" fill="#fff" stroke="#1b45d7" stroke-width="2"/>
-        <text class="lab-s" x="72" y="30">2.12%</text>
-        <text class="lab-s" x="521" y="172">0.96%</text>
-        <text class="tick" x="34" y="192">D1</text>
-        <text class="tick" x="196" y="192">D7</text>
-        <text class="tick" x="302" y="192">D11</text>
-        <text class="tick" x="410" y="192">D15</text>
-        <text class="tick" x="556" y="192">D21</text>
-        <text class="tick" x="40" y="212">同一批素材，CTR 从 2.12% 掉到 0.96%（−55%），CPA 从 4.9 涨到 7.4</text>
-      </svg>
+      <p class="mt14">入选达人的单位成本只有平均线的 <b>9%–25%</b>。这说明「跑赢均值」不是微小优化，而是成倍的效率差——<b>达人结构调一次，就能直接影响整体 CAC</b>。</p>
     </div>
-
-    <p class="note">
-      这条曲线的用处：把「素材要换」从感觉变成排期。补新周期从 14 天压到 10 天，并在第 8 天就开始备下一批，
-      让替换动作发生在衰减之前，而不是数据变差之后。
-    </p>
   </div>
-</section>
 
-<!-- 04 漏斗与归因 -->
-<section class="s" id="s4">
-  <div class="wrap">
-    <div class="shead"><span class="no">04</span><h2>漏斗与归因：先确定哪个数是真的</h2><span class="en">Funnel &amp; Attribution</span></div>
-
-    <p class="tx">
-      漏斗的用途不是画得好看，而是<b>定位唯一那一个最该修的环节</b>。
-      六层里五层都跑在基准之上，只有「加购 → 结账」低 5.5pp —— 问题不在素材，也不在流量，在结账页。
-    </p>
-
-    <h3 class="sub">各层转化率 vs 东南亚 DTC 基准</h3>
-    <div class="card">
-      <div class="fcmp">
-        <div class="row">
-          <div class="lab"><b>点击 → 访问</b><em>落页率</em></div>
-          <div class="track"><i class="me" style="width:93.8%"></i><i class="base" style="width:92%"></i></div>
-          <div class="vv"><b>93.8%</b><small>基准 92.0%</small><span class="badge ok">+1.8pp</span></div>
+  <div class="card mt14 rv">
+    <h3>赛道：曝光与转化不在同一批人身上</h3>
+    <div class="grid2 mt14" style="gap:18px">
+      <div>
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px">
+          <b style="font-size:13px">音乐类 · 曝光最强</b><span class="tagx mid">转化待补</span>
         </div>
-        <div class="row">
-          <div class="lab"><b>访问 → 加购</b><em>Interest</em></div>
-          <div class="track"><i class="me" style="width:80%"></i><i class="base" style="width:65%"></i></div>
-          <div class="vv"><b>8.0%</b><small>基准 6.5%</small><span class="badge ok">+1.5pp</span></div>
+        <div class="bars" style="margin-top:6px">
+          <div class="brow" style="grid-template-columns:1fr 92px"><div class="lab">平均有效观看 / 条</div><div class="num">248 万</div></div>
+          <div class="brow" style="grid-template-columns:1fr 92px"><div class="lab">平均转化率</div><div class="num">0.13%</div></div>
         </div>
-        <div class="row">
-          <div class="lab"><b>加购 → 结账</b><em>唯一缺口</em></div>
-          <div class="track"><i class="me" style="width:52.5%"></i><i class="base" style="width:58%"></i></div>
-          <div class="vv"><b>52.5%</b><small>基准 58.0%</small><span class="badge no">−5.5pp</span></div>
+        <p class="note" style="margin-top:8px">夫妻日常 + 流行音乐配动感舞蹈，运动感与潮流感兼备；问题在转化，不在曝光。</p>
+      </div>
+      <div>
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px">
+          <b style="font-size:13px">旅行类 · 转化最高</b><span class="tagx ok">重点加投</span>
         </div>
-        <div class="row">
-          <div class="lab"><b>结账 → 购买</b><em>Payment</em></div>
-          <div class="track"><i class="me" style="width:70%"></i><i class="base" style="width:71%"></i></div>
-          <div class="vv"><b>70.0%</b><small>基准 71.0%</small><span class="badge no">−1.0pp</span></div>
+        <div class="bars" style="margin-top:6px">
+          <div class="brow" style="grid-template-columns:1fr 92px"><div class="lab">平均有效观看 / 条</div><div class="num">≈89 万</div></div>
+          <div class="brow" style="grid-template-columns:1fr 92px"><div class="lab">综合转化率</div><div class="num">0.43%</div></div>
         </div>
-        <div class="row">
-          <div class="lab"><b>整体 CVR</b><em>访问→购买</em></div>
-          <div class="track"><i class="me" style="width:29.4%"></i><i class="base" style="width:26%"></i></div>
-          <div class="vv"><b>2.94%</b><small>基准 2.60%</small><span class="badge ok">+0.34pp</span></div>
-        </div>
+        <p class="note" style="margin-top:8px">草原 + BGM + 氛围感静图，把产品放进「理想生活」，客群与轻户外定位契合度最高（单条 0.682%）。</p>
       </div>
     </div>
-    <p class="note" style="margin-bottom:4px"><span style="display:inline-block;width:8px;height:8px;background:#1b45d7;border-radius:2px;margin-right:5px"></span>本项目 &nbsp;<span style="display:inline-block;width:8px;height:8px;background:#d3d9e5;border-radius:2px;margin-right:5px"></span>基准 —— 前四行按 0–100% 等比，整体 CVR 行按 0–10% 缩放。基准取同品类东南亚独立站公开投放基准区间中位数，仅作方向性参照。</p>
+    <div class="call mt14"><b>这张表决定了预算顺序：</b>音乐类不砍（曝光效率高、声量贡献大），但要改钩子提转化；旅行类加投，因为它同时具备客群契合度与转化效率。</div>
+  </div>
 
-    <div class="tbl">
-      <table>
-        <thead><tr><th>层级</th><th class="n">数量</th><th class="n">层间转化</th><th>读法</th></tr></thead>
-        <tbody>
-          <tr><td>曝光 Impression</td><td class="n">16,800,000</td><td class="n">—</td><td>CPM 2.69 USD，东南亚属正常水位</td></tr>
-          <tr><td>点击 Click</td><td class="n">289,000</td><td class="n">CTR 1.72%</td><td>高于基准 1.50%，素材钩子有效</td></tr>
-          <tr><td>访问 Session</td><td class="n">271,000</td><td class="n">93.8%</td><td>落地页加载正常，无大面积流失</td></tr>
-          <tr><td>加购 ATC</td><td class="n">21,700</td><td class="n">8.0%</td><td>详情页与价格锚点有效</td></tr>
-          <tr><td>发起结账 Checkout</td><td class="n">11,400</td><td class="n">52.5%</td><td><b>唯一低于基准的一层</b></td></tr>
-          <tr><td>购买 Purchase</td><td class="n">7,976</td><td class="n">70.0%</td><td>支付成功率正常</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p class="tx" style="margin-top:16px">
-      结账页的缺口拆到市场后指向同一个原因：<b>菲律宾只开了信用卡与 GCash，COD 与货到付款提示缺失</b>；
-      而 PH 的加购→结账只有 44.1%，其他市场均在 55% 以上。补上 COD 与运费门槛提示后，PH 该环节回升到 51.7%，
-      单月多出约 180 单 —— 这是整个季度投入产出比最高的一次改动，成本为零。
-    </p>
-
-    <h3 class="sub">同一批订单，三个系统三个数</h3>
-    <div class="tbl">
-      <table>
-        <thead><tr><th>数据源</th><th class="n">购买数</th><th class="n">对应 ROAS</th><th>偏差来源</th></tr></thead>
-        <tbody>
-          <tr><td>Meta Ads 后台</td><td class="n">8,930</td><td class="n">2.69</td><td>7d click + 1d view 窗口；跨设备与浏览归因；未扣取消/退款</td></tr>
-          <tr><td>GA4（last click）</td><td class="n">7,410</td><td class="n">2.23</td><td>Consent Mode 未授权流量、广告拦截、跨域跳转丢 UTM</td></tr>
-          <tr class="sum"><td>Shopify 订单（事实源）</td><td class="n">7,976</td><td class="n">2.40</td><td>实收口径，已扣取消单，未扣后续退款</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="note">Meta 高估 11.8%，GA4 低估 7.1%。两个方向的偏差同时存在，说明这不是「谁更准」，而是「谁都不能单独当考核口径」。</p>
-
-    <div class="grid3" style="margin-top:18px">
-      <div class="card"><div class="k mono" style="font-size:9.5px;color:var(--faint);letter-spacing:.14em">FIX 01</div>
-        <h4 style="font-size:13.5px;margin-top:6px">以 Shopify 为唯一事实源</h4>
-        <p style="font-size:12.5px;color:var(--ink2);margin-top:6px">所有对外汇报统一用实收 GMV 与订单数；平台后台只用于优化过程，不用于考核。</p></div>
-      <div class="card"><div class="k mono" style="font-size:9.5px;color:var(--faint);letter-spacing:.14em">FIX 02</div>
-        <h4 style="font-size:13.5px;margin-top:6px">UTM 命名规范 + 渠道映射表</h4>
-        <p style="font-size:12.5px;color:var(--ink2);margin-top:6px">campaign / adset / ad 三层强制带 UTM，GA4 与 Shopify 用同一套 source-medium 映射，跨域不再丢参。</p></div>
-      <div class="card"><div class="k mono" style="font-size:9.5px;color:var(--faint);letter-spacing:.14em">FIX 03</div>
-        <h4 style="font-size:13.5px;margin-top:6px">看 7 日滚动，不看单日</h4>
-        <p style="font-size:12.5px;color:var(--ink2);margin-top:6px">归因回传有 24–72 小时延迟，单日 ROAS 波动 30% 属正常，用滚动均值判断趋势。</p></div>
+  <div class="card mt14 rv">
+    <h3>四个口径边界<span>决定了这份报告能说什么、不能说什么</span></h3>
+    <div class="bdbox" style="margin-top:10px;border:0;padding:0">
+      <div class="bditem"><span class="i">01</span><div><b>竞品数据不完整：</b>原始对标图表右侧被裁切，竞品 B / D 的无效种草率为可见值约数，作趋势参考而非精确比较。</div></div>
+      <div class="bditem"><span class="i">02</span><div><b>效果判定有盲区：</b>18% 的种草效果无法归类，说明「有效 / 无效」的判定标准缺一档——这是需要业务侧先补齐的事。</div></div>
+      <div class="bditem"><span class="i">03</span><div><b>样本偏差：</b>达人层筛选只保留有效种草内容，因此 CPM 反映的是「有效曝光成本」，不能直接与全量投放成本比较。</div></div>
+      <div class="bditem"><span class="i">04</span><div><b>转化人数不可用于评估：</b>同一用户 21 天内多次下单会被重复计入「间接转化」，平台不给去重口径；项目投得值不值，一律看成交 GMV 与 ROI（本次 500.8 万 / 1.13）。</div></div>
     </div>
   </div>
 </section>
 
-<!-- 05 市场 -->
-<section class="s" id="s5">
-  <div class="wrap">
-    <div class="shead"><span class="no">05</span><h2>四个市场：CPA 最低的那个，不一定最值得加钱</h2><span class="en">Markets</span></div>
-
-    <p class="tx">
-      菲律宾 CPA 6.14、新加坡 7.37，看起来 PH 更便宜。但 PH 的 AOV 只有 11.4，SG 是 21.6；
-      按<b>单均毛利 ÷ CPA</b> 算，SG 是 1.51、PH 只有 0.96 —— PH 每单其实在贴钱。
-      「CPA 低」是效率指标，「毛利/CPA」才是生意指标。
-    </p>
-
-    <div class="tbl">
-      <table>
-        <thead><tr><th>市场</th><th class="n">花费 USD</th><th class="n">实收 GMV</th><th class="n">ROAS</th><th class="n">AOV</th><th class="n">CPA</th><th class="n">毛利/CPA</th><th>判断</th></tr></thead>
-        <tbody>
-          <tr><td>马来西亚 MY</td><td class="n">17,600</td><td class="n">44,650</td><td class="n">2.54</td><td class="n">12.9</td><td class="n">5.09</td><td class="n">1.32</td><td><span class="pill g">加量</span></td></tr>
-          <tr><td>泰国 TH</td><td class="n">12,400</td><td class="n">30,120</td><td class="n">2.43</td><td class="n">14.1</td><td class="n">5.81</td><td class="n">1.26</td><td><span class="pill g">维持</span></td></tr>
-          <tr><td>菲律宾 PH</td><td class="n">10,100</td><td class="n">18,760</td><td class="n">1.86</td><td class="n">11.4</td><td class="n">6.14</td><td class="n">0.96</td><td><span class="pill r">减量</span></td></tr>
-          <tr><td>新加坡 SG</td><td class="n">5,100</td><td class="n">14,950</td><td class="n">2.93</td><td class="n">21.6</td><td class="n">7.37</td><td class="n">1.51</td><td><span class="pill g">加量</span></td></tr>
-          <tr class="sum"><td>合计</td><td class="n">45,200</td><td class="n">108,480</td><td class="n">2.40</td><td class="n">13.6</td><td class="n">5.67</td><td class="n">1.25</td><td>—</td></tr>
-        </tbody>
-      </table>
+<!-- 06 -->
+<section class="sec" id="s6">
+  <div class="sec-h">
+    <div class="idx">06 / ACTION</div>
+    <div class="t">
+      <h2>下一轮怎么动：四个象限，四类动作</h2>
+      <p>所有结论必须能落到一个动作上，否则不写进复盘。这次可落地的动作按「转化 × 成本」分成四类，<b>每类都指到具体对象</b>。</p>
     </div>
-    <p class="note">毛利/CPA =（AOV × 52%）÷ CPA，&gt;1 才有首单正贡献。SG 的 CPA 最贵，但每花 1 元广告能换回 1.51 元毛利。</p>
+  </div>
 
-    <h3 class="sub">预算重分配：从「平均用力」到「按贡献分配」</h3>
-    <div class="grid2" style="margin-top:0">
-      <div class="card">
-        <div class="ch" style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:14px"><span>当前月预算分配</span><span class="mono">15,000 USD</span></div>
-        <div class="bars">
-          <div class="brow"><span class="nm">马来</span><span class="tr"><i style="width:39%"></i></span><span class="v">5,840</span></div>
-          <div class="brow"><span class="nm">泰国</span><span class="tr"><i style="width:27%"></i></span><span class="v">4,110</span></div>
-          <div class="brow"><span class="nm">菲律宾</span><span class="tr"><i style="width:22%"></i></span><span class="v">3,350</span></div>
-          <div class="brow"><span class="nm">新加坡</span><span class="tr"><i style="width:11%"></i></span><span class="v">1,700</span></div>
-        </div>
+  <div class="quad">
+    <div class="qc go rv">
+      <div class="h"><b>高转化 · 低成本 → 放量</b><span class="a">SCALE</span></div>
+      <p><b>对象：</b>达人 A-1（双榜），以及 B-1 / B-2 同类型人群。<br><b>动作：</b>预算上浮 30% 梯度，观察成本弹性；同步用同语法扩到同层级新达人。</p>
+    </div>
+    <div class="qc fix rv">
+      <div class="h"><b>高曝光 · 低转化 → 换素材</b><span class="a">REBUILD</span></div>
+      <p><b>对象：</b>音乐类内容（248 万曝光/条，转化 0.13%）。<br><b>动作：</b>不动人，改钩子：前 3 秒加场景冲突与产品功能对照，把曝光势能导到转化。</p>
+    </div>
+    <div class="qc fix rv">
+      <div class="h"><b>高成本 · 待验证 → 换人</b><span class="a">REPLACE</span></div>
+      <p><b>对象：</b>CPM 高于均值且转化低于均值的达人。<br><b>动作：</b>不续投，用 B 组标准（规模 × 质量）找替代；单条预算拆成 2–3 条小测试。</p>
+    </div>
+    <div class="qc stop rv">
+      <div class="h"><b>低转化 · 高成本 → 关停</b><span class="a">STOP</span></div>
+      <p><b>对象：</b>10% 判定为无效种草的内容。<br><b>动作：</b>直接砍掉，不做「优化抢救」；同时补齐 18% 盲区的判定标准，避免下一轮重复出现。</p>
+    </div>
+  </div>
+
+  <div class="card mt14 rv">
+    <h3>下一轮 Brief 必须多写三行</h3>
+    <div class="rlist" style="margin-top:8px">
+      <div class="rit">
+        <div class="n">+1</div>
+        <div><h4>单条 CPA 上限，而不是只写整体 ROI</h4><p>整体 ROI 1.13 会掩盖单条巨亏。按单条均价 2.46 万与品类毛利倒推单条成本上限，超线不续投。</p></div>
       </div>
-      <div class="card">
-        <div class="ch" style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:14px"><span>建议分配（下季度）</span><span class="mono">15,000 USD</span></div>
-        <div class="bars">
-          <div class="brow"><span class="nm">马来</span><span class="tr"><i style="width:43%"></i></span><span class="v">6,450</span></div>
-          <div class="brow"><span class="nm">泰国</span><span class="tr"><i style="width:27%"></i></span><span class="v">4,050</span></div>
-          <div class="brow"><span class="nm">菲律宾</span><span class="tr"><i style="width:15%"></i></span><span class="v">2,200</span></div>
-          <div class="brow"><span class="nm">新加坡</span><span class="tr"><i class="teal" style="width:15%"></i></span><span class="v">2,300</span></div>
-        </div>
+      <div class="rit">
+        <div class="n">+2</div>
+        <div><h4>内容判定标准补一档「待观察」</h4><p>现在 18% 无法归类，本质是只有「有效 / 无效」两档。补一档后，判定覆盖率可以从 82% 提到接近 100%。</p></div>
+      </div>
+      <div class="rit">
+        <div class="n">+3</div>
+        <div><h4>双阈值筛选写进常规流程</h4><p>不用单一 CPM 排名选人。A 组看曝光效率，B 组看规模 × 质量，两组交集优先加预算。</p></div>
       </div>
     </div>
-    <p class="note">PH 削减 1,150 USD、SG 增加 600 USD、MY 增加 610 USD。按各自边际 ROAS 估算，同预算下月 GMV 约 +6.8%，混合 CPA 降至 5.31。</p>
+  </div>
+
+  <div class="sopmap rv">
+    <h3>这一页对应 SOP 的哪几步</h3>
+    <p>上面的结构不是临时想出来的，是套着同一套流程走的。SOP 里每一步的检查项、阈值定法和产出物都可以单独看。</p>
+    <div class="chips">
+      <a href="sop.html#st1">S1 Brief 拆红线</a>
+      <a href="sop.html#st2">S2 结构搭建</a>
+      <a href="sop.html#st3">S3 人群 × 内容矩阵</a>
+      <a href="sop.html#st5">S5 数据回看</a>
+      <a href="sop.html#st6">S6 预算重排</a>
+    </div>
+    <div class="foot">SOP v1.0 · 6 stages / 24 checks</div>
   </div>
 </section>
 
-<!-- 06 联盟与达人 -->
-<section class="s" id="s6">
-  <div class="wrap">
-    <div class="shead"><span class="no">06</span><h2>联盟与达人：两种比 Meta 更便宜的增量</h2><span class="en">Affiliate &amp; Influencer</span></div>
-
-    <p class="tx">
-      投放买的是「租来的流量」，停投就停量。这个季度用两条线补增量：
-      <b>达人做首单（内容可信度高、AOV 更高），联盟做长尾与复购（按成交付费、没有前置成本）</b>。
-      两条线都要求同一件事：能追踪到人、能算清 ROI。
-    </p>
-
-    <div class="two">
-      <div class="mini">
-        <h4>联盟营销 Affiliate <span>22 位 · CPS 8%</span></h4>
-        <ul>
-          <li><b>结构：</b>15 位垂直创作者（户外 / 通勤 / 学生党）+ 7 个本地优惠站与测评站；CPS 8%，30 天 cookie，月结。</li>
-          <li><b>追踪：</b>每人独立优惠码 + 独立 UTM，订单侧用 code 归因，与平台报表交叉验证；退款订单在次月佣金中扣回。</li>
-          <li><b>结果：</b>贡献收入 <b>9,980 USD（9.2%）</b>，佣金 798 USD；同量若用 Meta 买需约 4,158 USD，<b>省 3,360</b>。</li>
-          <li><b>质量：</b>新客占比 71%，AOV 13.1 与站内持平 —— 属于真增量，不是把自然单洗成联盟单。</li>
-          <li><b>风险：</b>2 个优惠站出现「自买返利」迹象，已按条款停结并加设单账号月上限。</li>
-        </ul>
-      </div>
-      <div class="mini">
-        <h4>达人营销 Influencer <span>35 位 · 96 条视频</span></h4>
-        <ul>
-          <li><b>矩阵：</b>头部 2（5–20 万粉）+ 腰部 8（1–5 万）+ 尾部 25（1 千–1 万），寄样 120 件，成本 1,440 USD。</li>
-          <li><b>筛选：</b>看粉丝国别占比 &gt;60%、互动率 &gt;3%、近 30 天 GPM，不看纯粉丝量；出单率 34%（41/120）。</li>
-          <li><b>结果：</b>带来收入 <b>6,940 USD（6.4%）</b>，佣金 12% + 样品 = 2,273 USD，<b>3.05 倍回报</b>。</li>
-          <li><b>差异：</b>达人单 AOV <b>15.2</b> 高于站内 12.8，但退款率 9.8% vs 6.1% —— 内容种草容易带来冲动单。</li>
-          <li><b>复用：</b>4 条 UGC 视频授权后直接进 ABO 测试，CTR 2.4%，比自制素材高 0.6pp。</li>
-        </ul>
-      </div>
+<!-- 07 -->
+<section class="sec" id="s7">
+  <div class="sec-h">
+    <div class="idx">07 / DEFINITION</div>
+    <div class="t">
+      <h2>口径与说明</h2>
+      <p>七个指标、四条边界，一页写完。换品类、换平台，这套定义与分析链路都不需要重写。</p>
     </div>
+  </div>
 
-    <div class="tbl" style="margin-top:16px">
-      <table>
-        <thead><tr><th>渠道</th><th class="n">收入贡献</th><th class="n">总成本</th><th class="n">回报倍数</th><th class="n">AOV</th><th class="n">新客占比</th><th>角色</th></tr></thead>
-        <tbody>
-          <tr><td>Meta / Google 投放</td><td class="n">108,480</td><td class="n">45,200</td><td class="n">2.40</td><td class="n">13.6</td><td class="n">63%</td><td>主增量，可放量</td></tr>
-          <tr><td>联盟 Affiliate</td><td class="n">9,980</td><td class="n">798</td><td class="n">12.5</td><td class="n">13.1</td><td class="n">71%</td><td>低成本长尾</td></tr>
-          <tr><td>达人 Influencer</td><td class="n">6,940</td><td class="n">2,273</td><td class="n">3.05</td><td class="n">15.2</td><td class="n">78%</td><td>首单 + 素材供给</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="note">联盟的 12.5 倍不能直接和投放 2.40 比：它没有前置曝光成本，天花板也低（本地可合作的垂直号有限）。合理的用法是「占收入 10–15% 的稳定补充」，不是主力。</p>
+  <div class="tbl rv">
+    <table>
+      <thead><tr><th>指标</th><th>定义</th><th>用途</th></tr></thead>
+      <tbody>
+        <tr><td><b>有效观看</b></td><td>内容被完整观看的播放量，替代原始播放量</td><td>全部比率的分母</td></tr>
+        <tr><td><b>CPM</b></td><td>总成本 ÷ 有效观看 × 1000</td><td>曝光侧效率</td></tr>
+        <tr><td><b>成交 GMV</b></td><td>21 天内归因到种草内容的成交额</td><td>项目评估口径</td></tr>
+        <tr><td><b>ROI</b></td><td>成交 GMV ÷ 现金花费</td><td>项目是否值得投</td></tr>
+        <tr><td><b>单位转化成本</b></td><td>总成本 ÷ 间接转化人数</td><td>仅横向对标用</td></tr>
+        <tr><td><b>转化率</b></td><td>间接转化人数 ÷ 有效观看</td><td>仅横向对标用</td></tr>
+        <tr><td><b>无效种草率</b></td><td>判定为对品牌无正向作用的内容占比</td><td>投放浪费程度</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid4 mt14">
+    <div class="card rv" style="padding:14px 14px 12px"><div style="font-family:var(--mono);font-size:19px;font-weight:600;letter-spacing:-.03em">180</div><div style="font-size:11.5px;color:var(--muted);margin-top:2px">条种草视频 / 位达人</div></div>
+    <div class="card rv" style="padding:14px 14px 12px"><div style="font-family:var(--mono);font-size:19px;font-weight:600;letter-spacing:-.03em">3</div><div style="font-size:11.5px;color:var(--muted);margin-top:2px">个同品类竞品</div></div>
+    <div class="card rv" style="padding:14px 14px 12px"><div style="font-family:var(--mono);font-size:19px;font-weight:600;letter-spacing:-.03em">7/10</div><div style="font-size:11.5px;color:var(--muted);margin-top:2px">数据截止日</div></div>
+    <div class="card rv" style="padding:14px 14px 12px"><div style="font-family:var(--mono);font-size:19px;font-weight:600;letter-spacing:-.03em">All</div><div style="font-size:11.5px;color:var(--muted);margin-top:2px">品牌 / 竞品 / 达人代号化</div></div>
   </div>
 </section>
 
-<!-- 07 决策 -->
-<section class="s" id="s7">
-  <div class="wrap">
-    <div class="shead"><span class="no">07</span><h2>决策台：关停、观察、加钱</h2><span class="en">Decisions</span></div>
+<div class="pager">
+  <a href="index.html"><small>← BACK</small>返回首页</a>
+  <a href="sop.html" style="text-align:right"><small>NEXT →</small>投放逻辑优化 SOP</a>
+</div>
 
-    <p class="tx">复盘的价值在于「下一步做什么」。三条清单按同一套阈值生成，逐条可追溯到上面的表。</p>
+</main>
 
-    <div class="tabs" role="tablist">
-      <button class="on" data-t="t1">加预算 · 6 项</button>
-      <button data-t="t2">观察 · 4 项</button>
-      <button data-t="t3">关停 · 9 项</button>
-    </div>
-
-    <div class="tabp on" id="t1">
-      <div class="dec">
-        <div class="it"><b>CBO · 马来西亚</b><span>+30% 预算</span><span class="why">ROAS 2.54、毛利/CPA 1.32，量级仍可扩</span></div>
-        <div class="it"><b>Google PMax</b><span>22% → 32% 预算</span><span class="why">增量 ROAS 2.9 高于 Meta 冷启，且品牌词已隔离</span></div>
-        <div class="it"><b>Retargeting · DPA</b><span>+20% 预算</span><span class="why">ROAS 4.35，频次仍低于 3.2，未疲劳</span></div>
-        <div class="it"><b>新加坡全渠道</b><span>+40% 预算</span><span class="why">AOV 21.6，毛利/CPA 1.51 全市场最高</span></div>
-        <div class="it"><b>Brand Search</b><span>+15% 预算</span><span class="why">CPA 1.84，守住竞品截流词</span></div>
-        <div class="it"><b>UGC 素材进 ABO</b><span>新开 1 组</span><span class="why">达人授权素材 CTR 2.4%，高于自制 0.6pp</span></div>
-      </div>
-    </div>
-
-    <div class="tabp" id="t2">
-      <div class="dec">
-        <div class="it"><b>菲律宾全渠道</b><span>限 2 周观察</span><span class="why">补 COD 后看加购→结账能否回到 51%</span></div>
-        <div class="it"><b>18–24 岁兴趣包</b><span>预算不变</span><span class="why">CPA 7.9 但新客占比 82%，作为蓄水保留</span></div>
-        <div class="it"><b>对比测评类素材</b><span>再跑 1 组</span><span class="why">样本仅 6 条，胜出 1 条不足以下结论</span></div>
-        <div class="it"><b>Google Demand Gen</b><span>小预算试投</span><span class="why">YouTube Shorts 版位未覆盖，先按 500 USD/月试</span></div>
-      </div>
-    </div>
-
-    <div class="tabp" id="t3">
-      <div class="dec">
-        <div class="it"><b>9 个低效 Ad Set</b><span>节省 6,240 / 季</span><span class="why">合计 ROAS 1.21，CPA 11.4，全部触发关停规则</span></div>
-        <div class="it"><b>泛投「购物爱好者」</b><span>—</span><span class="why">与再营销受众重叠 38%，纯内部抢量</span></div>
-        <div class="it"><b>开箱类素材 5 条</b><span>—</span><span class="why">CTR 0.9%、CPA 10.2，全部未过线</span></div>
-        <div class="it"><b>图文轮播 4 条</b><span>—</span><span class="why">低价品类无价格优势，转化 0</span></div>
-        <div class="it"><b>2 个违规联盟站</b><span>停结佣金</span><span class="why">自买返利，非真实增量</span></div>
-      </div>
-    </div>
-
-    <h3 class="sub">下 4 周测试排期</h3>
-    <div class="tbl">
-      <table>
-        <thead><tr><th>周次</th><th>动作</th><th>判定指标</th><th>阈值</th></tr></thead>
-        <tbody>
-          <tr><td>W1</td><td>PH 结账页补 COD + 运费门槛提示</td><td>加购→结账</td><td>≥ 51%</td></tr>
-          <tr><td>W2</td><td>SG 预算 +40%，观察 CPA 漂移</td><td>CPA 涨幅</td><td>&lt; 15%</td></tr>
-          <tr><td>W2–3</td><td>新一轮 12 条素材（UGC 为主，4 条来自达人授权）</td><td>3 天 CTR / CPA</td><td>CTR ≥ 1.8%，CPA ≤ 5.5</td></tr>
-          <tr><td>W3</td><td>PMax 加预算，隔离品牌词</td><td>增量 ROAS</td><td>≥ 2.6</td></tr>
-          <tr><td>W4</td><td>联盟扩到 30 位，测试 6% vs 8% 佣金档</td><td>增量收入 / 佣金</td><td>回报 ≥ 8 倍</td></tr>
-        </tbody>
-      </table>
-    </div>
+<footer>
+  <div class="wrap f-in">
+    <span>CASE 01 · 达人种草投放复盘</span>
+    <span>数据已脱敏 · 品牌与达人代号化</span>
   </div>
-</section>
-
-<!-- 08 口径 -->
-<section class="s" id="s8">
-  <div class="wrap">
-    <div class="shead"><span class="no">08</span><h2>口径与边界</h2><span class="en">Definitions</span></div>
-
-    <div class="acc">
-      <details open>
-        <summary>指标定义</summary>
-        <div class="bd">
-          <b>ROAS</b> = Shopify 实收 GMV ÷ 现金花费，不使用平台后台归因 GMV。<br>
-          <b>CPA</b> = 现金花费 ÷ 有效订单数。<br>
-          <b>CTR</b> = 链接点击 ÷ 曝光；<b>CPM</b> = 花费 ÷ 曝光 × 1000。<br>
-          <b>CVR</b> = 订单数 ÷ 访问 Session；分层 CVR 按各层事件数计算。<br>
-          <b>毛利/CPA</b> =（AOV × 毛利率 52%）÷ CPA，用于判断单笔订单是否为正贡献。<br>
-          <b>素材半衰期</b> = 胜出素材 CTR 跌破 1.4% 阈值的上线天数，本期为 11 天。
-        </div>
-      </details>
-      <details>
-        <summary>数据边界（三条，不回避）</summary>
-        <div class="bd">
-          <b>1 · 数据为脱敏等比缩放。</b>原业务数据未随离职保留，本案例使用同表结构、同字段含义、同量级的仿真数据集，全部指标由脚本计算，无硬写数值。趋势与结构问题来自真实业务判断，绝对值为示意。<br>
-          <b>2 · 基准值只作方向参照。</b>东南亚 DTC 的 CVR / CPM 基准来自公开行业报告区间中位数，品类与客单价并不完全可比，用于判断「哪一层异常」，不用于绩效承诺。<br>
-          <b>3 · 归因永远有残差。</b>Shopify 实收也未扣后续退款，Meta 与 GA4 各有偏差方向。本案例所有结论都建立在「同一口径下横向比较」，而非绝对值精确。
-        </div>
-      </details>
-      <details>
-        <summary>如果重做一次，会先做什么</summary>
-        <div class="bd">
-          先把归因口径和 UTM 规范定下来，再谈优化。这个季度前六周一直在用后台 ROAS 做决策，直到第三周才发现高估 11.8% —— 前面所有「加预算」的判断都需要重算一遍。这是这份复盘里最贵的一课。
-        </div>
-      </details>
-    </div>
-
-    <div class="pager">
-      <a href="index.html">← <span><small>BACK</small>作品集首页</span></a>
-      <a class="r" href="case2.html"><span><small>NEXT CASE</small>跨境电商多平台增长</span> →</a>
-    </div>
-    <footer>
-      <span>邱曾恺 · 海外投放作品集 · CASE 01</span>
-      <span>45,200 USD 花费 · 108,480 USD 实收 · ROAS 2.40</span>
-    </footer>
-  </div>
-</section>
+</footer>
 
 <script>
-document.querySelectorAll('.tabs button').forEach(function(b){
-  b.addEventListener('click',function(){
-    document.querySelectorAll('.tabs button').forEach(function(x){x.classList.remove('on')});
-    b.classList.add('on');
-    document.querySelectorAll('.tabp').forEach(function(p){p.classList.remove('on')});
-    document.getElementById(b.dataset.t).classList.add('on');
-  });
-});
-var links=[].slice.call(document.querySelectorAll('.cnav a'));
-var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
-function spy(){
-  var y=window.scrollY+120,i=0;
-  secs.forEach(function(s,k){if(s&&s.offsetTop<=y)i=k});
-  links.forEach(function(a,k){a.classList.toggle('on',k===i)});
-  var h=document.body.scrollHeight-window.innerHeight;
-  document.getElementById('prog').style.width=(h>0?(window.scrollY/h*100):0)+'%';
-}
-window.addEventListener('scroll',spy,{passive:true});spy();
+(function(){
+  var els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.05});
+  els.forEach(function(e){io.observe(e)});
+
+  var links=[].slice.call(document.querySelectorAll('.cbar a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  function onScroll(){
+    var y=window.scrollY+160,cur=0;
+    secs.forEach(function(s,i){if(s&&s.offsetTop<=y)cur=i;});
+    links.forEach(function(a,i){a.classList.toggle('on',i===cur);});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+})();
 </script>
 </body>
 </html>

@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>投放逻辑优化 SOP v1.0 | 邱曾恺 投放作品集</title>
+<meta name="description" content="六阶段投放逻辑优化 SOP：Brief 拆解、结构搭建、人群内容矩阵、冷启测试、数据回看、预算重排。24 个检查项、阈值速查表、一页 Brief 模板。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b45d7'/%3E%3Cpath d='M18 44V20h8l6 12 6-12h8v24h-7V32l-5 10h-4l-5-10v12z' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+:root{
+  --paper:#f6f7f9; --card:#fff;
+  --ink:#101319; --ink2:#39404d; --muted:#727a88; --faint:#9aa2af;
+  --line:#e5e8ee; --line2:#eef0f5;
+  --acc:#1b45d7; --acc-d:#12309c; --acc-soft:#eef2ff;
+  --teal:#0d8a7e; --teal-soft:#e7f6f3;
+  --amber:#a8730f; --amber-soft:#fdf5e6;
+  --rose:#b0353f; --rose-soft:#fbeef0;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{box-sizing:border-box;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;scroll-padding-top:112px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.75}
+h1,h2,h3,h4,p,ul,ol{margin:0}
+a{color:inherit}
+::selection{background:#d9e2ff}
+.wrap{max-width:1080px;margin:0 auto;padding:0 26px}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+.topnav{position:sticky;top:0;z-index:60;background:rgba(246,247,249,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.topnav-in{max-width:1080px;margin:0 auto;padding:0 26px;height:60px;display:flex;align-items:center;gap:18px}
+.logo{display:flex;align-items:baseline;gap:8px;text-decoration:none;font-weight:800;letter-spacing:-.02em;font-size:15.5px}
+.logo em{font-style:normal;font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;color:var(--faint);font-weight:500}
+.navlinks{display:flex;gap:2px;margin-left:auto}
+.navlinks a{padding:6px 11px;border-radius:999px;text-decoration:none;font-size:13px;color:var(--muted);transition:.18s;white-space:nowrap}
+.navlinks a:hover{color:var(--ink);background:#eceff5}
+.navlinks a.on{color:var(--acc-d);background:var(--acc-soft);font-weight:600}
+.cv{margin-left:6px;display:inline-flex;align-items:center;padding:7px 13px;border-radius:999px;background:var(--ink);color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;white-space:nowrap}
+
+.cbar{position:sticky;top:60px;z-index:55;background:#fff;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+.cbar::-webkit-scrollbar{display:none}
+.cbar-in{max-width:1080px;margin:0 auto;padding:0 26px;display:flex;height:44px;align-items:center}
+.cbar a{display:inline-flex;align-items:center;gap:6px;padding:0 12px;height:44px;text-decoration:none;font-size:12.2px;color:var(--muted);border-bottom:2px solid transparent;white-space:nowrap;transition:.16s}
+.cbar a b{font-family:var(--mono);font-size:9.5px;color:var(--faint);font-weight:500}
+.cbar a:hover{color:var(--ink);background:#fafbfd}
+.cbar a.on{color:var(--acc-d);border-bottom-color:var(--acc);font-weight:600}
+.cbar a.on b{color:var(--acc)}
+
+.chead{padding:48px 0 30px;background:linear-gradient(#fff,var(--paper));border-bottom:1px solid var(--line)}
+.chead .tagline{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--faint);text-transform:uppercase;flex-wrap:wrap}
+.chead .tagline .pill{background:var(--acc-soft);color:var(--acc-d);padding:2px 8px;border-radius:5px}
+.chead h1{font-size:clamp(27px,3.6vw,40px);line-height:1.18;letter-spacing:-.035em;font-weight:800;margin-top:16px}
+.chead .lead{font-size:14px;color:var(--ink2);margin-top:14px;max-width:700px}
+.chead .lead b{color:var(--ink)}
+.chead .ctx{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+.chead .ctx span{font-family:var(--mono);font-size:10.5px;color:var(--ink2);border:1px solid var(--line);background:#fff;border-radius:5px;padding:3px 8px}
+
+/* overview strip */
+.ov{border-bottom:1px solid var(--line);background:#0e131b}
+.ov-in{display:grid;grid-template-columns:repeat(6,1fr)}
+.ov-i{padding:18px 16px 16px;border-right:1px solid #1c2534;color:#cdd7e6}
+.ov-i:first-child{padding-left:0}
+.ov-i:last-child{padding-right:0}
+.ov-i:last-child{border-right:0}
+.ov-i .n{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:#64718c}
+.ov-i .t{font-size:12.4px;font-weight:650;color:#eef2f9;margin-top:6px;line-height:1.5}
+.ov-i .s{font-family:var(--mono);font-size:9px;color:#7c8aa4;margin-top:5px;letter-spacing:.04em}
+
+.sec{padding:54px 0 8px}
+.sec-h{display:flex;align-items:flex-start;gap:16px;margin-bottom:22px}
+.sec-h .idx{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--acc);padding-top:8px;white-space:nowrap}
+.sec-h .t h2{font-size:clamp(20px,2.4vw,25px);letter-spacing:-.03em;font-weight:800;line-height:1.3}
+.sec-h .t p{font-size:13.2px;color:var(--muted);margin-top:7px;max-width:730px}
+
+/* principles */
+.pr{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.pri{padding:20px 18px;border-left:1px solid var(--line2)}
+.pri:first-child{border-left:0}
+.pri .n{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--acc)}
+.pri h4{font-size:13.4px;font-weight:720;margin-top:7px;letter-spacing:-.01em}
+.pri p{font-size:11.9px;color:var(--muted);margin-top:6px;line-height:1.68}
+
+/* stage */
+.stage{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:16px}
+.stage-h{display:flex;align-items:center;gap:14px;padding:18px 22px;border-bottom:1px solid var(--line2);background:linear-gradient(#fbfcfe,#fff)}
+.stage-h .num{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:#fff;background:var(--acc);border-radius:6px;padding:5px 9px;white-space:nowrap;line-height:1.2}
+.stage-h .tt{flex:1;min-width:0}
+.stage-h .tt h3{font-size:16.5px;font-weight:750;letter-spacing:-.02em;line-height:1.35}
+.stage-h .tt p{font-size:12.2px;color:var(--muted);margin-top:3px}
+.stage-h .when{font-family:var(--mono);font-size:9px;letter-spacing:.08em;padding:3px 7px;border-radius:4px;background:#f1f3f8;color:var(--muted);white-space:nowrap}
+.stage-h .when.pre{background:var(--acc-soft);color:var(--acc-d)}
+.stage-h .when.mid{background:var(--amber-soft);color:var(--amber)}
+.stage-h .when.post{background:var(--teal-soft);color:var(--teal)}
+
+.stage-b{padding:20px 22px 18px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.col h5{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--faint);font-weight:500;margin-bottom:8px}
+.col ul{list-style:none;padding:0;margin:0}
+.col li{font-size:12.1px;color:var(--ink2);padding:4px 0 4px 12px;position:relative;line-height:1.65}
+.col li:before{content:"";position:absolute;left:0;top:11px;width:4px;height:1px;background:var(--faint)}
+.col.output li{color:var(--ink);font-weight:550}
+.col.output li:before{background:var(--teal)}
+
+.stage-f{border-top:1px solid var(--line2);padding:15px 22px 16px;background:#fcfdff;display:grid;grid-template-columns:1fr 340px;gap:20px;align-items:start}
+.checks{display:grid;grid-template-columns:1fr 1fr;grid-auto-flow:column;grid-template-rows:1fr 1fr;gap:5px 18px}
+.chk{display:grid;grid-template-columns:13px 1fr;gap:7px;font-size:11.8px;color:var(--ink2);line-height:1.6}
+.chk i{width:12px;height:12px;border:1.4px solid #c6cfe0;border-radius:3px;display:block;margin-top:3px;background:#fff}
+.err{border-left:2px solid var(--rose);padding:2px 0 2px 11px}
+.err .k{font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;color:var(--rose)}
+.err p{font-size:11.6px;color:var(--muted);margin-top:3px;line-height:1.65}
+
+/* table */
+.tbl{border:1px solid var(--line);border-radius:10px;overflow-x:auto;background:#fff;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:12.3px;background:#fff;min-width:600px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line2);vertical-align:top}
+th{background:#fafbfd;font-size:10.5px;font-family:var(--mono);letter-spacing:.08em;color:var(--muted);font-weight:500;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{font-weight:650}
+.m{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* quad */
+.quad{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.qc{border-radius:10px;padding:17px;border:1px solid var(--line);background:#fff}
+.qc .h{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.qc .h b{font-size:13.2px;font-weight:700}
+.qc .h .a{font-family:var(--mono);font-size:9px;letter-spacing:.08em;padding:2px 6px;border-radius:3px;background:#f1f3f8;color:var(--muted);white-space:nowrap}
+.qc p{font-size:11.9px;color:var(--muted);margin-top:7px;line-height:1.7}
+.qc.go{background:linear-gradient(#f7fbf9,#fff);border-color:#cfe8e0}
+.qc.go .h .a{background:var(--teal-soft);color:var(--teal)}
+.qc.fix{background:linear-gradient(#fffdf7,#fff);border-color:#f0e2c4}
+.qc.fix .h .a{background:var(--amber-soft);color:var(--amber)}
+.qc.stop{background:linear-gradient(#fdf8f8,#fff);border-color:#f0d5d8}
+.qc.stop .h .a{background:var(--rose-soft);color:var(--rose)}
+.qc.hold{background:linear-gradient(#f8faff,#fff);border-color:#d5ddef}
+.qc.hold .h .a{background:var(--acc-soft);color:var(--acc-d)}
+
+/* template */
+.tpl{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-top:14px}
+.tpl .th{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--line2)}
+.tpl .th h4{font-size:14.5px;font-weight:730}
+.tpl .th span{font-family:var(--mono);font-size:9.5px;color:var(--faint);letter-spacing:.1em}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:0 26px;margin-top:6px}
+.fld{display:grid;grid-template-columns:104px 1fr;gap:10px;padding:9px 0;border-bottom:1px dashed var(--line2);font-size:12.2px;align-items:baseline}
+.fld:last-child{border-bottom:0}
+.fld .k{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--muted);white-space:nowrap}
+.fld .v{color:var(--ink2)}
+.fld .v i{font-style:normal;color:var(--faint)}
+
+/* callout */
+.call{border-left:3px solid var(--acc);background:#fbfcff;border-radius:0 10px 10px 0;padding:14px 17px;font-size:12.8px;color:var(--ink2);margin-top:14px}
+.call b{color:var(--ink)}
+.call.warn{border-left-color:var(--amber);background:#fffdf7}
+.call .k{font-family:var(--mono);font-size:9px;letter-spacing:.13em;color:var(--faint);display:block;margin-bottom:3px}
+
+.bdbox{background:#fff;border:1px solid var(--line);border-radius:12px;padding:4px 20px;margin-top:14px}
+.bditem{display:grid;grid-template-columns:20px 1fr;gap:10px;padding:13px 0;border-bottom:1px solid var(--line2);font-size:12.5px;color:var(--ink2)}
+.bditem:last-child{border-bottom:0}
+.bditem .i{font-family:var(--mono);font-size:10px;color:var(--acc);padding-top:3px}
+
+.pager{display:flex;justify-content:space-between;gap:12px;margin:46px 0 0;padding-top:22px;border-top:1px solid var(--line);flex-wrap:wrap}
+.pager a{text-decoration:none;font-size:13px;color:var(--ink2);display:flex;flex-direction:column;gap:3px}
+.pager a:hover{color:var(--acc-d)}
+.pager a small{font-family:var(--mono);font-size:9.5px;color:var(--faint);letter-spacing:.1em}
+footer{padding:30px 0 44px}
+.f-in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:11.5px;color:var(--faint);font-family:var(--mono);letter-spacing:.04em}
+
+.rv{opacity:0;transform:translateY(12px);transition:opacity .55s ease,transform .55s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  .rv{opacity:1!important;transform:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+@media print{.rv{opacity:1!important;transform:none!important}}
+
+@media (max-width:980px){
+  .ov-in{grid-template-columns:repeat(3,1fr)}
+  .ov-i:nth-child(3n){border-right:0}
+  .ov-i:nth-child(n+4){border-top:1px solid #1c2534}
+  .pr{grid-template-columns:1fr 1fr}
+  .pri:nth-child(3){border-left:0}
+  .pri:nth-child(n+3){border-top:1px solid var(--line2)}
+  .stage-b{grid-template-columns:1fr 1fr}
+  .stage-f{grid-template-columns:1fr;gap:14px}
+  .fields{grid-template-columns:1fr}
+}
+@media (max-width:720px){
+  .quad{grid-template-columns:1fr}
+  .stage-b{grid-template-columns:1fr;gap:14px}
+  .checks{grid-template-columns:1fr;grid-auto-flow:row;grid-template-rows:auto}
+}
+@media (max-width:600px){
+  .navlinks{display:none}
+  .wrap,.topnav-in,.cbar-in{padding:0 18px}
+  .chead{padding:32px 0 22px}
+  .ov-in{grid-template-columns:1fr 1fr}
+  .ov-i:nth-child(2n){border-right:0}
+  .ov-i:nth-child(n+3){border-top:1px solid #1c2534}
+  .pr{grid-template-columns:1fr}
+  .pri{border-left:0;border-top:1px solid var(--line2)}
+  .pri:first-child{border-top:0}
+  .sec{padding:42px 0 6px}
+  .sec-h{gap:10px}
+  .sec-h .idx{padding-top:5px;font-size:10px}
+  .stage-h{padding:15px 16px;flex-wrap:wrap;gap:9px}
+  .stage-h .tt{flex:1 1 100%;order:3}
+  .stage-b,.stage-f{padding-left:16px;padding-right:16px}
+  .tpl{padding:16px}
+  .fld{grid-template-columns:88px 1fr}
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-in">
+    <a class="logo" href="index.html">邱曾恺<em>PAID MEDIA</em></a>
+    <div class="navlinks">
+      <a href="index.html">首页</a>
+      <a href="case1.html">作品 CASE 01</a>
+      <a href="sop.html" class="on">投放 SOP</a>
+    </div>
+    <a class="cv" href="assets/resume.pdf" target="_blank" rel="noopener">简历 PDF</a>
+  </div>
+</nav>
+
+<div class="cbar">
+  <div class="cbar-in">
+    <a href="#top" class="on"><b>—</b> 总览</a>
+    <a href="#st1"><b>S1</b> Brief</a>
+    <a href="#st2"><b>S2</b> 结构</a>
+    <a href="#st3"><b>S3</b> 内容</a>
+    <a href="#st4"><b>S4</b> 测试</a>
+    <a href="#st5"><b>S5</b> 回看</a>
+    <a href="#st6"><b>S6</b> 重排</a>
+    <a href="#tools"><b>+</b> 工具</a>
+    <a href="#bound"><b>!</b> 边界</a>
+  </div>
+</div>
+
+<header class="chead" id="top">
+  <div class="wrap">
+    <div class="tagline"><span class="pill">SOP v1.0</span> PAID MEDIA OPTIMIZATION · 6 STAGES / 24 CHECKS</div>
+    <h1>投放逻辑优化 SOP：<br>把「看情况」变成「按条件」</h1>
+    <p class="lead">这套流程解决一个具体问题：投放复盘经常停在「效果不错 / 不太行」，说不清下一步改什么。<b>每一阶段都必须有输入、动作、判定条件和产出物</b>，缺一项就不算走完。适用于抖音 / Meta / Google / TikTok 的信息流与达人投放，换平台不用重写结构。</p>
+    <div class="ctx"><span>6 阶段</span><span>24 检查项</span><span>4 条设计原则</span><span>7 指标阈值表</span><span>2 套模板</span><span>来源：实际投放复盘</span></div>
+  </div>
+</header>
+
+<div class="ov">
+<div class="wrap ov-in">
+  <div class="ov-i"><div class="n">S1</div><div class="t">Brief 拆解</div><div class="s">投前 · 定红线</div></div>
+  <div class="ov-i"><div class="n">S2</div><div class="t">结构搭建</div><div class="s">投前 · 切预算</div></div>
+  <div class="ov-i"><div class="n">S3</div><div class="t">人群 × 内容</div><div class="s">投前 · 定矩阵</div></div>
+  <div class="ov-i"><div class="n">S4</div><div class="t">冷启测试</div><div class="s">投中 · 拿样本</div></div>
+  <div class="ov-i"><div class="n">S5</div><div class="t">数据回看</div><div class="s">投中 · 判生死</div></div>
+  <div class="ov-i"><div class="n">S6</div><div class="t">预算重排</div><div class="s">投后 · 定动作</div></div>
+</div>
+</div>
+
+<main class="wrap">
+
+<section class="sec" style="padding-top:46px">
+  <div class="sec-h">
+    <div class="idx">PRINCIPLES</div>
+    <div class="t">
+      <h2>四条原则，决定这套 SOP 长什么样</h2>
+      <p>流程本身不难抄，难的是这四条约束——它们决定了每一步怎么做判断，也是这份 SOP 跟「投放 checklist」的区别。</p>
+    </div>
+  </div>
+  <div class="pr rv">
+    <div class="pri"><div class="n">01</div><h4>单变量</h4><p>一次只动一个维度：人群、内容、出价。同时改三处，赢了不知道为什么赢，输了也不知道该回退哪个。</p></div>
+    <div class="pri"><div class="n">02</div><h4>先样本，后结论</h4><p>没到最小样本量不下判断。第 2 天的 CTR 下跌大概率是学习期噪声，不是内容不行。</p></div>
+    <div class="pri"><div class="n">03</div><h4>基准跟着层级换</h4><p>大盘看竞品，账户看自身均值，单元看同层级内均值。同一份数据换三个基准，结论可能完全不同。</p></div>
+    <div class="pri"><div class="n">04</div><h4>结论必须能变动作</h4><p>每条结论都要能翻译成「加预算 / 换素材 / 换人 / 关停」之一，否则只是描述，不写进复盘。</p></div>
+  </div>
+  <div class="call"><span class="k">WHY THIS ORDER</span>顺序不能换：<b>没有红线的优化是瞎调，没有结构的测试是浪费，没有样本的判定是猜</b>。下面六阶段按实际执行顺序排，每个阶段都给了「什么时候可以进下一阶段」的退出条件。</div>
+</section>
+
+<!-- S1 -->
+<section class="sec" id="st1">
+  <div class="sec-h">
+    <div class="idx">S1</div>
+    <div class="t">
+      <h2>Brief 拆解：把目标翻译成约束</h2>
+      <p>这一步的产物是一页纸，不是一份 PPT。核心是三个数：<b>CPA 上限、CPM 天花板、最小样本</b>。算不出来就别开投。</p>
+    </div>
+  </div>
+
+  <div class="stage rv">
+    <div class="stage-h">
+      <div class="num">S1</div>
+      <div class="tt"><h3>Brief 拆解</h3><p>用毛利和红线反推可承受的成本区间</p></div>
+      <div class="when pre">投前 · 半天</div>
+    </div>
+    <div class="stage-b">
+      <div class="col">
+        <h5>INPUT</h5>
+        <ul>
+          <li>GMV / 订单目标与周期</li>
+          <li>现金预算与是否可追加</li>
+          <li>客单价、毛利率、退货率</li>
+          <li>历史 CPM / CVR / 转化成本</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h5>ACTION</h5>
+        <ul>
+          <li>用单均毛利定 CPA 上限：CPA ≤ AOV × 毛利率 ×（1 − 退货率）</li>
+          <li>用 ROI 红线反推 CPM 天花板：CPM ≤ CVR × AOV × 1000 ÷ ROI 红线</li>
+          <li>按历史有效观看中位数，反推需要的曝光量与内容条数</li>
+          <li>标注不可动约束：档期、平台政策、品牌词库存</li>
+        </ul>
+      </div>
+      <div class="col output">
+        <h5>OUTPUT</h5>
+        <ul>
+          <li>一页 Brief（目标 / 红线 / 预算盘）</li>
+          <li>CPA 与 CPM 两个上限值</li>
+          <li>止损条件与复盘节奏</li>
+        </ul>
+      </div>
+    </div>
+    <div class="stage-f">
+      <div>
+        <div class="chk" style="margin-bottom:7px"><i></i><span><b>检查项</b>（4 项全过才进 S2）</span></div>
+        <div class="checks">
+          <div class="chk"><i></i><span>CPA 上限低于单均毛利</span></div>
+          <div class="chk"><i></i><span>ROI 红线有明确出处（财务或业务口径）</span></div>
+          <div class="chk"><i></i><span>测试预算单列，且不超过总预算 25%</span></div>
+          <div class="chk"><i></i><span>写清「什么情况下停止投放」</span></div>
+        </div>
+      </div>
+      <div class="err"><div class="k">常见错误</div><p>只写「ROI 要做到 3」，不写「在什么客单、什么毛利、什么退货率下」。目标一旦脱离约束，执行层只能靠压价和堆量硬凑。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- S2 -->
+<section class="sec" id="st2">
+  <div class="sec-h">
+    <div class="idx">S2</div>
+    <div class="t">
+      <h2>结构搭建：让每块钱都有任务</h2>
+      <p>结构的目的是<b>可归因</b>：关掉任何一条计划，都能说清它花了多少、带回多少。做不到这一点，后面的优化全部失效。</p>
+    </div>
+  </div>
+
+  <div class="stage rv">
+    <div class="stage-h">
+      <div class="num">S2</div>
+      <div class="tt"><h3>账户与预算结构</h3><p>分层预算 + 单变量切分 + 命名规范</p></div>
+      <div class="when pre">投前 · 1 天</div>
+    </div>
+    <div class="stage-b">
+      <div class="col">
+        <h5>INPUT</h5>
+        <ul>
+          <li>S1 的预算盘与红线</li>
+          <li>可投的渠道 / 达人层级 / 赛道清单</li>
+          <li>素材产能（能出多少条 / 周）</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h5>ACTION</h5>
+        <ul>
+          <li>预算切三层：测试 15–20%、放量 50–60%、防守 20–25%</li>
+          <li>一个维度一个层级（按赛道或按达人层级），不交叉混投</li>
+          <li>命名统一：平台_目标_人群_内容类型_日期</li>
+          <li>每条计划独立止损：花费上限 / CPA 上限 / 观察天数</li>
+        </ul>
+      </div>
+      <div class="col output">
+        <h5>OUTPUT</h5>
+        <ul>
+          <li>预算分配表</li>
+          <li>计划清单与命名规范</li>
+          <li>止损规则表</li>
+        </ul>
+      </div>
+    </div>
+    <div class="stage-f">
+      <div>
+        <div class="chk" style="margin-bottom:7px"><i></i><span><b>检查项</b></span></div>
+        <div class="checks">
+          <div class="chk"><i></i><span>任取一条计划，能还原「花多少、带多少」</span></div>
+          <div class="chk"><i></i><span>没有两条计划同素材同人群互相抢量</span></div>
+          <div class="chk"><i></i><span>每条计划都有止损线，不是只有总预算</span></div>
+          <div class="chk"><i></i><span>测试位独立，不被放量计划挤占</span></div>
+        </div>
+      </div>
+      <div class="err"><div class="k">常见错误</div><p>把「所有达人」塞进一条计划。跑出来的均值既不能用于加预算，也不能用于砍人——结构一开始就废了。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- S3 -->
+<section class="sec" id="st3">
+  <div class="sec-h">
+    <div class="idx">S3</div>
+    <div class="t">
+      <h2>人群 × 内容矩阵：投给谁、说什么</h2>
+      <p>把「投给谁」和「说什么」拆成格子，<b>一次只跑一列</b>。矩阵的价值不是全跑一遍，而是知道每一格在验证什么假设。</p>
+    </div>
+  </div>
+
+  <div class="stage rv">
+    <div class="stage-h">
+      <div class="num">S3</div>
+      <div class="tt"><h3>人群与内容矩阵</h3><p>3 人群 × 3 钩子，先定列再定行</p></div>
+      <div class="when pre">投前 · 2–3 天</div>
+    </div>
+    <div class="stage-b">
+      <div class="col">
+        <h5>INPUT</h5>
+        <ul>
+          <li>品类购买频次与决策路径</li>
+          <li>历史跑赢 / 跑输的内容样本</li>
+          <li>达人池与报价区间</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h5>ACTION</h5>
+        <ul>
+          <li>人群分三层：核心（品类现客）/ 扩展（相邻场景）/ 泛兴趣</li>
+          <li>场景取 3 个高频真实场景 + 1 个反差场景</li>
+          <li>前 3 秒钩子分三类：痛点直给 / 反差叙事 / 情绪审美</li>
+          <li>筛人用双阈值：曝光效率一组，规模 × 质量一组</li>
+        </ul>
+      </div>
+      <div class="col output">
+        <h5>OUTPUT</h5>
+        <ul>
+          <li>素材矩阵表（人群 × 钩子）</li>
+          <li>脚本 Brief（含前 3 秒逐字稿）</li>
+          <li>达人分级名单</li>
+        </ul>
+      </div>
+    </div>
+    <div class="stage-f">
+      <div>
+        <div class="chk" style="margin-bottom:7px"><i></i><span><b>检查项</b></span></div>
+        <div class="checks">
+          <div class="chk"><i></i><span>每条素材能回答「给谁看、解决什么、为什么现在看」</span></div>
+          <div class="chk"><i></i><span>钩子不重复：三条素材不是同一句话换开头</span></div>
+          <div class="chk"><i></i><span>筛人至少两个阈值，不用单一排名</span></div>
+          <div class="chk"><i></i><span>矩阵有留白，不是一条素材讲完所有卖点</span></div>
+        </div>
+      </div>
+      <div class="err"><div class="k">常见错误</div><p>一条素材塞满卖点。看起来「信息量大」，实际是不知道对谁说话——点击率会被平均掉，测不出哪句话有效。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- S4 -->
+<section class="sec" id="st4">
+  <div class="sec-h">
+    <div class="idx">S4</div>
+    <div class="t">
+      <h2>冷启测试：先给足样本，再判生死</h2>
+      <p>这一阶段唯一的任务是<b>拿到可信的判定依据</b>，不是拿量。窗口内不改结构、不提前砍、不提前加。</p>
+    </div>
+  </div>
+
+  <div class="stage rv">
+    <div class="stage-h">
+      <div class="num">S4</div>
+      <div class="tt"><h3>冷启与最小样本</h3><p>固定窗口 + 固定变量 + 达标才判</p></div>
+      <div class="when mid">投中 · 3–7 天</div>
+    </div>
+    <div class="stage-b">
+      <div class="col">
+        <h5>INPUT</h5>
+        <ul>
+          <li>S3 的矩阵与达人名单</li>
+          <li>S1 定下的最小样本标准</li>
+          <li>平台学习期规则（避免误判）</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h5>ACTION</h5>
+        <ul>
+          <li>给每组设定最小样本：有效观看 / 点击 / 转化任一达标才判</li>
+          <li>固定测试窗口，窗口内不动结构与出价</li>
+          <li>记录异常：素材审核失败、达人改期、平台限流，单独标注</li>
+          <li>窗口结束当天出「保留 / 观察 / 淘汰」三档名单</li>
+        </ul>
+      </div>
+      <div class="col output">
+        <h5>OUTPUT</h5>
+        <ul>
+          <li>测试排期表</li>
+          <li>样本达标情况表</li>
+          <li>三档名单（保留 / 观察 / 淘汰）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="stage-f">
+      <div>
+        <div class="chk" style="margin-bottom:7px"><i></i><span><b>检查项</b></span></div>
+        <div class="checks">
+          <div class="chk"><i></i><span>没有在样本不足时关停或加预算</span></div>
+          <div class="chk"><i></i><span>每组只有一个变量在变</span></div>
+          <div class="chk"><i></i><span>异常项已单独标注，没混进结论</span></div>
+          <div class="chk"><i></i><span>「观察」档有明确的二次判定时间</span></div>
+        </div>
+      </div>
+      <div class="err"><div class="k">常见错误</div><p>第 2 天 CTR 掉就砍。学习期波动通常在前 48 小时最大，这时候关停，砍掉的是本来能跑出来的素材。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- S5 -->
+<section class="sec" id="st5">
+  <div class="sec-h">
+    <div class="idx">S5</div>
+    <div class="t">
+      <h2>数据回看：分析只占这一环</h2>
+      <p>它的职责很窄：<b>判断继续、修改还是停止</b>。不负责解释人群为什么买、也不负责编内容策略——那是前面几环的事，这里只做判定。</p>
+    </div>
+  </div>
+
+  <div class="stage rv">
+    <div class="stage-h">
+      <div class="num">S5</div>
+      <div class="tt"><h3>效果回看与判定</h3><p>三层基准 + 四个指标 + 分布先于个体</p></div>
+      <div class="when mid">投中 · 每周</div>
+    </div>
+    <div class="stage-b">
+      <div class="col">
+        <h5>INPUT</h5>
+        <ul>
+          <li>平台后台数据 + 后端成交数据</li>
+          <li>竞品 / 行业基准区间</li>
+          <li>S1 的红线与 S4 的样本表</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h5>ACTION</h5>
+        <ul>
+          <li>三层基准：大盘（竞品）→ 账户（自身均值）→ 单元（同层级内均值）</li>
+          <li>只看四个指标：成本、效率、转化、结果</li>
+          <li>先看分布（多少比例单元高于均值），再看个体</li>
+          <li>平台数与后端数对账，差额超过 5% 先查口径再下结论</li>
+        </ul>
+      </div>
+      <div class="col output">
+        <h5>OUTPUT</h5>
+        <ul>
+          <li>效果诊断表（四类判定）</li>
+          <li>口径差异说明</li>
+          <li>下一轮动作建议</li>
+        </ul>
+      </div>
+    </div>
+    <div class="stage-f">
+      <div>
+        <div class="chk" style="margin-bottom:7px"><i></i><span><b>检查项</b></span></div>
+        <div class="checks">
+          <div class="chk"><i></i><span>所有比率共用同一个分母</span></div>
+          <div class="chk"><i></i><span>归因窗口一致，没有拿 7 天数比 21 天数</span></div>
+          <div class="chk"><i></i><span>过程指标没有被当成项目结论</span></div>
+          <div class="chk"><i></i><span>异常值单独剔除并说明原因</span></div>
+        </div>
+      </div>
+      <div class="err"><div class="k">常见错误</div><p>用「到店人数 / 间接转化」评估项目值不值。这类指标会重复计数、无法去重，只能做品牌间相对对标，项目结论必须回到成交 GMV 与 ROI。</p></div>
+    </div>
+  </div>
+
+  <div class="call warn"><span class="k">S5 最容易越界的地方</span>看数的人很容易顺手写策略：「因为音乐类转化低，所以品牌要年轻化」。<b>这是从数据直接跳到品牌判断</b>，缺了 S3 的内容假设与达人访谈。S5 只能输出「哪一类该加、哪一类该砍」，不能输出「品牌该是什么样」。</div>
+</section>
+
+<!-- S6 -->
+<section class="sec" id="st6">
+  <div class="sec-h">
+    <div class="idx">S6</div>
+    <div class="t">
+      <h2>预算重排：四象限定动作</h2>
+      <p>把 S5 的判定翻译成预算动作。<b>每个单元只能落进一个象限</b>，落不进去说明数据还不够，回 S4 补样本。</p>
+    </div>
+  </div>
+
+  <div class="quad">
+    <div class="qc go rv">
+      <div class="h"><b>高转化 · 低成本</b><span class="a">SCALE</span></div>
+      <p>加预算，梯度上浮 20–30%，观察 2–3 天成本弹性；弹性可接受就继续，抬过头回退一档。</p>
+    </div>
+    <div class="qc fix rv">
+      <div class="h"><b>高转化 · 高成本</b><span class="a">REBUILD</span></div>
+      <p>不砍人，改内容：换钩子、换场景、换前 3 秒。成本高但转化在，说明人群对了、表达贵了。</p>
+    </div>
+    <div class="qc hold rv">
+      <div class="h"><b>低转化 · 低成本</b><span class="a">REPLACE</span></div>
+      <p>换人群或换承接。便宜说明曝光买得对，转化低大概率是落地页或人群意图不匹配。</p>
+    </div>
+    <div class="qc stop rv">
+      <div class="h"><b>低转化 · 高成本</b><span class="a">STOP</span></div>
+      <p>直接关停，不做「再优化一版」的抢救。省下来的钱进测试位，比抢救更划算。</p>
+    </div>
+  </div>
+
+  <div class="stage rv">
+    <div class="stage-h">
+      <div class="num">S6</div>
+      <div class="tt"><h3>重排与放量</h3><p>梯度放量 + 留测试位 + 沉淀语法</p></div>
+      <div class="when post">投后 · 每轮</div>
+    </div>
+    <div class="stage-b">
+      <div class="col">
+        <h5>INPUT</h5>
+        <ul>
+          <li>S5 的四类判定结果</li>
+          <li>下一周期预算与目标</li>
+          <li>素材库存与达人行期</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h5>ACTION</h5>
+        <ul>
+          <li>按四象限分配：放量 50–60%、修改 20%、替换 10%、关停释放</li>
+          <li>放量梯度单次 20–30%，不翻倍</li>
+          <li>始终留 10–15% 做新测试，防素材衰减</li>
+          <li>把胜出内容写成「语法卡」：钩子 + 场景 + 情绪 + 产品露出方式</li>
+        </ul>
+      </div>
+      <div class="col output">
+        <h5>OUTPUT</h5>
+        <ul>
+          <li>下一轮预算表</li>
+          <li>测试清单与黑名单</li>
+          <li>素材语法卡</li>
+        </ul>
+      </div>
+    </div>
+    <div class="stage-f">
+      <div>
+        <div class="chk" style="margin-bottom:7px"><i></i><span><b>检查项</b></span></div>
+        <div class="checks">
+          <div class="chk"><i></i><span>放量后 CPA 仍在红线内</span></div>
+          <div class="chk"><i></i><span>有备份素材，不押单一内容</span></div>
+          <div class="chk"><i></i><span>关停释放的预算有明确去向</span></div>
+          <div class="chk"><i></i><span>阈值和语法已写进下一轮 Brief</span></div>
+        </div>
+      </div>
+      <div class="err"><div class="k">常见错误</div><p>一次把预算翻倍。成本抬升滞后 2–3 天才显现，等看到的时候已经多花了整周预算。梯度放量是唯一安全的做法。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- tools -->
+<section class="sec" id="tools">
+  <div class="sec-h">
+    <div class="idx">TOOLS</div>
+    <div class="t">
+      <h2>三个可直接拿去用的东西</h2>
+      <p>阈值表用来判断，Brief 模板用来对齐，复盘模板用来交付。</p>
+    </div>
+  </div>
+
+  <div class="tbl rv">
+    <table>
+      <thead><tr><th>指标</th><th>回答什么</th><th>阈值怎么定</th><th>误判风险</th></tr></thead>
+      <tbody>
+        <tr><td><b>CPM</b></td><td>曝光买得贵不贵</td><td>品类均值 ±20% 为正常区间</td><td>低 CPM 可能买到低质曝光</td></tr>
+        <tr><td><b>有效观看率</b></td><td>内容留得住人吗</td><td>自身历史中位数，不用行业均值</td><td>平台口径不一，需统一分母</td></tr>
+        <tr><td><b>CTR</b></td><td>钩子有没有吸引力</td><td>同素材类型内比较，不跨类型</td><td>样本不足时波动极大</td></tr>
+        <tr><td><b>CVR</b></td><td>承接能力</td><td>分层看：人群 / 落地页 / 时段</td><td>混入品牌词会虚高</td></tr>
+        <tr><td><b>CPA</b></td><td>单元效率</td><td>≤ 单均毛利 ×（1 − 退货率）</td><td>忽略退货与履约成本</td></tr>
+        <tr><td><b>ROI</b></td><td>项目结论</td><td>≥ 业务红线，且区分含税 / 不含税</td><td>口径混算，GMV 与实收混用</td></tr>
+        <tr><td><b>无效占比</b></td><td>浪费程度</td><td>设定「待观察」档，不用二分法</td><td>两档判定会把中间态算成无效</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tpl rv">
+    <div class="th"><h4>一页 Brief 模板</h4><span>填不满就别开投</span></div>
+    <div class="fields">
+      <div class="fld"><div class="k">目标</div><div class="v">GMV / 订单 / 新客数，含周期</div></div>
+      <div class="fld"><div class="k">预算</div><div class="v">总额 · 测试占比 · 是否可追加</div></div>
+      <div class="fld"><div class="k">红线</div><div class="v">ROI 下限 · CPA 上限 · 数据出处</div></div>
+      <div class="fld"><div class="k">假设</div><div class="v">客单、毛利率、退货率、CVR</div></div>
+      <div class="fld"><div class="k">结构</div><div class="v">按什么维度切 · 几条计划 · 命名</div></div>
+      <div class="fld"><div class="k">人群</div><div class="v">核心 / 扩展 / 泛兴趣各一层</div></div>
+      <div class="fld"><div class="k">内容</div><div class="v">3 钩子 × 3 场景，谁来说</div></div>
+      <div class="fld"><div class="k">判定</div><div class="v">最小样本 · 窗口 · 观察期</div></div>
+      <div class="fld"><div class="k">止损</div><div class="v">什么条件下停，谁来决定</div></div>
+      <div class="fld"><div class="k">节奏</div><div class="v">日报看什么 · 周报判什么</div></div>
+    </div>
+  </div>
+
+  <div class="tpl rv">
+    <div class="th"><h4>复盘模板</h4><span>结论先行，动作收尾</span></div>
+    <div class="fields">
+      <div class="fld"><div class="k">01 结论</div><div class="v">一句话：过没过线，问题在哪一层</div></div>
+      <div class="fld"><div class="k">02 证据</div><div class="v">三个数 + 各自基准，不堆图表</div></div>
+      <div class="fld"><div class="k">03 归因</div><div class="v">结构 / 人群 / 内容 / 承接，选一个主因</div></div>
+      <div class="fld"><div class="k">04 动作</div><div class="v">加 / 改 / 换 / 停，各指到具体对象</div></div>
+      <div class="fld"><div class="k">05 边界</div><div class="v">哪些结论不成立，为什么</div></div>
+      <div class="fld"><div class="k">06 沉淀</div><div class="v">阈值、语法、黑名单各更新一条</div></div>
+    </div>
+  </div>
+
+  <div class="call mt20"><span class="k">HOW TO USE</span>这套 SOP 不要求一次跑完六步再动手。实际投放里 S4 和 S5 是循环的：<b>测一轮 → 判一轮 → 重排一轮</b>，每轮把结论写回 S1 的 Brief。跑过三轮之后，Brief 里的假设会越来越准，这才是 SOP 真正的复利。</div>
+</section>
+
+<!-- boundary -->
+<section class="sec" id="bound">
+  <div class="sec-h">
+    <div class="idx">BOUNDARY</div>
+    <div class="t">
+      <h2>适用边界</h2>
+      <p>这套东西在什么条件下成立、什么条件下会失效，先说清楚。</p>
+    </div>
+  </div>
+  <div class="bdbox rv">
+    <div class="bditem"><span class="i">01</span><div><b>适用：</b>有明确转化目标的付费投放（信息流、达人种草、联盟 CPS），单周期预算 50 万以上、能拿到后端成交数据的场景。预算太小时，测试位分不出来，S2 的分层没有意义。</div></div>
+    <div class="bditem"><span class="i">02</span><div><b>部分适用：</b>品牌广告、纯曝光型投放。这类目标不能用 CPA / ROI 判定，S5 需要换成声量份额、搜索指数、品牌词增量等指标，其余结构可以保留。</div></div>
+    <div class="bditem"><span class="i">03</span><div><b>不适用：</b>没有归因链路、拿不到后端数据的场景。这种条件下只能做平台内的相对优化，无法判断项目是否赚钱——不要用过程指标硬凑结论。</div></div>
+    <div class="bditem"><span class="i">04</span><div><b>阈值需要重标定：</b>S1 的 CPA 上限、S4 的最小样本、S5 的基准区间都跟品类强相关。换品类必须用自己前三轮的数据重新标定，不能直接套用。</div></div>
+    <div class="bditem"><span class="i">05</span><div><b>来源说明：</b>这套流程来自实际投放复盘的方法沉淀，阈值区间参考了项目实测与公开基准区间，不含任何客户数据。它不是某个平台的官方方法论，是我自己跑过、改过的工作流。</div></div>
+  </div>
+</section>
+
+<div class="pager">
+  <a href="case1.html"><small>← CASE</small>达人种草投放复盘</a>
+  <a href="index.html" style="text-align:right"><small>HOME →</small>返回首页</a>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap f-in">
+    <span>投放逻辑优化 SOP v1.0</span>
+    <span>6 stages · 24 checks</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.05});
+  els.forEach(function(e){io.observe(e)});
+
+  var links=[].slice.call(document.querySelectorAll('.cbar a'));
+  var secs=links.map(function(a){var h=a.getAttribute('href');return h==='#top'?document.getElementById('top'):document.querySelector(h);});
+  function onScroll(){
+    var y=window.scrollY+170,cur=0;
+    secs.forEach(function(s,i){if(s&&s.offsetTop<=y)cur=i;});
+    links.forEach(function(a,i){a.classList.toggle('on',i===cur);});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>

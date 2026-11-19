@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>邱曾恺 · 海外投放 / 广告运营作品集</title>
-<meta name="description" content="海外投放 / 广告运营作品集：东南亚 Shopify 独立站 Meta、Google Ads 投放复盘，跨境电商 TikTok Shop / Shopee / Lazada 多平台增长分析。">
+<title>邱曾恺 · 投放作品集 & 投放逻辑优化 SOP</title>
+<meta name="description" content="海外投放 / 效果投放作品集：真实达人种草投放复盘（443 万现金、ROI 1.13）＋ 一套六阶段投放逻辑优化 SOP。">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b45d7'/%3E%3Cpath d='M18 44V20h8l6 12 6-12h8v24h-7V32l-5 10h-4l-5-10v12z' fill='%23fff'/%3E%3C/svg%3E">
 <style>
 :root{
@@ -24,162 +24,156 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);f
 h1,h2,h3,h4,p,ul,ol{margin:0}
 a{color:inherit}
 ::selection{background:#d9e2ff}
-
 .wrap{max-width:1140px;margin:0 auto;padding:0 26px}
 .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
 
-/* ── 顶栏 ── */
+/* topnav */
 .topnav{position:sticky;top:0;z-index:50;background:rgba(246,247,249,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .topnav-in{max-width:1140px;margin:0 auto;padding:0 26px;height:62px;display:flex;align-items:center;gap:20px}
 .logo{display:flex;align-items:baseline;gap:8px;text-decoration:none;font-weight:800;letter-spacing:-.02em;font-size:16px}
 .logo em{font-style:normal;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--faint);font-weight:500}
 .navlinks{display:flex;gap:2px;margin-left:auto}
-.navlinks a{padding:6px 12px;border-radius:999px;text-decoration:none;font-size:13.5px;color:var(--muted);transition:.18s}
+.navlinks a{padding:6px 12px;border-radius:999px;text-decoration:none;font-size:13.5px;color:var(--muted);transition:.18s;white-space:nowrap}
 .navlinks a:hover{color:var(--ink);background:#eceff5}
 .navlinks a.on{color:var(--acc-d);background:var(--acc-soft);font-weight:600}
 .cv{margin-left:8px;display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:999px;background:var(--ink);color:#fff;text-decoration:none;font-size:13px;font-weight:600;white-space:nowrap;transition:.2s}
 .cv:hover{background:var(--acc)}
 .cv span{font-family:var(--mono);font-size:10px;opacity:.6}
 
-/* ── HERO ── */
-.hero{padding:66px 0 20px;position:relative;overflow:hidden}
+/* hero */
+.hero{padding:64px 0 16px;position:relative;overflow:hidden}
 .hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line2) 1px,transparent 1px),linear-gradient(90deg,var(--line2) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 60% at 70% 0%,#000 20%,transparent 75%);opacity:.9;pointer-events:none}
-.hero-in{position:relative;display:grid;grid-template-columns:1.12fr .88fr;gap:56px;align-items:start}
+.hero-in{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:start}
 .eyebrow{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
 .eyebrow i{width:26px;height:1px;background:var(--acc);display:block}
-h1.name{font-size:clamp(40px,5.6vw,62px);line-height:1.06;letter-spacing:-.045em;font-weight:800;margin:22px 0 0}
-h1.name small{display:block;font-size:13px;letter-spacing:.02em;font-weight:500;color:var(--muted);margin-top:16px;line-height:1.9}
-.role{margin-top:26px;display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
-.role b{color:var(--ink);font-weight:700;font-size:14.5px}
+h1.name{font-size:clamp(34px,4.4vw,52px);line-height:1.12;letter-spacing:-.04em;font-weight:800;margin:20px 0 0}
+h1.name em{font-style:normal;color:var(--acc)}
+h1.name small{display:block;font-size:13.5px;letter-spacing:.01em;font-weight:400;color:var(--muted);margin-top:18px;line-height:1.9}
+.role{margin-top:22px;display:flex;flex-wrap:wrap;align-items:center;gap:9px;font-size:12.5px;color:var(--muted)}
+.role b{color:var(--ink);font-weight:700;font-size:14px}
 .role .sep{color:var(--faint)}
-.pitch{margin-top:18px;max-width:530px;color:var(--ink2);font-size:15px}
+.role .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;padding:3px 8px;border:1px solid var(--line);border-radius:5px;background:#fff;color:var(--ink2)}
+.pitch{margin-top:20px;max-width:530px;color:var(--ink2);font-size:14.6px}
 .pitch b{color:var(--ink)}
 .pitch .hl{background:linear-gradient(transparent 62%,#dbe4ff 62%);padding:0 2px}
-.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:650;transition:.2s;border:1px solid transparent}
-.btn-p{background:var(--acc);color:#fff;box-shadow:0 8px 20px -10px rgba(27,69,215,.7)}
+.actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:9px;text-decoration:none;font-size:13.5px;font-weight:650;transition:.2s;border:1px solid transparent;white-space:nowrap}
+.btn-p{background:var(--acc);color:#fff;box-shadow:0 8px 20px -12px rgba(27,69,215,.8)}
 .btn-p:hover{background:var(--acc-d);transform:translateY(-1px)}
 .btn-g{background:#fff;border-color:var(--line);color:var(--ink)}
 .btn-g:hover{border-color:#c9d2e4;transform:translateY(-1px)}
 .btn .k{font-family:var(--mono);font-size:10px;opacity:.55}
 
-/* 投放面板 */
-.panel{background:#0e131b;border-radius:16px;padding:20px 20px 16px;color:#dfe5ef;box-shadow:0 24px 50px -28px rgba(12,18,32,.6);position:relative;overflow:hidden}
-.panel:after{content:"";position:absolute;width:220px;height:220px;right:-90px;top:-110px;background:radial-gradient(circle,rgba(27,69,215,.55),transparent 65%);pointer-events:none}
+/* sop panel */
+.panel{background:#0e131b;border-radius:16px;padding:18px 18px 14px;color:#dfe5ef;box-shadow:0 24px 50px -30px rgba(12,18,32,.65);position:relative;overflow:hidden}
+.panel:after{content:"";position:absolute;width:210px;height:210px;right:-95px;top:-115px;background:radial-gradient(circle,rgba(27,69,215,.5),transparent 65%);pointer-events:none}
 .p-head{display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:#7885a0}
-.p-head .live{display:inline-flex;align-items:center;gap:5px;color:#5fd0a8}
-.p-head .live:before{content:"";width:5px;height:5px;border-radius:50%;background:#5fd0a8;box-shadow:0 0 0 3px rgba(95,208,168,.16)}
-.p-sub{font-size:11.5px;color:#93a1bd;margin-top:4px;font-family:var(--mono);letter-spacing:.04em}
-.p-row{display:grid;grid-template-columns:1fr 74px 38px;align-items:center;gap:10px;margin-top:13px;font-size:12px}
-.p-row .nm{color:#c8d2e6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.p-row .bar{height:6px;border-radius:3px;background:#1d2634;overflow:hidden}
-.p-row .bar i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,#3a63ef,#7d9bff)}
-.p-row .vv{font-family:var(--mono);text-align:right;color:#e9eef8;font-size:12px}
-.p-row.good .bar i{background:linear-gradient(90deg,#0f9d7a,#5fd0a8)}
-.p-foot{margin-top:16px;padding-top:14px;border-top:1px solid #1e2734;display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:#7d8aa4;letter-spacing:.06em}
+.p-head .ver{color:#5fd0a8;display:inline-flex;align-items:center;gap:5px}
+.p-head .ver:before{content:"";width:5px;height:5px;border-radius:50%;background:#5fd0a8;box-shadow:0 0 0 3px rgba(95,208,168,.16)}
+.p-sub{font-size:11px;color:#8d9bb6;margin-top:5px;font-family:var(--mono);letter-spacing:.04em}
+.p-step{display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #1a2230}
+.p-step:last-of-type{border-bottom:0}
+.p-step .n{font-family:var(--mono);font-size:9.5px;color:#5f6d88;letter-spacing:.04em}
+.p-step .nm{font-size:12.5px;color:#dbe3f0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.p-step .nm i{font-style:normal;color:#7f8da8;font-size:10.5px;font-family:var(--mono);margin-left:6px}
+.p-step .chip{font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;padding:2px 6px;border-radius:4px;background:#1a2232;color:#8fa0be;white-space:nowrap}
+.p-step.hot .nm{color:#fff}
+.p-step.hot .chip{background:rgba(27,69,215,.24);color:#9db6ff;border:1px solid rgba(90,125,240,.35)}
+.p-foot{margin-top:12px;padding-top:11px;border-top:1px solid #1e2734;display:flex;justify-content:space-between;font-family:var(--mono);font-size:9.5px;color:#7d8aa4;letter-spacing:.05em}
 .p-foot b{color:#dfe5ef;font-weight:600}
 
-/* 数字带 */
-.stats{margin-top:52px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);position:relative}
-.stat{padding:22px 20px 4px;border-right:1px solid var(--line)}
-.stat:last-child{border-right:0}
-.stat .n{font-family:var(--mono);font-size:clamp(24px,3vw,32px);font-weight:600;letter-spacing:-.03em;line-height:1.1}
-.stat .n em{font-style:normal;font-size:12px;color:var(--muted);margin-left:4px;letter-spacing:0}
-.stat .l{font-size:12px;color:var(--muted);margin-top:7px}
+/* evidence */
+.ev{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:44px;background:#fff}
+.ev-in{max-width:1140px;margin:0 auto;padding:0 26px;display:grid;grid-template-columns:repeat(4,1fr)}
+.ev-i{padding:20px 18px 18px;border-left:1px solid var(--line2)}
+.ev-i:first-child{border-left:0;padding-left:0}
+.ev-i .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--faint)}
+.ev-i .v{font-family:var(--mono);font-size:23px;font-weight:600;letter-spacing:-.03em;margin-top:5px;white-space:nowrap}
+.ev-i .v em{font-style:normal;font-size:11px;color:var(--muted);margin-left:2px;font-weight:400}
+.ev-i .d{font-size:11.5px;color:var(--muted);margin-top:3px}
 
-/* ── 通用 section ── */
-.sec{padding:70px 0}
-.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;padding-bottom:18px;border-bottom:1px solid var(--ink);margin-bottom:34px}
-.sec-head .l{display:flex;align-items:baseline;gap:14px}
-.sec-no{font-family:var(--mono);font-size:11px;color:var(--acc);letter-spacing:.1em}
-.sec-head h2{font-size:clamp(21px,2.4vw,27px);letter-spacing:-.03em;font-weight:750;line-height:1.2}
-.sec-head .sub{font-size:12.5px;color:var(--muted);text-align:right;max-width:330px;line-height:1.7}
+/* section */
+section{padding:72px 0}
+.shead{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:30px;flex-wrap:wrap}
+.shead .l .en{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--faint);text-transform:uppercase}
+.shead .l h2{font-size:clamp(23px,2.8vw,30px);letter-spacing:-.03em;font-weight:800;margin-top:9px;line-height:1.25}
+.shead .l p{color:var(--muted);font-size:13.8px;margin-top:9px;max-width:620px}
+.shead .r{font-family:var(--mono);font-size:10.5px;color:var(--faint);letter-spacing:.08em;white-space:nowrap}
 
-/* 能力卡 */
-.caps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.cap{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 22px 20px;transition:.22s;position:relative}
-.cap:hover{transform:translateY(-3px);box-shadow:0 18px 34px -26px rgba(16,24,44,.5);border-color:#d5dcec}
-.cap .k{font-family:var(--mono);font-size:10px;color:var(--faint);letter-spacing:.12em}
-.cap h3{font-size:16.5px;margin:9px 0 0;letter-spacing:-.01em;line-height:1.4}
-.cap h3 span{font-weight:400;font-size:12px;color:var(--muted);margin-left:6px;font-family:var(--mono);letter-spacing:.04em}
-.cap p{font-size:13px;color:var(--ink2);margin-top:10px;line-height:1.75}
-.cap .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
-.cap .tags i{font-style:normal;font-family:var(--mono);font-size:10px;color:var(--acc-d);background:var(--acc-soft);padding:3px 7px;border-radius:5px}
+/* entry */
+.entry{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}
+.ecard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px 26px 22px;text-decoration:none;display:flex;flex-direction:column;transition:.22s;position:relative;overflow:hidden}
+.ecard:hover{border-color:#c3cfe8;box-shadow:0 18px 40px -28px rgba(16,30,64,.5);transform:translateY(-2px)}
+.ecard .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--acc);text-transform:uppercase}
+.ecard h3{font-size:20px;letter-spacing:-.02em;font-weight:750;margin-top:11px;line-height:1.4}
+.ecard p{color:var(--ink2);font-size:13.4px;margin-top:10px;flex:1}
+.ecard .meta{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.ecard .meta span{font-family:var(--mono);font-size:10.5px;color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:3px 7px;background:#fafbfd}
+.ecard .go{margin-top:18px;font-size:13px;font-weight:650;color:var(--acc-d);display:flex;align-items:center;gap:6px}
+.ecard.dark{background:#101725;border-color:#1c2739;color:#e8edf6}
+.ecard.dark .tag{color:#8fa8ff}
+.ecard.dark p{color:#a9b6cc}
+.ecard.dark .meta span{background:#18202e;border-color:#243043;color:#8e9cb4}
+.ecard.dark .go{color:#a9c0ff}
+.ecard.dark:hover{border-color:#2c3a52;box-shadow:0 18px 40px -26px rgba(4,10,24,.8)}
 
-/* 平台带 */
-.stack{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.blk{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
-.blk h4{font-size:12px;letter-spacing:.08em;color:var(--muted);font-family:var(--mono);text-transform:uppercase;font-weight:500}
-.plat{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
-.plat div{border:1px solid var(--line2);border-radius:8px;padding:9px 10px;font-size:12.5px;background:#fbfcfe;display:flex;flex-direction:column;gap:2px}
-.plat div b{font-weight:650;font-size:12.5px}
-.plat div em{font-style:normal;font-family:var(--mono);font-size:9.5px;color:var(--faint);letter-spacing:.06em}
-.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
-.chips span{font-family:var(--mono);font-size:11px;border:1px solid var(--line);border-radius:6px;padding:4px 8px;color:var(--ink2);background:#fbfcfe}
-.chips span.a{background:var(--teal-soft);border-color:#c8e9e2;color:#0a6b61}
+/* pipeline */
+.pipe{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 22px 8px;overflow:hidden}
+.pipe-rail{display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin-bottom:6px}
+.pn{padding:0 12px 18px;position:relative;border-right:1px dashed var(--line)}
+.pn:last-child{border-right:0}
+.pn .dot{width:9px;height:9px;border-radius:50%;background:var(--acc);margin-bottom:11px;box-shadow:0 0 0 4px var(--acc-soft)}
+.pn .idx{font-family:var(--mono);font-size:9.5px;color:var(--faint);letter-spacing:.1em}
+.pn h4{font-size:13.5px;font-weight:700;margin-top:4px;letter-spacing:-.01em}
+.pn p{font-size:11.8px;color:var(--muted);margin-top:5px;line-height:1.6}
+.pn.ana .dot{background:var(--amber);box-shadow:0 0 0 4px var(--amber-soft)}
+.pn.ana h4{color:var(--amber)}
+.pn .flag{display:inline-block;margin-top:6px;font-family:var(--mono);font-size:9px;letter-spacing:.06em;background:var(--amber-soft);color:var(--amber);padding:2px 6px;border-radius:4px}
+.pipe-note{margin:0 -22px;padding:13px 22px;background:#fbfcfe;border-top:1px solid var(--line2);font-size:12.4px;color:var(--muted)}
+.pipe-note b{color:var(--ink)}
 
-/* 经历 */
-.tl{position:relative;margin-top:4px}
-.tl:before{content:"";position:absolute;left:118px;top:8px;bottom:8px;width:1px;background:var(--line)}
-.tl-item{display:grid;grid-template-columns:118px 1fr;gap:0 30px;padding:0 0 30px;position:relative}
-.tl-item:last-child{padding-bottom:0}
-.tl-item .t{font-family:var(--mono);font-size:11px;color:var(--muted);padding-top:3px;letter-spacing:.02em}
-.tl-body{position:relative;padding-left:26px}
-.tl-body:before{content:"";position:absolute;left:-6px;top:9px;width:9px;height:9px;border-radius:50%;background:#fff;border:2px solid var(--acc)}
-.tl-item.edu .tl-body:before{border-color:#c3cad8}
-.tl-body h3{font-size:16px;letter-spacing:-.01em;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
-.tl-body h3 em{font-style:normal;font-size:11.5px;color:var(--muted);font-family:var(--mono);letter-spacing:.04em}
-.tl-body .meta{font-size:12.5px;color:var(--muted);margin-top:3px}
-.tl-body ul{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:6px}
-.tl-body li{font-size:13px;color:var(--ink2);padding-left:14px;position:relative;line-height:1.7}
-.tl-body li:before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:#c9d1e0}
-.tl-body li b{color:var(--ink);font-weight:650}
-.tl-body .num{font-family:var(--mono);color:var(--acc-d);font-weight:600}
+/* caps */
+.caps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:stretch}
+.cap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 20px 18px;display:flex;flex-direction:column}
+.cap .k{display:flex;align-items:center;justify-content:space-between}
+.cap .k .n{font-family:var(--mono);font-size:10px;color:var(--faint);letter-spacing:.1em}
+.cap .k .b{font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:var(--teal);background:var(--teal-soft);padding:2px 6px;border-radius:4px}
+.cap.hl{border-color:#cfd9f2;background:linear-gradient(#fbfcff,#fff)}
+.cap.hl .k .b{color:var(--amber);background:var(--amber-soft)}
+.cap h4{font-size:14.5px;font-weight:720;margin-top:10px}
+.cap p{font-size:12.6px;color:var(--muted);margin-top:7px;line-height:1.7}
+.cap ul{list-style:none;padding:0;margin:auto 0 0;padding-top:11px;display:flex;flex-wrap:wrap;gap:5px}
+.cap ul li{font-family:var(--mono);font-size:10px;color:var(--ink2);background:#f5f7fb;border-radius:4px;padding:2px 6px}
 
-/* 作品卡 */
-.works{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.work{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;text-decoration:none;display:flex;flex-direction:column;transition:.24s;position:relative;overflow:hidden}
-.work:hover{transform:translateY(-4px);box-shadow:0 26px 44px -30px rgba(14,22,42,.55);border-color:#cfd8ec}
-.work:before{content:"";position:absolute;left:0;top:0;height:3px;width:100%;background:linear-gradient(90deg,var(--acc),#7d9bff)}
-.work.c2:before{background:linear-gradient(90deg,#0d8a7e,#54c9b5)}
-.work .tag{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--muted)}
-.work .tag b{color:var(--acc);font-weight:600}
-.work.c2 .tag b{color:var(--teal)}
-.work h3{font-size:20px;margin-top:12px;letter-spacing:-.025em;line-height:1.35}
-.work p{font-size:13px;color:var(--ink2);margin-top:10px;line-height:1.78}
-.work .km{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px;padding-top:16px;border-top:1px dashed var(--line)}
-.work .km div b{display:block;font-family:var(--mono);font-size:18px;font-weight:600;letter-spacing:-.02em}
-.work .km div span{font-size:10.5px;color:var(--muted);display:block;margin-top:2px}
-.work .go{margin-top:18px;font-size:12.5px;font-weight:600;color:var(--acc-d);display:flex;align-items:center;gap:6px}
-.work.c2 .go{color:#0a6b61}
-.work .go i{font-style:normal;transition:.2s}
-.work:hover .go i{transform:translateX(4px)}
+/* rules */
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
+.rule{padding:26px 26px 24px;border-left:1px solid var(--line2)}
+.rule:first-child{border-left:0}
+.rule .n{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--acc)}
+.rule h4{font-size:15.5px;font-weight:730;margin-top:9px;letter-spacing:-.01em}
+.rule p{font-size:12.8px;color:var(--muted);margin-top:8px;line-height:1.75}
+.rule .ex{margin-top:11px;padding-top:10px;border-top:1px dashed var(--line2);font-size:12px;color:var(--ink2)}
+.rule .ex b{font-family:var(--mono);color:var(--ink)}
 
-/* 方法论 */
-.method{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card)}
-.mstep{padding:24px 22px;border-right:1px solid var(--line);position:relative}
-.mstep:last-child{border-right:0}
-.mstep .n{font-family:var(--mono);font-size:10px;color:var(--acc);letter-spacing:.1em}
-.mstep h4{font-size:15px;margin-top:8px;letter-spacing:-.01em}
-.mstep p{font-size:12.5px;color:var(--muted);margin-top:7px;line-height:1.7}
-.quote{margin-top:22px;padding:22px 26px;background:var(--acc-soft);border-radius:12px;font-size:14.5px;color:var(--acc-d);line-height:1.8;border-left:3px solid var(--acc)}
-.quote b{font-weight:700}
+/* boundary */
+.bd{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:start}
+.bd-list{list-style:none;padding:0;margin:0}
+.bd-list li{display:grid;grid-template-columns:18px 1fr;gap:10px;padding:12px 0;border-bottom:1px solid var(--line2);font-size:12.9px;color:var(--ink2)}
+.bd-list li:last-child{border-bottom:0}
+.bd-list .i{font-family:var(--mono);font-size:10px;color:var(--acc);padding-top:3px}
+.contact{background:#101725;border-radius:14px;padding:26px;color:#dce4f1}
+.contact h3{font-size:17px;font-weight:720;color:#fff;letter-spacing:-.01em}
+.contact p{font-size:12.8px;color:#9fadc4;margin-top:8px}
+.contact .rows{margin-top:18px;display:grid;gap:9px}
+.contact .row{display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:1px solid #1e2734;padding-bottom:9px;font-size:12.5px}
+.contact .row span{color:#7f8da8;font-family:var(--mono);font-size:10px;letter-spacing:.08em}
+.contact .row a{color:#dce4f1;text-decoration:none;font-weight:600}
+.contact .row a:hover{color:#a9c0ff}
 
-/* 联系 */
-.contact{background:#0e131b;color:#e7ecf5;border-radius:18px;padding:44px 40px;display:grid;grid-template-columns:1.05fr 1fr;gap:40px;position:relative;overflow:hidden}
-.contact:after{content:"";position:absolute;right:-60px;bottom:-120px;width:320px;height:320px;background:radial-gradient(circle,rgba(27,69,215,.45),transparent 66%)}
-.contact .eyebrow{color:#8b98b3}
-.contact .eyebrow i{background:#5f7cf0}
-.contact h2{font-size:clamp(24px,3vw,32px);letter-spacing:-.03em;margin-top:16px;line-height:1.3}
-.contact .st{font-size:13.5px;color:#9aa7c0;margin-top:12px;line-height:1.8}
-.clist{display:grid;gap:2px;position:relative;z-index:1}
-.clist a,.clist div{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid #212a39;text-decoration:none;color:#e7ecf5}
-.clist a:hover .cv2{color:#8fa6ff}
-.clist .kk{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:#6d7b96}
-.clist .cv2{font-size:13.5px;font-family:var(--mono);letter-spacing:.01em;transition:.2s}
-footer{padding:34px 0 46px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:11.5px;color:var(--faint);font-family:var(--mono);letter-spacing:.03em}
+footer{border-top:1px solid var(--line);padding:26px 0 40px;margin-top:20px}
+.f-in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:11.5px;color:var(--faint);font-family:var(--mono);letter-spacing:.04em}
 
-/* 动效 */
+/* rv */
 .rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.3,1)}
 .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion: reduce){
@@ -189,362 +183,296 @@ footer{padding:34px 0 46px;display:flex;flex-wrap:wrap;gap:12px;justify-content:
 @media print{.rv{opacity:1!important;transform:none!important}}
 
 @media (max-width:980px){
-  .hero-in{grid-template-columns:1fr;gap:38px}
+  .hero-in{grid-template-columns:1fr;gap:34px}
+  .entry{grid-template-columns:1fr}
   .caps{grid-template-columns:1fr 1fr}
-  .stack{grid-template-columns:1fr}
-  .works{grid-template-columns:1fr}
-  .method{grid-template-columns:1fr 1fr}
-  .contact{grid-template-columns:1fr;padding:32px 26px}
-  .navlinks a:nth-child(2),.navlinks a:nth-child(4){display:none}
+  .rules{grid-template-columns:1fr}
+  .rule{border-left:0;border-top:1px solid var(--line2)}
+  .rule:first-child{border-top:0}
+  .bd{grid-template-columns:1fr;gap:26px}
+  .pipe-rail{grid-template-columns:repeat(3,1fr)}
+  .pn:nth-child(3n){border-right:0}
 }
-@media (max-width:660px){
-  .wrap,.topnav-in{padding:0 18px}
-  .caps{grid-template-columns:1fr}
-  .stats{grid-template-columns:1fr 1fr}
-  .stat:nth-child(2){border-right:0}
-  .stat{border-bottom:1px solid var(--line);padding:16px 12px}
-  .sec-head{flex-direction:column;align-items:flex-start;gap:8px}
-  .sec-head .sub{text-align:left}
-  .tl:before{left:6px}
-  .tl-item{grid-template-columns:1fr;gap:6px}
-  .tl-body{padding-left:22px}
-  .tl-body:before{left:-4px;top:6px}
-  .method{grid-template-columns:1fr}
-  .mstep{border-right:0;border-bottom:1px solid var(--line)}
-  .plat{grid-template-columns:1fr 1fr}
+@media (max-width:640px){
   .navlinks{display:none}
+  .wrap{padding:0 18px}
+  .ev-in{grid-template-columns:1fr 1fr;padding:0 18px}
+  .ev-i{padding:14px 12px}
+  .ev-i:nth-child(odd){border-left:0;padding-left:0}
+  .ev-i .v{font-size:19px}
+  .caps{grid-template-columns:1fr}
+  .pipe-rail{grid-template-columns:1fr 1fr}
+  .pn{border-right:0}
+  .pipe{padding:18px 16px 6px}
+  .pipe-note{margin:0 -16px;padding:12px 16px}
+  section{padding:52px 0}
+  .shead .l p{font-size:13px}
+  .ecard{padding:20px}
 }
 </style>
-<noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>
 </head>
-<body class="nojs">
+<body>
 
 <nav class="topnav">
   <div class="topnav-in">
-    <a class="logo" href="#top">小Q<em>OVERSEAS GROWTH</em></a>
+    <a class="logo" href="index.html">邱曾恺<em>PAID MEDIA</em></a>
     <div class="navlinks">
-      <a href="#cap" class="on">能力</a>
-      <a href="#stack">平台</a>
-      <a href="#exp">经历</a>
-      <a href="#works">作品</a>
-      <a href="#contact">联系</a>
+      <a href="index.html" class="on">首页</a>
+      <a href="case1.html">作品 CASE 01</a>
+      <a href="sop.html">投放 SOP</a>
+      <a href="#boundary">边界说明</a>
     </div>
-    <a class="cv" href="assets/resume.pdf" download="邱曾恺-海外投放.pdf">简历<span>PDF↓</span></a>
+    <a class="cv" href="assets/resume.pdf" target="_blank" rel="noopener">简历 <span>PDF</span></a>
   </div>
 </nav>
 
-<header class="hero" id="top">
-  <div class="wrap">
-    <div class="hero-in">
-      <div>
-        <div class="eyebrow"><i></i>OVERSEAS MEDIA BUYING · PORTFOLIO 2026</div>
-        <h1 class="name">邱曾恺 / 小Q
-          <small>海外投放 · 广告运营（东南亚）</small>
-        </h1>
-        <div class="role">
-          <b>Meta Ads</b><span class="sep">/</span><b>Google Ads</b><span class="sep">/</span><b>TikTok Ads</b>
-          <span class="sep">·</span>Shopify 独立站 · 跨境电商
-        </div>
-        <p class="pitch">
-          1 年海外投放实操：东南亚运动户外 <b>Shopify 独立站</b>，月均消耗 <span class="hl">1.5 万 USD</span>，ROAS 2.4，客单 10–15 USD。熟 Campaign / Ad Set / Ad 三层架构与 ABO 素材测试，能用 <b>Pixel、GA4、Shopify 订单</b>对齐口径，把 <b>CPA、ROAS、CTR、CVR</b> 拆到市场、素材与人群——最终落到「关停谁、加谁、下一条素材拍什么」。
-        </p>
-        <p class="pitch" style="margin-top:12px;color:var(--muted);font-size:14px">
-          同时了解 <b>联盟营销（Affiliate）</b> 与 <b>达人营销（Influencer）</b> 的选人、佣金与追踪逻辑，可独立搭达人矩阵与 CPS 结算表。
-        </p>
-        <div class="actions">
-          <a class="btn btn-p" href="#works">看两个投放案例 <span class="k">CASE 01–02</span></a>
-          <a class="btn btn-g" href="assets/resume.pdf" download="邱曾恺-海外投放.pdf">下载简历 <span class="k">PDF</span></a>
-        </div>
+<header class="hero">
+  <div class="wrap hero-in">
+    <div>
+      <div class="eyebrow"><i></i>Performance Marketing · Portfolio + SOP</div>
+      <h1 class="name">投放不是把钱花出去，<br>是把判断做成<em>流程</em>。<small>两份东西：一份真实项目的投放复盘，证明我看得懂效果；一套投放逻辑优化 SOP，证明我能把判断变成别人也能照着做的步骤。</small></h1>
+      <div class="role">
+        <b>求职方向 · 海外投放 / 效果投放 / 广告运营</b>
+        <span class="sep">/</span>
+        <span class="tag">Meta</span><span class="tag">Google Ads</span><span class="tag">TikTok Ads</span><span class="tag">抖音</span>
       </div>
-
-      <div class="panel">
-        <div class="p-head"><span>ADS MANAGER · SNAPSHOT</span><span class="live">ACTIVE</span></div>
-        <div class="p-sub">2026 Q3 · Shopify DTC · SEA 4 markets</div>
-
-        <div class="p-row">
-          <span class="nm">Prospecting · ABO</span>
-          <span class="bar"><i style="width:31%"></i></span>
-          <span class="vv">2.1</span>
-        </div>
-        <div class="p-row">
-          <span class="nm">Prospecting · CBO</span>
-          <span class="bar"><i style="width:40%"></i></span>
-          <span class="vv">2.7</span>
-        </div>
-        <div class="p-row">
-          <span class="nm">Retargeting · DPA</span>
-          <span class="bar"><i style="width:68%"></i></span>
-          <span class="vv">4.6</span>
-        </div>
-        <div class="p-row good">
-          <span class="nm">Brand Search</span>
-          <span class="bar"><i style="width:96%"></i></span>
-          <span class="vv">6.8</span>
-        </div>
-        <div class="p-row good">
-          <span class="nm">PMax · Shopping</span>
-          <span class="bar"><i style="width:45%"></i></span>
-          <span class="vv">2.9</span>
-        </div>
-
-        <div class="p-foot"><span>SPEND <b>45.2K USD</b></span><span>ROAS <b>2.40</b></span><span>CPA <b>5.67</b></span></div>
+      <p class="pitch">做过一次 <b>443 万现金、180 条内容</b>的种草投放复盘。表面结论是 ROI 1.13 过了盈亏线，往下拆才发现：<span class="hl">头部达人一直在亏，钱花在了曝光最贵的 59% 人身上</span>。这份作品讲的不是「数据多好看」，而是怎么在没有增量预算的前提下，靠结构替换把效率做上去。</p>
+      <div class="actions">
+        <a class="btn btn-p" href="case1.html">看作品 CASE 01 <span class="k">↗</span></a>
+        <a class="btn btn-g" href="sop.html">投放逻辑优化 SOP</a>
+        <a class="btn btn-g" href="assets/resume.pdf" target="_blank" rel="noopener">简历 PDF</a>
       </div>
     </div>
 
-    <div class="stats">
-      <div class="stat"><div class="n">1.5<em>万 USD / 月</em></div><div class="l">独立站投放消耗</div></div>
-      <div class="stat"><div class="n">2.4<em>ROAS</em></div><div class="l">近 3 个月平均（订单口径）</div></div>
-      <div class="stat"><div class="n">4<em>平台</em></div><div class="l">Meta · Google · TikTok · Shopee</div></div>
-      <div class="stat"><div class="n">4<em>市场</em></div><div class="l">马来 · 泰国 · 菲律宾 · 新加坡</div></div>
+    <div class="panel">
+      <div class="p-head"><span>OPTIMIZATION LOOP</span><span class="ver">SOP v1.0</span></div>
+      <div class="p-sub">6 stages · 24 checks · 判定阈值先行</div>
+      <div class="p-step"><div class="n">01</div><div class="nm">Brief 拆解 <i>红线 · 预算盘</i></div><div class="chip">INPUT</div></div>
+      <div class="p-step"><div class="n">02</div><div class="nm">结构搭建 <i>分层 · 单变量</i></div><div class="chip">STRUCTURE</div></div>
+      <div class="p-step"><div class="n">03</div><div class="nm">人群 × 内容矩阵 <i>场景 · 钩子</i></div><div class="chip">CREATIVE</div></div>
+      <div class="p-step"><div class="n">04</div><div class="nm">冷启测试 <i>最小样本 · 窗口</i></div><div class="chip">TEST</div></div>
+      <div class="p-step hot"><div class="n">05</div><div class="nm">数据回看 <i>三层基准 · 只判生死</i></div><div class="chip">ANALYSIS</div></div>
+      <div class="p-step"><div class="n">06</div><div class="nm">预算重排 <i>放量 · 换人 · 关停</i></div><div class="chip">ACTION</div></div>
+      <div class="p-foot"><span>红线 <b>ROI ≥ 1.0</b></span><span>单变量 <b>一次只动一处</b></span></div>
     </div>
   </div>
 </header>
 
-<section class="sec" id="cap">
+<div class="ev">
+  <div class="ev-in">
+    <div class="ev-i rv"><div class="k">CASH SPEND</div><div class="v">443.2<em>万</em></div><div class="d">现金花费 · 180 条内容</div></div>
+    <div class="ev-i rv"><div class="k">ATTRIBUTED GMV</div><div class="v">500.8<em>万</em></div><div class="d">21 天归因成交</div></div>
+    <div class="ev-i rv"><div class="k">ROI</div><div class="v">1.13</div><div class="d">仅高出盈亏线 13%</div></div>
+    <div class="ev-i rv"><div class="k">SHARE ABOVE AVG CPM</div><div class="v">59.06<em>%</em></div><div class="d">达人高于全体均值</div></div>
+  </div>
+</div>
+
+<section>
   <div class="wrap">
-    <div class="sec-head">
-      <div class="l"><span class="sec-no">01</span><h2>我能独立跑完的一段投放链路</h2></div>
-      <div class="sub">从账户结构到复盘结论，六块能力不是并列的清单，是一条串起来的工作流。</div>
+    <div class="shead">
+      <div class="l">
+        <div class="en">Two deliverables</div>
+        <h2>一份作品，一套方法</h2>
+        <p>作品只放真实可复盘的项目——不编数据、不造案例。数量少，但每个数字都能追到原始表。</p>
+      </div>
+      <div class="r">02 items</div>
+    </div>
+    <div class="entry">
+      <a class="ecard rv" href="case1.html">
+        <div class="tag">CASE 01 · 真实项目</div>
+        <h3>达人种草投放复盘：<br>ROI 过了线，但结构在漏钱</h3>
+        <p>户外品类头部品牌，抖音 180 条种草内容。按投放链路重排：先看 Brief 红线，再看钱怎么分、投给谁、内容说什么，最后才轮到数据判定。四层下钻压成一条可执行的动作链。</p>
+        <div class="meta"><span>443.2 万现金</span><span>ROI 1.13</span><span>180 条视频</span><span>3 个竞品对标</span></div>
+        <div class="go">进入案例 →</div>
+      </a>
+      <a class="ecard dark rv" href="sop.html">
+        <div class="tag">SOP · 方法沉淀</div>
+        <h3>投放逻辑优化 SOP</h3>
+        <p>六个阶段、二十四个检查项。从 Brief 拆红线到预算重排，每一步写清输入、动作、判定阈值和退出条件。换平台、换品类，结构不用重写。</p>
+        <div class="meta"><span>6 阶段</span><span>24 检查项</span><span>阈值表</span><span>Brief 模板</span></div>
+        <div class="go">查看 SOP →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="shead">
+      <div class="l">
+        <div class="en">Where analysis sits</div>
+        <h2>数据分析是第 5 环，不是全部</h2>
+        <p>投放是六个环节串起来的活。看数只是其中一环——它负责判生死，不负责代替前面四环的准备工作。</p>
+      </div>
+      <div class="r">1 / 6</div>
     </div>
 
+    <div class="pipe rv">
+      <div class="pipe-rail">
+        <div class="pn">
+          <div class="dot"></div><div class="idx">01 / BRIEF</div>
+          <h4>目标翻译成约束</h4>
+          <p>把 GMV 目标反推成 CPM 上限、CPA 红线、内容条数。算不清就别开投。</p>
+        </div>
+        <div class="pn">
+          <div class="dot"></div><div class="idx">02 / STRUCTURE</div>
+          <h4>钱怎么分</h4>
+          <p>测试 / 放量 / 防守三层预算，一个维度一个层级，每条计划带止损。</p>
+        </div>
+        <div class="pn">
+          <div class="dot"></div><div class="idx">03 / CREATIVE</div>
+          <h4>投给谁、说什么</h4>
+          <p>人群 × 场景 × 前 3 秒钩子，做成矩阵；一次只跑一列。</p>
+        </div>
+        <div class="pn">
+          <div class="dot"></div><div class="idx">04 / TEST</div>
+          <h4>先给足样本</h4>
+          <p>固定窗口、最小样本达标才下结论，窗口内不改结构。</p>
+        </div>
+        <div class="pn ana">
+          <div class="dot"></div><div class="idx">05 / REVIEW</div>
+          <h4>回看与判定</h4>
+          <p>三层基准、四个指标、分布先于个体。只回答：继续、改、还是停。</p>
+          <div class="flag">分析在这里</div>
+        </div>
+        <div class="pn">
+          <div class="dot"></div><div class="idx">06 / ACTION</div>
+          <h4>预算重排</h4>
+          <p>按四象限放量 / 换素材 / 换人 / 关停，梯度放量并留测试位。</p>
+        </div>
+      </div>
+      <div class="pipe-note">多数投放复盘的通病是<b>从第 5 环开始写</b>——直接甩一堆图表，却不交代红线怎么定、预算怎么分、素材为什么这么拍。这份作品和这套 SOP 都把顺序倒过来：<b>先有判断框架，数据才有地方落</b>。</div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="shead">
+      <div class="l">
+        <div class="en">Capability</div>
+        <h2>按投放链路拆的能力，不是按工具拆</h2>
+        <p>不说「精通 Excel / SQL / BI」，说清每个环节我能交付什么。</p>
+      </div>
+      <div class="r">06 blocks</div>
+    </div>
     <div class="caps">
       <div class="cap rv">
-        <div class="k">01 / MEDIA BUYING</div>
-        <h3>账户结构 <span>Campaign 三层</span></h3>
-        <p>按 Campaign → Ad Set → Ad 拆国家、人群、版位与素材；ABO 做变量隔离测试，CBO 承接已验证的放量，预算按增量 ROAS 而不是历史 ROAS 分配。</p>
-        <div class="tags"><i>ABO</i><i>CBO</i><i>预算分配</i><i>关停规则</i></div>
+        <div class="k"><span class="n">01 · BRIEF</span><span class="b">能算</span></div>
+        <h4>预算与目标拆解</h4>
+        <p>用单均毛利反推 CPA 上限、用 ROI 红线反推 CPM 上限，把「要增长」落成可执行的数字区间和止损条件。</p>
+        <ul><li>CPA 上限</li><li>CPM 天花板</li><li>预算盘</li><li>止损线</li></ul>
       </div>
       <div class="cap rv">
-        <div class="k">02 / CREATIVE</div>
-        <h3>素材测试 <span>Creative Testing</span></h3>
-        <p>单变量测试：同一受众只换钩子 / 场景 / 形式。3 天判定窗口，用 CTR 与 CPA 双指标决定去留，并监测素材半衰期，在第 2 周前补新。</p>
-        <div class="tags"><i>3s Hook</i><i>衰退曲线</i><i>胜出率</i><i>UGC</i></div>
+        <div class="k"><span class="n">02 · STRUCTURE</span><span class="b">能搭</span></div>
+        <h4>账户与预算结构</h4>
+        <p>按赛道或达人层级切分计划，命名可追溯，单变量测试，保证每一块钱都能说清花在哪、带回什么。</p>
+        <ul><li>分层预算</li><li>计划命名</li><li>单变量</li><li>归因可插拔</li></ul>
       </div>
       <div class="cap rv">
-        <div class="k">03 / ATTRIBUTION</div>
-        <h3>数据归因 <span>Pixel · CAPI · GA4</span></h3>
-        <p>负责 Pixel 与 CAPI 事件回传核对，处理 7d click / 1d view 窗口差异、ATT 与跨设备丢失、退款未扣减，让后台 ROAS 与 Shopify 实收对得上。</p>
-        <div class="tags"><i>Pixel</i><i>CAPI</i><i>GA4</i><i>口径对齐</i></div>
+        <div class="k"><span class="n">03 · CREATIVE</span><span class="b">能定</span></div>
+        <h4>人群与内容策略</h4>
+        <p>人群分核心 / 扩展 / 泛兴趣，内容按场景和前 3 秒钩子建矩阵；用「情绪价值 &gt; 参数说明」这类可复用的内容语法。</p>
+        <ul><li>人群分层</li><li>钩子矩阵</li><li>脚本 Brief</li><li>UGC 引导</li></ul>
       </div>
       <div class="cap rv">
-        <div class="k">04 / FUNNEL</div>
-        <h3>漏斗与单位经济 <span>Unit Economics</span></h3>
-        <p>曝光 → 点击 → 访问 → 加购 → 结账 → 购买逐层拆 CVR，定位是流量贵、详情页弱还是运费劝退；CPA / ROAS / AOV 拆到市场与 SKU 级。</p>
-        <div class="tags"><i>CPA</i><i>ROAS</i><i>AOV</i><i>LTV</i></div>
+        <div class="k"><span class="n">04 · CHANNEL</span><span class="b">能谈</span></div>
+        <h4>达人 / 联盟渠道</h4>
+        <p>达人分层与双阈值筛选，CPS / 寄样 / 置换的结算方式与真实成本拆账；知道佣金、退货、履约分别吃掉多少毛利。</p>
+        <ul><li>KOL 分层</li><li>双阈值</li><li>CPS 佣金</li><li>寄样置换</li></ul>
+      </div>
+      <div class="cap hl rv">
+        <div class="k"><span class="n">05 · REVIEW</span><span class="b">其中一环</span></div>
+        <h4>效果回看与判定</h4>
+        <p>三层基准换着看，先看分布再看个体；分得清过程指标与结果口径，不用「到店人数」给项目下结论。</p>
+        <ul><li>三层基准</li><li>ROI / CPA</li><li>口径对齐</li><li>异常剔除</li></ul>
       </div>
       <div class="cap rv">
-        <div class="k">05 / AFFILIATE</div>
-        <h3>联盟营销 <span>Affiliate</span></h3>
-        <p>了解 CPS / CPA 结算与佣金率设计，用专属优惠码 + UTM + 归因窗口做追踪，按月核对有效订单、退款扣回与增量 ROAS，识别自买返利与优惠券站薅量。</p>
-        <div class="tags"><i>CPS</i><i>Coupon 追踪</i><i>EPC</i><i>增量 ROAS</i></div>
-      </div>
-      <div class="cap rv">
-        <div class="k">06 / INFLUENCER</div>
-        <h3>达人营销 <span>Influencer</span></h3>
-        <p>按粉丝画像、互动率、GPM 与历史带货筛人，搭头部 / 腰部 / 尾部矩阵；出 Brief、做寄样与内容分组测试，用佣金 + 坑位费结构控制单条内容成本。</p>
-        <div class="tags"><i>GPM</i><i>达人矩阵</i><i>Brief</i><i>寄样</i></div>
+        <div class="k"><span class="n">06 · DELIVERY</span><span class="b">能写</span></div>
+        <h4>复盘与协作交付</h4>
+        <p>一页 Brief、周报模板、复盘文档；结论先行，每条洞察必须能翻译成一个动作，否则不写进报告。</p>
+        <ul><li>一页 Brief</li><li>周报</li><li>复盘文档</li><li>动作清单</li></ul>
       </div>
     </div>
   </div>
 </section>
 
-<section class="sec" id="stack" style="padding-top:0">
+<section style="padding-top:0">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="l"><span class="sec-no">02</span><h2>平台、指标与工具</h2></div>
-      <div class="sub">平台是执行环境，指标是共同语言，工具决定能不能从后台导出后自己算一遍。</div>
-    </div>
-
-    <div class="stack">
-      <div class="blk rv">
-        <h4>Ad Platforms</h4>
-        <div class="plat">
-          <div><b>Meta Ads</b><em>FB / IG · ADV+</em></div>
-          <div><b>Google Ads</b><em>SEARCH · PMAX</em></div>
-          <div><b>TikTok Ads</b><em>GMV MAX</em></div>
-          <div><b>Shopee Ads</b><em>SEARCH · DISCOVERY</em></div>
-          <div><b>Lazada Ads</b><em>SPONSORED</em></div>
-          <div><b>巨量引擎</b><em>千川 · 广点通</em></div>
-        </div>
+    <div class="shead">
+      <div class="l">
+        <div class="en">Judgement rules</div>
+        <h2>三条我不会让步的判定规则</h2>
       </div>
-      <div class="blk rv">
-        <h4>Metrics I Work With</h4>
-        <div class="chips">
-          <span>CPM</span><span>CTR</span><span>CPC</span><span>CVR</span>
-          <span class="a">CPA</span><span class="a">ROAS</span><span class="a">AOV</span>
-          <span>GMV</span><span>GPM</span><span>iROAS</span><span>LTV</span><span>退货率</span>
-        </div>
-        <h4 style="margin-top:20px">Tools</h4>
-        <div class="chips">
-          <span>Excel 透视 / 函数</span><span>SQL</span><span>GA4</span><span>Looker Studio</span>
-          <span>Supermetrics</span><span>Power BI / FineBI</span><span>剪映 / FCPX</span>
-        </div>
+    </div>
+    <div class="rules rv">
+      <div class="rule">
+        <div class="n">RULE 01</div>
+        <h4>先算红线，再谈规模</h4>
+        <p>ROI 1.13 在报表上是「达成」，在生意上只是刚过盈亏线。没算清单均毛利和 CPA 上限，规模越大风险越大。</p>
+        <div class="ex">这次的红线：<b>ROI ≥ 1.0</b>，实际 <b>1.13</b> —— 安全垫只有 13%。</div>
+      </div>
+      <div class="rule">
+        <div class="n">RULE 02</div>
+        <h4>贵不等于亏，便宜不等于赚</h4>
+        <p>CPM 只说明曝光买得贵不贵，赚不赚钱看 ROI。反过来，CPM 最低的达人也可能因为量太小而没有商业价值。</p>
+        <div class="ex">所以要<b>两个阈值一起用</b>：曝光效率一组，规模 × 质量一组。</div>
+      </div>
+      <div class="rule">
+        <div class="n">RULE 03</div>
+        <h4>过程指标不能当结论</h4>
+        <p>到店人数、间接转化这类指标会重复计数、无法去重，只能做品牌间相对对标；项目值不值得投，一律看成交 GMV 与 ROI。</p>
+        <div class="ex">同一用户 21 天内多次下单，会被<b>重复计入转化人数</b>。</div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="sec" id="exp" style="padding-top:0">
+<section id="boundary" style="padding-top:0">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="l"><span class="sec-no">03</span><h2>经历：从国内信息流，到海外独立站</h2></div>
-      <div class="sub">三段投放经历，指标口径一脉相承；差别只是平台、语言和结算货币。</div>
+    <div class="shead">
+      <div class="l">
+        <div class="en">Boundary</div>
+        <h2>这份作品集的边界</h2>
+        <p>能背书什么、不能背书什么，先讲清楚，省掉面试时的误会。</p>
+      </div>
     </div>
-
-    <div class="tl">
-      <div class="tl-item rv">
-        <div class="t">2025.10 — 2026.09</div>
-        <div class="tl-body">
-          <h3>宁波星绮 <em>海外投放</em></h3>
-          <div class="meta">东南亚运动户外 · Shopify 独立站 · Meta / Google Ads</div>
-          <ul>
-            <li><b>广告投放：</b>负责 Meta / Google Ads 计划搭建与优化，按 Campaign、Ad Set、Ad 三层管理架构，用 ABO 开展素材测试，结合 CTR、ROAS 关停低效广告。月均消耗 <span class="num">1.5 万 USD</span>，ROAS <span class="num">2.4</span>，客单 10–15 USD。</li>
-            <li><b>数据归因：</b>结合 Meta Pixel、GA4 与 Shopify 订单，核对加购、购买等关键事件回传及平台统计口径差异，把后台 ROAS 与实收对齐。</li>
-            <li><b>转化分析：</b>基于 GA4 拆曝光—点击—访问—加购—购买漏斗，定位问题后同步优化素材与详情页。</li>
-            <li><b>效果复盘：</b>评估 CTR、CPA、ROAS 达成情况，分析素材衰退，沉淀优质创意方向与下一轮测试策略。</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tl-item rv">
-        <div class="t">2023.08 — 2024.08</div>
-        <div class="tl-body">
-          <h3>上海数糖 <em>媒介投放实习</em></h3>
-          <div class="meta">快消品 · 抖音达人种草 + 千川加热</div>
-          <ul>
-            <li>按达人类型、受众与创意方向划分测试组，用 CPM、转化成本评估表现，筛出高效内容方向与达人组合。</li>
-            <li>按达人 / 内容方向 / 渠道拆曝光与转化，提炼优质素材特征，支持后续内容优化。</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tl-item rv">
-        <div class="t">2023.03 — 2023.07</div>
-        <div class="tl-body">
-          <h3>蓝色光标 <em>广告投放实习</em></h3>
-          <div class="meta">汽车品牌效果广告 · 广点通 / 巨量引擎 · 月消耗 200 万</div>
-          <ul>
-            <li>监控各计划消耗、CPM、CPL、CTR，沿曝光—点击—访问—试驾链路定位问题；CPM <span class="num">36.8</span>、CPL <span class="num">116.2</span>。</li>
-            <li>协助优化账户结构与预算分配，做素材测试、关停低效计划、扩量优质素材，输出投放日报与优化建议。</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tl-item edu rv">
-        <div class="t">2024.09 — 2025.10</div>
-        <div class="tl-body">
-          <h3>马来亚大学 <em>科学传播 · 硕士</em></h3>
-          <div class="meta">QS 56 · 全英授课 · 毕业论文：海外社媒舆情分析（YouTube / TikTok / Instagram）</div>
-        </div>
-      </div>
-
-      <div class="tl-item edu rv">
-        <div class="t">2019.09 — 2023.07</div>
-        <div class="tl-body">
-          <h3>青岛电影学院 <em>戏剧影视文学 · 本科</em></h3>
-          <div class="meta">叙事与镜头语言训练 —— 写素材脚本、拆钩子时用得上。</div>
+    <div class="bd">
+      <ul class="bd-list">
+        <li><span class="i">01</span><div><b>数据真实，已脱敏。</b>案例数据取自实际投放后台与分析表，品牌、竞品、达人全部代号化；金额与比率未做美化，保留原始的「不完美」——包括 18% 无法归类的效果。</div></li>
+        <li><span class="i">02</span><div><b>只有一份作品，因为只有一个项目能完整复盘。</b>不拿仿真数据凑数量。其他项目（电商经营与库存分析）留在<a href="https://primarystudents.github.io/xiaoq/" style="color:var(--acc-d);text-decoration:underline">原版作品集</a>，定位不同，不混进这条投放主线。</div></li>
+        <li><span class="i">03</span><div><b>SOP 是方法沉淀，不是客户方案。</b>阈值区间来自本项目实测与公开基准区间，换品类需要重新标定；SOP 内不含任何客户数据。</div></li>
+        <li><span class="i">04</span><div><b>经历不在这页展开。</b>公司、时间线、职责范围以简历 PDF 为准，避免作品集和简历出现两套说法。</div></li>
+      </ul>
+      <div class="contact">
+        <h3>想聊投放，直接找我</h3>
+        <p>可以聊：账户结构怎么切、达人与联盟怎么算真实成本、复盘怎么写才有人看。</p>
+        <div class="rows">
+          <div class="row"><span>MAIL</span><a href="mailto:qzk200011@163.com">qzk200011@163.com</a></div>
+          <div class="row"><span>PORTFOLIO</span><a href="https://primarystudents.github.io/xiaoq/overseas/">…/xiaoq/overseas/</a></div>
+          <div class="row"><span>RESUME</span><a href="assets/resume.pdf" target="_blank" rel="noopener">海外投放版 · PDF</a></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="sec" id="works" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="l"><span class="sec-no">04</span><h2>两个案例：一个讲怎么投，一个讲怎么算</h2></div>
-      <div class="sub">CASE 01 是独立站投放复盘（账户 / 素材 / 归因），CASE 02 是东南亚多平台跨境增长（平台 / 达人 / 利润）。</div>
-    </div>
-
-    <div class="works">
-      <a class="work rv" href="case1.html">
-        <div class="tag"><b>CASE 01</b><span>/</span>SHOPIFY DTC · META &amp; GOOGLE ADS</div>
-        <h3>4.52 万 USD 花出去，<br>钱漏在了哪一层</h3>
-        <p>东南亚运动户外独立站 3 个月投放复盘：账户结构、36 条素材测试、Pixel 与 Shopify 11.8% 的口径差、四国预算重分配，以及联盟 + 达人两条低成本增量线。</p>
-        <div class="km">
-          <div><b>2.40</b><span>订单口径 ROAS</span></div>
-          <div><b>5.67</b><span>CPA（USD）</span></div>
-          <div><b>-11.8%</b><span>后台高估的 ROAS</span></div>
-        </div>
-        <div class="go">进入案例 <i>→</i></div>
-      </a>
-
-      <a class="work c2 rv" href="case2.html">
-        <div class="tag"><b>CASE 02</b><span>/</span>CROSS-BORDER · TIKTOK SHOP / SHOPEE / LAZADA</div>
-        <h3>GMV 涨 12%，<br>利润少了 7.7 万</h3>
-        <p>东南亚跨境电商 4 平台 12 月大促复盘：平台费率与流量逻辑差异、TikTok 达人带货与联盟佣金的真实成本、断货损失测算与下一季预算再分配。</p>
-        <div class="km">
-          <div><b>168.4<em style="font-size:11px">万</em></b><span>12 月 GMV</span></div>
-          <div><b>5.2</b><span>广告 ROAS</span></div>
-          <div><b>37.1%</b><span>达人贡献占比</span></div>
-        </div>
-        <div class="go">进入案例 <i>→</i></div>
-      </a>
-    </div>
+<footer>
+  <div class="wrap f-in">
+    <span>邱曾恺 · 投放作品集 &amp; SOP</span>
+    <span>数据已脱敏 · 品牌与达人代号化</span>
   </div>
-</section>
-
-<section class="sec" id="method" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="l"><span class="sec-no">05</span><h2>我的分析顺序：先对口径，再谈优化</h2></div>
-      <div class="sub">顺序错了，后面每一步都在放大误差。</div>
-    </div>
-
-    <div class="method">
-      <div class="mstep rv"><div class="n">STEP 01</div><h4>统一口径</h4><p>先把平台后台、GA4、Shopify 订单三个数对上；差异写清楚，不留「大概」。</p></div>
-      <div class="mstep rv"><div class="n">STEP 02</div><h4>拆到能动手</h4><p>按市场 / 渠道 / 素材 / 人群四维拆 CPA 与 ROAS，找到贡献最大的那一格。</p></div>
-      <div class="mstep rv"><div class="n">STEP 03</div><h4>验证不是猜</h4><p>单变量测试 + 明确判定窗口与阈值；结论要有对照，不靠单条素材的手感。</p></div>
-      <div class="mstep rv"><div class="n">STEP 04</div><h4>写成动作</h4><p>每条结论必须能翻译成「关停 / 加预算 / 换素材 / 改落地页」，否则不写进复盘。</p></div>
-    </div>
-
-    <div class="quote rv">
-      投放不是买曝光，是<b>买一个可以复用的结论</b>。一次测试跑完，留下的不该只是「这条素材赢了」，而应该是「这类钩子在这个市场、这个客单价下会赢」——下一个账户才能少走一遍。
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="contact" style="padding-top:0">
-  <div class="wrap">
-    <div class="contact rv">
-      <div>
-        <div class="eyebrow"><i></i>AVAILABLE FOR COLLABORATION</div>
-        <h2>找海外投放 / 广告运营，<br>可以从这两个案例开始聊。</h2>
-        <p class="st">26 届海硕，可即时到岗。接受东南亚 / 欧美市场，接受从 0 搭账户，也接受先跑一个月测试再定策略。</p>
-      </div>
-      <div class="clist">
-        <a href="mailto:qzk200011@163.com"><span class="kk">EMAIL</span><span class="cv2">qzk200011@163.com</span></a>
-        <a href="tel:19511670170"><span class="kk">PHONE</span><span class="cv2">195 1167 0170</span></a>
-        <div><span class="kk">WECHAT</span><span class="cv2">19511670170</span></div>
-        <a href="https://primarystudents.github.io/xiaoq/overseas/"><span class="kk">PORTFOLIO</span><span class="cv2">…/xiaoq/overseas/</span></a>
-      </div>
-    </div>
-
-    <footer>
-      <span>邱曾恺 · 海外投放作品集 · 2026</span>
-      <span>案例数据已脱敏并按等比缩放，指标由同一套口径计算</span>
-    </footer>
-  </div>
-</section>
+</footer>
 
 <script>
-// 滚动高亮
-var links=[].slice.call(document.querySelectorAll('.navlinks a'));
-var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
-function spy(){
-  var y=window.scrollY+140,idx=0;
-  secs.forEach(function(s,i){ if(s&&s.offsetTop<=y) idx=i; });
-  links.forEach(function(a,i){a.classList.toggle('on',i===idx)});
-}
-window.addEventListener('scroll',spy,{passive:true});spy();
-
-// 入场
-var io=new IntersectionObserver(function(es){
-  es.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);} });
-},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.rv').forEach(function(el,i){
-  el.style.transitionDelay=(i%3)*60+'ms';io.observe(el);
-});
+(function(){
+  var els = document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in')}); return; }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.06});
+  els.forEach(function(e){io.observe(e)});
+})();
 </script>
 </body>
 </html>

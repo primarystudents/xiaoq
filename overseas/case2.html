@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CASE 02 · 东南亚跨境电商多平台增长 | 邱曾恺 海外投放作品集</title>
+<meta name="description" content="东南亚跨境电商 4 平台大促复盘：TikTok Shop、Shopee、Lazada、Shopify 的费率与流量逻辑，达人带货与联盟佣金的真实成本，断货损失与利润拆账。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d8a7e'/%3E%3Cpath d='M16 42V22h7l9 12 9-12h7v20h-6V32l-7 9h-6l-7-9v10z' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+:root{
+  --paper:#f6f7f9; --card:#fff;
+  --ink:#101319; --ink2:#39404d; --muted:#727a88; --faint:#9aa2af;
+  --line:#e5e8ee; --line2:#eef0f5;
+  --acc:#0d8a7e; --acc-d:#0a6b61; --acc-soft:#e7f6f3;
+  --blue:#1b45d7; --blue-soft:#eef2ff;
+  --amber:#a8730f; --amber-soft:#fdf5e6;
+  --up:#c4372c; --down:#0d7a5c; --up-soft:#fbecea; --down-soft:#e9f5f1;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{box-sizing:border-box;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.78}
+h1,h2,h3,h4,p,ul,ol,table{margin:0}
+a{color:inherit}
+::selection{background:#d3efe9}
+.wrap{max-width:1100px;margin:0 auto;padding:0 26px}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+.casebar{position:sticky;top:0;z-index:60;background:rgba(246,247,249,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.casebar-in{max-width:1100px;margin:0 auto;padding:0 26px;height:58px;display:flex;align-items:center;gap:14px}
+.back{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-size:13px;color:var(--muted);padding:5px 10px;border-radius:7px;transition:.18s;white-space:nowrap}
+.back:hover{background:#eceff5;color:var(--ink)}
+.casebar .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--acc-d);background:var(--acc-soft);padding:4px 8px;border-radius:5px;white-space:nowrap}
+.casebar .ttl{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.casebar .spacer{flex:1}
+.cnav{display:flex;gap:1px;overflow-x:auto;scrollbar-width:none}
+.cnav::-webkit-scrollbar{display:none}
+.cnav a{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-decoration:none;color:var(--muted);padding:6px 9px;border-radius:6px;white-space:nowrap}
+.cnav a:hover{color:var(--ink);background:#eceff5}
+.cnav a.on{color:#fff;background:var(--ink)}
+.prog{position:fixed;top:58px;left:0;height:2px;background:var(--acc);z-index:61;width:0}
+
+.chero{padding:56px 0 8px}
+.chero .kh{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--muted)}
+.chero .kh i{width:24px;height:1px;background:var(--acc)}
+h1{font-size:clamp(30px,4.2vw,46px);line-height:1.18;letter-spacing:-.04em;font-weight:800;margin-top:20px}
+h1 em{font-style:normal;color:var(--acc-d)}
+.lede{max-width:780px;font-size:16px;color:var(--ink2);margin-top:18px;line-height:1.85}
+.lede b{color:var(--ink)}
+.meta{display:flex;flex-wrap:wrap;gap:7px;margin-top:22px}
+.meta span{font-family:var(--mono);font-size:10.5px;color:var(--ink2);border:1px solid var(--line);background:#fff;padding:4px 9px;border-radius:6px}
+
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:32px}
+.kpi{background:#fff;padding:16px 15px}
+.kpi .l{font-size:11px;color:var(--muted)}
+.kpi .v{font-family:var(--mono);font-size:22px;font-weight:600;letter-spacing:-.03em;margin-top:6px;line-height:1.1;white-space:nowrap}
+.kpi .v em{font-style:normal;font-size:11px;color:var(--muted);margin-left:2px;letter-spacing:0;white-space:nowrap;vertical-align:2px}
+.kpi .d{font-size:10.5px;margin-top:5px;font-family:var(--mono)}
+.kpi .d.up{color:var(--up)} .kpi .d.down{color:var(--down)} .kpi .d.flat{color:var(--faint)}
+.legend{display:flex;gap:14px;font-size:10.5px;color:var(--faint);font-family:var(--mono);margin-top:10px;justify-content:flex-end}
+.legend .u{color:var(--up)} .legend .d{color:var(--down)}
+
+section.s{padding:56px 0 0;scroll-margin-top:70px}
+.shead{display:flex;align-items:baseline;gap:14px;padding-bottom:12px;border-bottom:1px solid var(--ink);margin-bottom:26px}
+.shead .no{font-family:var(--mono);font-size:11px;color:var(--acc-d);letter-spacing:.08em}
+.shead h2{font-size:clamp(20px,2.3vw,25px);letter-spacing:-.03em;font-weight:750;line-height:1.35}
+.shead .en{margin-left:auto;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;text-align:right}
+h3.sub{font-size:15.5px;margin:30px 0 12px;display:flex;align-items:center;gap:9px;letter-spacing:-.01em}
+h3.sub:before{content:"";width:3px;height:14px;background:var(--acc);border-radius:2px}
+p.tx{font-size:14px;color:var(--ink2);line-height:1.85;max-width:840px}
+p.tx b{color:var(--ink);font-weight:650}
+.note{font-size:11.5px;color:var(--faint);line-height:1.7;margin-top:10px}
+
+.findings{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+.fd{background:#fff;border:1px solid var(--line);border-left:2px solid var(--acc);border-radius:10px;padding:18px}
+.fd:nth-child(2){border-left-color:var(--amber)}
+.fd:nth-child(3){border-left-color:var(--blue)}
+.fd .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--faint)}
+.fd h4{font-size:14.5px;margin-top:7px;line-height:1.5}
+.fd p{font-size:12.5px;color:var(--ink2);margin-top:8px;line-height:1.75}
+.fd p b{color:var(--ink)}
+
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
+.tbl{border:1px solid var(--line);border-radius:10px;overflow-x:auto;margin-top:14px;background:#fff}
+table{width:100%;border-collapse:collapse;font-size:12.8px;min-width:560px}
+th,td{text-align:left;padding:10px 13px;border-bottom:1px solid var(--line2);vertical-align:top}
+th{background:#fafbfd;font-size:11px;font-weight:600;color:var(--muted);white-space:nowrap}
+tbody tr:last-child td{border-bottom:0}
+td.n,th.n{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+td small{color:var(--muted);font-size:11px}
+tr.sum td{background:#fbfcfe;font-weight:650}
+.pill{display:inline-block;font-family:var(--mono);font-size:9.5px;padding:2px 6px;border-radius:4px;background:var(--acc-soft);color:var(--acc-d)}
+.pill.r{background:var(--up-soft);color:var(--up)}
+.pill.g{background:var(--down-soft);color:var(--down)}
+.pill.b{background:var(--blue-soft);color:var(--blue)}
+.pill.a{background:var(--amber-soft);color:var(--amber)}
+
+/* stacked share */
+.share{display:flex;height:34px;border-radius:8px;overflow:hidden;margin-top:14px;font-family:var(--mono);font-size:10.5px;color:#fff}
+.share div{display:flex;align-items:center;justify-content:center;white-space:nowrap;overflow:hidden}
+.share .s1{background:#0d8a7e}.share .s2{background:#2fa89a}.share .s3{background:#1b45d7}.share .s4{background:#5b6b8c}
+.sharelegend{display:flex;flex-wrap:wrap;gap:14px;margin-top:9px;font-size:11.5px;color:var(--muted)}
+.sharelegend i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:5px}
+
+/* day bars */
+.daybars{display:flex;align-items:flex-end;gap:2px;height:150px;margin-top:18px;padding-top:6px;border-bottom:1px solid var(--line)}
+.daybars .b{flex:1;background:#bfe3dc;border-radius:2px 2px 0 0;position:relative;min-height:3px;transition:.2s}
+.daybars .b.pk{background:var(--acc)}
+.daybars .b.hot{background:#0a6b61}
+.daybars .b:hover{opacity:.75}
+.daylabels{display:flex;justify-content:space-between;font-family:var(--mono);font-size:9px;color:var(--faint);margin-top:6px}
+.phase{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+.phase div{background:#fff;border:1px solid var(--line);border-radius:9px;padding:12px 13px}
+.phase b{display:block;font-size:12.5px}
+.phase span{font-size:11px;color:var(--muted);display:block;margin-top:3px;line-height:1.6}
+.phase em{font-style:normal;font-family:var(--mono);font-size:13px;color:var(--ink);display:block;margin-top:6px}
+
+.chart{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 20px 14px;margin-top:14px}
+.chart .ch{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.chart .ch h4{font-size:13px;font-weight:650}
+.chart .ch .u{font-family:var(--mono);font-size:9.5px;color:var(--faint);letter-spacing:.08em}
+svg{display:block;width:100%;height:auto}
+.tick{font-family:var(--mono);font-size:9px;fill:#9aa2af}
+.lab-s{font-size:9.5px;fill:#727a88;font-family:var(--mono)}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:14px}
+.mini{background:#fff;border:1px solid var(--line);border-radius:11px;padding:18px}
+.mini h4{font-size:13.5px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.mini h4 span{font-family:var(--mono);font-size:9.5px;color:var(--faint);font-weight:400}
+.mini ul{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:7px}
+.mini li{font-size:12.5px;color:var(--ink2);padding-left:13px;position:relative;line-height:1.72}
+.mini li:before{content:"";position:absolute;left:0;top:8px;width:4px;height:4px;border-radius:50%;background:#c3ccdd}
+.mini li b{color:var(--ink)}
+
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+.c3{background:#fff;border:1px solid var(--line);border-radius:11px;padding:18px}
+.c3 .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--faint)}
+.c3 h4{font-size:14px;margin-top:7px;line-height:1.45}
+.c3 p{font-size:12.5px;color:var(--ink2);margin-top:7px;line-height:1.72}
+.c3 .big{font-family:var(--mono);font-size:22px;color:var(--acc-d);margin-top:9px;letter-spacing:-.02em;white-space:nowrap}
+.c3 .big em{font-style:normal;font-size:11px;color:var(--muted);white-space:nowrap}
+
+.acc{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;margin-top:12px}
+.acc details{border-bottom:1px solid var(--line2)}
+.acc details:last-child{border-bottom:0}
+.acc summary{cursor:pointer;padding:14px 16px;font-size:13px;font-weight:600;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary:after{content:"+";font-family:var(--mono);color:var(--faint);font-size:15px}
+.acc details[open] summary:after{content:"−"}
+.acc .bd{padding:0 16px 16px;font-size:12.5px;color:var(--ink2);line-height:1.85}
+.acc .bd b{color:var(--ink)}
+
+.pager{display:flex;justify-content:space-between;gap:14px;border-top:1px solid var(--line);margin-top:50px;padding:22px 0 8px;font-size:13px}
+.pager a{text-decoration:none;color:var(--ink2);display:flex;align-items:center;gap:8px}
+.pager a:hover{color:var(--acc-d)}
+.pager .r{text-align:right}
+.pager small{display:block;font-family:var(--mono);font-size:9.5px;color:var(--faint);letter-spacing:.1em}
+footer{padding:28px 0 46px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;font-size:11px;color:var(--faint);font-family:var(--mono)}
+
+@media (max-width:900px){
+  .kpis{grid-template-columns:repeat(3,1fr)}
+  .findings,.grid3,.cards3{grid-template-columns:1fr}
+  .grid2,.two{grid-template-columns:1fr}
+  .cnav{display:none}
+  .phase{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+  .shead .en{display:none}
+  .wrap,.casebar-in{padding:0 18px}
+  .kpis{grid-template-columns:1fr 1fr}
+  .casebar .ttl{display:none}
+  .share{font-size:9px}
+}
+</style>
+</head>
+<body>
+<div class="prog" id="prog"></div>
+
+<nav class="casebar">
+  <div class="casebar-in">
+    <a class="back" href="index.html">← 作品集</a>
+    <span class="tag">CASE 02</span>
+    <span class="ttl">东南亚跨境电商多平台增长</span>
+    <span class="spacer"></span>
+    <div class="cnav">
+      <a href="#s1" class="on">概览</a>
+      <a href="#s2">平台</a>
+      <a href="#s3">大促</a>
+      <a href="#s4">达人联盟</a>
+      <a href="#s5">利润</a>
+      <a href="#s6">库存</a>
+      <a href="#s7">动作</a>
+      <a href="#s8">口径</a>
+    </div>
+  </div>
+</nav>
+
+<header class="chero">
+  <div class="wrap">
+    <div class="kh"><i></i>CROSS-BORDER · TIKTOK SHOP / SHOPEE / LAZADA / SHOPIFY · SEA · 2026.12</div>
+    <h1>GMV 涨了 12%，<br><em>利润少了 7.7 万</em></h1>
+    <p class="lede">
+      东南亚跨境电商，运动户外品类，30 个 SKU、四个平台、一场双 12。
+      规模是涨的，但增量 <b>87% 来自 TikTok Shop 的达人带货</b> —— 佣金 13.1%、退货率 9.2%、物流成本上浮，
+      一层层扣完，<b>168.4 万 GMV 只留下 3.9 万净利</b>。这份复盘把「增长」拆成一张能看懂的账。
+    </p>
+    <div class="meta">
+      <span>4 平台 / 30 SKU</span><span>客单 131 元</span><span>达人 96 位出单</span>
+      <span>双 11 + 双 12</span><span>数据已脱敏等比缩放</span>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><div class="l">12 月 GMV</div><div class="v">168.4<em>万</em></div><div class="d up">▲ +12.1%</div></div>
+      <div class="kpi"><div class="l">订单量</div><div class="v">12,842</div><div class="d up">▲ +14.6%</div></div>
+      <div class="kpi"><div class="l">广告 ROAS</div><div class="v">5.2</div><div class="d flat">综合 8.2</div></div>
+      <div class="kpi"><div class="l">净利润</div><div class="v">3.9<em>万</em></div><div class="d down">▼ -66%</div></div>
+      <div class="kpi"><div class="l">净利率</div><div class="v">2.3<em>%</em></div><div class="d down">▼ -5.4pp</div></div>
+      <div class="kpi"><div class="l">退货率</div><div class="v">9.2<em>%</em></div><div class="d up">▲ +2.8pp</div></div>
+    </div>
+    <div class="legend"><span class="u">▲ 红＝上升</span><span class="d">▼ 绿＝下降</span><span>退货率上升为变差</span></div>
+  </div>
+</header>
+
+<!-- 01 -->
+<section class="s" id="s1">
+  <div class="wrap">
+    <div class="shead"><span class="no">01</span><h2>概览：这是一个「增长质量」问题，不是增长问题</h2><span class="en">Overview</span></div>
+
+    <p class="tx">
+      12 月做对了一件事：用达人内容把 TikTok Shop 打起来了，单月 68.2 万，同比翻倍。
+      但代价写在同一张利润表上 —— 达人佣金 8.2 万、退货率从 6.4% 涨到 9.2%、跨境物流涨了 1.4 万。
+      三个平台在赚钱，一个平台在冲量，四个平台叠起来，净利率从 7.7% 掉到 2.3%。
+    </p>
+
+    <div class="findings">
+      <div class="fd">
+        <div class="k">FINDING 01</div>
+        <h4>增量几乎全在一条腿上</h4>
+        <p>TikTok Shop <b>+30.2%</b>，贡献了 <b>87%</b> 的 GMV 增量；Shopee +4.0%、Lazada +7.5%、独立站 -6.8%。<br>一条腿跑得快，也意味着一停就摔。</p>
+      </div>
+      <div class="fd">
+        <div class="k">FINDING 02</div>
+        <h4>达人带货不是免费流量</h4>
+        <p>达人带来 62.4 万 GMV，佣金 8.2 万（<b>13.1%</b>），加上样品 1.8 万，实际获客成本约为广告的 <b>2.4 倍</b>。<br>但它的 AOV 更高，且提供了 4 条可复投的素材。</p>
+      </div>
+      <div class="fd">
+        <div class="k">FINDING 03</div>
+        <h4>大促当天赚的钱，被退货吃掉一半</h4>
+        <p>12.12 单日 24.6 万，占全月 <b>14.6%</b>；但 COD 拒收集中在爆发后 7 天，退货率冲到 12.4%。<br>大促的账要按 T+15 结算，不能按 GMV 当天结算。</p>
+      </div>
+    </div>
+
+    <h3 class="sub">四个平台，四种赚钱方式</h3>
+    <div class="share">
+      <div class="s1" style="width:40.5%">TikTok 40.5%</div>
+      <div class="s2" style="width:27.8%">Shopee 27.8%</div>
+      <div class="s3" style="width:18.7%">Lazada 18.7%</div>
+      <div class="s4" style="width:13%">Shopify 12.9%</div>
+    </div>
+    <div class="sharelegend">
+      <span><i style="background:#0d8a7e"></i>TikTok Shop 68.2 万</span>
+      <span><i style="background:#2fa89a"></i>Shopee 46.9 万</span>
+      <span><i style="background:#1b45d7"></i>Lazada 31.5 万</span>
+      <span><i style="background:#5b6b8c"></i>Shopify 21.8 万</span>
+    </div>
+    <p class="note">12 月 GMV 结构。Shopify 独立站体量最小，但它是唯一能拿到用户邮箱、能做复购与联盟追踪的地方。</p>
+  </div>
+</section>
+
+<!-- 02 平台 -->
+<section class="s" id="s2">
+  <div class="wrap">
+    <div class="shead"><span class="no">02</span><h2>平台差异：同一个 SKU，四种成本结构</h2><span class="en">Platforms</span></div>
+
+    <p class="tx">
+      跨境多平台最容易犯的错，是拿同一套投放模型套四个平台。
+      TikTok 是内容驱动、按成交付佣金；Shopee 是搜索+活动驱动、费率最透明；Lazada 靠大促与品牌活动；独立站自己买流量。
+      <b>先算清每个平台的「到手价」，再决定预算给谁。</b>
+    </p>
+
+    <div class="tbl">
+      <table>
+        <thead>
+          <tr><th>平台</th><th class="n">12 月 GMV</th><th class="n">广告费</th><th class="n">广告 ROAS</th><th class="n">综合费率</th><th>流量逻辑与角色</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>TikTok Shop</b><br><small>内容 + 达人</small></td>
+            <td class="n">68.2 万</td><td class="n">9.8 万</td><td class="n">4.9</td><td class="n">5% 佣金 + 2% 支付<br><small>+ 达人佣金 13.1%</small></td>
+            <td>短视频与直播挂车，靠内容爆发；达人佣金是最大变量，适合冲量与新客</td>
+          </tr>
+          <tr>
+            <td><b>Shopee</b><br><small>搜索 + 活动</small></td>
+            <td class="n">46.9 万</td><td class="n">5.6 万</td><td class="n">6.4</td><td class="n">5.5% 佣金 + 2% 交易费</td>
+            <td>搜索意图强、转化稳定；广告效率最高，是我们最健康的利润池</td>
+          </tr>
+          <tr>
+            <td><b>Lazada</b><br><small>品牌 + 大促</small></td>
+            <td class="n">31.5 万</td><td class="n">3.4 万</td><td class="n">5.2</td><td class="n">4.5% 佣金 + 1.5% 支付</td>
+            <td>大促流量集中，适合清库存与拉新；平日动销弱，不宜常驻预算</td>
+          </tr>
+          <tr>
+            <td><b>Shopify 独立站</b><br><small>自投 + 联盟</small></td>
+            <td class="n">21.8 万</td><td class="n">1.8 万</td><td class="n">3.1</td><td class="n">2.9% + 0.3 USD 支付费</td>
+            <td>没有平台流量，全靠 Meta / Google；AOV 最高，用于沉淀用户资产</td>
+          </tr>
+          <tr class="sum">
+            <td>合计</td><td class="n">168.4 万</td><td class="n">20.6 万</td><td class="n">5.2</td><td class="n">—</td><td>广告归因 GMV 107.1 万</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">广告 ROAS = 平台内广告归因 GMV ÷ 平台广告费；综合 ROAS 8.2 = 全渠道 GMV ÷ 全渠道广告费（含自然流量与达人内容带来的成交，仅作规模参考，不作考核）。</p>
+
+    <h3 class="sub">同预算下的边际效率：钱该往哪挪</h3>
+    <div class="cards3">
+      <div class="c3"><div class="k">SHOPEE</div><h4>加预算首选</h4><p>ROAS 6.4、费率最低、退货率 5.8%。搜索流量意图明确，加预算的衰减最慢。</p><div class="big">+30%<em> 建议增幅</em></div></div>
+      <div class="c3"><div class="k">TIKTOK SHOP</div><h4>控佣金，不控量</h4><p>量要，但佣金率要从 13.1% 压到 11%，把预算从头部达人挪到腰部（GPM 更高）。</p><div class="big">13.1→11<em>% 佣金率</em></div></div>
+      <div class="c3"><div class="k">LAZADA</div><h4>只在大促开闸</h4><p>平日 ROAS 3.4，大促期间 8.1。预算按活动日历投放，平销期收缩到维护量。</p><div class="big">-40%<em> 平销预算</em></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 大促 -->
+<section class="s" id="s3">
+  <div class="wrap">
+    <div class="shead"><span class="no">03</span><h2>大促节奏：钱要花在「人已经在逛」的时候</h2><span class="en">Campaign Rhythm</span></div>
+
+    <p class="tx">
+      12 月 31 天不是均匀的。预热 9 天、爆发 3 天、返场 6 天、平销 13 天，
+      爆发 3 天贡献了 <b>24.2%</b> 的月 GMV，却只花了 <b>19%</b> 的广告费 —— 因为那三天的自然流量与达人内容已经在托底。
+    </p>
+
+    <div class="chart">
+      <div class="ch"><h4>12 月日销曲线（万元）</h4><div class="u">31 DAYS · 双 12 大促</div></div>
+      <div class="daybars">
+        <div class="b" style="height:16%" title="12.1 · 4.0 万"></div>
+        <div class="b" style="height:17%" title="12.2 · 4.1 万"></div>
+        <div class="b" style="height:16%" title="12.3 · 3.9 万"></div>
+        <div class="b" style="height:16%" title="12.4 · 4.0 万"></div>
+        <div class="b" style="height:18%" title="12.5 · 4.3 万"></div>
+        <div class="b" style="height:19%" title="12.6 · 4.6 万"></div>
+        <div class="b" style="height:18%" title="12.7 · 4.4 万"></div>
+        <div class="b" style="height:18%" title="12.8 · 4.5 万"></div>
+        <div class="b" style="height:20%" title="12.9 · 4.8 万"></div>
+        <div class="b pk" style="height:28%" title="12.10 · 6.8 万"></div>
+        <div class="b pk" style="height:38%" title="12.11 · 9.4 万"></div>
+        <div class="b hot" style="height:100%" title="12.12 · 24.6 万"></div>
+        <div class="b pk" style="height:32%" title="12.13 · 7.8 万"></div>
+        <div class="b pk" style="height:28%" title="12.14 · 7.0 万"></div>
+        <div class="b" style="height:26%" title="12.15 · 6.4 万"></div>
+        <div class="b" style="height:25%" title="12.16 · 6.2 万"></div>
+        <div class="b" style="height:26%" title="12.17 · 6.3 万"></div>
+        <div class="b" style="height:24%" title="12.18 · 5.9 万"></div>
+        <div class="b" style="height:17%" title="12.19 · 4.2 万"></div>
+        <div class="b" style="height:16%" title="12.20 · 4.0 万"></div>
+        <div class="b" style="height:16%" title="12.21 · 3.9 万"></div>
+        <div class="b" style="height:15%" title="12.22 · 3.8 万"></div>
+        <div class="b" style="height:15%" title="12.23 · 3.7 万"></div>
+        <div class="b" style="height:15%" title="12.24 · 3.9 万"></div>
+        <div class="b" style="height:15%" title="12.25 · 3.8 万"></div>
+        <div class="b" style="height:14%" title="12.26 · 3.6 万"></div>
+        <div class="b" style="height:15%" title="12.27 · 3.7 万"></div>
+        <div class="b" style="height:15%" title="12.28 · 3.8 万"></div>
+        <div class="b" style="height:16%" title="12.29 · 3.9 万"></div>
+        <div class="b" style="height:15%" title="12.30 · 3.8 万"></div>
+        <div class="b" style="height:15%" title="12.31 · 3.7 万"></div>
+      </div>
+      <div class="daylabels"><span>12.01 预热</span><span>12.09</span><span>12.12 爆发</span><span>12.18 返场</span><span>12.31 平销</span></div>
+    </div>
+
+    <div class="phase">
+      <div><b>预热 12.01–12.09</b><span>达人铺内容 + 加购蓄水，广告只做人群包</span><em>37.8 万</em></div>
+      <div><b>爆发 12.10–12.12</b><span>预算集中、佣金提点、直播加场</span><em>40.8 万</em></div>
+      <div><b>返场 12.13–12.18</b><span>承接未付款与加购人群，清尾货</span><em>39.6 万</em></div>
+      <div><b>平销 12.19–12.31</b><span>只留搜索与再营销，控 ROI</span><em>49.8 万</em></div>
+    </div>
+    <p class="note">四段合计 168.0 万（与 168.4 万的差为跨日归因调整）。爆发阶段广告费占比 19%，但 GMV 占比 24.2%，是全年效率最高的一段。</p>
+  </div>
+</section>
+
+<!-- 04 达人联盟 -->
+<section class="s" id="s4">
+  <div class="wrap">
+    <div class="shead"><span class="no">04</span><h2>达人 + 联盟：把「佣金」当成广告费来看</h2><span class="en">Creator &amp; Affiliate</span></div>
+
+    <p class="tx">
+      达人带货最容易被误读成「不花钱的流量」。实际上它有两笔成本：<b>佣金（变动）+ 样品与沟通（固定）</b>。
+      把这两笔加起来除以带来的 GMV，才是它真正的「CPM / CPA」。算完会发现：腰部达人最划算，头部只适合大促冲量。
+    </p>
+
+    <h3 class="sub">达人分层：GPM 最高的是腰部，不是头部</h3>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>层级</th><th class="n">人数</th><th class="n">GMV</th><th class="n">佣金</th><th class="n">佣金率</th><th class="n">GPM（元/千次观看）</th><th>结论</th></tr></thead>
+        <tbody>
+          <tr><td>头部 5–50 万粉</td><td class="n">3</td><td class="n">24.1 万</td><td class="n">3.6 万</td><td class="n">15.0%</td><td class="n">168</td><td><span class="pill a">只在大促用</span></td></tr>
+          <tr><td>腰部 1–5 万粉</td><td class="n">22</td><td class="n">26.8 万</td><td class="n">3.2 万</td><td class="n">12.0%</td><td class="n">214</td><td><span class="pill g">主力，加量</span></td></tr>
+          <tr><td>尾部 1 千–1 万粉</td><td class="n">71</td><td class="n">11.5 万</td><td class="n">1.4 万</td><td class="n">12.0%</td><td class="n">96</td><td><span class="pill">铺量，控样品</span></td></tr>
+          <tr class="sum"><td>合计</td><td class="n">96</td><td class="n">62.4 万</td><td class="n">8.2 万</td><td class="n">13.1%</td><td class="n">182</td><td>寄样 260 件，出单率 36.9%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">GPM = GMV ÷ 视频播放量 × 1000。头部佣金高 3pp，但 GPM 反而低 21% —— 说明溢价买的是曝光，不是转化。</p>
+
+    <div class="two">
+      <div class="mini">
+        <h4>达人运营动作 <span>INFLUENCER</span></h4>
+        <ul>
+          <li><b>筛选：</b>粉丝国别占比 &gt;60%、近 30 天 GPM &gt;150、互动率 &gt;3%，不只看粉丝量。</li>
+          <li><b>Brief：</b>统一「痛点 3 秒 + 场景演示 + 价格锚点」三段式，允许口播自由发挥，但卖点顺序固定。</li>
+          <li><b>分层佣金：</b>腰部 12% + 阶梯奖励（单条 GMV &gt; 1.5 万追加 2%），头部改「坑位费 + 10%」。</li>
+          <li><b>复用：</b>4 条高 GPM 视频买授权，剪成 6 条素材投 Shopee 与独立站，CTR 比自制高 0.6pp。</li>
+        </ul>
+      </div>
+      <div class="mini">
+        <h4>联盟运营动作 <span>AFFILIATE</span></h4>
+        <ul>
+          <li><b>结构：</b>Shopee Affiliate + Lazada Affiliate + 独立站博主 CPS（7.7%），统一走平台联盟后台，减少对账成本。</li>
+          <li><b>追踪：</b>每个联盟客独立链接与优惠码；Shopify 侧用 UTM + 首单标记，区分新客与老客。</li>
+          <li><b>结果：</b>贡献 18.2 万 GMV（10.8%），佣金 1.4 万，新客占比 64%，EPC 2.3 元。</li>
+          <li><b>风控：</b>退款订单次月扣回；同一账号 7 日内重复下单只计首单佣金。</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub">同样的 GMV，三种买法的成本</h3>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>买法</th><th class="n">拿到 10 万 GMV 的成本</th><th class="n">占 GMV</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td>Shopee 广告</td><td class="n">1.56 万</td><td class="n">15.6%</td><td>ROAS 6.4，最稳，但受限于平台流量池</td></tr>
+          <tr><td>TikTok 达人（含样品）</td><td class="n">1.60 万</td><td class="n">16.0%</td><td>佣金 13.1% + 样品摊销 2.9%，可带来内容资产</td></tr>
+          <tr><td>TikTok 广告（GMV MAX）</td><td class="n">2.04 万</td><td class="n">20.4%</td><td>ROAS 4.9，起量快但自然流量占比低</td></tr>
+          <tr><td>独立站 Meta 投放</td><td class="n">3.23 万</td><td class="n">32.3%</td><td>ROAS 3.1，AOV 最高，用于沉淀用户</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">这张表是预算分配的依据：同样 10 万 GMV，Shopee 广告最便宜，TikTok 达人略贵但能产出可复投素材，独立站最贵但拿到的是自己的用户。</p>
+  </div>
+</section>
+
+<!-- 05 利润 -->
+<section class="s" id="s5">
+  <div class="wrap">
+    <div class="shead"><span class="no">05</span><h2>利润表：18.2 万增量，被四个口子分掉</h2><span class="en">P&amp;L Bridge</span></div>
+
+    <p class="tx">
+      GMV 多了 18.2 万，净利少了 7.7 万。差的 25.9 万分布很集中：
+      <b>商品成本 8.7 万（大促折扣）、广告 8.8 万、达人佣金 5.1 万</b>，三项占 87%。平台费与物流再加 3.3 万。
+    </p>
+
+    <div class="tbl">
+      <table>
+        <thead><tr><th>科目</th><th class="n">11 月</th><th class="n">12 月</th><th class="n">变化</th><th class="n">占 12 月 GMV</th></tr></thead>
+        <tbody>
+          <tr><td>GMV</td><td class="n">150.2 万</td><td class="n">168.4 万</td><td class="n">+18.2 万</td><td class="n">100%</td></tr>
+          <tr><td>商品成本（含头程）</td><td class="n">-90.9</td><td class="n">-99.6</td><td class="n">-8.7</td><td class="n">59.1%</td></tr>
+          <tr><td>平台佣金 + 支付费</td><td class="n">-10.7</td><td class="n">-12.6</td><td class="n">-1.9</td><td class="n">7.5%</td></tr>
+          <tr><td>广告费</td><td class="n">-11.8</td><td class="n">-20.6</td><td class="n">-8.8</td><td class="n">12.2%</td></tr>
+          <tr><td>达人佣金</td><td class="n">-3.1</td><td class="n">-8.2</td><td class="n">-5.1</td><td class="n">4.9%</td></tr>
+          <tr><td>联盟佣金</td><td class="n">-1.2</td><td class="n">-1.4</td><td class="n">-0.2</td><td class="n">0.8%</td></tr>
+          <tr><td>跨境物流 + 仓储</td><td class="n">-17.8</td><td class="n">-19.2</td><td class="n">-1.4</td><td class="n">11.4%</td></tr>
+          <tr><td>退货与售后损耗</td><td class="n">-3.1</td><td class="n">-2.9</td><td class="n">+0.2</td><td class="n">1.7%</td></tr>
+          <tr class="sum"><td>净利润</td><td class="n">11.6 万</td><td class="n">3.9 万</td><td class="n">-7.7 万</td><td class="n">2.3%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">退货率 6.4%→9.2%，但「退货与售后损耗」反而降了 0.2 万 —— 因为退货商品在 12 月按 7 折二次销售，回收了一部分。这条不能当成改善，只是时点差。</p>
+
+    <div class="chart">
+      <div class="ch"><h4>净利桥：11 月 11.6 万 → 12 月 3.9 万</h4><div class="u">万元 · 2026.11–12</div></div>
+      <svg viewBox="0 0 640 262" role="img" aria-label="净利润变化瀑布图">
+        <line x1="30" y1="210" x2="610" y2="210" stroke="#c9d0de"/>
+        <line x1="30" y1="156" x2="610" y2="156" stroke="#eef0f5"/>
+        <line x1="30" y1="102" x2="610" y2="102" stroke="#eef0f5"/>
+        <line x1="30" y1="48" x2="610" y2="48" stroke="#eef0f5"/>
+        <text class="tick" x="6" y="214">0</text>
+        <text class="tick" x="0" y="160">10</text>
+        <text class="tick" x="0" y="106">20</text>
+        <text class="tick" x="0" y="52">30</text>
+
+        <rect x="44" y="147.4" width="60" height="62.6" fill="#9aa8c2" rx="2"/>
+        <text class="lab-s" x="62" y="140" fill="#39404d">11.6</text>
+
+        <rect x="126" y="96.1" width="60" height="51.3" fill="#c4372c" rx="2"/>
+        <text class="lab-s" x="140" y="89" fill="#c4372c">+9.5</text>
+
+        <rect x="208" y="143.6" width="60" height="47.5" fill="#0d7a5c" rx="2"/>
+        <text class="lab-s" x="226" y="137" fill="#0d7a5c">-8.8</text>
+
+        <rect x="290" y="171.1" width="60" height="27.5" fill="#0d7a5c" rx="2"/>
+        <text class="lab-s" x="308" y="164" fill="#0d7a5c">-5.1</text>
+
+        <rect x="372" y="181.4" width="60" height="10.3" fill="#0d7a5c" rx="2"/>
+        <text class="lab-s" x="392" y="175" fill="#0d7a5c">-1.9</text>
+
+        <rect x="454" y="188.9" width="60" height="7.6" fill="#0d7a5c" rx="2"/>
+        <text class="lab-s" x="474" y="182" fill="#0d7a5c">-1.4</text>
+
+        <rect x="536" y="188.9" width="60" height="21.1" fill="#0d8a7e" rx="2"/>
+        <text class="lab-s" x="556" y="182" fill="#0a6b61">3.9</text>
+
+        <line x1="104" y1="147.4" x2="126" y2="147.4" stroke="#c3cbdb" stroke-dasharray="2 3"/>
+        <line x1="186" y1="96.1" x2="208" y2="96.1" stroke="#c3cbdb" stroke-dasharray="2 3"/>
+        <line x1="268" y1="143.6" x2="290" y2="143.6" stroke="#c3cbdb" stroke-dasharray="2 3"/>
+        <line x1="350" y1="171.1" x2="372" y2="171.1" stroke="#c3cbdb" stroke-dasharray="2 3"/>
+        <line x1="432" y1="181.4" x2="454" y2="181.4" stroke="#c3cbdb" stroke-dasharray="2 3"/>
+        <line x1="514" y1="188.9" x2="536" y2="188.9" stroke="#c3cbdb" stroke-dasharray="2 3"/>
+
+        <text class="tick" x="46" y="230">11月净利</text>
+        <text class="tick" x="128" y="230">毛利增量</text>
+        <text class="tick" x="216" y="230">广告</text>
+        <text class="tick" x="300" y="230">达人佣金</text>
+        <text class="tick" x="384" y="230">平台费</text>
+        <text class="tick" x="468" y="230">物流</text>
+        <text class="tick" x="548" y="230">12月净利</text>
+        <text class="tick" x="30" y="252">毛利增量 = GMV 增量 18.2 万 − 商品成本增量 8.7 万；其他杂项 +0.1 万已并入末项</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- 06 库存 -->
+<section class="s" id="s6">
+  <div class="wrap">
+    <div class="shead"><span class="no">06</span><h2>库存与履约：断货 5 个 SKU，损失比省下的仓储费多</h2><span class="en">Inventory &amp; Fulfillment</span></div>
+
+    <p class="tx">
+      大促最贵的错误不是广告投贵了，是<b>爆款在爆发期断货</b>。
+      这次 5 个 SKU 在 12.10–12.12 断货 6–11 天，按断货前 7 日均销 × 断货天数 × 1.15 大促系数估算，<b>损失 GMV 约 12.6 万</b>；
+      同期 4 个滞销 SKU 压着 18.4 万库存，周转 96 天。两头的钱互相卡住。
+    </p>
+
+    <div class="tbl">
+      <table>
+        <thead><tr><th>类型</th><th class="n">SKU 数</th><th class="n">金额</th><th>具体问题</th><th>动作</th></tr></thead>
+        <tbody>
+          <tr><td><span class="pill r">断货</span></td><td class="n">5</td><td class="n">损失 GMV 12.6 万</td><td>爆发期可售天数 &lt; 2 天，海外仓补货周期 14 天，来不及</td><td>爆款提前 30 天锁库存，设 21 天安全线</td></tr>
+          <tr><td><span class="pill a">滞销</span></td><td class="n">4</td><td class="n">库存 18.4 万</td><td>周转 96 天，占用现金，且 3 月新款上市后更难清</td><td>Lazada 返场 7 折 + 联盟专属码清货</td></tr>
+          <tr><td><span class="pill b">履约</span></td><td class="n">—</td><td class="n">物流 19.2 万（11.4%）</td><td>直发占比 62%，大促期间时效从 7 天拉到 12 天，拉高拒收</td><td>爆款切海外仓，直发只留长尾</td></tr>
+          <tr><td><span class="pill">退货</span></td><td class="n">—</td><td class="n">退货率 9.2%</td><td>PH / TH 的 COD 拒收占退货的 61%，多在签收环节</td><td>COD 订单加确认短信，高拒收地区预收定金</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub">安全库存：给爆款一个可计算的补货线</h3>
+    <div class="card" style="margin-top:0">
+      <p style="font-size:13.5px;color:var(--ink2);line-height:1.9">
+        安全库存 =（大促日均销 × 补货周期天数）× 1.3 缓冲系数<br>
+        以断货最严重的 SKU-A 为例：日均销 <b>420 件</b> × 补货 14 天 × 1.3 = <b>7,644 件</b>，
+        而大促前实际备货只有 <b>4,200 件</b> —— 缺口 3,400 件，正好对应 8 天断货。<br>
+        这条公式不新鲜，但把它写进补货表、并在 11 月 25 日（T-17）做一次强制核对，才能真的生效。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 07 动作 -->
+<section class="s" id="s7">
+  <div class="wrap">
+    <div class="shead"><span class="no">07</span><h2>下一季：把利润率拉回 4%，而不是继续追 GMV</h2><span class="en">Next Quarter</span></div>
+
+    <p class="tx">
+      12 月的增量证明了内容与达人能带来规模，但也证明了「按 GMV 考核」会鼓励亏钱的增长。
+      下一季的目标改成三个：<b>净利率 ≥ 4%、退货率 ≤ 7.5%、达人佣金率 ≤ 11%</b>，GMV 只作为结果指标。
+    </p>
+
+    <div class="tbl">
+      <table>
+        <thead><tr><th>动作</th><th>具体做法</th><th class="n">预期影响</th><th>负责人 / 周期</th></tr></thead>
+        <tbody>
+          <tr><td><b>平台预算再分配</b></td><td>Shopee +30%，Lazada 平销 -40%，TikTok 广告持平、佣金下调</td><td class="n">净利 +2.1 万 / 月</td><td>投放 · Q1</td></tr>
+          <tr><td><b>达人结构换挡</b></td><td>头部只在大促用；腰部从 22 位扩到 40 位；尾部控制寄样</td><td class="n">佣金率 13.1%→11%</td><td>达人运营 · Q1</td></tr>
+          <tr><td><b>COD 风控</b></td><td>PH / TH 高拒收地区收定金；签收前 24h 短信确认</td><td class="n">退货率 -1.7pp</td><td>运营 · 1 月上线</td></tr>
+          <tr><td><b>爆款备货</b></td><td>21 天安全线 + T-17 强制核对；3 个爆款切海外仓</td><td class="n">挽回 GMV 8–10 万</td><td>供应链 · 2 月前</td></tr>
+          <tr><td><b>客单提升</b></td><td>3 件套 bundle（-12%）+ 满 199 免运，主推 Shopee 与独立站</td><td class="n">AOV +8%</td><td>运营 · Q1</td></tr>
+          <tr><td><b>联盟扩量</b></td><td>从 18 位到 35 位，测试 6% / 8% 两档佣金</td><td class="n">联盟 GMV 占比 10.8%→14%</td><td>投放 · Q1</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub">Q1 目标（月度）</h3>
+    <div class="cards3">
+      <div class="c3"><div class="k">PROFIT</div><h4>净利率回到 4%</h4><p>靠平台结构 + 佣金率 + 退货率三处，不靠砍广告。</p><div class="big">4.0<em>%</em></div></div>
+      <div class="c3"><div class="k">EFFICIENCY</div><h4>综合 ROAS 8.2 → 8.8</h4><p>把预算从 ROAS 3.1 的独立站冷启挪到 6.4 的 Shopee 搜索。</p><div class="big">8.8<em>x</em></div></div>
+      <div class="c3"><div class="k">RISK</div><h4>断货 SKU 归零</h4><p>安全库存公式 + 强制核对节点，比事后补救便宜得多。</p><div class="big">0<em> 个</em></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 -->
+<section class="s" id="s8">
+  <div class="wrap">
+    <div class="shead"><span class="no">08</span><h2>口径与边界</h2><span class="en">Definitions</span></div>
+
+    <div class="acc">
+      <details open>
+        <summary>指标定义</summary>
+        <div class="bd">
+          <b>GMV</b>：平台成交口径（已扣取消单，未扣后续退款），四个平台统一按此口径汇总。<br>
+          <b>广告 ROAS</b>：平台内广告归因 GMV ÷ 平台广告费；<b>综合 ROAS</b>：全渠道 GMV ÷ 全渠道广告费，含自然与达人内容成交，仅作规模参考。<br>
+          <b>GPM</b>：达人单条内容 GMV ÷ 播放量 × 1000，用于横向比较不同量级达人的带货效率。<br>
+          <b>佣金率</b>：达人佣金 ÷ 达人带来的 GMV；<b>EPC</b>：联盟客每千次点击带来的成交额。<br>
+          <b>净利率</b>：（GMV − 商品成本 − 平台费 − 广告 − 达人佣金 − 联盟佣金 − 物流 − 售后）÷ GMV。
+        </div>
+      </details>
+      <details>
+        <summary>数据边界（三条）</summary>
+        <div class="bd">
+          <b>1 · 脱敏等比缩放。</b>原始业务数据未随离职保留，本案例使用同结构、同量级的仿真数据集，指标由脚本计算；结构性问题与判断来自真实业务经验，绝对值为示意。<br>
+          <b>2 · 跨平台不可直接比 ROAS。</b>TikTok 的归因窗口与 Shopee 不同（7 天点击 vs 平台内 30 天），本案例统一用「平台内归因 GMV」并注明，不做跨平台精确比较。<br>
+          <b>3 · 退货与 GMV 有时点差。</b>大促退款多在 T+7 至 T+15 发生，月度 GMV 会高估当月真实收入；本案例在利润表中单独列出售后损耗。
+        </div>
+      </details>
+      <details>
+        <summary>这个案例里，数据分析具体做了什么</summary>
+        <div class="bd">
+          不是做了一张漂亮的表，而是三件事：<br>
+          ① 把「GMV 增长」拆成「增量来自哪个平台、哪个达人层级、哪种买法」，让预算分配有依据；<br>
+          ② 把达人佣金、样品、退货、物流算进单位经济，证明「达人带货看起来免费、实际比 Shopee 广告更贵」；<br>
+          ③ 用安全库存公式把断货损失量化成 12.6 万，让供应链愿意改备货节奏 —— 数据能推动别的部门行动，才算完成闭环。
+        </div>
+      </details>
+    </div>
+
+    <div class="pager">
+      <a href="case1.html">← <span><small>PREV CASE</small>独立站投放复盘</span></a>
+      <a class="r" href="index.html"><span><small>BACK TO</small>作品集首页</span> →</a>
+    </div>
+    <footer>
+      <span>邱曾恺 · 海外投放作品集 · CASE 02</span>
+      <span>168.4 万 GMV · 广告 ROAS 5.2 · 净利率 2.3%</span>
+    </footer>
+  </div>
+</section>
+
+<script>
+var links=[].slice.call(document.querySelectorAll('.cnav a'));
+var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+function spy(){
+  var y=window.scrollY+120,i=0;
+  secs.forEach(function(s,k){if(s&&s.offsetTop<=y)i=k});
+  links.forEach(function(a,k){a.classList.toggle('on',k===i)});
+  var h=document.body.scrollHeight-window.innerHeight;
+  document.getElementById('prog').style.width=(h>0?(window.scrollY/h*100):0)+'%';
+}
+window.addEventListener('scroll',spy,{passive:true});spy();
+</script>
+</body>
+</html>

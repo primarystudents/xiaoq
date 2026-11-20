@@ -64,6 +64,17 @@ h1.name small{display:block;font-size:13.5px;letter-spacing:.01em;font-weight:40
 .btn-g:hover{border-color:#c9d2e4;transform:translateY(-1px)}
 .btn .k{font-family:var(--mono);font-size:10px;opacity:.55}
 
+/* identity card */
+.aside{display:flex;flex-direction:column}
+.idcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;gap:16px;align-items:center;margin-bottom:14px;box-shadow:0 18px 40px -34px rgba(16,30,64,.45)}
+.idcard .ava{width:104px;height:130px;object-fit:cover;object-position:center 18%;border-radius:9px;flex:0 0 auto;background:#eef1f6;display:block;border:1px solid #e9edf4}
+.idcard .info{min-width:0}
+.idcard .nm{font-size:18.5px;font-weight:780;letter-spacing:-.02em;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.idcard .nm span{font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;color:var(--teal);background:var(--teal-soft);padding:2px 6px;border-radius:4px;font-weight:500;white-space:nowrap}
+.idcard .ro{font-size:12.6px;color:var(--ink2);margin-top:5px;line-height:1.6}
+.idcard .mt{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+.idcard .mt span{font-family:var(--mono);font-size:9.5px;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:2px 6px;background:#fafbfd;white-space:nowrap}
+
 /* sop panel */
 .panel{background:#0e131b;border-radius:16px;padding:18px 18px 14px;color:#dfe5ef;box-shadow:0 24px 50px -30px rgba(12,18,32,.65);position:relative;overflow:hidden}
 .panel:after{content:"";position:absolute;width:210px;height:210px;right:-95px;top:-115px;background:radial-gradient(circle,rgba(27,69,215,.5),transparent 65%);pointer-events:none}
@@ -208,6 +219,9 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;margin-top:20px}
   section{padding:52px 0}
   .shead .l p{font-size:13px}
   .ecard{padding:20px}
+  .idcard{gap:13px;padding:12px}
+  .idcard .ava{width:84px;height:105px}
+  .idcard .nm{font-size:16.5px}
 }
 </style>
 </head>
@@ -236,11 +250,21 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;margin-top:20px}
         <span class="sep">/</span>
         <span class="tag">Meta</span><span class="tag">Google Ads</span><span class="tag">TikTok Ads</span><span class="tag">抖音</span>
       </div>
-      <p class="pitch">做过一次 <b>443 万现金、180 条内容</b>的种草投放复盘。表面结论是 ROI 1.13 过了盈亏线，往下拆才发现：<span class="hl">头部达人一直在亏，钱花在了曝光最贵的 59% 人身上</span>。这份作品讲的不是「数据多好看」，而是怎么在没有增量预算的前提下，靠结构替换把效率做上去。</p>
+      <p class="pitch">做过一次 <b>443 万现金、180 条内容</b>的种草投放复盘。表面结论是 ROI 1.13 过了盈亏线，往下拆才发现：<span class="hl">59% 的钱买在更贵的曝光上，真正能加预算的达人只有 1 个</span>。这份作品讲的不是「数据多好看」，而是怎么在没有增量预算的前提下，靠结构替换把效率做上去。</p>
       <div class="actions">
         <a class="btn btn-p" href="case1.html">看作品 CASE 01 <span class="k">↗</span></a>
         <a class="btn btn-g" href="sop.html">投放逻辑优化 SOP</a>
         <a class="btn btn-g" href="assets/resume.pdf" target="_blank" rel="noopener">简历 PDF</a>
+      </div>
+    </div>
+
+    <div class="aside">
+    <div class="idcard rv">
+      <img class="ava" src="assets/portrait.jpg" alt="邱曾恺">
+      <div class="info">
+        <div class="nm">邱曾恺 <span>OPEN TO WORK</span></div>
+        <div class="ro">海外投放 / 效果投放 / 广告运营</div>
+        <div class="mt"><span>南京</span><span>Meta · Google · TikTok</span><span>qzk200011@163.com</span></div>
       </div>
     </div>
 
@@ -254,6 +278,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;margin-top:20px}
       <div class="p-step hot"><div class="n">05</div><div class="nm">数据回看 <i>三层基准 · 只判生死</i></div><div class="chip">ANALYSIS</div></div>
       <div class="p-step"><div class="n">06</div><div class="nm">预算重排 <i>放量 · 换人 · 关停</i></div><div class="chip">ACTION</div></div>
       <div class="p-foot"><span>红线 <b>ROI ≥ 1.0</b></span><span>单变量 <b>一次只动一处</b></span></div>
+    </div>
     </div>
   </div>
 </header>
@@ -280,9 +305,9 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;margin-top:20px}
     <div class="entry">
       <a class="ecard rv" href="case1.html">
         <div class="tag">CASE 01 · 真实项目</div>
-        <h3>达人种草投放复盘：<br>ROI 过了线，但结构在漏钱</h3>
-        <p>户外品类头部品牌，抖音 180 条种草内容。按投放链路重排：先看 Brief 红线，再看钱怎么分、投给谁、内容说什么，最后才轮到数据判定。四层下钻压成一条可执行的动作链。</p>
-        <div class="meta"><span>443.2 万现金</span><span>ROI 1.13</span><span>180 条视频</span><span>3 个竞品对标</span></div>
+        <h3>达人种草投放复盘：<br>从 443 万到 500 万，五个判断</h3>
+        <p>户外品类头部品牌，抖音 180 条种草内容。按投放流程拆成五段：成果、测试、达人筛选、素材内容、复盘总结。每段给出动作与依据，数据是主线，但谈价、选题、拍板仍靠人。</p>
+        <div class="meta"><span>成果</span><span>测试</span><span>达人筛选</span><span>素材内容</span><span>复盘总结</span></div>
         <div class="go">进入案例 →</div>
       </a>
       <a class="ecard dark rv" href="sop.html">

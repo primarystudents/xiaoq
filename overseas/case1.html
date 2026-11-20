@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CASE 01 · 达人种草投放复盘 | 邱曾恺 投放作品集</title>
-<meta name="description" content="户外品类某头部品牌抖音种草投放：443.2 万现金、500.8 万成交、ROI 1.13。按素材测试的方法做达人投放：关键词圈人、五组分测、CPA/CVR 放量、Top3 达人、爆款拆解、复盘。">
+<meta name="description" content="户外服饰头部品牌抖音达人种草：447.5 万消耗、1.2 亿声量、14.5 万间接转化。按广告投放流程拆成六段：Brief 拆解、达人筛选、内容测试、定向放大、内容与素材分析、复盘总结。">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b45d7'/%3E%3Cpath d='M18 44V20h8l6 12 6-12h8v24h-7V32l-5 10h-4l-5-10v12z' fill='%23fff'/%3E%3C/svg%3E">
 <style>
 :root{
@@ -20,9 +20,9 @@
   --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
 }
 *{box-sizing:border-box;-webkit-font-smoothing:antialiased}
-html{scroll-behavior:smooth;scroll-padding-top:110px}
+html{scroll-behavior:smooth;scroll-padding-top:112px}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.75}
-h1,h2,h3,h4,p,ul,ol{margin:0}
+h1,h2,h3,h4,p,ul,ol,figure,figcaption{margin:0}
 a{color:inherit}
 ::selection{background:#d9e2ff}
 .wrap{max-width:1080px;margin:0 auto;padding:0 26px}
@@ -40,292 +40,198 @@ a{color:inherit}
 
 .cbar{position:sticky;top:60px;z-index:55;background:#fff;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
 .cbar::-webkit-scrollbar{display:none}
-.cbar-in{max-width:1080px;margin:0 auto;padding:0 26px;display:flex;gap:0;align-items:center;height:44px}
+.cbar-in{max-width:1080px;margin:0 auto;padding:0 26px;display:flex;align-items:center;height:44px}
 .cbar a{display:inline-flex;align-items:center;gap:6px;padding:0 13px;height:44px;text-decoration:none;font-size:12.2px;color:var(--muted);border-bottom:2px solid transparent;white-space:nowrap;transition:.16s}
 .cbar a b{font-family:var(--mono);font-size:9.5px;color:var(--faint);font-weight:500}
 .cbar a:hover{color:var(--ink);background:#fafbfd}
 .cbar a.on{color:var(--acc-d);border-bottom-color:var(--acc);font-weight:600}
 .cbar a.on b{color:var(--acc)}
 
-/* ============ HERO ============ */
-.hero{background:var(--dark);color:#e7ecf5;position:relative;overflow:hidden;padding:44px 0 34px}
-.hero:before{content:"";position:absolute;inset:-40% -10% auto -10%;height:620px;background:radial-gradient(48% 60% at 22% 30%,rgba(27,69,215,.34),transparent 68%),radial-gradient(42% 55% at 80% 12%,rgba(13,138,126,.20),transparent 70%);pointer-events:none}
+.hero{background:var(--dark);color:#e7ecf5;position:relative;overflow:hidden;padding:46px 0 38px}
+.hero:before{content:"";position:absolute;inset:-46% -10% auto -10%;height:660px;background:radial-gradient(46% 58% at 20% 28%,rgba(27,69,215,.32),transparent 68%),radial-gradient(40% 52% at 82% 8%,rgba(13,138,126,.18),transparent 70%);pointer-events:none}
 .hero .wrap{position:relative;z-index:1}
-.hero .tagline{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:#6f7f9c;text-transform:uppercase;flex-wrap:wrap}
-.hero .tagline .pill{background:rgba(43,84,255,.16);color:#a8bdff;padding:3px 9px;border-radius:5px;letter-spacing:.1em;border:1px solid rgba(43,84,255,.3)}
-.hero h1{font-size:clamp(28px,4.3vw,46px);line-height:1.14;letter-spacing:-.04em;font-weight:800;margin-top:16px;color:#fff}
+.hgrid{display:grid;grid-template-columns:minmax(0,1fr) 356px;gap:40px;align-items:start}
+.tagline{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:#6f7f9c;text-transform:uppercase;flex-wrap:wrap}
+.tagline .pill{background:rgba(43,84,255,.16);color:#a8bdff;padding:3px 9px;border-radius:5px;letter-spacing:.1em;border:1px solid rgba(43,84,255,.3)}
+.hero h1{font-size:clamp(27px,3.9vw,42px);line-height:1.16;letter-spacing:-.04em;font-weight:800;margin-top:15px;color:#fff}
 .hero h1 em{font-style:normal;color:#8fa8ff}
-.hero .sub{font-size:13.4px;color:#9aa9c2;margin-top:14px;max-width:660px;line-height:1.85}
+.hero .sub{font-size:13.4px;color:#9aa9c2;margin-top:14px;max-width:600px;line-height:1.9}
 .hero .sub b{color:#dfe6f4;font-weight:600}
+.hero .bench{margin-top:16px;display:flex;gap:8px;flex-wrap:wrap}
+.hero .bench span{font-family:var(--mono);font-size:10.5px;color:#a9b8d2;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);padding:4px 9px;border-radius:5px;white-space:nowrap}
+.hero .bench b{color:#e8eefb}
 
-/* 素材墙 */
-.wall{display:grid;grid-template-columns:repeat(5,1fr);gap:11px;margin-top:28px}
-.shot{position:relative;aspect-ratio:9/16;border-radius:11px;overflow:hidden;background:#141a25;border:1px solid #1e2836;transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s;cursor:default}
-.shot:hover{transform:translateY(-5px);border-color:#33436a}
-.shot .cover{position:absolute;inset:0}
-.shot .cover svg{position:absolute;inset:0;width:100%;height:100%}
-.shot .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,11,17,.42) 0%,rgba(8,11,17,0) 30%,rgba(8,11,17,.12) 52%,rgba(8,11,17,.93) 100%)}
-.shot .gid{position:absolute;top:9px;left:9px;font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:#dbe4f5;background:rgba(10,14,21,.6);border:1px solid rgba(255,255,255,.14);padding:2px 6px;border-radius:4px;backdrop-filter:blur(4px)}
-.shot .state{position:absolute;top:9px;right:9px;font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;padding:2px 6px;border-radius:4px;backdrop-filter:blur(4px)}
-.shot .state.go{background:rgba(13,138,126,.9);color:#eafff8}
-.shot .state.hold{background:rgba(168,115,15,.9);color:#fff6e2}
-.shot .state.stop{background:rgba(120,52,60,.9);color:#ffe9ec}
-.shot .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(3px)}
-.shot .play:after{content:"";display:block;width:0;height:0;border-left:8px solid rgba(255,255,255,.92);border-top:5px solid transparent;border-bottom:5px solid transparent;margin-left:2px}
-.shot .side{position:absolute;right:6px;bottom:98px;display:flex;flex-direction:column;gap:8px;align-items:center;opacity:.62}
-.shot .side i{display:block;width:13px;height:13px;background:rgba(255,255,255,.9);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
-.shot .side i.h{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21s-8-5.1-8-10.4A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 3.6C20 15.9 12 21 12 21z'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21s-8-5.1-8-10.4A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 3.6C20 15.9 12 21 12 21z'/%3E%3C/svg%3E")}
-.shot .side i.c{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 4h16v12H9l-5 4z'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 4h16v12H9l-5 4z'/%3E%3C/svg%3E")}
-.shot .side i.s{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M14 3v10.6a3.5 3.5 0 1 1-2-3.2V3l10-2v5l-8 2z'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M14 3v10.6a3.5 3.5 0 1 1-2-3.2V3l10-2v5l-8 2z'/%3E%3C/svg%3E")}
-.shot .cap{position:absolute;left:10px;right:10px;bottom:12px}
-.shot .cap .who{display:flex;align-items:center;gap:5px;font-size:10px;color:#cdd8ea;font-weight:600}
-.shot .cap .who u{width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,#5b6b8a,#39445c);display:inline-block;text-decoration:none;flex:0 0 auto;border:1px solid rgba(255,255,255,.2)}
-.shot .cap .txt{font-size:10.3px;color:#dbe3f2;line-height:1.5;margin-top:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.shot .cap .kpi{display:flex;gap:7px;margin-top:6px;font-family:var(--mono);font-size:8.8px;color:#93a4c2;white-space:nowrap;overflow:hidden}
-.shot .cap .kpi b{color:#fff;font-weight:600}
-.shot .bar{position:absolute;left:0;right:0;bottom:0;height:2px;background:rgba(255,255,255,.14)}
-.shot .bar i{display:block;height:100%;background:#7f9bff}
+.hnums{display:grid;grid-template-columns:repeat(4,1fr);margin-top:26px;border-top:1px solid rgba(255,255,255,.1)}
+.hnum{padding:16px 14px 4px;border-left:1px solid rgba(255,255,255,.07)}
+.hnum:first-child{border-left:0;padding-left:0}
+.hnum .l{font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;color:#68779a;white-space:nowrap}
+.hnum .v{font-family:var(--mono);font-size:24px;font-weight:600;letter-spacing:-.035em;margin-top:5px;line-height:1.1;color:#fff;white-space:nowrap}
+.hnum .v em{font-style:normal;font-size:11px;color:#8b9ab8;margin-left:2px;font-weight:400;vertical-align:2px}
+.hnum .d{font-size:10.5px;color:#7d8caa;margin-top:5px;line-height:1.5}
 
-.wallnote{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:9.5px;color:#5d6c86;letter-spacing:.05em;margin-top:11px}
-.wallnote span{display:inline-block;width:5px;height:5px;background:#3d4b66;border-radius:50%;flex:0 0 auto}
+.hshots{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.hshot{position:relative;aspect-ratio:9/16;border-radius:12px;overflow:hidden;background:#141a25;border:1px solid #232d3d;box-shadow:0 12px 30px rgba(0,0,0,.34)}
+.hshot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.hshot .scr{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,11,17,.5) 0%,rgba(8,11,17,0) 26%,rgba(8,11,17,.1) 48%,rgba(8,11,17,.94) 100%)}
+.hshot .tag{position:absolute;top:8px;left:8px;font-family:var(--mono);font-size:8px;letter-spacing:.06em;padding:2px 5px;border-radius:4px;background:rgba(10,14,21,.72);border:1px solid rgba(255,255,255,.16);color:#dbe4f5;backdrop-filter:blur(4px);white-space:nowrap}
+.hshot .cap{position:absolute;left:8px;right:8px;bottom:8px;color:#fff;background:rgba(8,11,17,.58);backdrop-filter:blur(7px);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:6px 8px}
+.hshot .cap .nm{font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hshot .cap .mt{font-family:var(--mono);font-size:9px;color:#9fb0cd;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hshot .cap .mt b{color:#e9f0ff;font-weight:600}
+.hshots-foot{grid-column:1/-1;font-size:10.5px;color:#63718e;line-height:1.6;font-family:var(--mono)}
 
-/* hero 结果带 */
-.hstats{display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin-top:26px;border-top:1px solid #1b2433;padding-top:18px}
-.hst{padding:0 14px;border-left:1px solid #1b2433}
-.hst:first-child{border-left:0;padding-left:0}
-.hst .l{font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:#5d6c86;white-space:nowrap}
-.hst .v{font-family:var(--mono);font-size:21px;font-weight:600;letter-spacing:-.03em;color:#fff;margin-top:4px;line-height:1.15;white-space:nowrap}
-.hst .v em{font-style:normal;font-size:10px;color:#7d8ca6;margin-left:2px;font-weight:400}
-.hst .d{font-size:10.5px;color:#6f7f9c;margin-top:2px;white-space:nowrap}
-.hst .d.hi{color:#e0a94c}
+main{padding:0 0 20px}
+.sec{padding:44px 0 6px;border-bottom:1px solid var(--line)}
+.sec:last-of-type{border-bottom:0}
+.sec-h{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:baseline;margin-bottom:20px}
+.sec-h .no{font-family:var(--mono);font-size:11px;color:var(--acc);font-weight:600;letter-spacing:.06em;padding-top:6px}
+.sec-h h2{font-size:22px;letter-spacing:-.03em;font-weight:800;line-height:1.3}
+.sec-h .lead{font-size:13.4px;color:var(--muted);margin-top:7px;max-width:720px;line-height:1.8}
+.sec-h .kw{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:var(--faint);white-space:nowrap;text-transform:uppercase}
 
-/* section */
-.sec{padding:54px 0 8px}
-.sec-h{display:flex;align-items:flex-start;gap:16px;margin-bottom:22px}
-.sec-h .idx{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--acc);padding-top:9px;white-space:nowrap}
-.sec-h .t{flex:1;min-width:0}
-.sec-h .t h2{font-size:clamp(20px,2.4vw,26px);letter-spacing:-.03em;font-weight:800;line-height:1.3}
-.sec-h .t p{font-size:13.4px;color:var(--muted);margin-top:7px;max-width:770px}
-.sec-h .t p b{color:var(--ink2);font-weight:600}
-.sec-h .kw{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:var(--faint);border:1px solid var(--line);background:#fff;border-radius:4px;padding:3px 7px;white-space:nowrap;margin-top:8px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.grid-l{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:14px;align-items:stretch}
+.eyebrow{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--faint);text-transform:uppercase}
 
-.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 20px 18px}
-.card h3{font-size:14.2px;font-weight:700;letter-spacing:-.01em}
-.card h3 span{font-family:var(--mono);font-size:9.5px;color:var(--faint);letter-spacing:.1em;margin-left:7px;font-weight:400}
-.card p{font-size:12.8px;color:var(--muted);margin-top:8px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:13px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
-.mt14{margin-top:14px}
-.mt20{margin-top:20px}
+.tbl{background:#fff;border:1px solid var(--line);border-radius:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:12.7px;background:#fff}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line2);vertical-align:top}
+thead th{background:#fafbfd;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--faint);font-weight:500;border-bottom:1px solid var(--line);white-space:nowrap}
+tbody tr:last-child td{border-bottom:0}
+td b{font-weight:600}
+.num-c{font-family:var(--mono);white-space:nowrap}
 
-.call{border-left:3px solid var(--acc);background:#fbfcff;border-radius:0 10px 10px 0;padding:14px 17px;font-size:13px;color:var(--ink2)}
-.call b{color:var(--ink)}
-.call.warn{border-left-color:var(--amber);background:#fffdf7}
-.call.rose{border-left-color:var(--rose);background:#fffafb}
-.call .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--faint);display:block;margin-bottom:4px}
+.pill2{display:inline-block;font-family:var(--mono);font-size:9.5px;padding:2px 7px;border-radius:4px;letter-spacing:.04em;white-space:nowrap}
+.p-go{background:var(--teal-soft);color:#0a6b61}
+.p-cut{background:var(--rose-soft);color:var(--rose)}
+.p-watch{background:var(--amber-soft);color:var(--amber)}
+.p-blue{background:var(--acc-soft);color:var(--acc-d)}
 
-.tbl{border:1px solid var(--line);border-radius:10px;overflow-x:auto;background:#fff;margin-top:13px}
-table{width:100%;border-collapse:collapse;font-size:12.4px;background:#fff;min-width:580px}
-th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line2);vertical-align:middle}
-th{background:#fafbfd;font-size:10.5px;font-family:var(--mono);letter-spacing:.08em;color:var(--muted);font-weight:500;white-space:nowrap}
-tr:last-child td{border-bottom:0}
-td.num{font-family:var(--mono);text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
-td b{font-weight:650}
-.tbl .self{background:#f8faff}
-.gtable table{table-layout:fixed;min-width:600px}
-.gtable th:nth-child(1),.gtable td:nth-child(1){width:22%}
-.gtable th:nth-child(2),.gtable td:nth-child(2){width:25%}
-.gtable th:nth-child(3),.gtable td:nth-child(3){width:15%}
-.gtable th:nth-child(4),.gtable td:nth-child(4){width:38%}
-.tagx{display:inline-block;font-family:var(--mono);font-size:9.5px;padding:1px 6px;border-radius:3px;background:#f1f3f8;color:var(--muted);white-space:nowrap}
-.tagx.ok{background:var(--teal-soft);color:var(--teal)}
-.tagx.bad{background:var(--rose-soft);color:var(--rose)}
-.tagx.mid{background:var(--amber-soft);color:var(--amber)}
+.note{font-size:11.8px;line-height:1.7;margin-top:10px}
+.note b{color:inherit}
 
-/* 成果三行 */
-.res{display:grid;grid-template-columns:repeat(3,1fr);background:#fff;border:1px solid var(--line);border-radius:11px;overflow:hidden}
-.res>div{padding:17px 18px;border-left:1px solid var(--line2)}
-.res>div:first-child{border-left:0}
-.res .l{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:var(--faint)}
-.res .v{font-family:var(--mono);font-size:24px;font-weight:600;letter-spacing:-.035em;margin-top:5px;white-space:nowrap}
-.res .v em{font-style:normal;font-size:10.5px;color:var(--muted);margin-left:2px;font-weight:400}
-.res .d{font-size:11.8px;color:var(--muted);margin-top:4px;line-height:1.6}
+.swhat{margin-top:14px;background:#0e131b;color:#c7d2e4;border-radius:10px;padding:14px 18px;display:flex;gap:14px;align-items:flex-start}
+.swhat .t{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:#6f7f9c;white-space:nowrap;padding-top:3px}
+.swhat p{font-size:13px;line-height:1.8}
+.swhat b{color:#fff}
 
-/* 步骤条 */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:#fff;border:1px solid var(--line);border-radius:11px;overflow:hidden;margin-top:14px}
-.step{padding:18px 18px 16px;border-left:1px solid var(--line2);position:relative}
-.step:first-child{border-left:0}
-.step .n{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--acc)}
-.step h4{font-size:13.6px;font-weight:720;margin-top:6px;letter-spacing:-.01em}
-.step p{font-size:12.1px;color:var(--muted);margin-top:5px;line-height:1.7}
+.chain{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.ch{background:#fff;border:1px solid var(--line);border-radius:11px;padding:16px 18px;position:relative}
+.ch .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:var(--faint)}
+.ch .v{font-family:var(--mono);font-size:26px;font-weight:600;letter-spacing:-.03em;margin-top:6px;white-space:nowrap}
+.ch .v em{font-style:normal;font-size:11px;color:var(--muted);margin-left:3px;font-weight:400;vertical-align:2px}
+.ch .d{font-size:11.8px;color:var(--muted);margin-top:6px;line-height:1.65}
+.formula{margin-top:12px;background:#fbfcfe;border:1px dashed var(--line);border-radius:9px;padding:12px 16px;font-family:var(--mono);font-size:11.8px;color:var(--ink2);line-height:1.9}
+.formula b{color:var(--acc-d)}
 
-/* 关键词芯片 */
-.kwbox{background:#fff;border:1px solid var(--line);border-radius:11px;padding:18px 20px;margin-top:13px}
-.kwbox .kh{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.kwbox .kh b{font-size:13.4px;font-weight:700}
-.kwbox .kh span{font-family:var(--mono);font-size:9.5px;color:var(--faint);letter-spacing:.06em}
-.kwrow{display:grid;grid-template-columns:74px 1fr;gap:12px;align-items:start;padding:10px 0;border-top:1px dashed var(--line2);margin-top:4px}
-.kwrow .t{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--muted);padding-top:4px;white-space:nowrap}
-.chips{display:flex;flex-wrap:wrap;gap:5px}
-.chips span{font-size:11.5px;color:var(--ink2);background:#f5f7fb;border:1px solid #eaeef6;border-radius:5px;padding:2px 8px;white-space:nowrap}
-.chips span b{font-family:var(--mono);font-size:9.5px;color:var(--acc);font-weight:600;margin-left:3px}
+.funnel{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.fn{background:#fff;border:1px solid var(--line);border-radius:11px;padding:16px 18px;display:flex;flex-direction:column}
+.fn .st{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:var(--acc)}
+.fn h4{font-size:13.5px;font-weight:700;margin-top:6px;letter-spacing:-.01em}
+.fn p{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.7}
+.fn .out{margin-top:auto;padding-top:10px;font-family:var(--mono);font-size:11px;color:var(--ink2);border-top:1px solid var(--line2)}
+.fn .out b{color:var(--acc-d)}
 
-/* 五组卡片 */
-.groups{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:13px}
-.grp{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 13px 12px}
-.grp .h{display:flex;align-items:center;justify-content:space-between;gap:6px}
-.grp .h b{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--acc)}
-.grp .h .i{font-family:var(--mono);font-size:8.5px;letter-spacing:.05em;padding:1px 5px;border-radius:3px;background:#f1f3f8;color:var(--muted)}
-.grp .n{font-size:12.6px;font-weight:680;margin-top:8px;line-height:1.45}
-.grp .m{font-family:var(--mono);font-size:10.5px;color:var(--muted);margin-top:6px;line-height:1.6}
-.grp .m b{color:var(--ink);font-weight:600}
-.grp.go{border-color:#cfe8e0;background:linear-gradient(#f7fbf9,#fff)}
-.grp.go .h .i{background:var(--teal-soft);color:var(--teal)}
-.grp.stop{border-color:#f0d5d8;background:linear-gradient(#fdf8f8,#fff)}
-.grp.stop .h .i{background:var(--rose-soft);color:var(--rose)}
-.grp.hold{border-color:#f0e2c4;background:linear-gradient(#fffdf7,#fff)}
-.grp.hold .h .i{background:var(--amber-soft);color:var(--amber)}
+.kol{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.kol .top{display:flex;gap:11px;padding:14px 16px 0}
+.kol .thumb{width:56px;height:99px;border-radius:7px;flex:0 0 auto;background:#0e131b;display:flex;align-items:center;justify-content:center;color:#8fa8ff;font-family:var(--mono);font-size:19px;font-weight:600;letter-spacing:-.02em;position:relative;overflow:hidden}
+.kol .thumb:after{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 50% 22%,rgba(43,84,255,.34),transparent 70%)}
+.kol .id{min-width:0;padding-top:2px}
+.kol .id .rk{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--acc)}
+.kol .id .nm{font-size:13.5px;font-weight:700;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kol .id .tp{font-size:11.5px;color:var(--muted);margin-top:3px;line-height:1.5}
+.kol .big{font-family:var(--mono);font-size:22px;font-weight:600;letter-spacing:-.03em;padding:10px 16px 0;white-space:nowrap}
+.kol .big em{font-style:normal;font-size:10.5px;color:var(--muted);margin-left:3px;font-weight:400;vertical-align:2px}
+.kol .why{font-size:12px;color:var(--ink2);padding:8px 16px 0;line-height:1.7}
+.kol .risk{font-size:11.5px;color:var(--muted);padding:9px 16px 14px;border-top:1px solid var(--line2);margin-top:12px}
+.kol .risk b{color:var(--amber);font-weight:600}
 
-/* 时间轴 */
-.tl{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line);border-radius:11px;overflow:hidden;background:#fff;margin-top:13px}
-.tl-i{padding:14px 13px 13px;border-left:1px solid var(--line2);position:relative}
-.tl-i:first-child{border-left:0}
-.tl-i .d{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--acc)}
-.tl-i b{display:block;font-size:12.4px;font-weight:700;margin-top:4px}
-.tl-i p{font-size:11.2px;color:var(--muted);margin-top:3px;line-height:1.6}
-.tl-i.now{background:#fbfcff}
-.tl-i.now:before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--acc)}
+.rule{background:#0e131b;color:#c7d2e4;border-radius:12px;padding:20px 22px}
+.rule .t{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;color:#6f7f9c}
+.rule .f{font-family:var(--mono);font-size:13.5px;color:#fff;margin-top:10px;line-height:1.9}
+.rule .f b{color:#8fa8ff}
+.rule ul{list-style:none;padding:0;margin:14px 0 0}
+.rule li{font-size:12.3px;color:#9aa9c2;padding:7px 0 7px 15px;position:relative;line-height:1.7;border-top:1px solid rgba(255,255,255,.07)}
+.rule li:before{content:"";position:absolute;left:2px;top:15px;width:4px;height:4px;border-radius:50%;background:#3b6cf0}
+.rule li b{color:#dfe6f4;font-weight:600}
 
-/* TOP3 达人 */
-.top3{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:14px}
-.tp{background:#fff;border:1px solid var(--line);border-radius:12px;padding:0;overflow:hidden;display:flex;flex-direction:column}
-.tp .hd{padding:14px 16px 12px;background:#fbfcff;border-bottom:1px solid var(--line2);position:relative}
-.tp .hd .rk{font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:#fff;background:var(--acc);padding:2px 7px;border-radius:4px;display:inline-block}
-.tp .hd .rk.t2{background:var(--teal)}
-.tp .hd .rk.t3{background:#6b5bd2}
-.tp .hd .nm{font-size:15px;font-weight:750;letter-spacing:-.02em;margin-top:8px}
-.tp .hd .ds{font-size:11.6px;color:var(--muted);margin-top:2px}
-.tp .bd{padding:14px 16px 16px;flex:1;display:flex;flex-direction:column}
-.tp .big{font-family:var(--mono);font-size:26px;font-weight:600;letter-spacing:-.04em;line-height:1.1;white-space:nowrap}
-.tp .big em{font-style:normal;font-size:10.5px;color:var(--muted);margin-left:3px;font-weight:400}
-.tp .bigl{font-size:10.5px;color:var(--faint);margin-top:2px}
-.tp .why{font-size:11.9px;color:var(--ink2);margin-top:11px;padding-top:10px;border-top:1px dashed var(--line2);line-height:1.7}
-.tp .why b{color:var(--ink)}
-.tp .task{margin-top:10px;font-size:11.6px;color:var(--muted);line-height:1.7}
-.tp .task b{color:var(--acc-d);font-weight:600}
-.tp .risk{margin-top:auto;padding-top:10px;font-size:11px;color:var(--rose);line-height:1.6}
+.hit{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.hit .c{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.hit .ph{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0f141c}
+.hit .ph img{width:100%;height:100%;object-fit:cover;object-position:center 32%;display:block}
+.hit .ph .tp{position:absolute;left:8px;top:8px;font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;padding:2px 5px;border-radius:4px;background:rgba(10,14,21,.72);border:1px solid rgba(255,255,255,.18);color:#e2e9f7}
+.hit .bd{padding:13px 16px 16px;display:flex;flex-direction:column;flex:1}
+.hit .bd .nm{font-size:12.8px;font-weight:700}
+.hit .bd .mt{font-family:var(--mono);font-size:10px;color:var(--acc-d);margin-top:5px;background:var(--acc-soft);padding:3px 7px;border-radius:4px;display:inline-block;align-self:flex-start;white-space:nowrap}
+.hit .bd p{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.72}
 
-/* 赛道矩阵 */
-.mtx{display:grid;grid-template-columns:1.15fr 1fr;gap:13px;margin-top:13px;align-items:stretch}
-.plane{background:#fff;border:1px solid var(--line);border-radius:11px;padding:16px 16px 12px}
-.plane .cap2{display:flex;justify-content:space-between;font-family:var(--mono);font-size:9px;color:var(--faint);letter-spacing:.06em}
-.plane .plot{position:relative;height:210px;margin:14px 0 6px;border-left:1px solid #e8ecf3;border-bottom:1px solid #e8ecf3}
-.plane .plot .q{position:absolute;border-right:1px dashed #eef1f7;border-top:1px dashed #eef1f7;width:50%;height:50%}
-.plane .plot .q.a{left:0;top:0}
-.plane .plot .q.b{right:0;top:0;border-right:0}
-.plane .plot .q.c{left:0;bottom:0;border-top:0}
-.plane .plot .q.d{right:0;bottom:0;border-right:0;border-top:0}
-.plane .dot{position:absolute;transform:translate(-50%,-50%);text-align:center}
-.plane .dot i{display:block;width:11px;height:11px;border-radius:50%;background:var(--acc);margin:0 auto}
-.plane .dot.m i{background:#9aa8c4}
-.plane .dot.t i{background:var(--teal)}
-.plane .dot em{display:block;font-style:normal;font-family:var(--mono);font-size:9px;color:var(--ink2);margin-top:3px;white-space:nowrap}
-.plane .ax{font-family:var(--mono);font-size:9px;color:var(--faint);letter-spacing:.06em}
+.segs{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:12px}
+.sg{background:#fff;border:1px solid var(--line);border-radius:10px;padding:13px}
+.sg .n{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--acc)}
+.sg b{display:block;font-size:12.2px;font-weight:700;margin-top:5px;line-height:1.4;min-height:2.8em}
+.sg span{display:block;font-size:11.3px;color:var(--muted);margin-top:4px;line-height:1.6}
 
-/* 拆解时间轴 */
-.anat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-top:13px}
-.anat .top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-bottom:12px;border-bottom:1px solid var(--line2)}
-.anat .top b{font-size:13.4px;font-weight:700}
-.anat .top .m{font-family:var(--mono);font-size:9.5px;color:var(--faint);letter-spacing:.06em}
-.aseg{display:grid;grid-template-columns:repeat(5,1fr);margin-top:14px;border-radius:9px;overflow:hidden;border:1px solid var(--line2)}
-.aseg>div{padding:13px 12px 12px;border-left:1px solid var(--line2);background:#fff}
-.aseg>div:first-child{border-left:0}
-.aseg>div:nth-child(odd){background:#fbfcfe}
-.aseg .t{font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--acc);white-space:nowrap}
-.aseg b{display:block;font-size:12.2px;font-weight:700;margin-top:5px;line-height:1.4;min-height:2.8em}
-.aseg p{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.6}
-.aseg .y{display:inline-block;font-family:var(--mono);font-size:8.5px;padding:1px 5px;border-radius:3px;margin-top:7px;background:var(--teal-soft);color:var(--teal)}
-.aseg .y.n{background:#f1f3f8;color:var(--muted)}
+.quad{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.q{background:#fff;border:1px solid var(--line);border-left:3px solid var(--line);border-radius:9px;padding:14px 16px}
+.q.go{border-left-color:var(--teal)}
+.q.rb{border-left-color:var(--acc)}
+.q.wt{border-left-color:var(--amber)}
+.q.cut{border-left-color:var(--rose)}
+.q .h{font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;color:var(--faint)}
+.q b{display:block;font-size:13px;margin-top:4px}
+.q p{font-size:11.8px;color:var(--muted);margin-top:5px;line-height:1.7}
 
-/* 边界 */
-.bdbox{background:#fff;border:1px solid var(--line);border-radius:12px;padding:4px 20px;margin-top:13px}
-.bditem{display:grid;grid-template-columns:20px 1fr;gap:10px;padding:13px 0;border-bottom:1px solid var(--line2);font-size:12.5px;color:var(--ink2)}
-.bditem:last-child{border-bottom:0}
-.bditem .i{font-family:var(--mono);font-size:10px;color:var(--acc);padding-top:3px}
-.bditem b{color:var(--ink)}
+.bound{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 22px;margin-top:16px}
+.bound ul{list-style:none;padding:0;margin:10px 0 0}
+.bound li{font-size:12.3px;color:var(--ink2);padding:7px 0 7px 16px;position:relative;line-height:1.75;border-top:1px solid var(--line2)}
+.bound li:first-child{border-top:0}
+.bound li:before{content:"";position:absolute;left:2px;top:15px;width:4px;height:4px;border-radius:50%;background:var(--faint)}
+.bound li b{font-weight:600}
 
-.note{font-size:11.5px;color:var(--faint);line-height:1.75;margin-top:9px}
-.note b{color:var(--muted);font-weight:600}
+.next{display:flex;justify-content:space-between;gap:12px;padding:26px 0 30px;flex-wrap:wrap}
+.next a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:13px;color:var(--ink2);background:#fff;border:1px solid var(--line);padding:10px 16px;border-radius:9px;transition:.18s}
+.next a:hover{border-color:#c9d2e4;color:var(--acc-d)}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--faint);font-size:11.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 
-.pager{display:flex;justify-content:space-between;gap:12px;margin:46px 0 0;padding-top:22px;border-top:1px solid var(--line);flex-wrap:wrap}
-.pager a{text-decoration:none;font-size:13px;color:var(--ink2);display:flex;flex-direction:column;gap:3px}
-.pager a:hover{color:var(--acc-d)}
-.pager a small{font-family:var(--mono);font-size:9.5px;color:var(--faint);letter-spacing:.1em}
-footer{padding:28px 0 44px}
-.f-in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:11.5px;color:var(--faint);font-family:var(--mono);letter-spacing:.04em}
-
-.rv{opacity:0;transform:translateY(12px);transition:opacity .55s ease,transform .55s cubic-bezier(.2,.7,.3,1)}
-.rv.in{opacity:1;transform:none}
-@media (prefers-reduced-motion: reduce){
-  .rv{opacity:1!important;transform:none!important;transition:none!important}
-  html{scroll-behavior:auto}
+@media (max-width:960px){
+  .hgrid{grid-template-columns:1fr;gap:26px}
+  .hshots{max-width:400px}
+  .grid-l{grid-template-columns:1fr}
+  .grid3,.funnel,.chain,.hit{grid-template-columns:1fr 1fr}
+  .segs{grid-template-columns:1fr 1fr}
 }
-@media print{.rv{opacity:1!important;transform:none!important}}
-
-@media (max-width:1000px){
-  .wall{grid-template-columns:repeat(5,1fr);gap:8px}
-  .hstats{grid-template-columns:repeat(3,1fr);row-gap:14px}
-  .hst:nth-child(4){border-left:0;padding-left:0}
-  .groups{grid-template-columns:repeat(3,1fr)}
-}
-@media (max-width:820px){
-  .grid2,.grid3,.top3,.res,.steps,.mtx{grid-template-columns:1fr}
-  .res>div,.step{border-left:0;border-top:1px solid var(--line2)}
-  .res>div:first-child,.step:first-child{border-top:0}
-  .tl{grid-template-columns:1fr 1fr}
-  .tl-i:nth-child(2n+1){border-left:0}
-  .tl-i:nth-child(n+3){border-top:1px solid var(--line2)}
-  .aseg{grid-template-columns:1fr 1fr}
-  .aseg>div:nth-child(2n+1){border-left:0}
-  .aseg>div:nth-child(n+3){border-top:1px solid var(--line2)}
-  .groups{grid-template-columns:repeat(2,1fr)}
-}
-@media (max-width:600px){
+@media (max-width:640px){
+  body{font-size:14.4px}
   .navlinks{display:none}
   .cv{margin-left:auto}
   .wrap,.topnav-in,.cbar-in{padding:0 18px}
-  .hero{padding:30px 0 26px}
-  .wall{grid-template-columns:1fr 1fr;gap:9px}
-  .wall .shot:nth-child(5){display:none}
-  .hstats{grid-template-columns:1fr 1fr;padding-top:15px}
-  .hst{padding:0 10px}
-  .hst:nth-child(2n+1){border-left:0;padding-left:0}
-  .hst .v{font-size:18px}
-  .sec{padding:40px 0 6px}
-  .sec-h{gap:10px;flex-wrap:wrap}
-  .sec-h .idx{padding-top:4px;font-size:10px}
+  .hero{padding:32px 0 28px}
+  .hnums{grid-template-columns:1fr 1fr}
+  .hnum{padding:14px 12px 2px}
+  .hnum:nth-child(2n+1){border-left:0;padding-left:0}
+  .hnum .v{font-size:21px}
+  .hshots{max-width:none}
+  .sec{padding:34px 0 4px}
+  .sec-h{grid-template-columns:auto minmax(0,1fr);gap:12px}
   .sec-h .kw{display:none}
-  .card{padding:17px 15px}
-  .tl,.aseg{grid-template-columns:1fr}
-  .tl-i,.aseg>div{border-left:0}
-  .tl-i:nth-child(n+2),.aseg>div:nth-child(n+2){border-top:1px solid var(--line2)}
-  .groups,.steps{grid-template-columns:1fr}
-  .step{border-left:0;border-top:1px solid var(--line2)}
-  .step:first-child{border-top:0}
-  table{min-width:540px;font-size:11.6px}
+  .grid2,.grid3,.funnel,.chain,.hit,.segs,.quad{grid-template-columns:1fr}
+  table{min-width:560px;font-size:11.8px}
   th,td{padding:9px 10px}
-  .kwrow{grid-template-columns:1fr;gap:5px}
 }
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 
 <nav class="topnav">
   <div class="topnav-in">
-    <a class="logo" href="index.html">邱曾恺<em>PAID MEDIA</em></a>
+    <a class="logo" href="index.html">邱曾恺 <em>PERFORMANCE</em></a>
     <div class="navlinks">
       <a href="index.html">首页</a>
-      <a href="case1.html" class="on">作品 CASE 01</a>
+      <a href="case1.html" class="on">案例</a>
       <a href="sop.html">投放 SOP</a>
     </div>
     <a class="cv" href="assets/resume.pdf" target="_blank" rel="noopener">简历 PDF</a>
@@ -334,636 +240,584 @@ footer{padding:28px 0 44px}
 
 <div class="cbar">
   <div class="cbar-in">
-    <a href="#s1" class="on"><b>01</b> 成果</a>
-    <a href="#s2"><b>02</b> 测试</a>
-    <a href="#s3"><b>03</b> 达人优化</a>
-    <a href="#s4"><b>04</b> 内容优化</a>
-    <a href="#s5"><b>05</b> 复盘</a>
-    <a href="#s6"><b>06</b> 口径</a>
+    <a href="#s1"><b>01</b> Brief 拆解</a>
+    <a href="#s2"><b>02</b> 达人筛选</a>
+    <a href="#s3"><b>03</b> 内容测试</a>
+    <a href="#s4"><b>04</b> 定向放大</a>
+    <a href="#s5"><b>05</b> 内容分析</a>
+    <a href="#s6"><b>06</b> 复盘</a>
   </div>
 </div>
 
-<!-- ============ HERO ============ -->
 <header class="hero">
   <div class="wrap">
-    <div class="tagline"><span class="pill">CASE 01</span> 达人种草 · 抖音 · 户外品类头部品牌</div>
-    <h1>180 条达人内容，<br>我只留下 <em>5 组能复投的</em></h1>
-    <p class="sub">不是"投了 180 个达人"，而是<b>把 180 个达人当成 180 条素材来测</b>：关键词圈池、同赛道归组、同条件跑、按 CPA 与 CVR 定放量。最后留下的不是 180 个账号，是 5 组可复制的结构与 3 个能加钱的人。</p>
-
-    <div class="wall">
-      <!-- G1 音乐剧情 -->
-      <div class="shot">
-        <div class="cover" style="background:linear-gradient(158deg,#2b2160 0%,#4a3299 42%,#7b4fd0 100%)">
-          <svg viewBox="0 0 180 320" preserveAspectRatio="xMidYMid slice">
-            <defs><radialGradient id="g1" cx="50%" cy="38%" r="60%"><stop offset="0" stop-color="#b18cff" stop-opacity=".55"/><stop offset="1" stop-color="#b18cff" stop-opacity="0"/></radialGradient></defs>
-            <rect width="180" height="320" fill="url(#g1)"/>
-            <circle cx="90" cy="120" r="46" fill="none" stroke="#d9c8ff" stroke-opacity=".38" stroke-width="1.2"/>
-            <circle cx="90" cy="120" r="66" fill="none" stroke="#d9c8ff" stroke-opacity=".22" stroke-width="1"/>
-            <circle cx="90" cy="120" r="88" fill="none" stroke="#d9c8ff" stroke-opacity=".13" stroke-width="1"/>
-            <path d="M104 82v46a9 9 0 1 1-5-8V90l22-5v10z" fill="#efe6ff" fill-opacity=".85"/>
-            <rect x="0" y="248" width="180" height="72" fill="#1a1140" fill-opacity=".5"/>
-          </svg>
+    <div class="hgrid">
+      <div>
+        <div class="tagline">
+          <span class="pill">CASE 01</span>
+          <span>达人种草投放 · 户外服饰</span>
         </div>
-        <div class="scrim"></div>
-        <div class="gid">G1</div><div class="state stop">TAIL CUT</div>
-        <div class="play"></div>
-        <div class="side"><i class="h"></i><i class="c"></i><i class="s"></i></div>
-        <div class="cap">
-          <div class="who"><u></u>达人 A-3 · 双 CP 舞蹈</div>
-          <div class="txt">音乐节现场跟拍，卡点转场，产品只出现两次</div>
-          <div class="kpi"><span>CVR <b>0.13%</b></span><span>CPM <b>4.52</b></span></div>
+        <h1>447.5 万预算，<br>换回 <em>1.2 亿</em> 声量与 <em>14.5 万</em> 次转化</h1>
+        <p class="sub">180 条达人内容。没有按「找 180 个人拍视频」做，而是按<b>素材测试</b>的思路做：先把 Brief 拆成能算的指标，再圈人、分组、放量，最后把能复投的语法写下来。</p>
+        <div class="bench">
+          <span>转化率 <b>行业均值 6 倍</b></span>
+          <span>单位成本 <b>行业均值 8%</b></span>
+          <span>声量 <b>同类 8 倍</b></span>
+          <span>无效种草 <b>10% · 类目最低</b></span>
         </div>
-        <div class="bar"><i style="width:64%"></i></div>
+        <div class="hnums">
+          <div class="hnum">
+            <div class="l">总消耗</div>
+            <div class="v">447.5<em>万</em></div>
+            <div class="d">180 条内容</div>
+          </div>
+          <div class="hnum">
+            <div class="l">声量</div>
+            <div class="v">1.2<em>亿</em></div>
+            <div class="d">有效观看</div>
+          </div>
+          <div class="hnum">
+            <div class="l">间接转化</div>
+            <div class="v">14.5<em>万人</em></div>
+            <div class="d">转化率 0.12%</div>
+          </div>
+          <div class="hnum">
+            <div class="l">单人成本</div>
+            <div class="v">30.93<em>元</em></div>
+            <div class="d">CPM 37.59</div>
+          </div>
+        </div>
       </div>
 
-      <!-- G2 旅行摄影 -->
-      <div class="shot">
-        <div class="cover" style="background:linear-gradient(168deg,#0c3b46 0%,#116b70 46%,#3fae9d 100%)">
-          <svg viewBox="0 0 180 320" preserveAspectRatio="xMidYMid slice">
-            <defs><linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe6b0" stop-opacity=".85"/><stop offset="1" stop-color="#ffe6b0" stop-opacity="0"/></linearGradient></defs>
-            <circle cx="126" cy="86" r="26" fill="url(#g2)"/>
-            <path d="M0 232l42-58 30 40 26-32 44 50 38-30v118H0z" fill="#08282f" fill-opacity=".72"/>
-            <path d="M0 258l54-44 32 30 30-22 64 40v58H0z" fill="#061e24" fill-opacity=".82"/>
-            <path d="M96 196l6-18 6 18z" fill="#d8fff4" fill-opacity=".7"/>
-          </svg>
+      <div>
+        <div class="hshots">
+          <figure class="hshot">
+            <img src="assets/kols/travel.jpg" alt="旅行图文达人内容封面截图" loading="lazy">
+            <div class="scr"></div>
+            <div class="tag">爆款 A · 转化 0.682%</div>
+            <div class="cap">
+              <div class="nm">@kkkkkisum</div>
+              <div class="mt">旅行图文 · <b>4.0 万赞</b></div>
+            </div>
+          </figure>
+          <figure class="hshot">
+            <img src="assets/kols/cp.jpg" alt="情侣 CP 托举内容封面截图" loading="lazy">
+            <div class="scr"></div>
+            <div class="tag">爆款 B · CPA 6.36</div>
+            <div class="cap">
+              <div class="nm">@爱吃香菜菜</div>
+              <div class="mt">半素人 CP · <b>8.3 万粉</b></div>
+            </div>
+          </figure>
+          <div class="hshots-foot">↑ 项目原始素材截图，未二次创作</div>
         </div>
-        <div class="scrim"></div>
-        <div class="gid">G2</div><div class="state go">SCALE</div>
-        <div class="play"></div>
-        <div class="side"><i class="h"></i><i class="c"></i><i class="s"></i></div>
-        <div class="cap">
-          <div class="who"><u></u>达人 B-2 · 旅行摄影</div>
-          <div class="txt">清晨山脊逆光，一件冲锋衣走了 8 个镜头</div>
-          <div class="kpi"><span>CVR <b>0.43%</b></span><span>CPM <b>7.61</b></span></div>
-        </div>
-        <div class="bar"><i style="width:88%"></i></div>
       </div>
-
-      <!-- G3 户外运动 -->
-      <div class="shot">
-        <div class="cover" style="background:linear-gradient(158deg,#3d2412 0%,#7a4418 44%,#c07a2c 100%)">
-          <svg viewBox="0 0 180 320" preserveAspectRatio="xMidYMid slice">
-            <circle cx="52" cy="70" r="18" fill="#ffd9a0" fill-opacity=".55"/>
-            <path d="M0 250l60-96 38 58 28-40 54 78v70H0z" fill="#22120a" fill-opacity=".62"/>
-            <path d="M40 262l34-46 34 46z" fill="none" stroke="#ffe0b8" stroke-opacity=".8" stroke-width="1.4"/>
-            <path d="M74 216v46" stroke="#ffe0b8" stroke-opacity=".55" stroke-width="1"/>
-            <rect x="0" y="262" width="180" height="58" fill="#180d07" fill-opacity=".72"/>
-          </svg>
-        </div>
-        <div class="scrim"></div>
-        <div class="gid">G3</div><div class="state hold">REBUILD</div>
-        <div class="play"></div>
-        <div class="side"><i class="h"></i><i class="c"></i><i class="s"></i></div>
-        <div class="cap">
-          <div class="who"><u></u>达人 A-1 · 体育生 CP</div>
-          <div class="txt">6 公里徒步全程一镜到底，最后才露装备</div>
-          <div class="kpi"><span>CPM <b>2.77</b></span><span>全场最低</span></div>
-        </div>
-        <div class="bar"><i style="width:100%"></i></div>
-      </div>
-
-      <!-- G4 潮流穿搭 -->
-      <div class="shot">
-        <div class="cover" style="background:linear-gradient(158deg,#4a3b3a 0%,#8b6f63 46%,#d9bb9f 100%)">
-          <svg viewBox="0 0 180 320" preserveAspectRatio="xMidYMid slice">
-            <path d="M22 96h136" stroke="#fff4e8" stroke-opacity=".3" stroke-width="1.2"/>
-            <rect x="30" y="106" width="34" height="92" rx="5" fill="#f7ece0" fill-opacity=".26" stroke="#fff4e8" stroke-opacity=".34"/>
-            <rect x="72" y="92" width="36" height="118" rx="5" fill="#fff4e8" fill-opacity=".46"/>
-            <rect x="116" y="112" width="32" height="86" rx="5" fill="#f7ece0" fill-opacity=".2" stroke="#fff4e8" stroke-opacity=".3"/>
-            <path d="M90 92V76" stroke="#fff4e8" stroke-opacity=".45" stroke-width="1"/>
-            <path d="M0 236h180" stroke="#fff4e8" stroke-opacity=".22"/>
-            <rect x="0" y="252" width="180" height="68" fill="#2b211d" fill-opacity=".34"/>
-          </svg>
-        </div>
-        <div class="scrim"></div>
-        <div class="gid">G4</div><div class="state hold">REBUILD</div>
-        <div class="play"></div>
-        <div class="side"><i class="h"></i><i class="c"></i><i class="s"></i></div>
-        <div class="cap">
-          <div class="who"><u></u>达人 A-2 · 生活化穿搭</div>
-          <div class="txt">小区楼下跳舞，浅色冲锋衣配通勤裤</div>
-          <div class="kpi"><span>CPM <b>3.71</b></span><span>自然流量高</span></div>
-        </div>
-        <div class="bar"><i style="width:72%"></i></div>
-      </div>
-
-      <!-- G5 生活 CP -->
-      <div class="shot">
-        <div class="cover" style="background:linear-gradient(158deg,#3a1c2c 0%,#7a3550 46%,#c76b84 100%)">
-          <svg viewBox="0 0 180 320" preserveAspectRatio="xMidYMid slice">
-            <circle cx="68" cy="118" r="26" fill="#ffe3ea" fill-opacity=".28"/>
-            <circle cx="112" cy="118" r="26" fill="#ffe3ea" fill-opacity=".28"/>
-            <path d="M90 176c-14-12-30-22-30-38a15 15 0 0 1 30-6 15 15 0 0 1 30 6c0 16-16 26-30 38z" fill="#ffd6e0" fill-opacity=".55"/>
-            <path d="M18 246c18-14 40-14 58 0s40 14 58 0" stroke="#ffe3ea" stroke-opacity=".35" stroke-width="1.2" fill="none"/>
-            <rect x="0" y="248" width="180" height="72" fill="#22101a" fill-opacity=".6"/>
-          </svg>
-        </div>
-        <div class="scrim"></div>
-        <div class="gid">G5</div><div class="state hold">WATCH</div>
-        <div class="play"></div>
-        <div class="side"><i class="h"></i><i class="c"></i><i class="s"></i></div>
-        <div class="cap">
-          <div class="who"><u></u>达人 B-1 · 半素人情侣</div>
-          <div class="txt">周末不扎帐篷，只拍两个人怎么把装备用旧</div>
-          <div class="kpi"><span>CPA <b>6.36</b></span><span>8.3 万粉</span></div>
-        </div>
-        <div class="bar"><i style="width:56%"></i></div>
-      </div>
-    </div>
-    <div class="wallnote"><span></span>内容墙为投放素材的版式示意（原始素材未获授权公开），达人代号化；数据取自项目结案报表。</div>
-
-    <div class="hstats">
-      <div class="hst"><div class="l">CASH SPEND</div><div class="v">443.2<em>万</em></div><div class="d">180 条内容</div></div>
-      <div class="hst"><div class="l">GMV · 21D</div><div class="v">500.8<em>万</em></div><div class="d">目标线 500.0 万</div></div>
-      <div class="hst"><div class="l">ROI</div><div class="v">1.13</div><div class="d hi">安全垫 13%</div></div>
-      <div class="hst"><div class="l">CPM</div><div class="v">37.2<em>元</em></div><div class="d">竞品均值 366</div></div>
-      <div class="hst"><div class="l">ABOVE AVG</div><div class="v">59.06<em>%</em></div><div class="d hi">达人 CPM 高于均值</div></div>
-      <div class="hst"><div class="l">VOLUME</div><div class="v">1.2<em>亿</em></div><div class="d">声量 · 类目第一</div></div>
     </div>
   </div>
 </header>
 
 <main class="wrap">
 
-<!-- 01 成果 -->
-<section class="sec" id="s1">
-  <div class="sec-h">
-    <div class="idx">01 / RESULT</div>
-    <div class="t">
-      <h2>成果：三个数就够说完</h2>
-      <p>规模、效率、结构各一句。具体怎么拆，放到后面四段。</p>
-    </div>
-    <div class="kw">3 LINES</div>
-  </div>
-
-  <div class="res rv">
-    <div>
-      <div class="l">SCALE</div>
-      <div class="v">类目第一</div>
-      <div class="d">声量 1.2 亿、CPM 37.2 元，约为竞品均值的 1/10。同样的钱买到更多曝光。</div>
-    </div>
-    <div>
-      <div class="l">EFFICIENCY</div>
-      <div class="v">1.13</div>
-      <div class="d">443.2 万换 500.8 万，只比目标线多 0.8 万。净利 57.6 万 = 23 条内容的容错。</div>
-    </div>
-    <div>
-      <div class="l">STRUCTURE</div>
-      <div class="v">59.06<em>%</em></div>
-      <div class="d">过半达人的 CPM 高于全体均值 37.59。均值被少数极低价账号拉低。</div>
-    </div>
-  </div>
-
-  <div class="call mt14 rv">
-    <span class="k">SO WHAT</span>
-    结论一句话：<b>ROI 是过线的，问题不在总量，在钱花给了谁。</b>所以这次复盘不讨论"要不要再投"，只讨论"下一轮怎么用同样的钱买到更多"。下面四段，就是找答案的过程。
-  </div>
-</section>
-
-<!-- 02 测试 -->
-<section class="sec" id="s2">
-  <div class="sec-h">
-    <div class="idx">02 / TEST</div>
-    <div class="t">
-      <h2>测试：把 180 个达人，当成 5 组素材来测</h2>
-      <p>达人投放没有实时成交，但测试逻辑和素材测试一模一样：<b>先圈池、再分组、同条件跑、按 CPA 与 CVR 决定谁加钱</b>。区别只是"素材"从一条视频变成了一个达人的内容方向。</p>
-    </div>
-    <div class="kw">5 CELLS</div>
-  </div>
-
-  <div class="steps rv">
-    <div class="step">
-      <div class="n">STEP 01</div>
-      <h4>关键词圈定预选达人</h4>
-      <p>不靠榜单推荐，靠关键词把池子先框住：品类、场景、人群、竞品、内容五类词，各自抓一轮，去重后做账号体检。</p>
-    </div>
-    <div class="step">
-      <div class="n">STEP 02</div>
-      <h4>按赛道分五组，同组同质</h4>
-      <p>180 人不是 180 个独立实验。把内容方向相近的归成一组，同预算区间、同条数、同 21 天窗口，才有可比性。</p>
-    </div>
-    <div class="step">
-      <div class="n">STEP 03</div>
-      <h4>按 CPA 与 CVR 放量</h4>
-      <p>两条同时满足才加钱：CPA 不高于目标线、CVR 不低于组间均值。只看 CPM 会选出便宜但没量的人。</p>
-    </div>
-  </div>
-
-  <div class="kwbox rv">
-    <div class="kh">
-      <b>STEP 01 · 五类关键词，圈出 180 位预选</b>
-      <span>KEYWORD POOLING</span>
-    </div>
-    <div class="kwrow">
-      <div class="t">品类词</div>
-      <div class="chips"><span>冲锋衣</span><span>软壳</span><span>徒步鞋</span><span>登山包</span><span>露营装备</span></div>
-    </div>
-    <div class="kwrow">
-      <div class="t">场景词</div>
-      <div class="chips"><span>周末徒步</span><span>轻露营</span><span>川西自驾</span><span>雨后山野</span><span>城市通勤穿搭</span></div>
-    </div>
-    <div class="kwrow">
-      <div class="t">人群词</div>
-      <div class="chips"><span>大学生户外</span><span>情侣出行</span><span>新手入坑</span><span>平价户外</span></div>
-    </div>
-    <div class="kwrow">
-      <div class="t">竞品词</div>
-      <div class="chips"><span>竞品 A 平替</span><span>竞品 B 对比</span><span>同类测评</span></div>
-    </div>
-    <div class="kwrow">
-      <div class="t">内容词</div>
-      <div class="chips"><span>一镜到底</span><span>装备清单</span><span>反差开场</span><span>穿搭 OOTD</span><span>卡点混剪</span></div>
-    </div>
-  </div>
-  <p class="note">圈池之后先过三道体检：粉丝真实度、近 30 天更新、完播中位数。停更和刷量号在这里就剔掉，不进入比价与测试环节。最终 180 位进入分组。</p>
-
-  <div class="sec-h" style="margin:30px 0 0">
-    <div class="idx" style="padding-top:2px">STEP 02</div>
-    <div class="t"><h2 style="font-size:16.5px">同赛道归五组，同条件开跑</h2></div>
-  </div>
-
-  <div class="groups rv">
-    <div class="grp stop">
-      <div class="h"><b>G1</b><span class="i">TAIL CUT</span></div>
-      <div class="n">音乐 / 剧情</div>
-      <div class="m">42 人 · 248 万有效观看<br>CVR <b>0.13%</b> · CPM 2.77–4.52</div>
-    </div>
-    <div class="grp go">
-      <div class="h"><b>G2</b><span class="i">SCALE</span></div>
-      <div class="n">旅行 / 摄影</div>
-      <div class="m">36 人 · 89 万有效观看<br>CVR <b>0.43%</b> · CPA 7.61</div>
-    </div>
-    <div class="grp hold">
-      <div class="h"><b>G3</b><span class="i">REBUILD</span></div>
-      <div class="n">户外 / 运动</div>
-      <div class="m">34 人 · 未进可复制区间<br>CPM 2.77–3.71</div>
-    </div>
-    <div class="grp hold">
-      <div class="h"><b>G4</b><span class="i">REBUILD</span></div>
-      <div class="n">潮流 / 穿搭</div>
-      <div class="m">38 人 · 自然流量占比高<br>CPM 3.71</div>
-    </div>
-    <div class="grp hold">
-      <div class="h"><b>G5</b><span class="i">WATCH</span></div>
-      <div class="n">生活 / CP 剧情</div>
-      <div class="m">30 人 · 完播好、样本小<br>CPA 6.36</div>
-    </div>
-  </div>
-
-  <div class="tbl gtable rv">
-    <table>
-      <thead><tr><th>组别</th><th>本次读数</th><th>判定</th><th>动作</th></tr></thead>
-      <tbody>
-        <tr>
-          <td><b>G1 音乐 / 剧情</b></td>
-          <td class="num">CVR 0.13%</td>
-          <td><span class="tagx bad">不达标</span></td>
-          <td>只保留曝光位，尾部 12 人砍掉，预算迁出</td>
-        </tr>
-        <tr class="self">
-          <td><b>G2 旅行 / 摄影</b></td>
-          <td class="num">CVR 0.43% · CPA 7.61</td>
-          <td><span class="tagx ok">双条件达标</span></td>
-          <td>唯一放量组，单次加 20–30%，不翻倍</td>
-        </tr>
-        <tr>
-          <td><b>G3 户外 / 运动</b></td>
-          <td class="num">未进可复制区间</td>
-          <td><span class="tagx mid">改造</span></td>
-          <td>不砍人，换语法卡重拍 1 条再测</td>
-        </tr>
-        <tr>
-          <td><b>G4 潮流 / 穿搭</b></td>
-          <td class="num">未进可复制区间</td>
-          <td><span class="tagx mid">改造</span></td>
-          <td>保留自然流量价值，转为内容素材池</td>
-        </tr>
-        <tr>
-          <td><b>G5 生活 / CP</b></td>
-          <td class="num">CPA 6.36 · 样本不足</td>
-          <td><span class="tagx mid">观察</span></td>
-          <td>加 3 条同类型复测，凑够样本再判</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="note">阈值口径：<b>目标 CPA 8.0 元/人</b>按本品类获客成本上限设定，<b>CVR 0.30%</b> 取五组中位数。这两个数不是行业通用值，换品类必须重新标定。表中仅列可交叉验证的组均值，其余三组因未形成可复制结构，按"待观察"处理。</p>
-
-  <div class="tl rv">
-    <div class="tl-i"><div class="d">D1–3</div><b>看跑不跑得出去</b><p>曝光速率、前 3 秒留存。不谈转化。</p></div>
-    <div class="tl-i"><div class="d">D3–7</div><b>比开头</b><p>同赛道换钩子，看完播与互动。</p></div>
-    <div class="tl-i now"><div class="d">D7–14</div><b>看承接</b><p>有效观看、进店、加购，判断能不能带人走。</p></div>
-    <div class="tl-i"><div class="d">D14–21</div><b>等归因</b><p>不提前算 ROI，避免跨月口径错位。</p></div>
-    <div class="tl-i"><div class="d">D21</div><b>定去留</b><p>放量 / 改造 / 观察 / 关停，落到具体人和组。</p></div>
-  </div>
-
-  <div class="call mt14 rv">
-    <span class="k">TEST OUTPUT</span>
-    测试的产物不是一张达人排行榜，而是<b>五组的判定结论 + 一套放量规则</b>：G2 加钱、G1 迁出、G3/G4 改造、G5 补样本。没有产物的测试，等于白测。
-  </div>
-</section>
-
-<!-- 03 达人资源优化 -->
-<section class="sec" id="s3">
-  <div class="sec-h">
-    <div class="idx">03 / KOL OPTIMIZE</div>
-    <div class="t">
-      <h2>达人资源优化：三个指标，各选一个冠军</h2>
-      <p>一个综合排名只会选出"最平均"的人。<b>按 CPM、CPA、规模转化各取 TOP1</b>，才有三种不同用法的名单：一个用来买曝光，一个用来买转化，一个用来买规模。</p>
-    </div>
-    <div class="kw">TOP 3 / 3 AXES</div>
-  </div>
-
-  <div class="top3">
-    <div class="tp rv">
-      <div class="hd">
-        <span class="rk">TOP 1 · CPM</span>
-        <div class="nm">达人 A-1</div>
-        <div class="ds">体育生情侣 CP · 双榜唯一</div>
-      </div>
-      <div class="bd">
-        <div class="big">2.77<em>元 CPM</em></div>
-        <div class="bigl">全场最低，约为组均值的 1/3</div>
-        <div class="why"><b>为什么是它：</b>情绪价值高——CP 互动 + 高难度动作，几乎没有广告植入感，粉丝调性与"平价户外"贴合，自然流量占比高。</div>
-        <div class="task"><b>给什么任务：</b>加预算 + 把这条的语法复制给同类型 5 位，验证是不是"人"带来的效率。</div>
-        <div class="risk">风险：单人体量有限，加钱很快触顶，必须同类型补齐。</div>
-      </div>
-    </div>
-
-    <div class="tp rv">
-      <div class="hd">
-        <span class="rk t2">TOP 2 · CPA</span>
-        <div class="nm">达人 B-1</div>
-        <div class="ds">半素人情侣 · 8.3 万粉</div>
-      </div>
-      <div class="bd">
-        <div class="big">6.36<em>元 / 人</em></div>
-        <div class="bigl">转化成本最低，低于目标线 8.0</div>
-        <div class="why"><b>为什么是它：</b>账号无 MCN 标签、商业气息几乎为零，甜蜜互动带来高完播，粉丝真实度高，评论区问链接的比例明显高于同组。</div>
-        <div class="task"><b>给什么任务：</b>改固定费 + 阶梯 CPS，做 3 条系列内容，把一次性合作变成可持续的转化位。</div>
-        <div class="risk">风险：粉丝基数小，跑量天花板低，只能当"转化样本"不能当"规模引擎"。</div>
-      </div>
-    </div>
-
-    <div class="tp rv">
-      <div class="hd">
-        <span class="rk t3">TOP 3 · 规模转化</span>
-        <div class="nm">达人 B-2</div>
-        <div class="ds">旅行摄影 · 60.5 万粉</div>
-      </div>
-      <div class="bd">
-        <div class="big">0.43<em>% CVR</em></div>
-        <div class="bigl">89 万有效观看 · CPA 7.61</div>
-        <div class="why"><b>为什么是它：</b>唯一同时具备规模与转化的一组：单条有效观看是同组均值的数倍，CVR 是 G1 的 3 倍以上，游客照 + 自然景观带动 UGC 跟拍。</div>
-        <div class="task"><b>给什么任务：</b>主推 + 二次剪辑授权，跑赢的内容拿去投流放大，把种草流量变成可复投的素材。</div>
-        <div class="risk">风险：报价高，必须谈阶梯价与授权，否则单条成本吃掉大部分利润。</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="grid2 mt20">
-    <div class="card rv">
-      <h3>剩下 177 位怎么处理<span>THE REST</span></h3>
-      <p style="margin-top:10px">不搞"一刀切淘汰"，按可复用性分三类：</p>
-      <ul style="list-style:none;padding:0;margin:10px 0 0">
-        <li style="font-size:12.2px;color:var(--ink2);padding:7px 0;border-bottom:1px dashed var(--line2);line-height:1.7"><b>改造后回池</b> · 内容有基础但结构不对，换语法卡重拍 1 条，成本可控。</li>
-        <li style="font-size:12.2px;color:var(--ink2);padding:7px 0;border-bottom:1px dashed var(--line2);line-height:1.7"><b>只做曝光位</b> · CPM 低但转化差，留在声量预算里，不占转化预算。</li>
-        <li style="font-size:12.2px;color:var(--ink2);padding:7px 0;line-height:1.7"><b>关停</b> · 停更、刷量、报价虚高且无样本，直接出池，不占下一轮名额。</li>
-      </ul>
-    </div>
-    <div class="card rv">
-      <h3>三个指标为什么不能合成一个<span>WHY SPLIT</span></h3>
-      <p style="margin-top:10px">合成一个总分，权重一变名单就全变，而且会把三种完全不同的价值压成同一个数。</p>
-      <div class="call mt14" style="padding:11px 13px;font-size:12px">
-        <b>CPM 冠军</b>适合买曝光；<b>CPA 冠军</b>适合买转化；<b>规模转化冠军</b>适合买可复投的素材。三个位置对应三种预算，混着比一定选错人。
-      </div>
-      <p class="note" style="margin-top:10px">这也是双榜（A 组看 CPM、B 组看 CPA × 规模）存在的理由：单榜一定会偏向某一端。</p>
-    </div>
-  </div>
-</section>
-
-<!-- 04 内容优化 -->
-<section class="sec" id="s4">
-  <div class="sec-h">
-    <div class="idx">04 / CREATIVE</div>
-    <div class="t">
-      <h2>内容优化：先选对赛道，再拆对片子</h2>
-      <p>内容优化不是"催达人拍好看点"。两件事：<b>找出容易出爆款、又带得动转化的赛道</b>；<b>把跑赢的那条片子拆到能复制的颗粒度</b>。</p>
-    </div>
-    <div class="kw">2 STEPS</div>
-  </div>
-
-  <div class="mtx">
-    <div class="plane rv">
-      <div class="cap2"><span>赛道：曝光量 × 转化率</span><span>CVR ↑</span></div>
-      <div class="plot">
-        <div class="q a"></div><div class="q b"></div><div class="q c"></div><div class="q d"></div>
-        <div class="dot t" style="left:26%;top:30%"><i></i><em>旅行 89万 / 0.43%</em></div>
-        <div class="dot" style="left:82%;top:76%"><i></i><em>音乐 248万 / 0.13%</em></div>
-        <div class="dot m" style="left:54%;top:56%"><i></i><em>户外</em></div>
-        <div class="dot m" style="left:66%;top:64%"><i></i><em>穿搭</em></div>
-        <div class="dot m" style="left:42%;top:44%"><i></i><em>CP</em></div>
-      </div>
-      <div class="ax" style="display:flex;justify-content:space-between;margin-top:2px"><span>曝光量 →</span><span>左上＝高转化 / 右下＝高声量</span></div>
-    </div>
-    <div class="card rv" style="display:flex;flex-direction:column;justify-content:center">
-      <h3>两条赛道，两套 KPI<span>SPLIT KPI</span></h3>
-      <p style="margin-top:9px"><b style="color:#6b5bd2">音乐 / 剧情</b>：248 万有效观看、CVR 0.13%。爆款率高、转化低——它是<b>声量赛道</b>，考核应该看曝光成本，不该看 ROI。</p>
-      <p><b style="color:var(--teal)">旅行 / 摄影</b>：89 万有效观看、CVR 0.43%。量小但转化是三倍——它是<b>转化赛道</b>，加预算只能加在这一侧。</p>
-      <div class="call warn mt14" style="padding:11px 13px;font-size:12px">过去把两条赛道放进同一张榜里排名，等于用转化标准杀掉曝光位、用曝光标准放过低效位。<b>这是 59.06% 那个数的来源。</b></div>
-    </div>
-  </div>
-
-  <div class="anat rv">
-    <div class="top">
-      <b>爆款拆解：达人 A-1 那条为什么跑得动</b>
-      <span class="m">06 公里 · 一镜到底 · 30 秒</span>
-    </div>
-    <div class="aseg">
+  <section class="sec" id="s1">
+    <div class="sec-h">
+      <div class="no">01</div>
       <div>
-        <div class="t">00–03s</div>
-        <b>反差开场</b>
-        <p>先给一个"不该出现在户外"的画面：穿冲锋衣挤地铁。留人不靠产品，靠错位。</p>
-        <span class="y">可复制</span>
+        <h2>Brief 拆解：把一句「要声量」变成能验收的数</h2>
+        <p class="lead">客户给的是一句话。我要先把它拆成能算、能验收的指标，否则 180 条投下去，只会得到 180 个「感觉还行」。</p>
       </div>
+      <div class="kw">原文 → 口径</div>
+    </div>
+
+    <div class="tbl" style="margin-top:0">
+      <table>
+        <thead>
+          <tr><th style="width:30%">Brief 原话</th><th style="width:28%">拆成的指标</th><th>验收口径</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>做种草，要户外类目第一</td><td>有效观看总量</td><td>1.2 亿，为同类竞品 8 倍</td></tr>
+          <tr><td>不要只看曝光，要能带人</td><td>间接转化人数 / 转化率</td><td>14.5 万人，转化率 0.12%</td></tr>
+          <tr><td>预算 447.5 万，180 条内容</td><td>单条均价</td><td>单条 2.49 万，超 2.5 万单独过会</td></tr>
+          <tr><td>不要刷量号、不要垃圾内容</td><td>无效种草率</td><td>≤ 10%（最终 10%，类目最低）</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="chain" style="margin-top:14px">
+      <div class="ch">
+        <div class="k">CPM</div>
+        <div class="v">37.59</div>
+        <div class="d">每千次有效观看的成本。买曝光便宜，不等于买得准。</div>
+      </div>
+      <div class="ch">
+        <div class="k">CVR</div>
+        <div class="v">0.12<em>%</em></div>
+        <div class="d">有效观看 → 间接转化。内容好不好，全压在这一环。</div>
+      </div>
+      <div class="ch">
+        <div class="k">CPA</div>
+        <div class="v">30.93<em>元</em></div>
+        <div class="d">单个间接转化成本。这是对外报价、对内算账的锚。</div>
+      </div>
+    </div>
+
+    <div class="formula">CPA = CPM ÷（1000 × CVR）&nbsp;→&nbsp; 37.59 ÷（1000 × 0.12%）≈ <b>31.3</b>，与实测 <b>30.93</b> 吻合 —— 三个指标同源，可互相验算，不用等后台报表</div>
+
+    <div class="grid2" style="margin-top:14px">
+      <div class="card">
+        <div class="eyebrow">容错空间</div>
+        <h4 style="font-size:14px;margin-top:6px">一条内容白拍，等于白扔 2.49 万</h4>
+        <p style="font-size:12.3px;color:var(--muted);margin-top:7px;line-height:1.78">单条均价 2.49 万 = 全预算的 0.56%。按 10% 无效上限倒推，180 条里最多允许 18 条打水漂。所以测试位不能省，一次判断失误就是几十万。</p>
+      </div>
+      <div class="card">
+        <div class="eyebrow">对标基准</div>
+        <h4 style="font-size:14px;margin-top:6px">跟安德玛、凯乐石、伯希和比</h4>
+        <p style="font-size:12.3px;color:var(--muted);margin-top:7px;line-height:1.78">同品类三家竞品的公开种草数据做基准：转化率约为行业均值 6 倍，单位成本约为 8%。这个差距给了「可以少花钱、但要挑更准」的判断依据。</p>
+      </div>
+    </div>
+
+    <div class="swhat">
+      <div class="t">SO WHAT</div>
+      <p>Brief 拆完才明白：<b>180 条不是 180 次投放，是 180 个样本</b>。真正要管的不是「投出去多少」，而是「每条能带回什么、错了能亏多少」。</p>
+    </div>
+  </section>
+
+  <section class="sec" id="s2">
+    <div class="sec-h">
+      <div class="no">02</div>
       <div>
-        <div class="t">03–08s</div>
-        <b>场景代入</b>
-        <p>镜头直接切到山脊，一镜到底不剪。让观众相信"这是真去了"。</p>
-        <span class="y">可复制</span>
+        <h2>达人筛选：先剔掉一定会亏的，再谈怎么投</h2>
+        <p class="lead">筛选不是在 180 条里挑最好的，是在投之前把明显会浪费的钱挡在门外。圈池 → 三道体检 → 三类标杆 → 谈价。</p>
       </div>
+      <div class="kw">圈池 · 体检 · 报价</div>
+    </div>
+
+    <div class="card">
+      <div class="eyebrow">第一步 · 关键词圈池</div>
+      <p style="font-size:12.4px;color:var(--muted);margin-top:7px;line-height:1.78">用五类词交叉搜，圈出 180 位候选——正好等于 180 条内容的池子，不靠感觉加人。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px">
+        <span class="pill2 p-blue">品类词 · 冲锋衣 防晒衣 老爹鞋 登山鞋</span>
+        <span class="pill2 p-blue">场景词 · 川西 草原 徒步 露营</span>
+        <span class="pill2 p-blue">人群词 · 情侣 CP 学生 Z 世代</span>
+        <span class="pill2 p-blue">竞品词 · 凯乐石 伯希和 安德玛</span>
+        <span class="pill2 p-blue">内容词 · 出片 OOTD 氛围感 穿搭</span>
+      </div>
+    </div>
+
+    <div class="funnel">
+      <div class="fn">
+        <div class="st">体检 01</div>
+        <h4>赛道标签</h4>
+        <p>优先音乐、旅行、摄影、三农、颜值；直接淘汰二次元、测评——这两类连曝光都买不到。</p>
+        <div class="out">过：5 类 &nbsp;/&nbsp; 砍：<b>2 类</b></div>
+      </div>
+      <div class="fn">
+        <div class="st">体检 02</div>
+        <h4>CPM ≤ 37.59</h4>
+        <p>一律用「有效观看」算，不用播放量算。播放量能刷，有效观看刷不了，这是唯一能横向比的成本口径。</p>
+        <div class="out">线：<b>CPM 37.59</b></div>
+      </div>
+      <div class="fn">
+        <div class="st">体检 03</div>
+        <h4>内容语法</h4>
+        <p>能不能把产品穿在身上而看起来不像广告。硬广号即便便宜也不进——它会把整池的无效种草率拉高。</p>
+        <div class="out">标准：<b>软植入</b></div>
+      </div>
+    </div>
+
+    <div class="note" style="background:#fdf5e6;border:1px solid #f2e3c4;border-radius:9px;padding:11px 14px;color:#8a5f06">
+      <b>这里要认一笔账：</b>最终 180 条里，<b>59.06% 的达人 CPM 高于均值 37.59</b>。说明第二道体检放得太松——线是划了，但没有卡住。这个缺口在第 04 段用预算迁移补，在第 06 段写进复盘。
+    </div>
+
+    <div class="grid3" style="margin-top:14px">
+      <div class="kol">
+        <div class="top">
+          <div class="thumb">黑</div>
+          <div class="id">
+            <div class="rk">CPM 冠军</div>
+            <div class="nm">黑皮 couple</div>
+            <div class="tp">CP 剧情 · 1 条</div>
+          </div>
+        </div>
+        <div class="big">2.77<em>CPM</em></div>
+        <div class="why">全场最低的曝光成本，不到均值 37.59 的 <b>1/13</b>。同样是买观看，他这一条便宜到可以忽略试错成本。</div>
+        <div class="risk"><b>风险</b>：只有 1 条，样本太薄，不能直接按人加预算，先追投同类。</div>
+      </div>
+
+      <div class="kol">
+        <div class="top">
+          <div class="thumb">爱</div>
+          <div class="id">
+            <div class="rk">CPA 冠军</div>
+            <div class="nm">爱吃香菜菜</div>
+            <div class="tp">半素人情侣 · 3 条 · 8.3 万粉</div>
+          </div>
+        </div>
+        <div class="big">6.36<em>元/人</em></div>
+        <div class="why">转化成本只有均值 30.93 的 <b>1/5</b>。账号无 MCN 标签、无明显商业气息，穿骆驼只是日常穿搭。</div>
+        <div class="risk"><b>风险</b>：只有 8.3 万粉，单条天花板低，要靠「同类批量」而不是「单点加钱」。</div>
+      </div>
+
+      <div class="kol">
+        <div class="top">
+          <div class="thumb">so</div>
+          <div class="id">
+            <div class="rk">规模转化</div>
+            <div class="nm">soli</div>
+            <div class="tp">旅行摄影 · 2 条 · 60.5 万粉</div>
+          </div>
+        </div>
+        <div class="big">7.61<em>元/人</em></div>
+        <div class="why">粉丝量级最大、单条转化也压得住均值。旅行场景同时给到出片和功能场景，是<b>能放量</b>的那一类。</div>
+        <div class="risk"><b>风险</b>：CPM 偏高，纯买曝光不划算，必须配转化目标一起考核。</div>
+      </div>
+    </div>
+
+    <div class="grid2" style="margin-top:14px">
+      <div class="card">
+        <div class="eyebrow">第三步 · 谈价</div>
+        <ul style="list-style:none;padding:0;margin:9px 0 0">
+          <li style="font-size:12.3px;color:var(--ink2);padding:6px 0 6px 16px;position:relative;line-height:1.72"><span style="position:absolute;left:0;top:5px;color:var(--acc)">●</span><b>置换优先</b>：产品置换换内容，边际现金成本接近 0，是拉低整体单位成本最直接的手段</li>
+          <li style="font-size:12.3px;color:var(--ink2);padding:6px 0 6px 16px;position:relative;line-height:1.72"><span style="position:absolute;left:0;top:5px;color:var(--acc)">●</span><b>腰部优先</b>：低价博主性价比最高，单条 2 万出头、CPM 常在均值以下</li>
+          <li style="font-size:12.3px;color:var(--ink2);padding:6px 0 6px 16px;position:relative;line-height:1.72"><span style="position:absolute;left:0;top:5px;color:var(--acc)">●</span><b>素人以量换价</b>：高颜值素人批量合作，用条数摊薄单条成本</li>
+          <li style="font-size:12.3px;color:var(--ink2);padding:6px 0 6px 16px;position:relative;line-height:1.72"><span style="position:absolute;left:0;top:5px;color:var(--rose)">●</span><b>避开高价大博主陷阱</b>：粉丝量涨 10 倍，转化不一定涨 1 倍，CPM 却会翻上去</li>
+        </ul>
+      </div>
+      <div class="card" style="background:#fbfcfe">
+        <div class="eyebrow">一句话原则</div>
+        <h4 style="font-size:14px;margin-top:6px">「贵」不是问题，「贵还不转化」才是</h4>
+        <p style="font-size:12.3px;color:var(--muted);margin-top:7px;line-height:1.78">所以报价必须折成 CPM 看：单条报价 ÷ 预估有效观看 × 1000，折完还在 37.59 以上就不进这轮。这一步把「感觉这个达人不错」换成了「这个人多少钱买一千次观看」。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="s3">
+    <div class="sec-h">
+      <div class="no">03</div>
       <div>
-        <div class="t">08–15s</div>
-        <b>产品只出现，不介绍</b>
-        <p>衣服在风里鼓起来、袖口沾泥。参数一句没说，功能靠画面说明。</p>
-        <span class="y">可复制</span>
+        <h2>内容测试：180 条不一起开，先按赛道分组跑</h2>
+        <p class="lead">测试的目的不是证明哪个赛道更好，是在同一套口径下让每条内容都有一次公平的比较。所以先分组，再读数。</p>
       </div>
+      <div class="kw">分组 · 单变量 · 21 天</div>
+    </div>
+
+    <div class="grid3">
+      <div class="card">
+        <div class="eyebrow">纪律 01</div>
+        <h4 style="font-size:13.5px;margin-top:6px">同预算档</h4>
+        <p style="font-size:12.2px;color:var(--muted);margin-top:6px;line-height:1.72">同组达人报价控制在同一档（2 万以内 / 2–3 万），否则读数差是钱造成的，不是内容造成的。</p>
+      </div>
+      <div class="card">
+        <div class="eyebrow">纪律 02</div>
+        <h4 style="font-size:13.5px;margin-top:6px">单变量</h4>
+        <p style="font-size:12.2px;color:var(--muted);margin-top:6px;line-height:1.72">一轮只动一处：要么只换赛道，要么只换内容语法。两处一起换，出了结果也不知道该学哪条。</p>
+      </div>
+      <div class="card">
+        <div class="eyebrow">纪律 03</div>
+        <h4 style="font-size:13.5px;margin-top:6px">21 天统一窗口</h4>
+        <p style="font-size:12.2px;color:var(--muted);margin-top:6px;line-height:1.72">种草有长尾。窗口不统一，早发的那组永远赢；统一按发布后 21 天读数。</p>
+      </div>
+    </div>
+
+    <div class="tbl">
+      <table>
+        <thead>
+          <tr><th style="width:16%">组别</th><th style="width:22%">有效观看</th><th style="width:20%">转化率</th><th style="width:14%">判定</th><th>读出来的东西</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>音乐</b></td>
+            <td class="num-c">248 万 <span style="color:var(--faint)">/ 单条均值</span></td>
+            <td class="num-c">0.13%</td>
+            <td><span class="pill2 p-blue">声量组</span></td>
+            <td>曝光最便宜、量最大，转化只贴着均值。它的价值是「让更多人看见」，不是「马上卖货」。</td>
+          </tr>
+          <tr>
+            <td><b>旅行</b></td>
+            <td class="num-c">低于音乐</td>
+            <td class="num-c">0.43%<span style="color:var(--faint)"> / 最高 0.682%</span></td>
+            <td><span class="pill2 p-go">转化组</span></td>
+            <td>曝光少一截，转化高出 3 倍多。产品能自然融进场景，是真正带人的那条线。</td>
+          </tr>
+          <tr>
+            <td>摄影 / 三农 / 颜值</td>
+            <td class="num-c">样本不足</td>
+            <td class="num-c">—</td>
+            <td><span class="pill2 p-watch">观察</span></td>
+            <td>单类只有 1–2 条，不够下结论。先各补 5 条再评级，避免用一条内容判一个赛道死刑。</td>
+          </tr>
+          <tr>
+            <td>二次元 / 测评</td>
+            <td class="num-c">低</td>
+            <td class="num-c">低</td>
+            <td><span class="pill2 p-cut">淘汰</span></td>
+            <td>曝光和转化双低。测评类还带比较语境，等于免费给竞品做参照。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid-l" style="margin-top:14px">
+      <div class="card">
+        <div class="eyebrow">判定逻辑</div>
+        <h4 style="font-size:14px;margin-top:6px">两条赛道，两套 KPI，不能放一张榜排名</h4>
+        <p style="font-size:12.4px;color:var(--muted);margin-top:8px;line-height:1.8">音乐组的强项是 CPM（买曝光便宜），旅行组的强项是 CVR（带人准）。如果按统一的 CPA 排名，音乐会被判死；按统一的 CPM 排名，旅行会被判死——<b style="color:var(--ink2)">两个都是好赛道，只是任务不同</b>。</p>
+        <p style="font-size:12.4px;color:var(--muted);margin-top:8px;line-height:1.8">所以这一轮就定了两条考核线：音乐组只考核 CPM 和有效观看；旅行组只考核 CVR 和 CPA。混着排，一定会误杀。</p>
+      </div>
+      <div class="card" style="background:#fbfcfe">
+        <div class="eyebrow">测试结论</div>
+        <div style="display:flex;flex-direction:column;gap:9px;margin-top:10px">
+          <div style="font-size:12.3px;color:var(--ink2);line-height:1.72"><b class="mono" style="color:var(--acc-d)">1</b> &nbsp;声量靠音乐，转化靠旅行，两条线要同时存在</div>
+          <div style="font-size:12.3px;color:var(--ink2);line-height:1.72"><b class="mono" style="color:var(--acc-d)">2</b> &nbsp;二次元和测评整体砍掉，预算迁走</div>
+          <div style="font-size:12.3px;color:var(--ink2);line-height:1.72"><b class="mono" style="color:var(--acc-d)">3</b> &nbsp;摄影、三农、颜值不判死，也不加钱，先补样本</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="s4">
+    <div class="sec-h">
+      <div class="no">04</div>
       <div>
-        <div class="t">15–22s</div>
-        <b>做一个具体动作</b>
-        <p>过溪时把包举高、互相拉一把。功能点被动作带出来，不是念出来的。</p>
-        <span class="y">可复制</span>
+        <h2>定向放大：加预算只有一条规则</h2>
+        <p class="lead">这一段的动作是全篇最贵的——每一次加钱都不可撤回。所以把它压成一条双条件规则：谁达标谁加，其余一律不动。</p>
       </div>
+      <div class="kw">双条件 · 分批 · 留测试位</div>
+    </div>
+
+    <div class="grid-l">
+      <div class="tbl" style="margin-top:0">
+        <table>
+          <thead>
+            <tr><th style="width:16%">处置</th><th style="width:26%">对象</th><th style="width:20%">依据</th><th>动作</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="pill2 p-go">加预算</span></td>
+              <td>黑皮 couple 这一类<br><span style="color:var(--faint)">CPM 2.77</span></td>
+              <td class="num-c">双条件全过</td>
+              <td>追投同类半素人 CP，单次 +20–30%，不翻倍。看的是「类」不是「人」。</td>
+            </tr>
+            <tr>
+              <td><span class="pill2 p-blue">换语法再造</span></td>
+              <td>soli 这一类<br><span style="color:var(--faint)">CPA 7.61</span></td>
+              <td class="num-c">CVR 达标 / CPM 偏高</td>
+              <td>人不动，换场景和镜头语言：静态摆拍 → 动态跟拍，把风光片改成户外进行时。</td>
+            </tr>
+            <tr>
+              <td><span class="pill2 p-watch">只买曝光位</span></td>
+              <td>音乐类<br><span style="color:var(--faint)">248 万 / 0.13%</span></td>
+              <td class="num-c">CPM 达标 / CVR 贴线</td>
+              <td>不进转化考核，单独记 CPM 和声量，用它压整盘的单位曝光成本。</td>
+            </tr>
+            <tr>
+              <td><span class="pill2 p-cut">关停</span></td>
+              <td>二次元 / 测评 / 尾部高 CPM</td>
+              <td class="num-c">双条件全不过</td>
+              <td>预算立即迁出，不续约。59.06% 高于均值的那部分，就是从这里挪走的。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="rule">
+        <div class="t">加预算的唯一规则</div>
+        <div class="f">CVR ≥ <b>0.12%</b><br>且&nbsp;CPM ≤ <b>37.59</b></div>
+        <ul>
+          <li>两个都过才加，<b>只过一个不动</b>——单靠曝光便宜或单靠转化好，加钱都会把均值拉坏</li>
+          <li>单次 <b>+20–30%</b>，不翻倍。翻倍等于换了一个投放环境，前面的数据不再成立</li>
+          <li>始终留 <b>10–15%</b> 预算在测试位，否则下一轮没有新样本，只能靠猜</li>
+          <li>置换内容不占现金，可以<b>并行放量</b>，但同样要过双条件</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid2" style="margin-top:14px">
+      <div class="card">
+        <div class="eyebrow">钱从哪来</div>
+        <h4 style="font-size:13.8px;margin-top:6px">不是加预算，是把钱从贵的曝光上挪走</h4>
+        <p style="font-size:12.3px;color:var(--muted);margin-top:7px;line-height:1.78">总预算没变。59.06% 的达人 CPM 高于均值，这部分是现成的预算池：砍掉尾部、停掉高价低效的大博主，迁给达标的同类和置换位。整体 CPM 和 CPA 会同时往下走。</p>
+      </div>
+      <div class="card">
+        <div class="eyebrow">置换的杠杆</div>
+        <h4 style="font-size:13.8px;margin-top:6px">用库存换曝光，现金成本接近 0</h4>
+        <p style="font-size:12.3px;color:var(--muted);margin-top:7px;line-height:1.78">置换合作的边际现金成本趋近于 0，同样观看量下会把整体单位成本直接压下来。这是「30.93 元/人 只有行业 8%」里最容易被忽略的一块。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="s5">
+    <div class="sec-h">
+      <div class="no">05</div>
       <div>
-        <div class="t">22–30s</div>
-        <b>给去处</b>
-        <p>不喊"点击购买"，只说"链接在评论区，同款尺码我放在第一条"。降低决策成本。</p>
-        <span class="y n">靠人设</span>
+        <h2>内容与素材分析：拆能复制的，不拆运气</h2>
+        <p class="lead">放大之后要能复制。复制不是复制人，是复制结构——把三条跑得最好的内容拆成同一套五段，看哪几段可以写进下一轮 Brief。</p>
+      </div>
+      <div class="kw">三条爆款 · 五段结构</div>
+    </div>
+
+    <div class="hit">
+      <div class="c">
+        <div class="ph">
+          <img src="assets/kols/travel.jpg" alt="旅行图文素材截图" loading="lazy">
+          <div class="tp">旅行 · 转化最高</div>
+        </div>
+        <div class="bd">
+          <div class="nm">kkkkkisum · 图文 8 图</div>
+          <div class="mt">CVR 0.682% · 4.0 万赞</div>
+          <p>草原大场景 + 静图 + BGM。产品不是主角，是「理想生活」的一部分——踩在草原上的鞋侧特写，比参数图有效得多。</p>
+        </div>
+      </div>
+      <div class="c">
+        <div class="ph">
+          <img src="assets/kols/cp.jpg" alt="情侣 CP 素材截图" loading="lazy">
+          <div class="tp">CP · 成本最低</div>
+        </div>
+        <div class="bd">
+          <div class="nm">爱吃香菜菜 · 视频</div>
+          <div class="mt">CPA 6.36 · 8.3 万粉</div>
+          <p>举高高 + 甜笑，夜晚公园。账号无 MCN 标签、没有广告腔，冲锋衣只是两个人身上穿的衣服。</p>
+        </div>
+      </div>
+      <div class="c">
+        <div class="ph">
+          <img src="assets/kols/music.jpg" alt="音乐舞蹈素材截图" loading="lazy">
+          <div class="tp">音乐 · 曝光最大</div>
+        </div>
+        <div class="bd">
+          <div class="nm">彭越月 · 视频</div>
+          <div class="mt">248 万观看 · 0.13%</div>
+          <p>流行 BGM + 热舞 + 家居场景。运动感和潮流感拉满，是最便宜的一千次观看。</p>
+        </div>
       </div>
     </div>
-    <p class="note">拆完的结论是：<b>四段可以写成模板（开场反差、场景真实、产品不说参数、动作带功能），最后一段复制不了</b>——那是达人自己的表现力和粉丝关系。所以下一轮是"用模板改造 175 位"，不是"找 175 个 A-1"。</p>
-  </div>
 
-  <div class="grid3 mt14">
-    <div class="card rv">
-      <h3>什么算爆款<span>HIT</span></h3>
-      <p>不是播放高就算。有效观看跑过组均值、完播高于同层级中位数、且有进店行为，三条同时成立才进"爆款池"。</p>
+    <div class="segs">
+      <div class="sg"><div class="n">01</div><b>前 3 秒</b><span>给动作，不给参数。托举、草原全景、热舞起手，先抓住眼睛。</span></div>
+      <div class="sg"><div class="n">02</div><b>场景</b><span>真实可去的地方：夜晚公园、川西草原、家里客厅。越日常越可信。</span></div>
+      <div class="sg"><div class="n">03</div><b>产品露出</b><span>穿上、踩上、蹭到镜头，但不介绍。logo 只出现，不被念出来。</span></div>
+      <div class="sg"><div class="n">04</div><b>情绪</b><span>甜蜜 / 自由流浪 / 潮流活力。用户买的是情绪，不是面料。</span></div>
+      <div class="sg"><div class="n">05</div><b>去处</b><span>评论区置顶、主页合集、同款 BGM。唯一的转化动作，轻到不像广告。</span></div>
     </div>
-    <div class="card rv">
-      <h3>什么算高转化<span>CONVERT</span></h3>
-      <p>CVR 高于组间均值、CPA 低于目标线。播放一般但这两条成立的，优先加预算，不看粉丝量。</p>
+
+    <div class="grid2" style="margin-top:14px">
+      <div class="card">
+        <div class="eyebrow">能复制的</div>
+        <ul style="list-style:none;padding:0;margin:9px 0 0">
+          <li style="font-size:12.3px;color:var(--ink2);padding:6px 0 6px 16px;position:relative;line-height:1.72"><span style="position:absolute;left:0;top:5px;color:var(--teal)">●</span>用动作开场，不用产品开场</li>
+          <li style="font-size:12.3px;color:var(--ink2);padding:6px 0 6px 16px;position:relative;line-height:1.72"><span style="position:absolute;left:0;top:5px;color:var(--teal)">●</span>产品融进真实场景，不做产品特写页</li>
+          <li style="font-size:12.3px;color:var(--ink2);padding:6px 0 6px 16px;position:relative;line-height:1.72"><span style="position:absolute;left:0;top:5px;color:var(--teal)">●</span>转化引导放评论区，不放口播</li>
+          <li style="font-size:12.3px;color:var(--ink2);padding:6px 0 6px 16px;position:relative;line-height:1.72"><span style="position:absolute;left:0;top:5px;color:var(--teal)">●</span>一条内容只讲一个情绪，不叠加卖点</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="eyebrow">复制不了的</div>
+        <ul style="list-style:none;padding:0;margin:9px 0 0">
+          <li style="font-size:12.3px;color:var(--ink2);padding:6px 0 6px 16px;position:relative;line-height:1.72"><span style="position:absolute;left:0;top:5px;color:var(--faint)">●</span>博主本人的脸和身材，是这条内容的一半</li>
+          <li style="font-size:12.3px;color:var(--ink2);padding:6px 0 6px 16px;position:relative;line-height:1.72"><span style="position:absolute;left:0;top:5px;color:var(--faint)">●</span>粉丝对账号的信任，换人就不成立</li>
+          <li style="font-size:12.3px;color:var(--ink2);padding:6px 0 6px 16px;position:relative;line-height:1.72"><span style="position:absolute;left:0;top:5px;color:var(--faint)">●</span>BGM 的时效性，晚两周发就失效</li>
+          <li style="font-size:12.3px;color:var(--ink2);padding:6px 0 6px 16px;position:relative;line-height:1.72"><span style="position:absolute;left:0;top:5px;color:var(--faint)">●</span>平台当时的流量倾斜，不可控也不可复现</li>
+        </ul>
+      </div>
     </div>
-    <div class="card rv">
-      <h3>什么时候换掉<span>REPLACE</span></h3>
-      <p>D7 完播低于中位数、D14 进店率无起色，就不再追加第二条。换的是内容结构，不是换更贵的人。</p>
+
+    <div class="swhat">
+      <div class="t">结论</div>
+      <p>三条爆款的共同点是「<b>产品都不是主角</b>」——它出现在场景里，不在话术里。所以下一轮要改的不是「找更像的人」，而是「把五段结构写进 Brief，让 175 个普通达人也照着拍」。</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- 05 复盘 -->
-<section class="sec" id="s5">
-  <div class="sec-h">
-    <div class="idx">05 / REVIEW</div>
-    <div class="t">
-      <h2>复盘：三条数据结论，五个下一步动作</h2>
-      <p>复盘不是给结果打分，是<b>把这一轮的钱换成下一轮的规则</b>。结论必须能落到具体动作，动作必须能被下一轮的数据验证。</p>
+  <section class="sec" id="s6">
+    <div class="sec-h">
+      <div class="no">06</div>
+      <div>
+        <h2>复盘总结：三个结论，五条动作</h2>
+        <p class="lead">复盘不是把数据再念一遍，是把「这一轮学到什么」变成「下一轮改哪一处」。所以每条结论都对应一个动作，每个动作都写清怎么验。</p>
+      </div>
+      <div class="kw">结论 → 动作 → 验证</div>
     </div>
-    <div class="kw">3 + 5</div>
-  </div>
 
-  <div class="grid3">
-    <div class="card rv">
-      <h3>结论一：达标，但很薄<span>MARGIN</span></h3>
-      <p>ROI 1.13、目标线 500.0 万，只多 0.8 万；净利 57.6 万，等于 23 条内容的试错额度。一条判断失误就吃掉 1/23。</p>
+    <div class="grid3">
+      <div class="card">
+        <div class="eyebrow">结论 01 · 规模</div>
+        <h4 style="font-size:13.8px;margin-top:6px">类目第一，且是断层第一</h4>
+        <p style="font-size:12.2px;color:var(--muted);margin-top:7px;line-height:1.75">声量 1.2 亿，是同类竞品 8 倍；间接转化 14.5 万人，是同类 50 倍；单位成本 30.93 元，只有行业均值 8%。规模、效率、成本三项同时领先。</p>
+      </div>
+      <div class="card">
+        <div class="eyebrow">结论 02 · 结构</div>
+        <h4 style="font-size:13.8px;margin-top:6px">59.06% 的钱买在了更贵的曝光上</h4>
+        <p style="font-size:12.2px;color:var(--muted);margin-top:7px;line-height:1.75">总量赢，不代表每一笔都花对。超过一半的达人 CPM 高于均值，说明筛选的第二道线没卡住，这部分钱可以通过迁移直接省下来。</p>
+      </div>
+      <div class="card">
+        <div class="eyebrow">结论 03 · 口径</div>
+        <h4 style="font-size:13.8px;margin-top:6px">18% 的种草效果，现在归不了类</h4>
+        <p style="font-size:12.2px;color:var(--muted);margin-top:7px;line-height:1.75">有效 72%、无效 10%，剩下 18% 说不清是有效还是无效。这不是执行问题，是归因链路有洞——下一次投放前必须先补上。</p>
+      </div>
     </div>
-    <div class="card rv">
-      <h3>结论二：钱分错了层<span>ALLOCATION</span></h3>
-      <p>59.06% 的达人 CPM 高于均值 37.59，均值被少数极低价账号拉低。平均 CPM 是假象，分布才是真相。</p>
+
+    <div class="tbl">
+      <table>
+        <thead>
+          <tr><th style="width:26%">下一轮动作</th><th style="width:26%">依据</th><th style="width:20%">预期</th><th>怎么验证</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><b>把 CPM 线写成硬卡点</b><br><span style="color:var(--faint)">报价折 CPM &gt; 37.59 直接不进</span></td><td>59.06% 达人高于均值</td><td class="num-c">整体 CPM −15%</td><td>下一轮同口径对比均值</td></tr>
+          <tr><td><b>预算向置换与腰部迁移</b></td><td>单位成本仅行业 8%，置换仍有空间</td><td class="num-c">CPA ≤ 28 元</td><td>月度 CPA 与置换占比</td></tr>
+          <tr><td><b>旅行线加投，音乐线单独考核</b></td><td>旅行 0.43% vs 音乐 0.13%</td><td class="num-c">转化人数 +20%</td><td>分线看 CVR / CPM</td></tr>
+          <tr><td><b>补 18% 归因口径</b><br><span style="color:var(--faint)">把「说不清」拆成可归类的桶</span></td><td>有效 72% / 无效 10% / 未知 18%</td><td class="num-c">未知 ≤ 8%</td><td>月度口径复核</td></tr>
+          <tr><td><b>五段结构写进 Brief</b><br><span style="color:var(--faint)">动作开场 · 场景 · 露出 · 情绪 · 去处</span></td><td>三条爆款共性</td><td class="num-c">达标率 +10pp</td><td>新一批内容的 CVR 分布</td></tr>
+        </tbody>
+      </table>
     </div>
-    <div class="card rv">
-      <h3>结论三：赛道价值不同<span>SEGMENT</span></h3>
-      <p>音乐买曝光（CVR 0.13%）、旅行买转化（CVR 0.43%）。混在一张榜里排名，必然会误杀和误放。</p>
+
+    <div class="quad" style="margin-top:16px">
+      <div class="q go"><div class="h">放大</div><b>CPM 与 CVR 双过</b><p>同类追加 20–30%，不翻倍。看类不看人。</p></div>
+      <div class="q rb"><div class="h">改造</div><b>转化好、曝光贵</b><p>人不换，换场景和镜头：静态 → 动态跟拍。</p></div>
+      <div class="q wt"><div class="h">观察</div><b>样本不足</b><p>摄影、三农、颜值各补 5 条再评级。</p></div>
+      <div class="q cut"><div class="h">关停</div><b>双低或纯高 CPM</b><p>二次元、测评、尾部高 CPM，预算立即迁出。</p></div>
     </div>
+
+    <div class="swhat" style="margin-top:16px">
+      <div class="t">只能改一件</div>
+      <p><b>把 CPM 线做成不可绕过的卡点。</b>因为规模已经赢了，下一轮的空间不在「多投多少」，而在「同一笔钱买到多少有效观看」。这一条改完，CPA 会自己往下走。</p>
+    </div>
+  </section>
+
+  <div class="bound">
+    <div class="eyebrow">口径与边界</div>
+    <ul>
+      <li><b>数据来源</b>：飞书原文档《电商种草分析洞察》，统计截至 7 月 10 日。消耗为总消耗口径（含置换折算），与纯现金支出会有小幅差异。</li>
+      <li><b>有效观看 ≠ 播放量</b>：所有 CPM、CPA 均以有效观看计算，播放量只作参考，两者不可混用。</li>
+      <li><b>赛道判级有样本限制</b>：摄影、三农、颜值单类只有 1–2 条，本页只标「观察」，不下结论。</li>
+      <li><b>封面素材</b>：为项目原始内容截图，仅用于说明内容形态与投放判断，未做二次创作。</li>
+      <li><b>对标基准</b>：安德玛、凯乐石、伯希和的公开种草数据，仅作方向性参照，不同统计周期不可直接相加。</li>
+    </ul>
   </div>
 
-  <div class="tbl rv">
-    <table>
-      <thead><tr><th>下一步动作</th><th>依据</th><th>预期</th><th>怎么验证</th></tr></thead>
-      <tbody>
-        <tr>
-          <td><b>预算从 G1 尾部迁到 G2 与 A-1 同类型</b></td>
-          <td>59.06% 高于均值、G2 双条件达标</td>
-          <td>同预算下 CPM 降 8–12%</td>
-          <td>组间 CPM 中位数、G2 占比</td>
-        </tr>
-        <tr>
-          <td><b>补"待观察"第三档</b></td>
-          <td>18% 内容无法归类，每轮都吵同一件事</td>
-          <td>归类率 ≥ 90%</td>
-          <td>结案表归类分布</td>
-        </tr>
-        <tr>
-          <td><b>四段模板改造 175 位达人</b></td>
-          <td>只有 5 位形成可复制结构</td>
-          <td>双榜人数从 1 提到 8–12</td>
-          <td>下一轮双榜交叉结果</td>
-        </tr>
-        <tr>
-          <td><b>二次授权写进 brief，跑赢即投流</b></td>
-          <td>跑赢内容无授权，无法复用放大</td>
-          <td>素材复用率 ≥ 30%</td>
-          <td>授权覆盖率、投流消耗占比</td>
-        </tr>
-        <tr>
-          <td><b>音乐线独立 KPI，不参与 ROI 排名</b></td>
-          <td>用转化标准考核曝光赛道，必然误杀</td>
-          <td>声量不掉、误杀归零</td>
-          <td>分赛道达成率</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="next">
+    <a href="sop.html">→ 看这套流程的完整 SOP（六阶段 · 24 检查项）</a>
+    <a href="index.html">← 返回首页</a>
   </div>
-
-  <div class="call mt14 rv">
-    <span class="k">IF ONLY ONE</span>
-    如果下一轮只能改一件事：<b>把预算从"CPM 高于均值、CVR 低于均值"的达人，迁到双榜达人及其同类型人群。</b>不加钱、不换平台、不重拍——只换人。这一条能同时改善 CPM 结构和 ROI，是投入产出比最高的动作。
-  </div>
-
-  <p class="note">这一页的数据分析确实是主线：分组、判定、拆解、复盘都靠数。但它替不了三件事——<b>和达人谈价、判断一条片子的质感、在数据不完整时拍板</b>。这三件才是投放岗真正被雇来做的。</p>
-</section>
-
-<!-- 06 口径 -->
-<section class="sec" id="s6">
-  <div class="sec-h">
-    <div class="idx">06 / SCOPE</div>
-    <div class="t"><h2>口径与边界</h2><p>避免被误读成"数据可以随便对上"。</p></div>
-  </div>
-  <div class="bdbox rv">
-    <div class="bditem"><div class="i">01</div><div><b>归因口径 21 天</b>，跨月结算，因此 D14 之前的 ROI 一律不作为判断依据。</div></div>
-    <div class="bditem"><div class="i">02</div><div><b>品牌、竞品、达人全部代号化</b>，原始素材与账号未获授权公开，内容墙为版式示意。</div></div>
-    <div class="bditem"><div class="i">03</div><div><b>净利 57.6 万为毛利空间</b>，未扣平台佣金与履约成本，仅用于说明容错大小，不等于财务利润。</div></div>
-    <div class="bditem"><div class="i">04</div><div><b>目标 CPA 8.0 元、CVR 0.30% 为本项目设定值</b>，换品类、换平台必须重新标定，不能直接套用。</div></div>
-    <div class="bditem"><div class="i">05</div><div><b>数据截至 7 月 10 日</b>，与结案报表一致；后续达人自然流量未计入。</div></div>
-  </div>
-
-  <div class="pager">
-    <a href="index.html"><small>BACK</small>← 返回首页</a>
-    <a href="sop.html" style="text-align:right"><small>NEXT</small>投放 SOP：六阶段 24 项检查 →</a>
-  </div>
-</section>
 
 </main>
 
 <footer>
   <div class="wrap">
-    <div class="f-in">
-      <span>CASE 01 · 达人种草投放复盘</span>
-      <span>邱曾恺 · 海外投放 / 广告运营</span>
-    </div>
+    <span>© 2026 邱曾恺 · 投放作品集</span>
+    <span>数据按项目口径整理 · 案例仅用于求职展示</span>
   </div>
 </footer>
 
 <script>
 (function(){
-  var nav=document.querySelectorAll('.cbar a');
-  var secs=[].slice.call(document.querySelectorAll('section.sec'));
+  var links = [].slice.call(document.querySelectorAll('.cbar a'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
   function onScroll(){
-    var y=window.scrollY+160, cur=secs[0]&&secs[0].id;
-    secs.forEach(function(s){ if(s.offsetTop<=y) cur=s.id; });
-    nav.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href')==='#'+cur); });
+    var y = window.scrollY + 140, idx = 0;
+    secs.forEach(function(s,i){ if(s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i === idx); });
   }
-  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
-
-  var rv=document.querySelectorAll('.rv');
-  if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){
-      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-    },{threshold:.08,rootMargin:'0px 0px -40px 0px'});
-    rv.forEach(function(el){ io.observe(el); });
-  } else {
-    rv.forEach(function(el){ el.classList.add('in'); });
-  }
-
-  nav.forEach(function(a){
-    a.addEventListener('click',function(e){
-      var t=document.querySelector(a.getAttribute('href'));
-      if(!t) return;
-      e.preventDefault();
-      window.scrollTo({top:t.offsetTop-100,behavior:'smooth'});
-      history.replaceState(null,'',a.getAttribute('href'));
-    });
-  });
 })();
 </script>
 </body>
